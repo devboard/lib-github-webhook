@@ -1,0 +1,20 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitCommitter
+  parent: null
+  interfaces:
+    - Git\Commit\CommitCommitter
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    name:
+      instanceOf: DevboardLib\Git\Commit\Committer\CommitterName
+      examples: ["Octo Cat"]
+    email:
+      instanceOf: DevboardLib\Generix\EmailAddress
+      examples: ["octocat@example.com"]
+    username:
+      instanceOf: DevboardLib\GitHub\User\UserLogin
+      examples: ["octocat"]
