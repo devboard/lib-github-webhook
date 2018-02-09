@@ -1,0 +1,6 @@
+definition:
+  type: SimpleIdentifier
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\CompareChangesUrl
+  constructor:
+    url:
+      instanceOf: string
