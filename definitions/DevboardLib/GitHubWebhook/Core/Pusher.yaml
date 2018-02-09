@@ -1,0 +1,16 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Pusher
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    name:
+      instanceOf: string
+      examples: ["Octo Cat"]
+    email:
+      instanceOf: DevboardLib\Generix\EmailAddress
+      examples: ["octocat@example.com"]
