@@ -1,0 +1,17 @@
+definition:
+  type: SimpleCollection
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitCollection
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constants: {  }
+  constructor:
+    elements:
+      instanceOf: array
+      nullable: false
+      hasDefault: true
+      default: {  }
+  collectionOf:
+    instanceOf: DevboardLib\GitHubWebhook\Core\Push\Commit
+    accessor: getSha
+    has: Git\Commit\CommitSha
