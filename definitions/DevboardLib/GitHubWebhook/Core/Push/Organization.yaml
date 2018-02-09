@@ -1,0 +1,44 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\Organization
+  parent: null
+  interfaces:
+    - DevboardLib\GitHub\GitHubAccount
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    id:
+     instanceOf: DevboardLib\GitHub\Account\AccountId
+     examples: [3259285]
+    login:
+     instanceOf: DevboardLib\GitHub\Account\AccountLogin
+     examples: ["zgphp"]
+    avatarUrl:
+     instanceOf: DevboardLib\GitHub\Account\AccountAvatarUrl
+     examples: ["https://avatars3.githubusercontent.com/u/3259285?v=4"]
+    description:
+     instanceOf: string
+     examples: ["Zagreb PHP Meetup"]
+    apiUrl:
+     instanceOf: DevboardLib\GitHub\Account\AccountApiUrl
+     examples: ["https://api.github.com/orgs/zgphp"]
+    reposUrl:
+     instanceOf: string
+     examples: ["https://api.github.com/orgs/zgphp/repos"]
+    issuesUrl:
+     instanceOf: string
+     examples: ["https://api.github.com/orgs/zgphp/issues"]
+    eventsUrl:
+     instanceOf: string
+     examples: ["https://api.github.com/orgs/zgphp/events"]
+    hooksUrl:
+     instanceOf: string
+     examples: ["https://api.github.com/orgs/zgphp/hooks"]
+    membersUrl:
+     instanceOf: string
+     examples: ["https://api.github.com/orgs/zgphp/members{/member}"]
+    publicMembersUrl:
+     instanceOf: string
+     examples: ["https://api.github.com/orgs/zgphp/public_members{/member}"]
