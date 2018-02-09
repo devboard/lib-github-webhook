@@ -1,0 +1,33 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\Commit
+  parent: null
+  interfaces:
+    - Git\Commit
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    sha:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+    message:
+      instanceOf: DevboardLib\Git\Commit\CommitMessage
+    commitDate:
+      instanceOf: DevboardLib\Git\Commit\CommitDate
+    author:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitAuthor
+    committer:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitCommitter
+    tree:
+      instanceOf: DevboardLib\Git\Commit\CommitTree
+    htmlUrl:
+      instanceOf: DevboardLib\GitHub\Commit\CommitHtmlUrl
+    distinct:
+      instanceOf: bool
+    addedFiles:
+      instanceOf: array
+    modifiedFiles:
+      instanceOf: array
+    removedFiles:
+      instanceOf: array
