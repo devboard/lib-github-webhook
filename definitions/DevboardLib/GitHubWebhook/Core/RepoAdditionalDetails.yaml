@@ -1,0 +1,29 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\RepoAdditionalDetails
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    license:
+      instanceOf: string
+      nullable: true
+      examples: ["master"]
+    forksCount:
+      instanceOf: int
+      examples: [0]
+    hasDownloads:
+      instanceOf: bool
+      examples: [false,true]
+    hasIssues:
+      instanceOf: bool
+      examples: [false,true]
+    hasPages:
+      instanceOf: bool
+      examples: [false,true]
+    hasProjects:
+      instanceOf: bool
+      examples: [false,true]
+    hasWiki:
+      instanceOf: bool
+      examples: [false,true]
