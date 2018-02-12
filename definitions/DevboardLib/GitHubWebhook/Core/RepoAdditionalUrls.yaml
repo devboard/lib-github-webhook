@@ -1,0 +1,122 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\RepoAdditionalUrls
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    archiveUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/{archive_format}{/ref}"]
+    assigneesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/assignees{/user}"]
+    blobsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/git/blobs{/sha}"]
+    branchesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/branches{/branch}"]
+    cloneUrl:
+      instanceOf: string
+      examples: ["https://github.com/octocat/linguist.git"]
+    collaboratorsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/collaborators{/collaborator}"]
+    commentsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/comments{/number}"]
+    commitsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/commits{/sha}"]
+    compareUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/compare/{base}...{head}"]
+    contentsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/contents/{+path}"]
+    contributorsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/contributors"]
+    deploymentsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/deployments"]
+    downloadsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/downloads"]
+    eventsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/events"]
+    forksUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/forks"]
+    gitCommitsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/git/commits{/sha}"]
+    gitRefsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/git/refs{/sha}"]
+    gitTagsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/git/tags{/sha}"]
+    hooksUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/hooks"]
+    issueCommentUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/issues/comments{/number}"]
+    issueEventsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/issues/events{/number}"]
+    issuesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/issues{/number}"]
+    keysUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/keys{/key_id}"]
+    labelsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/labels{/name}"]
+    languagesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/languages"]
+    mergesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/merges"]
+    milestonesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/milestones{/number}"]
+    notificationsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/notifications{?since,all,participating}"]
+    pullsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/pulls{/number}"]
+    releasesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/releases{/id}"]
+    stargazersUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/stargazers"]
+    statusesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/statuses/{sha}"]
+    subscribersUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/subscribers"]
+    subscriptionUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/subscription"]
+    tagsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/tags"]
+    teamsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/teams"]
+    treesUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/repos/octocat/linguist/git/trees{/sha}"]
+    svnUrl:
+      instanceOf: string
+      examples: ["https://github.com/octocat/linguist"]
+
