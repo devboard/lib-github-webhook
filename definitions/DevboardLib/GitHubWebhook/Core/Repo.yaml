@@ -1,0 +1,60 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: DevboardLib\GitHub\Repo\RepoId
+      examples: [64778136,1296269]
+    fullName:
+      instanceOf: DevboardLib\GitHub\Repo\RepoFullName
+    owner:
+      instanceOf: DevboardLib\GitHubWebhook\Core\RepoOwner
+    private:
+      instanceOf: bool
+      examples: [false,true]
+    defaultBranch:
+      instanceOf: DevboardLib\Git\Branch\BranchName
+      examples: ['master']
+    fork:
+      instanceOf: bool
+      examples: [false,true]
+    parent:
+      instanceOf: DevboardLib\GitHub\Repo\RepoParent
+      nullable: true
+    description:
+      instanceOf: DevboardLib\GitHub\Repo\RepoDescription
+      nullable: true
+      examples: ['Language Savant. If your repository language is being reported incorrectly, send us a pull request!']
+    homepage:
+      instanceOf: DevboardLib\GitHub\Repo\RepoHomepage
+      nullable: true
+      examples: ['http://www.example.com/']
+    language:
+      instanceOf: DevboardLib\GitHub\Repo\RepoLanguage
+      nullable: true
+      examples: ['PHP','Javascript']
+    mirrorUrl:
+      instanceOf: DevboardLib\GitHub\Repo\RepoMirrorUrl
+      nullable: true
+      examples: ['http://mirror.example.com']
+    archived:
+      instanceOf: bool
+      nullable: true
+      examples: [false,true]
+    endpoints:
+      instanceOf: DevboardLib\GitHub\Repo\RepoEndpoints
+    stats:
+      instanceOf: DevboardLib\GitHub\Repo\RepoStats
+      nullable: false
+    timestamps:
+      instanceOf: DevboardLib\GitHub\Repo\RepoTimestamps
+      nullable: false
+    additionalDetails:
+      instanceOf: DevboardLib\GitHubWebhook\Core\RepoAdditionalDetails
+    repoAdditionalUrls:
+      instanceOf: DevboardLib\GitHubWebhook\Core\RepoAdditionalUrls
+
+
