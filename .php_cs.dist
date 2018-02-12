@@ -1,6 +1,7 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
+    ->in('data')
     ->in('spec')
     ->in('src')
     ->in('tests');
