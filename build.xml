@@ -27,7 +27,7 @@
     </target>
 
     <target name="phpstan" description="Run phpstan">
-        <exec command="./vendor/bin/phpstan --memory-limit=-1 analyse -l 7 -c phpstan.neon src tests" passthru="true" checkreturn="true"/>
+        <exec command="./vendor/bin/phpstan --memory-limit=-1 analyse -l 7 -c phpstan.neon data src tests" passthru="true" checkreturn="true"/>
     </target>
 
     <target name="php-cs-fixer-check" description="Run php-cs-fixer check">
@@ -36,6 +36,9 @@
 
     <target name="phpmd" description="Run phpmd">
         <parallel threadCount="4">
+            <phingcall target="phpmd-task">
+                <property name="path" value="data"/>
+            </phingcall>
             <phingcall target="phpmd-task">
                 <property name="path" value="src"/>
             </phingcall>
@@ -48,6 +51,9 @@
     <target name="phpcs" description="Run phpcs">
         <parallel threadCount="4">
             <phingcall target="phpcs-task">
+                <property name="path" value="data"/>
+            </phingcall>
+            <phingcall target="phpcs-task">
                 <property name="path" value="src"/>
             </phingcall>
             <phingcall target="phpcs-task">
@@ -58,6 +64,11 @@
 
     <target name="phpcbf" description="Run phpcbf">
         <parallel threadCount="4">
+            <retry retrycount="3">
+                <phingcall target="phpcbf-task">
+                    <property name="path" value="data"/>
+                </phingcall>
+            </retry>
             <retry retrycount="3">
                 <phingcall target="phpcbf-task">
                     <property name="path" value="src"/>
