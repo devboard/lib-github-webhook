@@ -1,0 +1,36 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\Push\UpdateBranchPushEvent
+  parent: null
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\PushEvent
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    ref:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\Ref
+      examples: ['refs/heads/new-feature-branch','refs/tags/0.1.0']
+    before:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+    after:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+    baseRef:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\Ref
+      nullable: true
+      examples: ['refs/heads/master']
+    changesUrl:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\CompareChangesUrl
+    commits:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitCollection
+    headCommit:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\Commit
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    forced:
+      instanceOf: bool
+    pusher:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Pusher
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender
