@@ -28,11 +28,23 @@ class RepoFactoryTest extends TestCase
     }
 
     /** @group stagingData */
-    public function testRepoFactory()
+    public function testRepoFactoryFromPushData()
     {
         $provider = new StagingDataProvider();
 
         foreach ($provider->getGitHubPushEventData() as $item) {
+            $sender = $this->sut->create($item['repository']);
+
+            self::assertInstanceOf(Repo::class, $sender);
+        }
+    }
+
+    /** @group stagingData */
+    public function testRepoFactoryFromStatusData()
+    {
+        $provider = new StagingDataProvider();
+
+        foreach ($provider->getGitHubStatusData() as $item) {
             $sender = $this->sut->create($item['repository']);
 
             self::assertInstanceOf(Repo::class, $sender);
