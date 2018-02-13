@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Data\DevboardLib\GitHubWebhook\Core;
+namespace Data\DevboardLib\GitHubWebhook\Core\Push;
 
-use DevboardLib\GitHubWebhook\Core\Pusher;
+use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 
 class PusherSample
 {
-    private static $data = ['octocat' => ['name' => 'octocat', 'email' => 'octocat@example.com']];
+    private static $data = ['octocat' => ['login' => 'octocat', 'emailAddress' => 'octocat@example.com']];
 
     public static function serialized(string $item): array
     {
