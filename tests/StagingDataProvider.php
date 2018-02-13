@@ -18,7 +18,9 @@ class StagingDataProvider
     public function __construct(string $basePath = null)
     {
         if (null === $basePath) {
-            $basePath = '/work/projects/devboard/docker/github-data-dump/';
+            //$basePath = '/work/projects/devboard/docker/github-data-dump/';
+            //$basePath = '/work/projects/devboard/lib/lib-github-webhook/tmp/';
+            $basePath = '/work/projects/devboard/examples/version1/';
         }
 
         $this->basePath = $basePath;
