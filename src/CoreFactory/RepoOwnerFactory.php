@@ -17,27 +17,38 @@ class RepoOwnerFactory
 {
     public function create(array $data): RepoOwner
     {
+        if (true === array_key_exists('name', $data)) {
+            $name = $data['name'];
+        } else {
+            $name = null;
+        }
+        if (true === array_key_exists('email', $data)) {
+            $email = $data['email'];
+        } else {
+            $email = null;
+        }
+
         /* @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new RepoOwner(
-            new AccountId($data['owner']['id']),
-            new AccountLogin($data['owner']['login']),
-            new AccountType($data['owner']['type']),
-            new AccountAvatarUrl($data['owner']['avatar_url']),
-            new GravatarId($data['owner']['gravatar_id']),
-            new AccountHtmlUrl($data['owner']['html_url']),
-            new AccountApiUrl($data['owner']['url']),
-            $data['owner']['site_admin'],
-            $data['owner']['name'],
-            $data['owner']['email'],
-            $data['owner']['events_url'],
-            $data['owner']['followers_url'],
-            $data['owner']['following_url'],
-            $data['owner']['gists_url'],
-            $data['owner']['organizations_url'],
-            $data['owner']['received_events_url'],
-            $data['owner']['repos_url'],
-            $data['owner']['starred_url'],
-            $data['owner']['subscriptions_url']
+            new AccountId($data['id']),
+            new AccountLogin($data['login']),
+            new AccountType($data['type']),
+            new AccountAvatarUrl($data['avatar_url']),
+            new GravatarId($data['gravatar_id']),
+            new AccountHtmlUrl($data['html_url']),
+            new AccountApiUrl($data['url']),
+            $data['site_admin'],
+            $name,
+            $email,
+            $data['events_url'],
+            $data['followers_url'],
+            $data['following_url'],
+            $data['gists_url'],
+            $data['organizations_url'],
+            $data['received_events_url'],
+            $data['repos_url'],
+            $data['starred_url'],
+            $data['subscriptions_url']
         );
     }
 }

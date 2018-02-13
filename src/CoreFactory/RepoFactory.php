@@ -93,7 +93,7 @@ class RepoFactory
         $repo = new Repo(
             new RepoId($data['id']),
             new RepoFullName($login, new RepoName($data['name'])),
-            $this->ownerFactory->create($data),
+            $this->ownerFactory->create($data['owner']),
             $data['private'],
             new BranchName($data['default_branch']),
             $data['fork'],
