@@ -2,6 +2,7 @@ parameters:
 	bootstrap: tests/bootstrap.php
 	ignoreErrors:
 	    - '#Call to an undefined static method DevboardLib\\GitHub\\Account\\AccountType\:\:USER\(\).#'
+	    - '#Property DevboardLib\\GitHubWebhook\\HookFactory\\Push\\PushEventFactory\:\:\$factories#'
 	includes:
 	    - vendor/phpstan/phpstan-phpunit/extension.neon
 	    - vendor/phpstan/phpstan-phpunit/rules.neon
