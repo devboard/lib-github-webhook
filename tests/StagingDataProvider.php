@@ -35,6 +35,15 @@ class StagingDataProvider
         }
     }
 
+    public function getGitHubStatusData(): Generator
+    {
+        if (true === is_dir($this->basePath)) {
+            foreach ($this->loadAllFilesMatchingEventType('status') as $file) {
+                yield $this->getDecodedJsonFromFile($file->getRealPath());
+            }
+        }
+    }
+
     public function getAllGitHubEventJsonData(): Generator
     {
         if (true === is_dir($this->basePath)) {
