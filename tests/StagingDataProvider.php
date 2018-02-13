@@ -26,6 +26,15 @@ class StagingDataProvider
         $this->basePath = $basePath;
     }
 
+    public function getGitHubInstalationEventData(): Generator
+    {
+        if (true === is_dir($this->basePath)) {
+            foreach ($this->loadAllFilesMatchingEventType('installation') as $file) {
+                yield $this->getDecodedJsonFromFile($file->getRealPath());
+            }
+        }
+    }
+
     public function getGitHubPushEventData(): Generator
     {
         if (true === is_dir($this->basePath)) {
