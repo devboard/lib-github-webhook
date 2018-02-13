@@ -1,0 +1,15 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\Installation\DeletedInstallationEvent
+  parent: null
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\Installation\InstallationEvent
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    installation:
+      instanceOf: DevboardLib\GitHub\GitHubInstallation
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender
