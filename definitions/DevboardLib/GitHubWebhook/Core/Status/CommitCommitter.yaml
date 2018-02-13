@@ -1,0 +1,23 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Status\CommitCommitter
+  parent: null
+  interfaces:
+    - Git\Commit\CommitCommitter
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    name:
+      instanceOf: DevboardLib\Git\Commit\Committer\CommitterName
+      examples: ["Octo Cat"]
+    email:
+      instanceOf: DevboardLib\Generix\EmailAddress
+      examples: ["octocat@example.com"]
+    committedAt:
+      instanceOf: DateTime
+      examples: ["2018-01-09T13:32:56Z"]
+    details:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Status\CommitCommitterDetails
+      nullable: true
