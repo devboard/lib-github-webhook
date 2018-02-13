@@ -1,0 +1,33 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Status\Commit
+  parent: null
+  interfaces:
+    - Git\Commit
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    sha:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+    message:
+      instanceOf: DevboardLib\Git\Commit\CommitMessage
+    commitDate:
+      instanceOf: DevboardLib\Git\Commit\CommitDate
+    author:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Status\CommitAuthor
+    committer:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Status\CommitCommitter
+    tree:
+      instanceOf: DevboardLib\GitHub\Commit\CommitTree
+    parents:
+      instanceOf: DevboardLib\GitHub\Commit\CommitParentCollection
+    verification:
+      instanceOf: DevboardLib\GitHub\Commit\CommitVerification
+    apiUrl:
+      instanceOf: DevboardLib\GitHub\Commit\CommitApiUrl
+    htmlUrl:
+      instanceOf: DevboardLib\GitHub\Commit\CommitHtmlUrl
+    commentsUrl:
+      instanceOf: string

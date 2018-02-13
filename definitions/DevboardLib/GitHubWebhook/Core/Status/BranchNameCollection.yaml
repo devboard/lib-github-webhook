@@ -1,0 +1,17 @@
+definition:
+  type: SimpleCollection
+  instanceOf: DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constants: {  }
+  constructor:
+    elements:
+      instanceOf: array
+      nullable: false
+      hasDefault: true
+      default: {  }
+  collectionOf:
+    instanceOf: DevboardLib\Git\Branch\BranchName
+    accessor: getValue
+    has: string

@@ -1,0 +1,20 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\Status\StatusEvent
+  parent: null
+  interfaces: { }
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    status:
+      instanceOf: DevboardLib\GitHub\GitHubStatus
+    commit:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Status\Commit
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    branches:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender
