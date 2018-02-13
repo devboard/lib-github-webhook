@@ -1,6 +1,6 @@
 definition:
   type: SimpleEntity
-  instanceOf: DevboardLib\GitHubWebhook\Core\Pusher
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\Pusher
   parent: null
   interfaces: {  }
   traits: {  }

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\Hook\Push;
 
 use DevboardLib\Git\Commit\CommitSha;
+use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 use DevboardLib\GitHubWebhook\Core\Push\Ref;
-use DevboardLib\GitHubWebhook\Core\Pusher;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\PushEvent;

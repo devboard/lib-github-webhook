@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Hook\Push;
 
-use Data\DevboardLib\GitHubWebhook\Core\PusherSample;
+use Data\DevboardLib\GitHubWebhook\Core\Push\PusherSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\Git\Commit\CommitSha;
+use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 use DevboardLib\GitHubWebhook\Core\Push\Ref;
-use DevboardLib\GitHubWebhook\Core\Pusher;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Push\DeleteBranchPushEvent;

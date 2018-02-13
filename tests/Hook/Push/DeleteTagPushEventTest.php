@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Hook\Push;
 
-use Data\DevboardLib\GitHubWebhook\Core\PusherSample;
+use Data\DevboardLib\GitHubWebhook\Core\Push\PusherSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\Generix\EmailAddress;
 use DevboardLib\Git\Commit\CommitSha;
+use DevboardLib\GitHub\User\UserLogin;
+use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 use DevboardLib\GitHubWebhook\Core\Push\Ref;
-use DevboardLib\GitHubWebhook\Core\Pusher;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Push\DeleteTagPushEvent;
@@ -50,7 +51,7 @@ class DeleteTagPushEventTest extends TestCase
         $this->before = new CommitSha('sha');
         $this->repo   = RepoSample::octocatLinguist();
         $this->forced = false;
-        $this->pusher = new Pusher('octocat', new EmailAddress('octocat@example.com'));
+        $this->pusher = new Pusher(new UserLogin('octocat'), new EmailAddress('octocat@example.com'));
         $this->sender = SenderSample::octocat();
         $this->sut    = new DeleteTagPushEvent(
             $this->ref, $this->before, $this->repo, $this->forced, $this->pusher, $this->sender

@@ -31,6 +31,6 @@ definition:
     forced:
       instanceOf: bool
     pusher:
-      instanceOf: DevboardLib\GitHubWebhook\Core\Pusher
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\Pusher
     sender:
       instanceOf: DevboardLib\GitHubWebhook\Core\Sender
