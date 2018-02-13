@@ -8,8 +8,8 @@ definition:
   properties: {  }
   methods: {  }
   constructor:
-    name:
-      instanceOf: string
+    login:
+      instanceOf: DevboardLib\GitHub\User\UserLogin
       examples: ["Octo Cat"]
     email:
       instanceOf: DevboardLib\Generix\EmailAddress
