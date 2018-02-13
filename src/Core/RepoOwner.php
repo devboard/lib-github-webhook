@@ -45,7 +45,7 @@ class RepoOwner
     /** @var string */
     private $name;
 
-    /** @var string */
+    /** @var string|null */
     private $email;
 
     /** @var string */
@@ -86,7 +86,7 @@ class RepoOwner
         AccountApiUrl $apiUrl,
         bool $siteAdmin,
         string $name,
-        string $email,
+        ?string $email,
         string $eventsUrl,
         string $followersUrl,
         string $followingUrl,
@@ -163,7 +163,7 @@ class RepoOwner
         return $this->name;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
