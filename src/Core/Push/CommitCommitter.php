@@ -21,10 +21,10 @@ class CommitCommitter implements CommitCommitCommitter
     /** @var EmailAddress */
     private $email;
 
-    /** @var UserLogin */
+    /** @var UserLogin|null */
     private $username;
 
-    public function __construct(CommitterName $name, EmailAddress $email, UserLogin $username)
+    public function __construct(CommitterName $name, EmailAddress $email, ?UserLogin $username)
     {
         $this->name     = $name;
         $this->email    = $email;
@@ -41,26 +41,32 @@ class CommitCommitter implements CommitCommitCommitter
         return $this->email;
     }
 
-    public function getUsername(): UserLogin
+    public function getUsername(): ?UserLogin
     {
         return $this->username;
     }
 
     public function serialize(): array
     {
-        return [
-            'name'     => $this->name->serialize(),
-            'email'    => $this->email->serialize(),
-            'username' => $this->username->serialize(),
-        ];
+        if (null !== $this->username) {
+            $username = $this->username->serialize();
+        } else {
+            $username = null;
+        }
+
+        return ['name' => $this->name->serialize(), 'email' => $this->email->serialize(), 'username' => $username];
     }
 
     public static function deserialize(array $data): self
     {
+        if (null !== $data['username']) {
+            $username = UserLogin::deserialize($data['username']);
+        } else {
+            $username = null;
+        }
+
         return new self(
-            CommitterName::deserialize($data['name']),
-            EmailAddress::deserialize($data['email']),
-            UserLogin::deserialize($data['username'])
+            CommitterName::deserialize($data['name']), EmailAddress::deserialize($data['email']), $username
         );
     }
 }
