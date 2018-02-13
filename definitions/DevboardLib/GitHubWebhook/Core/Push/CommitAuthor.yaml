@@ -17,4 +17,5 @@ definition:
       examples: ["octocat@example.com"]
     username:
       instanceOf: DevboardLib\GitHub\User\UserLogin
+      nullable: true
       examples: ["octocat"]
