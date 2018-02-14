@@ -23,7 +23,7 @@
     </target>
 
     <target name="phpunit" description="Run phpunit">
-        <exec command="./vendor/bin/phpunit" passthru="true" checkreturn="true"/>
+        <exec command="php -d memory_limit=-1 ./vendor/bin/phpunit" passthru="true" checkreturn="true"/>
     </target>
 
     <target name="phpstan" description="Run phpstan">
