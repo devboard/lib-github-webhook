@@ -1639,7 +1639,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "Padraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 }
@@ -3589,16 +3589,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.4.4",
+            "version": "4.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "01b9e8f0a26bce77eb576b747f0369e225b68cd9"
+                "reference": "861e7b55d348c81a9dd0b3655dbbc83076d60c05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/01b9e8f0a26bce77eb576b747f0369e225b68cd9",
-                "reference": "01b9e8f0a26bce77eb576b747f0369e225b68cd9",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/861e7b55d348c81a9dd0b3655dbbc83076d60c05",
+                "reference": "861e7b55d348c81a9dd0b3655dbbc83076d60c05",
                 "shasum": ""
             },
             "require": {
@@ -3625,7 +3625,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-02-08T19:57:17+00:00"
+            "time": "2018-02-15T17:13:28+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
