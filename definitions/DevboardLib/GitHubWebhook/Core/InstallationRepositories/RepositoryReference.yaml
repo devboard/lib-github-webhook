@@ -1,0 +1,14 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReference
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: DevboardLib\GitHub\Repo\RepoId
+      examples: [64778136,1296269]
+    fullName:
+      instanceOf: DevboardLib\GitHub\Repo\RepoFullName
+
+
