@@ -2,6 +2,8 @@ parameters:
 	bootstrap: tests/bootstrap.php
 	ignoreErrors:
 	    - '#Call to an undefined static method DevboardLib\\GitHub\\Account\\AccountType\:\:USER\(\).#'
+	    - '#Call to an undefined static method DevboardLib\\GitHub\\Milestone\\MilestoneState\:\:OPEN\(\).#'
+	    - '#Call to an undefined static method DevboardLib\\GitHub\\PullRequest\\PullRequestState\:\:OPEN\(\).#'
 	    - '#Property DevboardLib\\GitHubWebhook\\HookFactory\\Push\\PushEventFactory\:\:\$factories#'
 	includes:
 	    - vendor/phpstan/phpstan-phpunit/extension.neon
