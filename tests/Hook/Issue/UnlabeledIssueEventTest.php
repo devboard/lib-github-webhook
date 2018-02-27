@@ -6,15 +6,9 @@ namespace Tests\DevboardLib\GitHubWebhook\Hook\Issue;
 
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAuthorSample;
+use Data\DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreatorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\Generix\GravatarId;
-use DevboardLib\GitHub\Account\AccountApiUrl;
-use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
-use DevboardLib\GitHub\Account\AccountId;
-use DevboardLib\GitHub\Account\AccountLogin;
-use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\GitHubLabelCollection;
@@ -38,7 +32,6 @@ use DevboardLib\GitHub\Label\LabelName;
 use DevboardLib\GitHub\Milestone\MilestoneApiUrl;
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
-use DevboardLib\GitHub\Milestone\MilestoneCreator;
 use DevboardLib\GitHub\Milestone\MilestoneDescription;
 use DevboardLib\GitHub\Milestone\MilestoneDueOn;
 use DevboardLib\GitHub\Milestone\MilestoneHtmlUrl;
@@ -47,7 +40,6 @@ use DevboardLib\GitHub\Milestone\MilestoneNumber;
 use DevboardLib\GitHub\Milestone\MilestoneState;
 use DevboardLib\GitHub\Milestone\MilestoneTitle;
 use DevboardLib\GitHub\Milestone\MilestoneUpdatedAt;
-use DevboardLib\GitHub\User\UserId;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Issue\UnlabeledIssueEvent;
@@ -107,16 +99,7 @@ class UnlabeledIssueEventTest extends TestCase
                 new MilestoneDueOn('2018-01-01T00:01:00+00:00'),
                 MilestoneState::OPEN(),
                 new MilestoneNumber(1),
-                new MilestoneCreator(
-                    new AccountId(1),
-                    new AccountLogin('value'),
-                    AccountType::USER(),
-                    new AccountAvatarUrl('avatarUrl'),
-                    new GravatarId('id'),
-                    new AccountHtmlUrl('htmlUrl'),
-                    new AccountApiUrl('apiUrl'),
-                    true
-                ),
+                MilestoneCreatorSample::octocat(),
                 new MilestoneHtmlUrl('htmlUrl'),
                 new MilestoneApiUrl('apiUrl'),
                 new MilestoneClosedAt('2018-01-01T00:01:00+00:00'),
@@ -177,21 +160,12 @@ class UnlabeledIssueEventTest extends TestCase
                     'dueOn'       => '2018-01-01T00:01:00+00:00',
                     'state'       => 'open',
                     'number'      => 1,
-                    'creator'     => [
-                        'userId'     => 1,
-                        'login'      => 'value',
-                        'type'       => 'User',
-                        'avatarUrl'  => 'avatarUrl',
-                        'gravatarId' => 'id',
-                        'htmlUrl'    => 'htmlUrl',
-                        'apiUrl'     => 'apiUrl',
-                        'siteAdmin'  => true,
-                    ],
-                    'htmlUrl'   => 'htmlUrl',
-                    'apiUrl'    => 'apiUrl',
-                    'closedAt'  => '2018-01-01T00:01:00+00:00',
-                    'createdAt' => '2018-01-01T00:01:00+00:00',
-                    'updatedAt' => '2018-01-01T00:01:00+00:00',
+                    'creator'     => MilestoneCreatorSample::serialized('octocat'),
+                    'htmlUrl'     => 'htmlUrl',
+                    'apiUrl'      => 'apiUrl',
+                    'closedAt'    => '2018-01-01T00:01:00+00:00',
+                    'createdAt'   => '2018-01-01T00:01:00+00:00',
+                    'updatedAt'   => '2018-01-01T00:01:00+00:00',
                 ],
                 'closedAt'  => '2018-01-01T00:01:00+00:00',
                 'createdAt' => '2018-01-01T00:01:00+00:00',
