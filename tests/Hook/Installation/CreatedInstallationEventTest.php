@@ -33,7 +33,7 @@ use PHPUnit\Framework\TestCase;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\Installation\CreatedInstallationEvent
- * @group  todo
+ * @group  unit
  */
 class CreatedInstallationEventTest extends TestCase
 {

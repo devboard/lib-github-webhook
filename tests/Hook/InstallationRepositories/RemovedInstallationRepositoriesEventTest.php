@@ -38,7 +38,7 @@ use PHPUnit\Framework\TestCase;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\InstallationRepositories\RemovedInstallationRepositoriesEvent
- * @group  todo
+ * @group  unit
  */
 class RemovedInstallationRepositoriesEventTest extends TestCase
 {

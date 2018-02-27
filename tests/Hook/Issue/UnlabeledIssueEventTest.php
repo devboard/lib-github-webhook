@@ -57,7 +57,7 @@ use PHPUnit\Framework\TestCase;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\Issue\UnlabeledIssueEvent
- * @group  todo
+ * @group  unit
  */
 class UnlabeledIssueEventTest extends TestCase
 {
