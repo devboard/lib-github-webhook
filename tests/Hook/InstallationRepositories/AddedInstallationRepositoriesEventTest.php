@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Hook\InstallationRepositories;
 
+use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\Generix\GravatarId;
 use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
@@ -26,11 +27,7 @@ use DevboardLib\GitHub\Installation\InstallationUpdatedAt;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\Repo\RepoName;
-use DevboardLib\GitHub\User\UserApiUrl;
-use DevboardLib\GitHub\User\UserAvatarUrl;
-use DevboardLib\GitHub\User\UserHtmlUrl;
 use DevboardLib\GitHub\User\UserId;
-use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReference;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection;
 use DevboardLib\GitHubWebhook\Core\Sender;
@@ -84,26 +81,8 @@ class AddedInstallationRepositoriesEventTest extends TestCase
         $this->reposAdded = new RepositoryReferenceCollection(
             [new RepositoryReference(new RepoId(1), new RepoFullName(new AccountLogin('value'), new RepoName('name')))]
         );
-        $this->sender = new Sender(
-            new UserId(1),
-            new UserLogin('value'),
-            AccountType::USER(),
-            new UserAvatarUrl('avatarUrl'),
-            new GravatarId('id'),
-            new UserHtmlUrl('htmlUrl'),
-            new UserApiUrl('apiUrl'),
-            true,
-            'eventsUrl',
-            'followersUrl',
-            'followingUrl',
-            'gistsUrl',
-            'organizationsUrl',
-            'receivedEventsUrl',
-            'reposUrl',
-            'starredUrl',
-            'subscriptionsUrl'
-        );
-        $this->sut = new AddedInstallationRepositoriesEvent($this->installation, $this->reposAdded, $this->sender);
+        $this->sender = SenderSample::octocat();
+        $this->sut    = new AddedInstallationRepositoriesEvent($this->installation, $this->reposAdded, $this->sender);
     }
 
     public function testGetInstallation()
@@ -147,25 +126,7 @@ class AddedInstallationRepositoriesEventTest extends TestCase
                 'updatedAt'           => '2018-01-01T00:01:00+00:00',
             ],
             'reposAdded' => [['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']]],
-            'sender'     => [
-                'userId'            => 1,
-                'login'             => 'value',
-                'type'              => 'User',
-                'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
-                'siteAdmin'         => true,
-                'eventsUrl'         => 'eventsUrl',
-                'followersUrl'      => 'followersUrl',
-                'followingUrl'      => 'followingUrl',
-                'gistsUrl'          => 'gistsUrl',
-                'organizationsUrl'  => 'organizationsUrl',
-                'receivedEventsUrl' => 'receivedEventsUrl',
-                'reposUrl'          => 'reposUrl',
-                'starredUrl'        => 'starredUrl',
-                'subscriptionsUrl'  => 'subscriptionsUrl',
-            ],
+            'sender'     => SenderSample::serialized('octocat'),
         ];
 
         self::assertSame($expected, $this->sut->serialize());

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Hook\Installation;
 
+use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubInstallation;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Installation\DeletedInstallationEvent;
@@ -59,27 +60,7 @@ class DeletedInstallationEventSpec extends ObjectBehavior
                 'updatedAt'           => '2018-01-01T00:01:00+00:00',
             ]
         );
-        $sender->serialize()->shouldBeCalled()->willReturn(
-            [
-                'userId'            => 1,
-                'login'             => 'value',
-                'type'              => 'User',
-                'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
-                'siteAdmin'         => true,
-                'eventsUrl'         => 'eventsUrl',
-                'followersUrl'      => 'followersUrl',
-                'followingUrl'      => 'followingUrl',
-                'gistsUrl'          => 'gistsUrl',
-                'organizationsUrl'  => 'organizationsUrl',
-                'receivedEventsUrl' => 'receivedEventsUrl',
-                'reposUrl'          => 'reposUrl',
-                'starredUrl'        => 'starredUrl',
-                'subscriptionsUrl'  => 'subscriptionsUrl',
-            ]
-        );
+        $sender->serialize()->shouldBeCalled()->willReturn(SenderSample::serialized('octocat'));
         $this->serialize()->shouldReturn(
             [
                 'installation' => [
@@ -104,25 +85,7 @@ class DeletedInstallationEventSpec extends ObjectBehavior
                     'createdAt'           => '2018-01-01T00:01:00+00:00',
                     'updatedAt'           => '2018-01-01T00:01:00+00:00',
                 ],
-                'sender' => [
-                    'userId'            => 1,
-                    'login'             => 'value',
-                    'type'              => 'User',
-                    'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
-                    'siteAdmin'         => true,
-                    'eventsUrl'         => 'eventsUrl',
-                    'followersUrl'      => 'followersUrl',
-                    'followingUrl'      => 'followingUrl',
-                    'gistsUrl'          => 'gistsUrl',
-                    'organizationsUrl'  => 'organizationsUrl',
-                    'receivedEventsUrl' => 'receivedEventsUrl',
-                    'reposUrl'          => 'reposUrl',
-                    'starredUrl'        => 'starredUrl',
-                    'subscriptionsUrl'  => 'subscriptionsUrl',
-                ],
+                'sender' => SenderSample::serialized('octocat'),
             ]
         );
     }
@@ -152,25 +115,7 @@ class DeletedInstallationEventSpec extends ObjectBehavior
                 'createdAt'           => '2018-01-01T00:01:00+00:00',
                 'updatedAt'           => '2018-01-01T00:01:00+00:00',
             ],
-            'sender' => [
-                'userId'            => 1,
-                'login'             => 'value',
-                'type'              => 'User',
-                'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
-                'siteAdmin'         => true,
-                'eventsUrl'         => 'eventsUrl',
-                'followersUrl'      => 'followersUrl',
-                'followingUrl'      => 'followingUrl',
-                'gistsUrl'          => 'gistsUrl',
-                'organizationsUrl'  => 'organizationsUrl',
-                'receivedEventsUrl' => 'receivedEventsUrl',
-                'reposUrl'          => 'reposUrl',
-                'starredUrl'        => 'starredUrl',
-                'subscriptionsUrl'  => 'subscriptionsUrl',
-            ],
+            'sender' => SenderSample::serialized('octocat'),
         ];
 
         $this->deserialize($input)->shouldReturnAnInstanceOf(DeletedInstallationEvent::class);
