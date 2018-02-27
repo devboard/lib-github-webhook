@@ -7,12 +7,11 @@ namespace Tests\DevboardLib\GitHubWebhook\Hook\Issue;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
-use Data\DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreatorSample;
+use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\Issue\IssueApiUrl;
 use DevboardLib\GitHub\Issue\IssueAssigneeCollection;
@@ -25,17 +24,6 @@ use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
 use DevboardLib\GitHub\Issue\IssueTitle;
 use DevboardLib\GitHub\Issue\IssueUpdatedAt;
-use DevboardLib\GitHub\Milestone\MilestoneApiUrl;
-use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
-use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
-use DevboardLib\GitHub\Milestone\MilestoneDescription;
-use DevboardLib\GitHub\Milestone\MilestoneDueOn;
-use DevboardLib\GitHub\Milestone\MilestoneHtmlUrl;
-use DevboardLib\GitHub\Milestone\MilestoneId;
-use DevboardLib\GitHub\Milestone\MilestoneNumber;
-use DevboardLib\GitHub\Milestone\MilestoneState;
-use DevboardLib\GitHub\Milestone\MilestoneTitle;
-use DevboardLib\GitHub\Milestone\MilestoneUpdatedAt;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Issue\OpenedIssueEvent;
@@ -78,20 +66,7 @@ class OpenedIssueEventTest extends TestCase
             IssueAssigneeSample::octocat(),
             new IssueAssigneeCollection([IssueAssigneeSample::octocat()]),
             new GitHubLabelCollection([LabelSample::red()]),
-            new GitHubMilestone(
-                new MilestoneId(1),
-                new MilestoneTitle('value'),
-                new MilestoneDescription('value'),
-                new MilestoneDueOn('2018-01-01T00:01:00+00:00'),
-                MilestoneState::OPEN(),
-                new MilestoneNumber(1),
-                MilestoneCreatorSample::octocat(),
-                new MilestoneHtmlUrl('htmlUrl'),
-                new MilestoneApiUrl('apiUrl'),
-                new MilestoneClosedAt('2018-01-01T00:01:00+00:00'),
-                new MilestoneCreatedAt('2018-01-01T00:01:00+00:00'),
-                new MilestoneUpdatedAt('2018-01-01T00:01:00+00:00')
-            ),
+            MilestoneSample::sprint1(),
             new IssueClosedAt('2018-01-01T00:01:00+00:00'),
             new IssueCreatedAt('2018-01-01T00:01:00+00:00'),
             new IssueUpdatedAt('2018-01-01T00:01:00+00:00')
@@ -137,20 +112,7 @@ class OpenedIssueEventTest extends TestCase
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],
-                'milestone' => [
-                    'id'          => 1,
-                    'title'       => 'value',
-                    'description' => 'value',
-                    'dueOn'       => '2018-01-01T00:01:00+00:00',
-                    'state'       => 'open',
-                    'number'      => 1,
-                    'creator'     => MilestoneCreatorSample::serialized('octocat'),
-                    'htmlUrl'     => 'htmlUrl',
-                    'apiUrl'      => 'apiUrl',
-                    'closedAt'    => '2018-01-01T00:01:00+00:00',
-                    'createdAt'   => '2018-01-01T00:01:00+00:00',
-                    'updatedAt'   => '2018-01-01T00:01:00+00:00',
-                ],
+                'milestone' => MilestoneSample::serialized('sprint1'),
                 'closedAt'  => '2018-01-01T00:01:00+00:00',
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',

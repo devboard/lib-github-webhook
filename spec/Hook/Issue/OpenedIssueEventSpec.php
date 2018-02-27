@@ -7,7 +7,7 @@ namespace spec\DevboardLib\GitHubWebhook\Hook\Issue;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
-use Data\DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreatorSample;
+use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubIssue;
@@ -67,20 +67,7 @@ class OpenedIssueEventSpec extends ObjectBehavior
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],
-                'milestone' => [
-                    'id'          => 1,
-                    'title'       => 'value',
-                    'description' => 'value',
-                    'dueOn'       => '2018-01-01T00:01:00+00:00',
-                    'state'       => 'open',
-                    'number'      => 1,
-                    'creator'     => MilestoneCreatorSample::serialized('octocat'),
-                    'htmlUrl'     => 'htmlUrl',
-                    'apiUrl'      => 'apiUrl',
-                    'closedAt'    => '2018-01-01T00:01:00+00:00',
-                    'createdAt'   => '2018-01-01T00:01:00+00:00',
-                    'updatedAt'   => '2018-01-01T00:01:00+00:00',
-                ],
+                'milestone' => MilestoneSample::serialized('sprint1'),
                 'closedAt'  => '2018-01-01T00:01:00+00:00',
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',
@@ -103,20 +90,7 @@ class OpenedIssueEventSpec extends ObjectBehavior
                     'assignee'  => IssueAssigneeSample::serialized('octocat'),
                     'assignees' => [IssueAssigneeSample::serialized('octocat')],
                     'labels'    => [LabelSample::serialized('red')],
-                    'milestone' => [
-                        'id'          => 1,
-                        'title'       => 'value',
-                        'description' => 'value',
-                        'dueOn'       => '2018-01-01T00:01:00+00:00',
-                        'state'       => 'open',
-                        'number'      => 1,
-                        'creator'     => MilestoneCreatorSample::serialized('octocat'),
-                        'htmlUrl'     => 'htmlUrl',
-                        'apiUrl'      => 'apiUrl',
-                        'closedAt'    => '2018-01-01T00:01:00+00:00',
-                        'createdAt'   => '2018-01-01T00:01:00+00:00',
-                        'updatedAt'   => '2018-01-01T00:01:00+00:00',
-                    ],
+        'milestone'             => MilestoneSample::serialized('sprint1'),
                     'closedAt'  => '2018-01-01T00:01:00+00:00',
                     'createdAt' => '2018-01-01T00:01:00+00:00',
                     'updatedAt' => '2018-01-01T00:01:00+00:00',
@@ -143,20 +117,7 @@ class OpenedIssueEventSpec extends ObjectBehavior
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],
-                'milestone' => [
-                    'id'          => 1,
-                    'title'       => 'value',
-                    'description' => 'value',
-                    'dueOn'       => '2018-01-01T00:01:00+00:00',
-                    'state'       => 'open',
-                    'number'      => 1,
-                    'creator'     => MilestoneCreatorSample::serialized('octocat'),
-                    'htmlUrl'     => 'htmlUrl',
-                    'apiUrl'      => 'apiUrl',
-                    'closedAt'    => '2018-01-01T00:01:00+00:00',
-                    'createdAt'   => '2018-01-01T00:01:00+00:00',
-                    'updatedAt'   => '2018-01-01T00:01:00+00:00',
-                ],
+                'milestone' => MilestoneSample::serialized('sprint1'),
                 'closedAt'  => '2018-01-01T00:01:00+00:00',
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',
