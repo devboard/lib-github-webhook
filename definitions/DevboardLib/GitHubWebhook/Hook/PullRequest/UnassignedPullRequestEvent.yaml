@@ -1,0 +1,21 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\PullRequest\UnassignedPullRequestEvent
+  parent: null
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    pullRequest:
+      instanceOf: DevboardLib\GitHub\GitHubPullRequest
+    assignee:
+      instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAssignee
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    installationId:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationId
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender

@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent
+  parent: null
+  constants: {  }
+  methods: {  }
