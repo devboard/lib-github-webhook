@@ -7,12 +7,12 @@ namespace Tests\DevboardLib\GitHubWebhook\Hook\IssueComment;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentAuthorSample;
+use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreatorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubIssueComment;
-use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\Installation\InstallationId;
@@ -33,10 +33,6 @@ use DevboardLib\GitHub\IssueComment\IssueCommentCreatedAt;
 use DevboardLib\GitHub\IssueComment\IssueCommentHtmlUrl;
 use DevboardLib\GitHub\IssueComment\IssueCommentId;
 use DevboardLib\GitHub\IssueComment\IssueCommentUpdatedAt;
-use DevboardLib\GitHub\Label\LabelApiUrl;
-use DevboardLib\GitHub\Label\LabelColor;
-use DevboardLib\GitHub\Label\LabelId;
-use DevboardLib\GitHub\Label\LabelName;
 use DevboardLib\GitHub\Milestone\MilestoneApiUrl;
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
@@ -103,17 +99,7 @@ class EditedIssueCommentEventTest extends TestCase
             new IssueHtmlUrl('htmlUrl'),
             IssueAssigneeSample::octocat(),
             new IssueAssigneeCollection([IssueAssigneeSample::octocat()]),
-            new GitHubLabelCollection(
-                [
-                    new GitHubLabel(
-                        new LabelId(1),
-                        new LabelName('value'),
-                        new LabelColor('color'),
-                        true,
-                        new LabelApiUrl('apiUrl')
-                    ),
-                ]
-            ),
+            new GitHubLabelCollection([LabelSample::red()]),
             new GitHubMilestone(
                 new MilestoneId(1),
                 new MilestoneTitle('value'),
@@ -190,9 +176,7 @@ class EditedIssueCommentEventTest extends TestCase
                 'htmlUrl'   => 'htmlUrl',
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
-                'labels'    => [
-                    ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
-                ],
+                'labels'    => [LabelSample::serialized('red')],
                 'milestone' => [
                     'id'          => 1,
                     'title'       => 'value',
