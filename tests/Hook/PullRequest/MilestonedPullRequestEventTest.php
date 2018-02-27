@@ -5,26 +5,14 @@ declare(strict_types=1);
 namespace Tests\DevboardLib\GitHubWebhook\Hook\PullRequest;
 
 use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
-use Data\DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreatorSample;
+use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
-use DevboardLib\GitHub\Milestone\MilestoneApiUrl;
-use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
-use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
-use DevboardLib\GitHub\Milestone\MilestoneDescription;
-use DevboardLib\GitHub\Milestone\MilestoneDueOn;
-use DevboardLib\GitHub\Milestone\MilestoneHtmlUrl;
-use DevboardLib\GitHub\Milestone\MilestoneId;
-use DevboardLib\GitHub\Milestone\MilestoneNumber;
-use DevboardLib\GitHub\Milestone\MilestoneState;
-use DevboardLib\GitHub\Milestone\MilestoneTitle;
-use DevboardLib\GitHub\Milestone\MilestoneUpdatedAt;
 use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
 use DevboardLib\GitHub\PullRequest\PullRequestBody;
@@ -78,20 +66,7 @@ class MilestonedPullRequestEventTest extends TestCase
             PullRequestAssigneeSample::octocat(),
             new PullRequestAssigneeCollection([PullRequestAssigneeSample::octocat()]),
             new GitHubLabelCollection([LabelSample::red()]),
-            new GitHubMilestone(
-                new MilestoneId(1),
-                new MilestoneTitle('value'),
-                new MilestoneDescription('value'),
-                new MilestoneDueOn('2018-01-01T00:01:00+00:00'),
-                MilestoneState::OPEN(),
-                new MilestoneNumber(1),
-                MilestoneCreatorSample::octocat(),
-                new MilestoneHtmlUrl('htmlUrl'),
-                new MilestoneApiUrl('apiUrl'),
-                new MilestoneClosedAt('2018-01-01T00:01:00+00:00'),
-                new MilestoneCreatedAt('2018-01-01T00:01:00+00:00'),
-                new MilestoneUpdatedAt('2018-01-01T00:01:00+00:00')
-            ),
+            MilestoneSample::sprint1(),
             new PullRequestClosedAt('2018-01-01T00:01:00+00:00'),
             new PullRequestCreatedAt('2018-01-01T00:01:00+00:00'),
             new PullRequestUpdatedAt('2018-01-01T00:01:00+00:00')
@@ -139,20 +114,7 @@ class MilestonedPullRequestEventTest extends TestCase
                 'assignee'  => PullRequestAssigneeSample::serialized('octocat'),
                 'assignees' => [PullRequestAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],
-                'milestone' => [
-                    'id'          => 1,
-                    'title'       => 'value',
-                    'description' => 'value',
-                    'dueOn'       => '2018-01-01T00:01:00+00:00',
-                    'state'       => 'open',
-                    'number'      => 1,
-                    'creator'     => MilestoneCreatorSample::serialized('octocat'),
-                    'htmlUrl'     => 'htmlUrl',
-                    'apiUrl'      => 'apiUrl',
-                    'closedAt'    => '2018-01-01T00:01:00+00:00',
-                    'createdAt'   => '2018-01-01T00:01:00+00:00',
-                    'updatedAt'   => '2018-01-01T00:01:00+00:00',
-                ],
+                'milestone' => MilestoneSample::serialized('sprint1'),
                 'closedAt'  => '2018-01-01T00:01:00+00:00',
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',
