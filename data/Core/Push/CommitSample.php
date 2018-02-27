@@ -20,7 +20,8 @@ class CommitSample
             'distinct'      => true,
             'addedFiles'    => ['data'],
             'modifiedFiles' => ['data'],
-            'removedFiles'  => ['data'], ],
+            'removedFiles'  => ['data'],
+        ],
     ];
 
     public static function serialized(string $item): array
