@@ -1,0 +1,19 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\Label\EditedLabelEvent
+  parent: null
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\Label\LabelEvent
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    label:
+      instanceOf: DevboardLib\GitHub\GitHubLabel
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    installationId:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationId
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender
