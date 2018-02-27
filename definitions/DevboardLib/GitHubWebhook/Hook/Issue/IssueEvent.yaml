@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: DevboardLib\GitHubWebhook\Hook\Issue\IssueEvent
+  parent: DevboardLib\GitHubWebhook\Hook\PushEvent
+  constants: {  }
+  methods: {  }

@@ -1,0 +1,19 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\Issue\MilestonedIssueEvent
+  parent: null
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\Issue\IssueEvent
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    issue:
+      instanceOf: DevboardLib\GitHub\GitHubIssue
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    installationId:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationId
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender
