@@ -133,16 +133,16 @@
         },
         {
             "name": "devboard/lib-github",
-            "version": "0.1.2",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devboard/lib-github.git",
-                "reference": "b0725bc3b115a2dc2fdb94c3b4d3fec47c484b8a"
+                "reference": "14c855b85d75b540fdd0583c8d98fb8066e80030"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devboard/lib-github/zipball/b0725bc3b115a2dc2fdb94c3b4d3fec47c484b8a",
-                "reference": "b0725bc3b115a2dc2fdb94c3b4d3fec47c484b8a",
+                "url": "https://api.github.com/repos/devboard/lib-github/zipball/14c855b85d75b540fdd0583c8d98fb8066e80030",
+                "reference": "14c855b85d75b540fdd0583c8d98fb8066e80030",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
                 "proprietary"
             ],
             "description": "Devboard lib for GitHub",
-            "time": "2018-01-14T22:04:28+00:00"
+            "time": "2018-02-27T11:18:22+00:00"
         },
         {
             "name": "myclabs/php-enum",
