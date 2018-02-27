@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\Label\CreatedLabelEvent
- * @group  todo
+ * @group  unit
  */
 class CreatedLabelEventTest extends TestCase
 {

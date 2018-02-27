@@ -65,7 +65,7 @@ use PHPUnit\Framework\TestCase;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\IssueComment\EditedIssueCommentEvent
- * @group  todo
+ * @group  unit
  */
 class EditedIssueCommentEventTest extends TestCase
 {

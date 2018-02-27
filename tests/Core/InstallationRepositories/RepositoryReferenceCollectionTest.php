@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection
- * @group  todo
+ * @group  unit
  */
 class RepositoryReferenceCollectionTest extends TestCase
 {

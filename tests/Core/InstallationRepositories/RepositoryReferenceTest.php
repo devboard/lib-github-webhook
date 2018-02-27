@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReference
- * @group  todo
+ * @group  unit
  */
 class RepositoryReferenceTest extends TestCase
 {

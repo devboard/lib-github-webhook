@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\Label\DeletedLabelEvent
- * @group  todo
+ * @group  unit
  */
 class DeletedLabelEventTest extends TestCase
 {
