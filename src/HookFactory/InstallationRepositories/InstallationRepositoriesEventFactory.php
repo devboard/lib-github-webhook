@@ -50,7 +50,10 @@ class InstallationRepositoriesEventFactory implements GitHubHookEventFactory
             $removed = new RepositoryReferenceCollection();
 
             foreach ($data['repositories_removed'] as $item) {
-                $removed->add(RepositoryReference::create($item['id'], $item['full_name']));
+                // @TODO: for some really really strange reason, GitHub webhook can have 'null' element in repositories_removed
+                if (null !== $item) {
+                    $removed->add(RepositoryReference::create($item['id'], $item['full_name']));
+                }
             }
 
             return new RemovedInstallationRepositoriesEvent($installation, $removed, $sender);
