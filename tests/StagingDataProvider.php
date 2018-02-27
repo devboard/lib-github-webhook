@@ -44,6 +44,42 @@ class StagingDataProvider
         }
     }
 
+    public function getGitHubIssueData(): Generator
+    {
+        if (true === is_dir($this->basePath)) {
+            foreach ($this->loadAllFilesMatchingEventType('issues') as $file) {
+                yield $this->getDecodedJsonFromFile($file->getRealPath());
+            }
+        }
+    }
+
+    public function getGitHubIssueCommentData(): Generator
+    {
+        if (true === is_dir($this->basePath)) {
+            foreach ($this->loadAllFilesMatchingEventType('issue_comment') as $file) {
+                yield $this->getDecodedJsonFromFile($file->getRealPath());
+            }
+        }
+    }
+
+    public function getGitHubLabelData(): Generator
+    {
+        if (true === is_dir($this->basePath)) {
+            foreach ($this->loadAllFilesMatchingEventType('label') as $file) {
+                yield $this->getDecodedJsonFromFile($file->getRealPath());
+            }
+        }
+    }
+
+    public function getGitHubPullRequestData(): Generator
+    {
+        if (true === is_dir($this->basePath)) {
+            foreach ($this->loadAllFilesMatchingEventType('pull_request') as $file) {
+                yield $this->getDecodedJsonFromFile($file->getRealPath());
+            }
+        }
+    }
+
     public function getGitHubPushEventData(): Generator
     {
         if (true === is_dir($this->basePath)) {
