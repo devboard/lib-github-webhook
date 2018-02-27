@@ -1,0 +1,21 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\IssueComment\DeletedIssueCommentEvent
+  parent: null
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\IssueComment\IssueCommentEvent
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    comment:
+      instanceOf: DevboardLib\GitHub\GitHubIssueComment
+    issue:
+      instanceOf: DevboardLib\GitHub\GitHubIssue
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    installationId:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationId
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender
