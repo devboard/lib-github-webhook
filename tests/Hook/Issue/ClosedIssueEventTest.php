@@ -165,7 +165,7 @@ class ClosedIssueEventTest extends TestCase
                 'author'    => IssueAuthorSample::serialized('octocat'),
                 'apiUrl'    => 'apiUrl',
                 'htmlUrl'   => 'htmlUrl',
-        'assignee'          => IssueAssigneeSample::serialized('octocat'),
+                'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [
                     ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],

@@ -468,7 +468,8 @@ class StatusEventSpec extends ObjectBehavior
                         'treesUrl'         => 'https://api.github.com/repos/octocat/linguist/git/trees{/sha}',
                         'svnUrl'           => 'https://github.com/octocat/linguist',
                     ],
-                ],                'branches' => ['name'],
+                ],
+                'branches' => ['name'],
 
                 'sender' => [
                     'userId'            => 1,
