@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Hook\Installation;
 
+use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\Generix\GravatarId;
 use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
@@ -23,11 +24,7 @@ use DevboardLib\GitHub\Installation\InstallationPermissions;
 use DevboardLib\GitHub\Installation\InstallationRepositoriesUrl;
 use DevboardLib\GitHub\Installation\InstallationRepositorySelection\InstallationRepositoryAll;
 use DevboardLib\GitHub\Installation\InstallationUpdatedAt;
-use DevboardLib\GitHub\User\UserApiUrl;
-use DevboardLib\GitHub\User\UserAvatarUrl;
-use DevboardLib\GitHub\User\UserHtmlUrl;
 use DevboardLib\GitHub\User\UserId;
-use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Installation\DeletedInstallationEvent;
 use PHPUnit\Framework\TestCase;
@@ -73,26 +70,8 @@ class DeletedInstallationEventTest extends TestCase
             new InstallationCreatedAt('2018-01-01T00:01:00+00:00'),
             new InstallationUpdatedAt('2018-01-01T00:01:00+00:00')
         );
-        $this->sender = new Sender(
-            new UserId(1),
-            new UserLogin('value'),
-            AccountType::USER(),
-            new UserAvatarUrl('avatarUrl'),
-            new GravatarId('id'),
-            new UserHtmlUrl('htmlUrl'),
-            new UserApiUrl('apiUrl'),
-            true,
-            'eventsUrl',
-            'followersUrl',
-            'followingUrl',
-            'gistsUrl',
-            'organizationsUrl',
-            'receivedEventsUrl',
-            'reposUrl',
-            'starredUrl',
-            'subscriptionsUrl'
-        );
-        $this->sut = new DeletedInstallationEvent($this->installation, $this->sender);
+        $this->sender = SenderSample::octocat();
+        $this->sut    = new DeletedInstallationEvent($this->installation, $this->sender);
     }
 
     public function testGetInstallation()
@@ -130,25 +109,7 @@ class DeletedInstallationEventTest extends TestCase
                 'createdAt'           => '2018-01-01T00:01:00+00:00',
                 'updatedAt'           => '2018-01-01T00:01:00+00:00',
             ],
-            'sender' => [
-                'userId'            => 1,
-                'login'             => 'value',
-                'type'              => 'User',
-                'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
-                'siteAdmin'         => true,
-                'eventsUrl'         => 'eventsUrl',
-                'followersUrl'      => 'followersUrl',
-                'followingUrl'      => 'followingUrl',
-                'gistsUrl'          => 'gistsUrl',
-                'organizationsUrl'  => 'organizationsUrl',
-                'receivedEventsUrl' => 'receivedEventsUrl',
-                'reposUrl'          => 'reposUrl',
-                'starredUrl'        => 'starredUrl',
-                'subscriptionsUrl'  => 'subscriptionsUrl',
-            ],
+            'sender' => SenderSample::serialized('octocat'),
         ];
 
         self::assertSame($expected, $this->sut->serialize());

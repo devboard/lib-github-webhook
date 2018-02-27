@@ -118,27 +118,7 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
         );
         $repo->serialize()->shouldBeCalled()->willReturn(RepoSample::serialized('octocatLinguist'));
         $installationId->serialize()->shouldBeCalled()->willReturn(1);
-        $sender->serialize()->shouldBeCalled()->willReturn(
-            [
-                'userId'            => 1,
-                'login'             => 'value',
-                'type'              => 'User',
-                'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
-                'siteAdmin'         => true,
-                'eventsUrl'         => 'eventsUrl',
-                'followersUrl'      => 'followersUrl',
-                'followingUrl'      => 'followingUrl',
-                'gistsUrl'          => 'gistsUrl',
-                'organizationsUrl'  => 'organizationsUrl',
-                'receivedEventsUrl' => 'receivedEventsUrl',
-                'reposUrl'          => 'reposUrl',
-                'starredUrl'        => 'starredUrl',
-                'subscriptionsUrl'  => 'subscriptionsUrl',
-            ]
-        );
+        $sender->serialize()->shouldBeCalled()->willReturn(SenderSample::serialized('octocat'));
         $this->serialize()->shouldReturn(
             [
                 'comment' => [
@@ -195,25 +175,7 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
                 ],
                 'repo'           => RepoSample::serialized('octocatLinguist'),
                 'installationId' => 1,
-                'sender'         => [
-                    'userId'            => 1,
-                    'login'             => 'value',
-                    'type'              => 'User',
-                    'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
-                    'siteAdmin'         => true,
-                    'eventsUrl'         => 'eventsUrl',
-                    'followersUrl'      => 'followersUrl',
-                    'followingUrl'      => 'followingUrl',
-                    'gistsUrl'          => 'gistsUrl',
-                    'organizationsUrl'  => 'organizationsUrl',
-                    'receivedEventsUrl' => 'receivedEventsUrl',
-                    'reposUrl'          => 'reposUrl',
-                    'starredUrl'        => 'starredUrl',
-                    'subscriptionsUrl'  => 'subscriptionsUrl',
-                ],
+                'sender'         => SenderSample::serialized('octocat'),
             ]
         );
     }

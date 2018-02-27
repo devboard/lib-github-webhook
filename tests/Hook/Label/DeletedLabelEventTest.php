@@ -5,19 +5,13 @@ declare(strict_types=1);
 namespace Tests\DevboardLib\GitHubWebhook\Hook\Label;
 
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
-use DevboardLib\Generix\GravatarId;
-use DevboardLib\GitHub\Account\AccountType;
+use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\Label\LabelApiUrl;
 use DevboardLib\GitHub\Label\LabelColor;
 use DevboardLib\GitHub\Label\LabelId;
 use DevboardLib\GitHub\Label\LabelName;
-use DevboardLib\GitHub\User\UserApiUrl;
-use DevboardLib\GitHub\User\UserAvatarUrl;
-use DevboardLib\GitHub\User\UserHtmlUrl;
-use DevboardLib\GitHub\User\UserId;
-use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Label\DeletedLabelEvent;
@@ -53,26 +47,8 @@ class DeletedLabelEventTest extends TestCase
         );
         $this->repo           = RepoSample::octocatLinguist();
         $this->installationId = new InstallationId(1);
-        $this->sender         = new Sender(
-            new UserId(1),
-            new UserLogin('value'),
-            AccountType::USER(),
-            new UserAvatarUrl('avatarUrl'),
-            new GravatarId('id'),
-            new UserHtmlUrl('htmlUrl'),
-            new UserApiUrl('apiUrl'),
-            true,
-            'eventsUrl',
-            'followersUrl',
-            'followingUrl',
-            'gistsUrl',
-            'organizationsUrl',
-            'receivedEventsUrl',
-            'reposUrl',
-            'starredUrl',
-            'subscriptionsUrl'
-        );
-        $this->sut = new DeletedLabelEvent($this->label, $this->repo, $this->installationId, $this->sender);
+        $this->sender         = SenderSample::octocat();
+        $this->sut            = new DeletedLabelEvent($this->label, $this->repo, $this->installationId, $this->sender);
     }
 
     public function testGetLabel()
@@ -101,25 +77,7 @@ class DeletedLabelEventTest extends TestCase
             'label'          => ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
             'repo'           => RepoSample::serialized('octocatLinguist'),
             'installationId' => 1,
-            'sender'         => [
-                'userId'            => 1,
-                'login'             => 'value',
-                'type'              => 'User',
-                'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
-                'siteAdmin'         => true,
-                'eventsUrl'         => 'eventsUrl',
-                'followersUrl'      => 'followersUrl',
-                'followingUrl'      => 'followingUrl',
-                'gistsUrl'          => 'gistsUrl',
-                'organizationsUrl'  => 'organizationsUrl',
-                'receivedEventsUrl' => 'receivedEventsUrl',
-                'reposUrl'          => 'reposUrl',
-                'starredUrl'        => 'starredUrl',
-                'subscriptionsUrl'  => 'subscriptionsUrl',
-            ],
+            'sender'         => SenderSample::serialized('octocat'),
         ];
 
         self::assertSame($expected, $this->sut->serialize());
