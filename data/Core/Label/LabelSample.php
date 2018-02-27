@@ -9,7 +9,7 @@ use DevboardLib\GitHub\GitHubLabel;
 class LabelSample
 {
     private static $data = [
-        'red' => ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
+        'red' => ['id' => 1, 'name' => 'red', 'color' => '#ff0000', 'default' => true, 'apiUrl' => 'apiUrl'],
     ];
 
     public static function serialized(string $item): array

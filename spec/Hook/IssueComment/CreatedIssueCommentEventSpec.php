@@ -7,6 +7,7 @@ namespace spec\DevboardLib\GitHubWebhook\Hook\IssueComment;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentAuthorSample;
+use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreatorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
@@ -86,9 +87,7 @@ class CreatedIssueCommentEventSpec extends ObjectBehavior
                 'htmlUrl'   => 'htmlUrl',
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
-                'labels'    => [
-                    ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
-                ],
+                'labels'    => [LabelSample::serialized('red')],
                 'milestone' => [
                     'id'          => 1,
                     'title'       => 'value',
@@ -135,9 +134,7 @@ class CreatedIssueCommentEventSpec extends ObjectBehavior
                     'htmlUrl'   => 'htmlUrl',
                     'assignee'  => IssueAssigneeSample::serialized('octocat'),
                     'assignees' => [IssueAssigneeSample::serialized('octocat')],
-                    'labels'    => [
-                        ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
-                    ],
+                    'labels'    => [LabelSample::serialized('red')],
                     'milestone' => [
                         'id'          => 1,
                         'title'       => 'value',
@@ -188,9 +185,7 @@ class CreatedIssueCommentEventSpec extends ObjectBehavior
                 'htmlUrl'   => 'htmlUrl',
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
-                'labels'    => [
-                    ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
-                ],
+                'labels'    => [LabelSample::serialized('red')],
                 'milestone' => [
                     'id'          => 1,
                     'title'       => 'value',

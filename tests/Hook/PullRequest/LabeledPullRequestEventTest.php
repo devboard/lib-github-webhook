@@ -15,10 +15,6 @@ use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
-use DevboardLib\GitHub\Label\LabelApiUrl;
-use DevboardLib\GitHub\Label\LabelColor;
-use DevboardLib\GitHub\Label\LabelId;
-use DevboardLib\GitHub\Label\LabelName;
 use DevboardLib\GitHub\Milestone\MilestoneApiUrl;
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
@@ -104,9 +100,7 @@ class LabeledPullRequestEventTest extends TestCase
             new PullRequestCreatedAt('2018-01-01T00:01:00+00:00'),
             new PullRequestUpdatedAt('2018-01-01T00:01:00+00:00')
         );
-        $this->label = new GitHubLabel(
-            new LabelId(1), new LabelName('value'), new LabelColor('color'), true, new LabelApiUrl('apiUrl')
-        );
+        $this->label          = LabelSample::red();
         $this->repo           = RepoSample::octocatLinguist();
         $this->installationId = new InstallationId(1);
         $this->sender         = SenderSample::octocat();

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Hook\Label;
 
+use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubLabel;
@@ -50,9 +51,7 @@ class EditedLabelEventSpec extends ObjectBehavior
     public function it_can_be_serialized(
         GitHubLabel $label, Repo $repo, InstallationId $installationId, Sender $sender
     ) {
-        $label->serialize()->shouldBeCalled()->willReturn(
-            ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl']
-        );
+        $label->serialize()->shouldBeCalled()->willReturn(LabelSample::serialized('red'));
         $repo->serialize()->shouldBeCalled()->willReturn(
             [
                 'id'       => 1,
@@ -161,7 +160,7 @@ class EditedLabelEventSpec extends ObjectBehavior
         $sender->serialize()->shouldBeCalled()->willReturn(SenderSample::serialized('octocat'));
         $this->serialize()->shouldReturn(
             [
-                'label' => ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
+                'label' => LabelSample::serialized('red'),
                 'repo'  => [
                     'id'       => 1,
                     'fullName' => ['owner' => 'value', 'repoName' => 'name'],
@@ -273,7 +272,7 @@ class EditedLabelEventSpec extends ObjectBehavior
     public function it_can_be_deserialized()
     {
         $input = [
-            'label'          => ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
+            'label'          => LabelSample::serialized('red'),
             'repo'           => RepoSample::serialized('octocatLinguist'),
             'installationId' => 1,
             'sender'         => SenderSample::serialized('octocat'),

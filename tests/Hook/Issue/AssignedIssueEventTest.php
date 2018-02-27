@@ -6,11 +6,11 @@ namespace Tests\DevboardLib\GitHubWebhook\Hook\Issue;
 
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAuthorSample;
+use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreatorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubIssue;
-use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\Installation\InstallationId;
@@ -25,10 +25,6 @@ use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
 use DevboardLib\GitHub\Issue\IssueTitle;
 use DevboardLib\GitHub\Issue\IssueUpdatedAt;
-use DevboardLib\GitHub\Label\LabelApiUrl;
-use DevboardLib\GitHub\Label\LabelColor;
-use DevboardLib\GitHub\Label\LabelId;
-use DevboardLib\GitHub\Label\LabelName;
 use DevboardLib\GitHub\Milestone\MilestoneApiUrl;
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
@@ -81,17 +77,7 @@ class AssignedIssueEventTest extends TestCase
             new IssueHtmlUrl('htmlUrl'),
             IssueAssigneeSample::octocat(),
             new IssueAssigneeCollection([IssueAssigneeSample::octocat()]),
-            new GitHubLabelCollection(
-                [
-                    new GitHubLabel(
-                        new LabelId(1),
-                        new LabelName('value'),
-                        new LabelColor('color'),
-                        true,
-                        new LabelApiUrl('apiUrl')
-                    ),
-                ]
-            ),
+            new GitHubLabelCollection([LabelSample::red()]),
             new GitHubMilestone(
                 new MilestoneId(1),
                 new MilestoneTitle('value'),
@@ -150,9 +136,7 @@ class AssignedIssueEventTest extends TestCase
                 'htmlUrl'   => 'htmlUrl',
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
-                'labels'    => [
-                    ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
-                ],
+                'labels'    => [LabelSample::serialized('red')],
                 'milestone' => [
                     'id'          => 1,
                     'title'       => 'value',
