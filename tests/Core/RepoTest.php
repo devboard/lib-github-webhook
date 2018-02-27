@@ -4,14 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Core;
 
-use DevboardLib\Generix\GravatarId;
+use Data\DevboardLib\GitHubWebhook\Core\RepoOwnerSample;
 use DevboardLib\Git\Branch\BranchName;
-use DevboardLib\GitHub\Account\AccountApiUrl;
-use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
-use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
-use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\Repo\RepoCreatedAt;
 use DevboardLib\GitHub\Repo\RepoDescription;
 use DevboardLib\GitHub\Repo\RepoEndpoints;
@@ -102,29 +97,9 @@ class RepoTest extends TestCase
 
     public function setUp()
     {
-        $this->id       = new RepoId(64778136);
-        $this->fullName = new RepoFullName(new AccountLogin('value'), new RepoName('name'));
-        $this->owner    = new RepoOwner(
-            new AccountId(1),
-            new AccountLogin('value'),
-            AccountType::USER(),
-            new AccountAvatarUrl('avatarUrl'),
-            new GravatarId('id'),
-            new AccountHtmlUrl('htmlUrl'),
-            new AccountApiUrl('apiUrl'),
-            true,
-            'name',
-            'email',
-            'eventsUrl',
-            'followersUrl',
-            'followingUrl',
-            'gistsUrl',
-            'organizationsUrl',
-            'receivedEventsUrl',
-            'reposUrl',
-            'starredUrl',
-            'subscriptionsUrl'
-        );
+        $this->id            = new RepoId(64778136);
+        $this->fullName      = new RepoFullName(new AccountLogin('value'), new RepoName('name'));
+        $this->owner         = RepoOwnerSample::octocat();
         $this->private       = false;
         $this->defaultBranch = new BranchName('master');
         $this->fork          = false;
@@ -292,29 +267,9 @@ class RepoTest extends TestCase
     public function testSerialize()
     {
         $expected = [
-            'id'       => 64778136,
-            'fullName' => ['owner' => 'value', 'repoName' => 'name'],
-            'owner'    => [
-                'userId'            => 1,
-                'login'             => 'value',
-                'type'              => 'User',
-                'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
-                'siteAdmin'         => true,
-                'name'              => 'name',
-                'email'             => 'email',
-                'eventsUrl'         => 'eventsUrl',
-                'followersUrl'      => 'followersUrl',
-                'followingUrl'      => 'followingUrl',
-                'gistsUrl'          => 'gistsUrl',
-                'organizationsUrl'  => 'organizationsUrl',
-                'receivedEventsUrl' => 'receivedEventsUrl',
-                'reposUrl'          => 'reposUrl',
-                'starredUrl'        => 'starredUrl',
-                'subscriptionsUrl'  => 'subscriptionsUrl',
-            ],
+            'id'            => 64778136,
+            'fullName'      => ['owner' => 'value', 'repoName' => 'name'],
+            'owner'         => RepoOwnerSample::serialized('octocat'),
             'private'       => false,
             'defaultBranch' => 'master',
             'fork'          => false,
