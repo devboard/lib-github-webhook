@@ -4,20 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Core\Status;
 
-use DateTime;
-use DevboardLib\Generix\EmailAddress;
-use DevboardLib\Generix\GravatarId;
-use DevboardLib\Git\Commit\Author\AuthorName;
+use Data\DevboardLib\GitHubWebhook\Core\Status\CommitAuthorSample;
+use Data\DevboardLib\GitHubWebhook\Core\Status\CommitCommitterSample;
 use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\Git\Commit\Committer\CommitterName;
-use DevboardLib\GitHub\Account\AccountApiUrl;
-use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
-use DevboardLib\GitHub\Account\AccountId;
-use DevboardLib\GitHub\Account\AccountLogin;
-use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\Commit\CommitApiUrl;
 use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHub\Commit\CommitParent;
@@ -33,9 +24,7 @@ use DevboardLib\GitHub\Commit\Verification\VerificationSignature;
 use DevboardLib\GitHub\Commit\Verification\VerificationVerified;
 use DevboardLib\GitHubWebhook\Core\Status\Commit;
 use DevboardLib\GitHubWebhook\Core\Status\CommitAuthor;
-use DevboardLib\GitHubWebhook\Core\Status\CommitAuthorDetails;
 use DevboardLib\GitHubWebhook\Core\Status\CommitCommitter;
-use DevboardLib\GitHubWebhook\Core\Status\CommitCommitterDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -87,56 +76,10 @@ class CommitTest extends TestCase
         $this->sha        = new CommitSha('sha');
         $this->message    = new CommitMessage('message');
         $this->commitDate = new CommitDate('2018-01-01T00:01:00+00:00');
-        $this->author     = new CommitAuthor(
-            new AuthorName('name'),
-            new EmailAddress('octocat@example.com'),
-            new DateTime('2018-01-01T00:01:00+00:00'),
-            new CommitAuthorDetails(
-                new AccountId(1),
-                new AccountLogin('value'),
-                AccountType::USER(),
-                new AccountAvatarUrl('avatarUrl'),
-                new GravatarId('id'),
-                new AccountHtmlUrl('htmlUrl'),
-                new AccountApiUrl('apiUrl'),
-                true,
-                'eventsUrl',
-                'followersUrl',
-                'followingUrl',
-                'gistsUrl',
-                'organizationsUrl',
-                'receivedEventsUrl',
-                'reposUrl',
-                'starredUrl',
-                'subscriptionsUrl'
-            )
-        );
-        $this->committer = new CommitCommitter(
-            new CommitterName('name'),
-            new EmailAddress('octocat@example.com'),
-            new DateTime('2018-01-01T00:01:00+00:00'),
-            new CommitCommitterDetails(
-                new AccountId(1),
-                new AccountLogin('value'),
-                AccountType::USER(),
-                new AccountAvatarUrl('avatarUrl'),
-                new GravatarId('id'),
-                new AccountHtmlUrl('htmlUrl'),
-                new AccountApiUrl('apiUrl'),
-                true,
-                'eventsUrl',
-                'followersUrl',
-                'followingUrl',
-                'gistsUrl',
-                'organizationsUrl',
-                'receivedEventsUrl',
-                'reposUrl',
-                'starredUrl',
-                'subscriptionsUrl'
-            )
-        );
-        $this->tree    = new CommitTree(new CommitSha('sha'), new TreeApiUrl('url'));
-        $this->parents = new CommitParentCollection(
+        $this->author     = CommitAuthorSample::octocat();
+        $this->committer  = CommitCommitterSample::octocat();
+        $this->tree       = new CommitTree(new CommitSha('sha'), new TreeApiUrl('url'));
+        $this->parents    = new CommitParentCollection(
             [new CommitParent(new CommitSha('sha'), new ParentApiUrl('apiUrl'), new ParentHtmlUrl('htmlUrl'))]
         );
         $this->verification = new CommitVerification(
@@ -221,57 +164,11 @@ class CommitTest extends TestCase
     public function testSerialize()
     {
         $expected = [
-            'sha'        => 'sha',
-            'message'    => 'message',
-            'commitDate' => '2018-01-01T00:01:00+00:00',
-            'author'     => [
-                'name'      => 'name',
-                'email'     => 'octocat@example.com',
-                'createdAt' => '2018-01-01T00:01:00+00:00',
-                'details'   => [
-                    'userId'            => 1,
-                    'login'             => 'value',
-                    'type'              => 'User',
-                    'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
-                    'siteAdmin'         => true,
-                    'eventsUrl'         => 'eventsUrl',
-                    'followersUrl'      => 'followersUrl',
-                    'followingUrl'      => 'followingUrl',
-                    'gistsUrl'          => 'gistsUrl',
-                    'organizationsUrl'  => 'organizationsUrl',
-                    'receivedEventsUrl' => 'receivedEventsUrl',
-                    'reposUrl'          => 'reposUrl',
-                    'starredUrl'        => 'starredUrl',
-                    'subscriptionsUrl'  => 'subscriptionsUrl',
-                ],
-            ],
-            'committer' => [
-                'name'        => 'name',
-                'email'       => 'octocat@example.com',
-                'committedAt' => '2018-01-01T00:01:00+00:00',
-                'details'     => [
-                    'userId'            => 1,
-                    'login'             => 'value',
-                    'type'              => 'User',
-                    'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
-                    'siteAdmin'         => true,
-                    'eventsUrl'         => 'eventsUrl',
-                    'followersUrl'      => 'followersUrl',
-                    'followingUrl'      => 'followingUrl',
-                    'gistsUrl'          => 'gistsUrl',
-                    'organizationsUrl'  => 'organizationsUrl',
-                    'receivedEventsUrl' => 'receivedEventsUrl',
-                    'reposUrl'          => 'reposUrl',
-                    'starredUrl'        => 'starredUrl',
-                    'subscriptionsUrl'  => 'subscriptionsUrl',
-                ],
-            ],
+            'sha'          => 'sha',
+            'message'      => 'message',
+            'commitDate'   => '2018-01-01T00:01:00+00:00',
+            'author'       => CommitAuthorSample::serialized('octocat'),
+            'committer'    => CommitCommitterSample::serialized('octocat'),
             'tree'         => ['sha' => 'sha', 'apiUrl' => 'url'],
             'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
             'verification' => [
