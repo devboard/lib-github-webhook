@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\PullRequest;
 
-use DevboardLib\GitHub\GitHubPullRequest;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\CoreFactory\Label\GitHubLabelFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneCreatorFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneFactory;
@@ -32,7 +32,7 @@ class GitHubPullRequestFactoryTest extends TestCase
     public function testCreate()
     {
         foreach ($this->provideData() as $data) {
-            self::assertInstanceOf(GitHubPullRequest::class, $this->sut->create($data));
+            self::assertInstanceOf(PullRequest::class, $this->sut->create($data));
         }
     }
 

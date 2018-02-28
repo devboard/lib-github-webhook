@@ -18,7 +18,6 @@ use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
@@ -33,6 +32,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestState;
 use DevboardLib\GitHub\PullRequest\PullRequestTitle;
 use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
 use DevboardLib\GitHub\User\UserId;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\ReviewRequestedPullRequestEvent;
@@ -46,7 +46,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ReviewRequestedPullRequestEventTest extends TestCase
 {
-    /** @var GitHubPullRequest */
+    /** @var PullRequest */
     private $pullRequest;
 
     /** @var PullRequestReviewer */
@@ -66,7 +66,7 @@ class ReviewRequestedPullRequestEventTest extends TestCase
 
     public function setUp()
     {
-        $this->pullRequest = new GitHubPullRequest(
+        $this->pullRequest = new PullRequest(
             new PullRequestId(1),
             new PullRequestNumber(1),
             new PullRequestTitle('value'),

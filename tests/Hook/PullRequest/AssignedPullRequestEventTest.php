@@ -11,7 +11,6 @@ use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequest\PullRequestAssignee;
@@ -25,6 +24,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestNumber;
 use DevboardLib\GitHub\PullRequest\PullRequestState;
 use DevboardLib\GitHub\PullRequest\PullRequestTitle;
 use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\AssignedPullRequestEvent;
@@ -38,7 +38,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AssignedPullRequestEventTest extends TestCase
 {
-    /** @var GitHubPullRequest */
+    /** @var PullRequest */
     private $pullRequest;
 
     /** @var PullRequestAssignee */
@@ -58,7 +58,7 @@ class AssignedPullRequestEventTest extends TestCase
 
     public function setUp()
     {
-        $this->pullRequest = new GitHubPullRequest(
+        $this->pullRequest = new PullRequest(
             new PullRequestId(1),
             new PullRequestNumber(1),
             new PullRequestTitle('value'),

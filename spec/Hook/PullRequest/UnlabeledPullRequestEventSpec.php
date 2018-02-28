@@ -11,8 +11,8 @@ use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubLabel;
-use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent;
@@ -22,11 +22,7 @@ use PhpSpec\ObjectBehavior;
 class UnlabeledPullRequestEventSpec extends ObjectBehavior
 {
     public function let(
-        GitHubPullRequest $pullRequest,
-        GitHubLabel $label,
-        Repo $repo,
-        InstallationId $installationId,
-        Sender $sender
+        PullRequest $pullRequest, GitHubLabel $label, Repo $repo, InstallationId $installationId, Sender $sender
     ) {
         $this->beConstructedWith($pullRequest, $label, $repo, $installationId, $sender);
     }
@@ -37,7 +33,7 @@ class UnlabeledPullRequestEventSpec extends ObjectBehavior
         $this->shouldImplement(PullRequestEvent::class);
     }
 
-    public function it_exposes_pull_request(GitHubPullRequest $pullRequest)
+    public function it_exposes_pull_request(PullRequest $pullRequest)
     {
         $this->getPullRequest()->shouldReturn($pullRequest);
     }
@@ -63,11 +59,7 @@ class UnlabeledPullRequestEventSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        GitHubPullRequest $pullRequest,
-        GitHubLabel $label,
-        Repo $repo,
-        InstallationId $installationId,
-        Sender $sender
+        PullRequest $pullRequest, GitHubLabel $label, Repo $repo, InstallationId $installationId, Sender $sender
     ) {
         $pullRequest->serialize()->shouldBeCalled()->willReturn(
             [
@@ -106,7 +98,7 @@ class UnlabeledPullRequestEventSpec extends ObjectBehavior
                     'assignee'  => PullRequestAssigneeSample::serialized('octocat'),
                     'assignees' => [PullRequestAssigneeSample::serialized('octocat')],
                     'labels'    => [LabelSample::serialized('red')],
-        'milestone'             => MilestoneSample::serialized('sprint1'),
+                    'milestone' => MilestoneSample::serialized('sprint1'),
                     'closedAt'  => '2018-01-01T00:01:00+00:00',
                     'createdAt' => '2018-01-01T00:01:00+00:00',
                     'updatedAt' => '2018-01-01T00:01:00+00:00',

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\PullRequest;
 
-use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\PullRequest\PullRequestAssignee;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 
@@ -16,7 +16,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
  */
 class UnassignedPullRequestEvent implements PullRequestEvent
 {
-    /** @var GitHubPullRequest */
+    /** @var PullRequest */
     private $pullRequest;
 
     /** @var PullRequestAssignee */
@@ -32,7 +32,7 @@ class UnassignedPullRequestEvent implements PullRequestEvent
     private $sender;
 
     public function __construct(
-        GitHubPullRequest $pullRequest,
+        PullRequest $pullRequest,
         PullRequestAssignee $assignee,
         Repo $repo,
         InstallationId $installationId,
@@ -45,7 +45,7 @@ class UnassignedPullRequestEvent implements PullRequestEvent
         $this->sender         = $sender;
     }
 
-    public function getPullRequest(): GitHubPullRequest
+    public function getPullRequest(): PullRequest
     {
         return $this->pullRequest;
     }
@@ -84,7 +84,7 @@ class UnassignedPullRequestEvent implements PullRequestEvent
     public static function deserialize(array $data): self
     {
         return new self(
-            GitHubPullRequest::deserialize($data['pullRequest']),
+            PullRequest::deserialize($data['pullRequest']),
             PullRequestAssignee::deserialize($data['assignee']),
             Repo::deserialize($data['repo']),
             InstallationId::deserialize($data['installationId']),

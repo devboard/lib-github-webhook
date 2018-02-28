@@ -10,9 +10,9 @@ use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\PullRequest\PullRequestReviewer;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent;
@@ -22,7 +22,7 @@ use PhpSpec\ObjectBehavior;
 class ReviewRequestedPullRequestEventSpec extends ObjectBehavior
 {
     public function let(
-        GitHubPullRequest $pullRequest,
+        PullRequest $pullRequest,
         PullRequestReviewer $reviewer,
         Repo $repo,
         InstallationId $installationId,
@@ -37,7 +37,7 @@ class ReviewRequestedPullRequestEventSpec extends ObjectBehavior
         $this->shouldImplement(PullRequestEvent::class);
     }
 
-    public function it_exposes_pull_request(GitHubPullRequest $pullRequest)
+    public function it_exposes_pull_request(PullRequest $pullRequest)
     {
         $this->getPullRequest()->shouldReturn($pullRequest);
     }
@@ -63,7 +63,7 @@ class ReviewRequestedPullRequestEventSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        GitHubPullRequest $pullRequest,
+        PullRequest $pullRequest,
         PullRequestReviewer $reviewer,
         Repo $repo,
         InstallationId $installationId,
@@ -117,7 +117,7 @@ class ReviewRequestedPullRequestEventSpec extends ObjectBehavior
                     'assignee'  => PullRequestAssigneeSample::serialized('octocat'),
                     'assignees' => [PullRequestAssigneeSample::serialized('octocat')],
                     'labels'    => [LabelSample::serialized('red')],
-        'milestone'             => MilestoneSample::serialized('sprint1'),
+                    'milestone' => MilestoneSample::serialized('sprint1'),
                     'closedAt'  => '2018-01-01T00:01:00+00:00',
                     'createdAt' => '2018-01-01T00:01:00+00:00',
                     'updatedAt' => '2018-01-01T00:01:00+00:00',
