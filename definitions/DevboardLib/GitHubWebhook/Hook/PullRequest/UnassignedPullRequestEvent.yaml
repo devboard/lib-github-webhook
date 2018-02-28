@@ -10,7 +10,7 @@ definition:
   methods: {  }
   constructor:
     pullRequest:
-      instanceOf: DevboardLib\GitHub\GitHubPullRequest
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest
     assignee:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAssignee
     repo:

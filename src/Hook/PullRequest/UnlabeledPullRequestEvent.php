@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\Hook\PullRequest;
 
 use DevboardLib\GitHub\GitHubLabel;
-use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\Installation\InstallationId;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 
@@ -16,7 +16,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
  */
 class UnlabeledPullRequestEvent implements PullRequestEvent
 {
-    /** @var GitHubPullRequest */
+    /** @var PullRequest */
     private $pullRequest;
 
     /** @var GitHubLabel */
@@ -32,11 +32,7 @@ class UnlabeledPullRequestEvent implements PullRequestEvent
     private $sender;
 
     public function __construct(
-        GitHubPullRequest $pullRequest,
-        GitHubLabel $label,
-        Repo $repo,
-        InstallationId $installationId,
-        Sender $sender
+        PullRequest $pullRequest, GitHubLabel $label, Repo $repo, InstallationId $installationId, Sender $sender
     ) {
         $this->pullRequest    = $pullRequest;
         $this->label          = $label;
@@ -45,7 +41,7 @@ class UnlabeledPullRequestEvent implements PullRequestEvent
         $this->sender         = $sender;
     }
 
-    public function getPullRequest(): GitHubPullRequest
+    public function getPullRequest(): PullRequest
     {
         return $this->pullRequest;
     }
@@ -84,7 +80,7 @@ class UnlabeledPullRequestEvent implements PullRequestEvent
     public static function deserialize(array $data): self
     {
         return new self(
-            GitHubPullRequest::deserialize($data['pullRequest']),
+            PullRequest::deserialize($data['pullRequest']),
             GitHubLabel::deserialize($data['label']),
             Repo::deserialize($data['repo']),
             InstallationId::deserialize($data['installationId']),

@@ -122,7 +122,7 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
                     'assignee'  => IssueAssigneeSample::serialized('octocat'),
                     'assignees' => [IssueAssigneeSample::serialized('octocat')],
                     'labels'    => [LabelSample::serialized('red')],
-                'milestone'     => MilestoneSample::serialized('sprint1'),
+                    'milestone' => MilestoneSample::serialized('sprint1'),
                     'closedAt'  => '2018-01-01T00:01:00+00:00',
                     'createdAt' => '2018-01-01T00:01:00+00:00',
                     'updatedAt' => '2018-01-01T00:01:00+00:00',

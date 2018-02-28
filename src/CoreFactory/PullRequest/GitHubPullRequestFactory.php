@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\CoreFactory\PullRequest;
 
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubPullRequest;
 use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
 use DevboardLib\GitHub\PullRequest\PullRequestBody;
@@ -17,6 +16,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestNumber;
 use DevboardLib\GitHub\PullRequest\PullRequestState;
 use DevboardLib\GitHub\PullRequest\PullRequestTitle;
 use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\CoreFactory\Label\GitHubLabelFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneFactory;
 
@@ -52,7 +52,7 @@ class GitHubPullRequestFactory
         $this->milestoneFactory = $milestoneFactory;
     }
 
-    public function create(array $data): GitHubPullRequest
+    public function create(array $data): PullRequest
     {
         if (null === $data['assignee']) {
             $assignee = null;
@@ -86,7 +86,7 @@ class GitHubPullRequestFactory
             $milestone = $this->milestoneFactory->create($data['milestone']);
         }
 
-        return new GitHubPullRequest(
+        return new PullRequest(
             new PullRequestId($data['id']),
             new PullRequestNumber($data['number']),
             new PullRequestTitle($data['title']),
