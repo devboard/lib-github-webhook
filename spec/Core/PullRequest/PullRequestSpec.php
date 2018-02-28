@@ -368,8 +368,7 @@ class PullRequestSpec extends ObjectBehavior
                     'siteAdmin'  => true,
                 ],
             ],
-            'labels' => [['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
-            ],
+            'labels'    => [['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl']],
             'milestone' => [
                 'id'          => 1,
                 'title'       => 'value',
