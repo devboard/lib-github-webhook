@@ -7,91 +7,34 @@ definition:
   constructor:
     id:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestId
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     number:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestNumber
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     title:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestTitle
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     body:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestBody
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     state:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestState
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     author:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAuthor
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     apiUrl:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestApiUrl
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     htmlUrl:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     assignee:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAssignee
       nullable: true
-      hasDefault: false
-      default: null
-      examples: []
     assignees:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     labels:
       instanceOf: DevboardLib\GitHub\GitHubLabelCollection
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     milestone:
       instanceOf: DevboardLib\GitHub\GitHubMilestone
       nullable: true
-      hasDefault: false
-      default: null
-      examples: []
     closedAt:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestClosedAt
       nullable: true
-      hasDefault: false
-      default: null
-      examples: []
     createdAt:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestCreatedAt
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
     updatedAt:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt
-      nullable: false
-      hasDefault: false
-      default: null
-      examples: []
