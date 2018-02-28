@@ -8,6 +8,7 @@ use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAssigneeSample;
 use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAuthorSample;
+use Data\DevboardLib\GitHubWebhook\Core\PullRequestSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubLabel;
@@ -61,25 +62,7 @@ class UnlabeledPullRequestEventSpec extends ObjectBehavior
     public function it_can_be_serialized(
         PullRequest $pullRequest, GitHubLabel $label, Repo $repo, InstallationId $installationId, Sender $sender
     ) {
-        $pullRequest->serialize()->shouldBeCalled()->willReturn(
-            [
-                'id'        => 1,
-                'number'    => 1,
-                'title'     => 'value',
-                'body'      => 'value',
-                'state'     => 'open',
-                'author'    => PullRequestAuthorSample::serialized('octocat'),
-                'apiUrl'    => 'apiUrl',
-                'htmlUrl'   => 'htmlUrl',
-                'assignee'  => PullRequestAssigneeSample::serialized('octocat'),
-                'assignees' => [PullRequestAssigneeSample::serialized('octocat')],
-                'labels'    => [LabelSample::serialized('red')],
-                'milestone' => MilestoneSample::serialized('sprint1'),
-                'closedAt'  => '2018-01-01T00:01:00+00:00',
-                'createdAt' => '2018-01-01T00:01:00+00:00',
-                'updatedAt' => '2018-01-01T00:01:00+00:00',
-            ]
-        );
+        $pullRequest->serialize()->shouldBeCalled()->willReturn(PullRequestSample::serialized('pr1'));
         $label->serialize()->shouldBeCalled()->willReturn(LabelSample::serialized('red'));
         $repo->serialize()->shouldBeCalled()->willReturn(RepoSample::serialized('octocatLinguist'));
         $installationId->serialize()->shouldBeCalled()->willReturn(1);
@@ -114,23 +97,7 @@ class UnlabeledPullRequestEventSpec extends ObjectBehavior
     public function it_can_be_deserialized()
     {
         $input = [
-            'pullRequest' => [
-                'id'        => 1,
-                'number'    => 1,
-                'title'     => 'value',
-                'body'      => 'value',
-                'state'     => 'open',
-                'author'    => PullRequestAuthorSample::serialized('octocat'),
-                'apiUrl'    => 'apiUrl',
-                'htmlUrl'   => 'htmlUrl',
-                'assignee'  => PullRequestAssigneeSample::serialized('octocat'),
-                'assignees' => [PullRequestAssigneeSample::serialized('octocat')],
-                'labels'    => [LabelSample::serialized('red')],
-                'milestone' => MilestoneSample::serialized('sprint1'),
-                'closedAt'  => '2018-01-01T00:01:00+00:00',
-                'createdAt' => '2018-01-01T00:01:00+00:00',
-                'updatedAt' => '2018-01-01T00:01:00+00:00',
-            ],
+            'pullRequest'    => PullRequestSample::serialized('pr1'),
             'label'          => LabelSample::serialized('red'),
             'repo'           => RepoSample::serialized('octocatLinguist'),
             'installationId' => 1,
