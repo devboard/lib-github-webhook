@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Core\PullRequest;
 
+use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
+use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
+use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAssigneeSample;
+use Data\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestAuthorSample;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
@@ -181,144 +185,30 @@ class PullRequestSpec extends ObjectBehavior
         $title->serialize()->shouldBeCalled()->willReturn('value');
         $body->serialize()->shouldBeCalled()->willReturn('value');
         $state->serialize()->shouldBeCalled()->willReturn('open');
-        $author->serialize()->shouldBeCalled()->willReturn(
-            [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
-            ]
-        );
+        $author->serialize()->shouldBeCalled()->willReturn(PullRequestAuthorSample::serialized('octocat'));
         $apiUrl->serialize()->shouldBeCalled()->willReturn('apiUrl');
         $htmlUrl->serialize()->shouldBeCalled()->willReturn('htmlUrl');
-        $assignee->serialize()->shouldBeCalled()->willReturn(
-            [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
-            ]
-        );
-        $assignees->serialize()->shouldBeCalled()->willReturn(
-            [
-                [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
-                ],
-            ]
-        );
-        $labels->serialize()->shouldBeCalled()->willReturn(
-            [['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl']]
-        );
-        $milestone->serialize()->shouldBeCalled()->willReturn(
-            [
-                'id'          => 1,
-                'title'       => 'value',
-                'description' => 'value',
-                'dueOn'       => '2018-01-01T00:01:00+00:00',
-                'state'       => 'open',
-                'number'      => 1,
-                'creator'     => [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
-                ],
-                'htmlUrl'   => 'htmlUrl',
-                'apiUrl'    => 'apiUrl',
-                'closedAt'  => '2018-01-01T00:01:00+00:00',
-                'createdAt' => '2018-01-01T00:01:00+00:00',
-                'updatedAt' => '2018-01-01T00:01:00+00:00',
-            ]
-        );
+        $assignee->serialize()->shouldBeCalled()->willReturn(PullRequestAssigneeSample::serialized('octocat'));
+        $assignees->serialize()->shouldBeCalled()->willReturn([PullRequestAssigneeSample::serialized('octocat')]);
+        $labels->serialize()->shouldBeCalled()->willReturn([LabelSample::serialized('red')]);
+        $milestone->serialize()->shouldBeCalled()->willReturn(MilestoneSample::serialized('sprint1'));
         $closedAt->serialize()->shouldBeCalled()->willReturn('2018-01-01T00:01:00+00:00');
         $createdAt->serialize()->shouldBeCalled()->willReturn('2018-01-01T00:01:00+00:00');
         $updatedAt->serialize()->shouldBeCalled()->willReturn('2018-01-01T00:01:00+00:00');
         $this->serialize()->shouldReturn(
             [
-                'id'     => 1,
-                'number' => 1,
-                'title'  => 'value',
-                'body'   => 'value',
-                'state'  => 'open',
-                'author' => [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
-                ],
-                'apiUrl'   => 'apiUrl',
-                'htmlUrl'  => 'htmlUrl',
-                'assignee' => [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
-                ],
-                'assignees' => [
-                    [
-                        'userId'     => 1,
-                        'login'      => 'value',
-                        'type'       => 'User',
-                        'avatarUrl'  => 'avatarUrl',
-                        'gravatarId' => 'id',
-                        'htmlUrl'    => 'htmlUrl',
-                        'apiUrl'     => 'apiUrl',
-                        'siteAdmin'  => true,
-                    ],
-                ],
-                'labels' => [
-                    ['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl'],
-                ],
-                'milestone' => [
-                    'id'          => 1,
-                    'title'       => 'value',
-                    'description' => 'value',
-                    'dueOn'       => '2018-01-01T00:01:00+00:00',
-                    'state'       => 'open',
-                    'number'      => 1,
-                    'creator'     => [
-                        'userId'     => 1,
-                        'login'      => 'value',
-                        'type'       => 'User',
-                        'avatarUrl'  => 'avatarUrl',
-                        'gravatarId' => 'id',
-                        'htmlUrl'    => 'htmlUrl',
-                        'apiUrl'     => 'apiUrl',
-                        'siteAdmin'  => true,
-                    ],
-                    'htmlUrl'   => 'htmlUrl',
-                    'apiUrl'    => 'apiUrl',
-                    'closedAt'  => '2018-01-01T00:01:00+00:00',
-                    'createdAt' => '2018-01-01T00:01:00+00:00',
-                    'updatedAt' => '2018-01-01T00:01:00+00:00',
-                ],
+                'id'        => 1,
+                'number'    => 1,
+                'title'     => 'value',
+                'body'      => 'value',
+                'state'     => 'open',
+                'author'    => PullRequestAuthorSample::serialized('octocat'),
+                'apiUrl'    => 'apiUrl',
+                'htmlUrl'   => 'htmlUrl',
+                'assignee'  => PullRequestAssigneeSample::serialized('octocat'),
+                'assignees' => [PullRequestAssigneeSample::serialized('octocat')],
+                'labels'    => [LabelSample::serialized('red')],
+                'milestone' => MilestoneSample::serialized('sprint1'),
                 'closedAt'  => '2018-01-01T00:01:00+00:00',
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',
@@ -329,69 +219,18 @@ class PullRequestSpec extends ObjectBehavior
     public function it_can_be_deserialized()
     {
         $input = [
-            'id'     => 1,
-            'number' => 1,
-            'title'  => 'value',
-            'body'   => 'value',
-            'state'  => 'open',
-            'author' => [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
-            ],
-            'apiUrl'   => 'apiUrl',
-            'htmlUrl'  => 'htmlUrl',
-            'assignee' => [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
-            ],
-            'assignees' => [
-                [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
-                ],
-            ],
-            'labels'    => [['id' => 1, 'name' => 'value', 'color' => 'color', 'default' => true, 'apiUrl' => 'apiUrl']],
-            'milestone' => [
-                'id'          => 1,
-                'title'       => 'value',
-                'description' => 'value',
-                'dueOn'       => '2018-01-01T00:01:00+00:00',
-                'state'       => 'open',
-                'number'      => 1,
-                'creator'     => [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
-                ],
-                'htmlUrl'   => 'htmlUrl',
-                'apiUrl'    => 'apiUrl',
-                'closedAt'  => '2018-01-01T00:01:00+00:00',
-                'createdAt' => '2018-01-01T00:01:00+00:00',
-                'updatedAt' => '2018-01-01T00:01:00+00:00',
-            ],
+            'id'        => 1,
+            'number'    => 1,
+            'title'     => 'value',
+            'body'      => 'value',
+            'state'     => 'open',
+            'author'    => PullRequestAssigneeSample::serialized('octocat'),
+            'apiUrl'    => 'apiUrl',
+            'htmlUrl'   => 'htmlUrl',
+            'assignee'  => PullRequestAssigneeSample::serialized('octocat'),
+            'assignees' => [PullRequestAssigneeSample::serialized('octocat')],
+            'labels'    => [LabelSample::serialized('red')],
+            'milestone' => MilestoneSample::serialized('sprint1'),
             'closedAt'  => '2018-01-01T00:01:00+00:00',
             'createdAt' => '2018-01-01T00:01:00+00:00',
             'updatedAt' => '2018-01-01T00:01:00+00:00',
