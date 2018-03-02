@@ -20,7 +20,7 @@
     "require-dev": {
         "ciaranmcnulty/phpspec-typehintedmethods": "^3.0",
         "friendsofphp/php-cs-fixer": "dev-long-line-fixers",
-        "infection/infection": "^0.7.0",
+        "infection/infection": "^0.8.1",
         "mockery/mockery": "^1.0",
         "phing/phing": "^2.16",
         "phpmd/phpmd": "^2.6",
