@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneCreatorFactory
- * @group  todo
+ * @group  unit
  */
 class GitHubMilestoneCreatorFactoryTest extends TestCase
 {
