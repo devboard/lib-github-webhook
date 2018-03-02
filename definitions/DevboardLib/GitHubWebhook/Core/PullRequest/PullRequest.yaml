@@ -9,6 +9,10 @@ definition:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestId
     number:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestNumber
+    base:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestBase
+    head:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestHead
     title:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestTitle
     body:
@@ -17,24 +21,64 @@ definition:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestState
     author:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAuthor
-    apiUrl:
-      instanceOf: DevboardLib\GitHub\PullRequest\PullRequestApiUrl
-    htmlUrl:
-      instanceOf: DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl
-    assignee:
-      instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAssignee
+    authorAssociation:
+      instanceOf: string
       nullable: true
     assignees:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection
-    labels:
-      instanceOf: DevboardLib\GitHub\GitHubLabelCollection
+    requestedReviewers:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestRequestedReviewerCollection
+    requestedTeams:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestRequestedTeamCollection
+
+    locked:
+      instanceOf: bool
+    rebaseable:
+      instanceOf: bool
+      nullable: true
+    maintainerCanModify:
+      instanceOf: bool
+    mergeCommitSha:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+      nullable: true
+    mergeable:
+      instanceOf: bool
+      nullable: true
+    mergeableState:
+      instanceOf: string
+    merged:
+      instanceOf: bool
+    mergedAt:
+      instanceOf: DateTime
+      nullable: true
+    mergedBy:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestMergedBy
+      nullable: true
+
     milestone:
       instanceOf: DevboardLib\GitHub\GitHubMilestone
       nullable: true
     closedAt:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestClosedAt
       nullable: true
+
+    stats:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestStats
+    urls:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestUrls
+
     createdAt:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestCreatedAt
     updatedAt:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt
+
+
+
+
+
+
+
+
+
+
+
