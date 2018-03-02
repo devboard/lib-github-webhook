@@ -1,0 +1,29 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestUrls
+  parent: null
+  interfaces: []
+  traits: {  }
+  constructor:
+    apiUrl:
+      instanceOf: DevboardLib\GitHub\PullRequest\PullRequestApiUrl
+    htmlUrl:
+      instanceOf: DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl
+    commentsUrl:
+      instanceOf: string
+    commitsUrl:
+      instanceOf: string
+    diffUrl:
+      instanceOf: string
+    issueUrl:
+      instanceOf: string
+    patchUrl:
+      instanceOf: string
+    reviewCommentUrl:
+      instanceOf: string
+    reviewComments:
+      instanceOf: int
+    reviewCommentsUrl:
+      instanceOf: string
+    statusesUrl:
+      instanceOf: string

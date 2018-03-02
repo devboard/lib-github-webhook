@@ -1,0 +1,12 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestRequestedTeam
+  parent: null
+  interfaces: { }
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    todo:
+      instanceOf: string

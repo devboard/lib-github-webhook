@@ -1,0 +1,17 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestStats
+  parent: null
+  interfaces: []
+  traits: {  }
+  constructor:
+    additions:
+      instanceOf: int
+    changedFiles:
+      instanceOf: int
+    comments:
+      instanceOf: int
+    commits:
+      instanceOf: int
+    deletions:
+      instanceOf: int
