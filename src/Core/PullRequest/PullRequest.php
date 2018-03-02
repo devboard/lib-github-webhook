@@ -20,7 +20,6 @@ use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @SuppressWarnings(PHPMD.TooManyFields)
  *
  * @see \spec\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestSpec
