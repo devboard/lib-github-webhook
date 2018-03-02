@@ -19,8 +19,6 @@ use DevboardLib\GitHubWebhook\Core\Status\CommitAuthorDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Core\Status\CommitAuthor
  * @group  unit
  */

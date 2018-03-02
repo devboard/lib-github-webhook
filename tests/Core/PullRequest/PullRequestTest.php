@@ -38,7 +38,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @SuppressWarnings(PHPMD.TooManyFields)
  *
  * @covers \DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest

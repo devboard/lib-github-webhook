@@ -31,7 +31,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\Issue\LabeledIssueEvent
  * @group  unit
  */
