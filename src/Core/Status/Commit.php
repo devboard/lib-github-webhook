@@ -15,7 +15,6 @@ use DevboardLib\GitHub\Commit\CommitVerification;
 use Git\Commit as GitCommit;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  *
  * @see \spec\DevboardLib\GitHubWebhook\Core\Status\CommitSpec

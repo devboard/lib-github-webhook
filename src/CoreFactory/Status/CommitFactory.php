@@ -37,7 +37,6 @@ use DevboardLib\GitHubWebhook\Core\Status\CommitCommitterDetails;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  */
 class CommitFactory
 {
