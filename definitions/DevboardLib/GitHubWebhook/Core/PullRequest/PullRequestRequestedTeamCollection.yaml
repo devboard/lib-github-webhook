@@ -1,0 +1,19 @@
+definition:
+  type: SimpleCollection
+  instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestRequestedTeamCollection
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constants: {  }
+  constructor:
+    elements:
+      instanceOf: array
+      nullable: false
+      hasDefault: true
+      default: {  }
+  collectionOf:
+    instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestRequestedTeam
+    accessor: getTodo
+    has: string
+
+

@@ -1,0 +1,13 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestBase
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    targetBranchName:
+      instanceOf: DevboardLib\Git\Branch\BranchName
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    sha:
+      instanceOf: DevboardLib\Git\Commit\CommitSha

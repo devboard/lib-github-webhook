@@ -1,0 +1,85 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestMergedBy
+  parent: null
+  interfaces: { }
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    userId:
+      instanceOf: DevboardLib\GitHub\User\UserId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: [6752317]
+    login:
+      instanceOf: DevboardLib\GitHub\User\UserLogin
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['baxterthehacker']
+    type:
+      instanceOf: DevboardLib\GitHub\Account\AccountType
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['User']
+    avatarUrl:
+      instanceOf: DevboardLib\GitHub\User\UserAvatarUrl
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['https://avatars.githubusercontent.com/u/6752317?v=3']
+    gravatarId:
+      instanceOf: DevboardLib\Generix\GravatarId
+      nullable: true
+      hasDefault: false
+      default: null
+      examples: []
+    htmlUrl:
+      instanceOf: DevboardLib\GitHub\User\UserHtmlUrl
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['https://github.com/baxterthehacker']
+    apiUrl:
+      instanceOf: DevboardLib\GitHub\User\UserApiUrl
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['https://api.github.com/users/baxterthehacker']
+    siteAdmin:
+      instanceOf: bool
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: [false, true]
+    eventsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/events{/privacy}"]
+    followersUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/followers"]
+    followingUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/following{/other_user}"]
+    gistsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/gists{/gist_id}"]
+    organizationsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/orgs"]
+    receivedEventsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/received_events"]
+    reposUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/repos"]
+    starredUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/starred{/owner}{/repo}"]
+    subscriptionsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/baxterthehacker/subscriptions"]
