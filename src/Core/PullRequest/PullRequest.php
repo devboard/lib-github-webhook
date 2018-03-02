@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Core\PullRequest;
 
-use DevboardLib\GitHub\GitHubLabelCollection;
+use DateTime;
+use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\GitHub\GitHubMilestone;
-use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
-use DevboardLib\GitHub\PullRequest\PullRequestAssignee;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
 use DevboardLib\GitHub\PullRequest\PullRequestAuthor;
 use DevboardLib\GitHub\PullRequest\PullRequestBody;
 use DevboardLib\GitHub\PullRequest\PullRequestClosedAt;
 use DevboardLib\GitHub\PullRequest\PullRequestCreatedAt;
-use DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl;
 use DevboardLib\GitHub\PullRequest\PullRequestId;
 use DevboardLib\GitHub\PullRequest\PullRequestNumber;
 use DevboardLib\GitHub\PullRequest\PullRequestState;
@@ -23,6 +21,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+ * @SuppressWarnings(PHPMD.TooManyFields)
  *
  * @see \spec\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestSpec
  * @see \Tests\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestTest
@@ -34,6 +33,12 @@ class PullRequest
 
     /** @var PullRequestNumber */
     private $number;
+
+    /** @var PullRequestBase */
+    private $base;
+
+    /** @var PullRequestHead */
+    private $head;
 
     /** @var PullRequestTitle */
     private $title;
@@ -47,20 +52,44 @@ class PullRequest
     /** @var PullRequestAuthor */
     private $author;
 
-    /** @var PullRequestApiUrl */
-    private $apiUrl;
-
-    /** @var PullRequestHtmlUrl */
-    private $htmlUrl;
-
-    /** @var PullRequestAssignee|null */
-    private $assignee;
+    /** @var string|null */
+    private $authorAssociation;
 
     /** @var PullRequestAssigneeCollection */
     private $assignees;
 
-    /** @var GitHubLabelCollection */
-    private $labels;
+    /** @var PullRequestRequestedReviewerCollection */
+    private $requestedReviewers;
+
+    /** @var PullRequestRequestedTeamCollection */
+    private $requestedTeams;
+
+    /** @var bool */
+    private $locked;
+
+    /** @var bool|null */
+    private $rebaseable;
+
+    /** @var bool */
+    private $maintainerCanModify;
+
+    /** @var CommitSha|null */
+    private $mergeCommitSha;
+
+    /** @var bool|null */
+    private $mergeable;
+
+    /** @var string */
+    private $mergeableState;
+
+    /** @var bool */
+    private $merged;
+
+    /** @var DateTime|null */
+    private $mergedAt;
+
+    /** @var PullRequestMergedBy|null */
+    private $mergedBy;
 
     /** @var GitHubMilestone|null */
     private $milestone;
@@ -68,44 +97,75 @@ class PullRequest
     /** @var PullRequestClosedAt|null */
     private $closedAt;
 
+    /** @var PullRequestStats */
+    private $stats;
+
+    /** @var PullRequestUrls */
+    private $urls;
+
     /** @var PullRequestCreatedAt */
     private $createdAt;
 
     /** @var PullRequestUpdatedAt */
     private $updatedAt;
 
+    /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(
         PullRequestId $id,
         PullRequestNumber $number,
+        PullRequestBase $base,
+        PullRequestHead $head,
         PullRequestTitle $title,
         PullRequestBody $body,
         PullRequestState $state,
         PullRequestAuthor $author,
-        PullRequestApiUrl $apiUrl,
-        PullRequestHtmlUrl $htmlUrl,
-        ?PullRequestAssignee $assignee,
+        ?string $authorAssociation,
         PullRequestAssigneeCollection $assignees,
-        GitHubLabelCollection $labels,
+        PullRequestRequestedReviewerCollection $requestedReviewers,
+        PullRequestRequestedTeamCollection $requestedTeams,
+        bool $locked,
+        ?bool $rebaseable,
+        bool $maintainerCanModify,
+        ?CommitSha $mergeCommitSha,
+        ?bool $mergeable,
+        string $mergeableState,
+        bool $merged,
+        ?DateTime $mergedAt,
+        ?PullRequestMergedBy $mergedBy,
         ?GitHubMilestone $milestone,
         ?PullRequestClosedAt $closedAt,
+        PullRequestStats $stats,
+        PullRequestUrls $urls,
         PullRequestCreatedAt $createdAt,
         PullRequestUpdatedAt $updatedAt
     ) {
-        $this->id        = $id;
-        $this->number    = $number;
-        $this->title     = $title;
-        $this->body      = $body;
-        $this->state     = $state;
-        $this->author    = $author;
-        $this->apiUrl    = $apiUrl;
-        $this->htmlUrl   = $htmlUrl;
-        $this->assignee  = $assignee;
-        $this->assignees = $assignees;
-        $this->labels    = $labels;
-        $this->milestone = $milestone;
-        $this->closedAt  = $closedAt;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
+        $this->id                  = $id;
+        $this->number              = $number;
+        $this->base                = $base;
+        $this->head                = $head;
+        $this->title               = $title;
+        $this->body                = $body;
+        $this->state               = $state;
+        $this->author              = $author;
+        $this->authorAssociation   = $authorAssociation;
+        $this->assignees           = $assignees;
+        $this->requestedReviewers  = $requestedReviewers;
+        $this->requestedTeams      = $requestedTeams;
+        $this->locked              = $locked;
+        $this->rebaseable          = $rebaseable;
+        $this->maintainerCanModify = $maintainerCanModify;
+        $this->mergeCommitSha      = $mergeCommitSha;
+        $this->mergeable           = $mergeable;
+        $this->mergeableState      = $mergeableState;
+        $this->merged              = $merged;
+        $this->mergedAt            = $mergedAt;
+        $this->mergedBy            = $mergedBy;
+        $this->milestone           = $milestone;
+        $this->closedAt            = $closedAt;
+        $this->stats               = $stats;
+        $this->urls                = $urls;
+        $this->createdAt           = $createdAt;
+        $this->updatedAt           = $updatedAt;
     }
 
     public function getId(): PullRequestId
@@ -116,6 +176,16 @@ class PullRequest
     public function getNumber(): PullRequestNumber
     {
         return $this->number;
+    }
+
+    public function getBase(): PullRequestBase
+    {
+        return $this->base;
+    }
+
+    public function getHead(): PullRequestHead
+    {
+        return $this->head;
     }
 
     public function getTitle(): PullRequestTitle
@@ -138,19 +208,9 @@ class PullRequest
         return $this->author;
     }
 
-    public function getApiUrl(): PullRequestApiUrl
+    public function getAuthorAssociation(): ?string
     {
-        return $this->apiUrl;
-    }
-
-    public function getHtmlUrl(): PullRequestHtmlUrl
-    {
-        return $this->htmlUrl;
-    }
-
-    public function getAssignee(): ?PullRequestAssignee
-    {
-        return $this->assignee;
+        return $this->authorAssociation;
     }
 
     public function getAssignees(): PullRequestAssigneeCollection
@@ -158,9 +218,59 @@ class PullRequest
         return $this->assignees;
     }
 
-    public function getLabels(): GitHubLabelCollection
+    public function getRequestedReviewers(): PullRequestRequestedReviewerCollection
     {
-        return $this->labels;
+        return $this->requestedReviewers;
+    }
+
+    public function getRequestedTeams(): PullRequestRequestedTeamCollection
+    {
+        return $this->requestedTeams;
+    }
+
+    public function isLocked(): bool
+    {
+        return $this->locked;
+    }
+
+    public function isRebaseable(): ?bool
+    {
+        return $this->rebaseable;
+    }
+
+    public function isMaintainerCanModify(): bool
+    {
+        return $this->maintainerCanModify;
+    }
+
+    public function getMergeCommitSha(): ?CommitSha
+    {
+        return $this->mergeCommitSha;
+    }
+
+    public function isMergeable(): ?bool
+    {
+        return $this->mergeable;
+    }
+
+    public function getMergeableState(): string
+    {
+        return $this->mergeableState;
+    }
+
+    public function isMerged(): bool
+    {
+        return $this->merged;
+    }
+
+    public function getMergedAt(): ?DateTime
+    {
+        return $this->mergedAt;
+    }
+
+    public function getMergedBy(): ?PullRequestMergedBy
+    {
+        return $this->mergedBy;
     }
 
     public function getMilestone(): ?GitHubMilestone
@@ -173,6 +283,16 @@ class PullRequest
         return $this->closedAt;
     }
 
+    public function getStats(): PullRequestStats
+    {
+        return $this->stats;
+    }
+
+    public function getUrls(): PullRequestUrls
+    {
+        return $this->urls;
+    }
+
     public function getCreatedAt(): PullRequestCreatedAt
     {
         return $this->createdAt;
@@ -183,9 +303,54 @@ class PullRequest
         return $this->updatedAt;
     }
 
-    public function hasAssignee(): bool
+    public function hasAuthorAssociation(): bool
     {
-        if (null === $this->assignee) {
+        if (null === $this->authorAssociation) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function hasRebaseable(): bool
+    {
+        if (null === $this->rebaseable) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function hasMergeCommitSha(): bool
+    {
+        if (null === $this->mergeCommitSha) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function hasMergeable(): bool
+    {
+        if (null === $this->mergeable) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function hasMergedAt(): bool
+    {
+        if (null === $this->mergedAt) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function hasMergedBy(): bool
+    {
+        if (null === $this->mergedBy) {
             return false;
         }
 
@@ -212,10 +377,22 @@ class PullRequest
 
     public function serialize(): array
     {
-        if (null === $this->assignee) {
-            $assignee = null;
+        if (null === $this->mergeCommitSha) {
+            $mergeCommitSha = null;
         } else {
-            $assignee = $this->assignee->serialize();
+            $mergeCommitSha = $this->mergeCommitSha->serialize();
+        }
+
+        if (null === $this->mergedAt) {
+            $mergedAt = null;
+        } else {
+            $mergedAt = $this->mergedAt->format('c');
+        }
+
+        if (null === $this->mergedBy) {
+            $mergedBy = null;
+        } else {
+            $mergedBy = $this->mergedBy->serialize();
         }
 
         if (null === $this->milestone) {
@@ -231,30 +408,54 @@ class PullRequest
         }
 
         return [
-            'id'        => $this->id->serialize(),
-            'number'    => $this->number->serialize(),
-            'title'     => $this->title->serialize(),
-            'body'      => $this->body->serialize(),
-            'state'     => $this->state->serialize(),
-            'author'    => $this->author->serialize(),
-            'apiUrl'    => $this->apiUrl->serialize(),
-            'htmlUrl'   => $this->htmlUrl->serialize(),
-            'assignee'  => $assignee,
-            'assignees' => $this->assignees->serialize(),
-            'labels'    => $this->labels->serialize(),
-            'milestone' => $milestone,
-            'closedAt'  => $closedAt,
-            'createdAt' => $this->createdAt->serialize(),
-            'updatedAt' => $this->updatedAt->serialize(),
+            'id'                  => $this->id->serialize(),
+            'number'              => $this->number->serialize(),
+            'base'                => $this->base->serialize(),
+            'head'                => $this->head->serialize(),
+            'title'               => $this->title->serialize(),
+            'body'                => $this->body->serialize(),
+            'state'               => $this->state->serialize(),
+            'author'              => $this->author->serialize(),
+            'authorAssociation'   => $this->authorAssociation,
+            'assignees'           => $this->assignees->serialize(),
+            'requestedReviewers'  => $this->requestedReviewers->serialize(),
+            'requestedTeams'      => $this->requestedTeams->serialize(),
+            'locked'              => $this->locked,
+            'rebaseable'          => $this->rebaseable,
+            'maintainerCanModify' => $this->maintainerCanModify,
+            'mergeCommitSha'      => $mergeCommitSha,
+            'mergeable'           => $this->mergeable,
+            'mergeableState'      => $this->mergeableState,
+            'merged'              => $this->merged,
+            'mergedAt'            => $mergedAt,
+            'mergedBy'            => $mergedBy,
+            'milestone'           => $milestone,
+            'closedAt'            => $closedAt,
+            'stats'               => $this->stats->serialize(),
+            'urls'                => $this->urls->serialize(),
+            'createdAt'           => $this->createdAt->serialize(),
+            'updatedAt'           => $this->updatedAt->serialize(),
         ];
     }
 
     public static function deserialize(array $data): self
     {
-        if (null === $data['assignee']) {
-            $assignee = null;
+        if (null === $data['mergeCommitSha']) {
+            $mergeCommitSha = null;
         } else {
-            $assignee = PullRequestAssignee::deserialize($data['assignee']);
+            $mergeCommitSha = CommitSha::deserialize($data['mergeCommitSha']);
+        }
+
+        if (null === $data['mergedAt']) {
+            $mergedAt = null;
+        } else {
+            $mergedAt = new DateTime($data['mergedAt']);
+        }
+
+        if (null === $data['mergedBy']) {
+            $mergedBy = null;
+        } else {
+            $mergedBy = PullRequestMergedBy::deserialize($data['mergedBy']);
         }
 
         if (null === $data['milestone']) {
@@ -272,17 +473,29 @@ class PullRequest
         return new self(
             PullRequestId::deserialize($data['id']),
             PullRequestNumber::deserialize($data['number']),
+            PullRequestBase::deserialize($data['base']),
+            PullRequestHead::deserialize($data['head']),
             PullRequestTitle::deserialize($data['title']),
             PullRequestBody::deserialize($data['body']),
             PullRequestState::deserialize($data['state']),
             PullRequestAuthor::deserialize($data['author']),
-            PullRequestApiUrl::deserialize($data['apiUrl']),
-            PullRequestHtmlUrl::deserialize($data['htmlUrl']),
-            $assignee,
+            $data['authorAssociation'],
             PullRequestAssigneeCollection::deserialize($data['assignees']),
-            GitHubLabelCollection::deserialize($data['labels']),
+            PullRequestRequestedReviewerCollection::deserialize($data['requestedReviewers']),
+            PullRequestRequestedTeamCollection::deserialize($data['requestedTeams']),
+            $data['locked'],
+            $data['rebaseable'],
+            $data['maintainerCanModify'],
+            $mergeCommitSha,
+            $data['mergeable'],
+            $data['mergeableState'],
+            $data['merged'],
+            $mergedAt,
+            $mergedBy,
             $milestone,
             $closedAt,
+            PullRequestStats::deserialize($data['stats']),
+            PullRequestUrls::deserialize($data['urls']),
             PullRequestCreatedAt::deserialize($data['createdAt']),
             PullRequestUpdatedAt::deserialize($data['updatedAt'])
         );
