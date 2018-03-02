@@ -16,7 +16,6 @@ use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\PullRequest\PullRequestReviewer;
-use DevboardLib\GitHub\User\UserId;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;

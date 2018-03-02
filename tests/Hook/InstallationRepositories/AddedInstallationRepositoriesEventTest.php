@@ -27,7 +27,6 @@ use DevboardLib\GitHub\Installation\InstallationUpdatedAt;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\Repo\RepoName;
-use DevboardLib\GitHub\User\UserId;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReference;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection;
 use DevboardLib\GitHubWebhook\Core\Sender;

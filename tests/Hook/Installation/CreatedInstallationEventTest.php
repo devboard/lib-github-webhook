@@ -24,7 +24,6 @@ use DevboardLib\GitHub\Installation\InstallationPermissions;
 use DevboardLib\GitHub\Installation\InstallationRepositoriesUrl;
 use DevboardLib\GitHub\Installation\InstallationRepositorySelection\InstallationRepositoryAll;
 use DevboardLib\GitHub\Installation\InstallationUpdatedAt;
-use DevboardLib\GitHub\User\UserId;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Installation\CreatedInstallationEvent;
 use PHPUnit\Framework\TestCase;
