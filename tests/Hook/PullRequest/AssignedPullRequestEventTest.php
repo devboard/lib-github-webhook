@@ -17,8 +17,6 @@ use DevboardLib\GitHubWebhook\Hook\PullRequest\AssignedPullRequestEvent;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Hook\PullRequest\AssignedPullRequestEvent
  * @group  unit
  */

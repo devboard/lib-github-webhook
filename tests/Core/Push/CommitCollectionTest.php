@@ -9,8 +9,6 @@ use DevboardLib\GitHubWebhook\Core\Push\CommitCollection;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Core\Push\CommitCollection
  * @group  unit
  */

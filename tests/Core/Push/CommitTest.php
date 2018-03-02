@@ -17,8 +17,6 @@ use DevboardLib\GitHubWebhook\Core\Push\CommitCommitter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  * @covers \DevboardLib\GitHubWebhook\Core\Push\Commit
  * @group  unit
  */
