@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\PullRequest;
 
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
-use DevboardLib\GitHubWebhook\CoreFactory\Label\GitHubLabelFactory;
-use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneCreatorFactory;
-use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\PullRequest\GitHubPullRequestAssigneeFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\PullRequest\GitHubPullRequestAuthorFactory;
+use DevboardLib\GitHubWebhook\CoreFactory\PullRequest\GitHubPullRequestBaseFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\PullRequest\GitHubPullRequestFactory;
+use DevboardLib\GitHubWebhook\CoreFactory\PullRequest\GitHubPullRequestHeadFactory;
+use DevboardLib\GitHubWebhook\CoreFactory\PullRequest\GitHubPullRequestMergedByFactory;
+use DevboardLib\GitHubWebhook\CoreFactory\PullRequest\GitHubPullRequestRequestedReviewerFactory;
 use Generator;
 use PHPUnit\Framework\TestCase;
+use Tests\DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneFactoryTest;
+use Tests\DevboardLib\GitHubWebhook\CoreFactory\RepoFactoryTest;
 use Tests\DevboardLib\GitHubWebhook\StagingDataProvider;
 
 /**
@@ -48,8 +51,11 @@ class GitHubPullRequestFactoryTest extends TestCase
         return new GitHubPullRequestFactory(
             new GitHubPullRequestAuthorFactory(),
             new GitHubPullRequestAssigneeFactory(),
-            new GitHubLabelFactory(),
-            new GitHubMilestoneFactory(new GitHubMilestoneCreatorFactory())
+            GitHubMilestoneFactoryTest::instance(),
+            new GitHubPullRequestMergedByFactory(),
+            new GitHubPullRequestRequestedReviewerFactory(),
+            new GitHubPullRequestBaseFactory(RepoFactoryTest::instance()),
+            new GitHubPullRequestHeadFactory(RepoFactoryTest::instance())
         );
     }
 }
