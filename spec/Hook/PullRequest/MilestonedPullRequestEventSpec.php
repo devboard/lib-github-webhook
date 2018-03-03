@@ -11,6 +11,7 @@ use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\MilestonedPullRequestEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent;
 use PhpSpec\ObjectBehavior;
@@ -26,6 +27,7 @@ class MilestonedPullRequestEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(MilestonedPullRequestEvent::class);
         $this->shouldImplement(PullRequestEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_pull_request(PullRequest $pullRequest)

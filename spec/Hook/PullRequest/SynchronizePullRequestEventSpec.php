@@ -11,6 +11,7 @@ use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\SynchronizePullRequestEvent;
 use PhpSpec\ObjectBehavior;
@@ -26,6 +27,7 @@ class SynchronizePullRequestEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(SynchronizePullRequestEvent::class);
         $this->shouldImplement(PullRequestEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_pull_request(PullRequest $pullRequest)

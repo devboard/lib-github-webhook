@@ -10,6 +10,7 @@ use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection;
 use DevboardLib\GitHubWebhook\Core\Status\Commit;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Status\StatusEvent;
 use PhpSpec\ObjectBehavior;
 
@@ -24,6 +25,7 @@ class StatusEventSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(StatusEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_status(GitHubStatus $status)
