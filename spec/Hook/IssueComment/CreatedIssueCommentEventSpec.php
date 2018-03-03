@@ -16,6 +16,7 @@ use DevboardLib\GitHub\GitHubIssueComment;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\CreatedIssueCommentEvent;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\IssueCommentEvent;
 use PhpSpec\ObjectBehavior;
@@ -32,6 +33,7 @@ class CreatedIssueCommentEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(CreatedIssueCommentEvent::class);
         $this->shouldImplement(IssueCommentEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_comment(GitHubIssueComment $comment)

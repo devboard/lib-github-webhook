@@ -12,6 +12,7 @@ use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 use DevboardLib\GitHubWebhook\Core\Push\Ref;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Push\DeleteTagPushEvent;
 use DevboardLib\GitHubWebhook\Hook\PushEvent;
 use PhpSpec\ObjectBehavior;
@@ -27,6 +28,7 @@ class DeleteTagPushEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(DeleteTagPushEvent::class);
         $this->shouldImplement(PushEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_ref(Ref $ref)

@@ -13,6 +13,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestAssignee;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\UnassignedPullRequestEvent;
 use PhpSpec\ObjectBehavior;
@@ -33,6 +34,7 @@ class UnassignedPullRequestEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(UnassignedPullRequestEvent::class);
         $this->shouldImplement(PullRequestEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_pull_request(PullRequest $pullRequest)

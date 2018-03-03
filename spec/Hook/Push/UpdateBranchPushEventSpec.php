@@ -16,6 +16,7 @@ use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 use DevboardLib\GitHubWebhook\Core\Push\Ref;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Push\UpdateBranchPushEvent;
 use DevboardLib\GitHubWebhook\Hook\PushEvent;
 use PhpSpec\ObjectBehavior;
@@ -57,6 +58,7 @@ class UpdateBranchPushEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(UpdateBranchPushEvent::class);
         $this->shouldImplement(PushEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_ref(Ref $ref)

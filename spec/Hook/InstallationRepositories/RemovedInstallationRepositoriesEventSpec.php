@@ -8,6 +8,7 @@ use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubInstallation;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\InstallationRepositories\InstallationRepositoriesEvent;
 use DevboardLib\GitHubWebhook\Hook\InstallationRepositories\RemovedInstallationRepositoriesEvent;
 use PhpSpec\ObjectBehavior;
@@ -23,6 +24,7 @@ class RemovedInstallationRepositoriesEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(RemovedInstallationRepositoriesEvent::class);
         $this->shouldImplement(InstallationRepositoriesEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_installation(GitHubInstallation $installation)

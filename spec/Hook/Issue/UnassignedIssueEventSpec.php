@@ -14,6 +14,7 @@ use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Issue\IssueEvent;
 use DevboardLib\GitHubWebhook\Hook\Issue\UnassignedIssueEvent;
 use PhpSpec\ObjectBehavior;
@@ -29,6 +30,7 @@ class UnassignedIssueEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(UnassignedIssueEvent::class);
         $this->shouldImplement(IssueEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_issue(GitHubIssue $issue)

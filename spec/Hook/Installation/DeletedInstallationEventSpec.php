@@ -7,6 +7,7 @@ namespace spec\DevboardLib\GitHubWebhook\Hook\Installation;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubInstallation;
 use DevboardLib\GitHubWebhook\Core\Sender;
+use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Installation\DeletedInstallationEvent;
 use DevboardLib\GitHubWebhook\Hook\Installation\InstallationEvent;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +23,7 @@ class DeletedInstallationEventSpec extends ObjectBehavior
     {
         $this->shouldHaveType(DeletedInstallationEvent::class);
         $this->shouldImplement(InstallationEvent::class);
+        $this->shouldImplement(GitHubHookEvent::class);
     }
 
     public function it_exposes_installation(GitHubInstallation $installation)
