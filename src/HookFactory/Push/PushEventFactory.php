@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\HookFactory\Push;
 
-use DevboardLib\GitHubWebhook\Hook\PushEvent;
+use DevboardLib\GitHubWebhook\Hook\Push\PushEvent;
 use DevboardLib\GitHubWebhook\HookFactory\GitHubHookEventFactory;
 use DevboardLib\GitHubWebhook\HookFactory\Push\Event\BasePushFactory;
 use DevboardLib\GitHubWebhook\HookFactory\Push\Event\CreateBranchPushEventFactory;

@@ -1,6 +1,6 @@
 definition:
   type: Interface
   instanceOf: DevboardLib\GitHubWebhook\Hook\IssueComment\IssueCommentEvent
-  parent: DevboardLib\GitHubWebhook\Hook\PushEvent
+  parent: DevboardLib\GitHubWebhook\Hook\Push\PushEvent
   constants: {  }
   methods: {  }
