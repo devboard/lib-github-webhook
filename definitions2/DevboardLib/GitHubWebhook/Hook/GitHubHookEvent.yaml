@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: DevboardLib\GitHubWebhook\Hook\GitHubHookEvent
+  parent: null
+  constants: {  }
+  methods: {  }
