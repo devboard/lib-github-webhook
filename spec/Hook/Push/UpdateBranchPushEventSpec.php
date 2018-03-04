@@ -17,8 +17,8 @@ use DevboardLib\GitHubWebhook\Core\Push\Ref;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
+use DevboardLib\GitHubWebhook\Hook\Push\PushEvent;
 use DevboardLib\GitHubWebhook\Hook\Push\UpdateBranchPushEvent;
-use DevboardLib\GitHubWebhook\Hook\PushEvent;
 use PhpSpec\ObjectBehavior;
 
 /**

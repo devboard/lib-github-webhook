@@ -9,7 +9,6 @@ use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 use DevboardLib\GitHubWebhook\Core\Push\Ref;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
-use DevboardLib\GitHubWebhook\Hook\PushEvent;
 
 /**
  * @see \spec\DevboardLib\GitHubWebhook\Hook\Push\DeleteBranchPushEventSpec

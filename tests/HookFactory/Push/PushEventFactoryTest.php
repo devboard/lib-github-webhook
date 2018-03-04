@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\HookFactory\Push;
 
-use DevboardLib\GitHubWebhook\Hook\PushEvent;
+use DevboardLib\GitHubWebhook\Hook\Push\PushEvent;
 use DevboardLib\GitHubWebhook\HookFactory\Push\PushEventFactory;
 use PHPUnit\Framework\TestCase;
 use Tests\DevboardLib\GitHubWebhook\HookFactory\Push\Event\CreateBranchPushEventFactoryTest;

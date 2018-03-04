@@ -18,7 +18,7 @@ use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Push\CreateTagPushEvent;
-use DevboardLib\GitHubWebhook\Hook\PushEvent;
+use DevboardLib\GitHubWebhook\Hook\Push\PushEvent;
 use PhpSpec\ObjectBehavior;
 
 /**

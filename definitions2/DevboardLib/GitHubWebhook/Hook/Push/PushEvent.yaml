@@ -1,6 +1,6 @@
 definition:
   type: Interface
-  instanceOf: DevboardLib\GitHubWebhook\Hook\PushEvent
+  instanceOf: DevboardLib\GitHubWebhook\Hook\Push\PushEvent
   parent: null
   constants: {  }
   methods: {  }

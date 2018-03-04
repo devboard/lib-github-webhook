@@ -3,7 +3,7 @@ definition:
   instanceOf: DevboardLib\GitHubWebhook\Hook\Push\CreateBranchPushEvent
   parent: null
   interfaces:
-    - DevboardLib\GitHubWebhook\Hook\PushEvent
+    - DevboardLib\GitHubWebhook\Hook\Push\PushEvent
   traits: {  }
   constants: {  }
   properties: {  }
