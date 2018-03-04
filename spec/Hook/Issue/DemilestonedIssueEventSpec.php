@@ -17,6 +17,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Issue\DemilestonedIssueEvent;
 use DevboardLib\GitHubWebhook\Hook\Issue\IssueEvent;
+use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
 use PhpSpec\ObjectBehavior;
 
 class DemilestonedIssueEventSpec extends ObjectBehavior
@@ -31,6 +32,7 @@ class DemilestonedIssueEventSpec extends ObjectBehavior
         $this->shouldHaveType(DemilestonedIssueEvent::class);
         $this->shouldImplement(IssueEvent::class);
         $this->shouldImplement(GitHubHookEvent::class);
+        $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
     public function it_exposes_issue(GitHubIssue $issue)

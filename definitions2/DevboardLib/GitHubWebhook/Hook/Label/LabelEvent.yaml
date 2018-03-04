@@ -1,6 +1,6 @@
 definition:
   type: Interface
   instanceOf: DevboardLib\GitHubWebhook\Hook\Label\LabelEvent
-  parent: null
+  parent: DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent
   constants: {  }
   methods: {  }

@@ -9,13 +9,13 @@ use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection;
 use DevboardLib\GitHubWebhook\Core\Status\Commit;
-use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
+use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
 
 /**
  * @see \spec\DevboardLib\GitHubWebhook\Hook\Status\StatusEventSpec
  * @see \Tests\DevboardLib\GitHubWebhook\Hook\Status\StatusEventTest
  */
-class StatusEvent implements GitHubHookEvent
+class StatusEvent implements RepositoryRelatedEvent
 {
     /** @var GitHubStatus */
     private $status;
