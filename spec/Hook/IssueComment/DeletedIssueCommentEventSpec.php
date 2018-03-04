@@ -19,6 +19,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\DeletedIssueCommentEvent;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\IssueCommentEvent;
+use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
 use PhpSpec\ObjectBehavior;
 
 class DeletedIssueCommentEventSpec extends ObjectBehavior
@@ -34,6 +35,7 @@ class DeletedIssueCommentEventSpec extends ObjectBehavior
         $this->shouldHaveType(DeletedIssueCommentEvent::class);
         $this->shouldImplement(IssueCommentEvent::class);
         $this->shouldImplement(GitHubHookEvent::class);
+        $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
     public function it_exposes_comment(GitHubIssueComment $comment)

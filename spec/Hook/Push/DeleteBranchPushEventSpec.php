@@ -15,6 +15,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Push\DeleteBranchPushEvent;
 use DevboardLib\GitHubWebhook\Hook\Push\PushEvent;
+use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
 use PhpSpec\ObjectBehavior;
 
 class DeleteBranchPushEventSpec extends ObjectBehavior
@@ -29,6 +30,7 @@ class DeleteBranchPushEventSpec extends ObjectBehavior
         $this->shouldHaveType(DeleteBranchPushEvent::class);
         $this->shouldImplement(PushEvent::class);
         $this->shouldImplement(GitHubHookEvent::class);
+        $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
     public function it_exposes_ref(Ref $ref)

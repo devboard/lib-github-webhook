@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\Issue;
 
-use DevboardLib\GitHubWebhook\Hook\Push\PushEvent;
+use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
 
-interface IssueEvent extends PushEvent
+interface IssueEvent extends RepositoryRelatedEvent
 {
 }

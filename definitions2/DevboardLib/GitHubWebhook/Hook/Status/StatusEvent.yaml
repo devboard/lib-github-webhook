@@ -2,7 +2,8 @@ definition:
   type: SimpleEntity
   instanceOf: DevboardLib\GitHubWebhook\Hook\Status\StatusEvent
   parent: null
-  interfaces: { }
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent
   traits: {  }
   constants: {  }
   properties: {  }

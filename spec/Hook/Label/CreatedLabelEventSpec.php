@@ -14,6 +14,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Label\CreatedLabelEvent;
 use DevboardLib\GitHubWebhook\Hook\Label\LabelEvent;
+use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
 use PhpSpec\ObjectBehavior;
 
 class CreatedLabelEventSpec extends ObjectBehavior
@@ -28,6 +29,7 @@ class CreatedLabelEventSpec extends ObjectBehavior
         $this->shouldHaveType(CreatedLabelEvent::class);
         $this->shouldImplement(LabelEvent::class);
         $this->shouldImplement(GitHubHookEvent::class);
+        $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
     public function it_exposes_label(GitHubLabel $label)

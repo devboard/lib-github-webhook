@@ -14,6 +14,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\EditedPullRequestEvent;
 use DevboardLib\GitHubWebhook\Hook\PullRequest\PullRequestEvent;
+use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
 use PhpSpec\ObjectBehavior;
 
 class EditedPullRequestEventSpec extends ObjectBehavior
@@ -28,6 +29,7 @@ class EditedPullRequestEventSpec extends ObjectBehavior
         $this->shouldHaveType(EditedPullRequestEvent::class);
         $this->shouldImplement(PullRequestEvent::class);
         $this->shouldImplement(GitHubHookEvent::class);
+        $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
     public function it_exposes_pull_request(PullRequest $pullRequest)
