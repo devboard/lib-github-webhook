@@ -8,26 +8,21 @@ use DevboardLib\Generix\EmailAddress;
 use DevboardLib\GitHub\User\UserLogin;
 
 /**
- * @see PusherSpec
- * @see PusherTest
+ * @see \spec\DevboardLib\GitHubWebhook\Core\Push\PusherSpec
+ * @see \Tests\DevboardLib\GitHubWebhook\Core\Push\PusherTest
  */
 class Pusher
 {
     /** @var UserLogin */
     private $login;
 
-    /** @var EmailAddress */
+    /** @var EmailAddress|null */
     private $emailAddress;
 
-    public function __construct(UserLogin $login, EmailAddress $emailAddress)
+    public function __construct(UserLogin $login, ?EmailAddress $emailAddress)
     {
         $this->login        = $login;
         $this->emailAddress = $emailAddress;
-    }
-
-    public static function create(string $login, string $emailAddress): self
-    {
-        return new self(new UserLogin($login), new EmailAddress($emailAddress));
     }
 
     public function getLogin(): UserLogin
@@ -35,18 +30,39 @@ class Pusher
         return $this->login;
     }
 
-    public function getEmailAddress(): EmailAddress
+    public function getEmailAddress(): ?EmailAddress
     {
         return $this->emailAddress;
     }
 
+    public function hasEmailAddress(): bool
+    {
+        if (null === $this->emailAddress) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function serialize(): array
     {
-        return ['login' => (string) $this->login, 'emailAddress' => (string) $this->emailAddress];
+        if (null === $this->emailAddress) {
+            $emailAddress = null;
+        } else {
+            $emailAddress = $this->emailAddress->serialize();
+        }
+
+        return ['login' => $this->login->serialize(), 'emailAddress' => $emailAddress];
     }
 
     public static function deserialize(array $data): self
     {
-        return new self(new UserLogin($data['login']), new EmailAddress($data['emailAddress']));
+        if (null === $data['emailAddress']) {
+            $emailAddress = null;
+        } else {
+            $emailAddress = EmailAddress::deserialize($data['emailAddress']);
+        }
+
+        return new self(UserLogin::deserialize($data['login']), $emailAddress);
     }
 }

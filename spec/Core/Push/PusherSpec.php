@@ -21,18 +21,32 @@ class PusherSpec extends ObjectBehavior
         $this->shouldHaveType(Pusher::class);
     }
 
-    public function it_can_be_created_from_strings()
-    {
-        $this->create('devboard-test', 'nobody@example.com')->shouldReturnAnInstanceOf(Pusher::class);
-    }
-
-    public function it_should_expose_user_login_as_object(UserLogin $login)
+    public function it_exposes_login(UserLogin $login)
     {
         $this->getLogin()->shouldReturn($login);
     }
 
-    public function it_should_expose_repository_name_as_object(EmailAddress $emailAddress)
+    public function it_exposes_email_address(EmailAddress $emailAddress)
     {
         $this->getEmailAddress()->shouldReturn($emailAddress);
+    }
+
+    public function it_has_email_address()
+    {
+        $this->hasEmailAddress()->shouldReturn(true);
+    }
+
+    public function it_can_be_serialized(UserLogin $login, EmailAddress $emailAddress)
+    {
+        $login->serialize()->shouldBeCalled()->willReturn('Octo Cat');
+        $emailAddress->serialize()->shouldBeCalled()->willReturn('octocat@example.com');
+        $this->serialize()->shouldReturn(['login' => 'Octo Cat', 'emailAddress' => 'octocat@example.com']);
+    }
+
+    public function it_can_be_deserialized()
+    {
+        $input = ['login' => 'Octo Cat', 'emailAddress' => 'octocat@example.com'];
+
+        $this->deserialize($input)->shouldReturnAnInstanceOf(Pusher::class);
     }
 }

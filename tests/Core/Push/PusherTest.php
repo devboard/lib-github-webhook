@@ -11,32 +11,51 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DevboardLib\GitHubWebhook\Core\Push\Pusher
- * @group  unit
+ * @group  todo
  */
 class PusherTest extends TestCase
 {
-    /** @dataProvider provideValues */
-    public function testGetters(UserLogin $login, EmailAddress $emailAddress)
-    {
-        $sut = new Pusher($login, $emailAddress);
+    /** @var UserLogin */
+    private $login;
 
-        $this->assertEquals($login, $sut->getLogin());
-        $this->assertEquals($emailAddress, $sut->getEmailAddress());
+    /** @var EmailAddress|null */
+    private $emailAddress;
+
+    /** @var Pusher */
+    private $sut;
+
+    public function setUp()
+    {
+        $this->login        = new UserLogin('Octo Cat');
+        $this->emailAddress = new EmailAddress('octocat@example.com');
+        $this->sut          = new Pusher($this->login, $this->emailAddress);
     }
 
-    /** @dataProvider provideStringValues */
-    public function testItCanBeCreatedFromStrings(string $login, string $emailAddress)
+    public function testGetLogin()
     {
-        $this->assertInstanceOf(Pusher::class, Pusher::create($login, $emailAddress));
+        self::assertSame($this->login, $this->sut->getLogin());
     }
 
-    public function provideValues(): array
+    public function testGetEmailAddress()
     {
-        return [[new UserLogin('devboard-test'), new EmailAddress('nobody@example.com')]];
+        self::assertSame($this->emailAddress, $this->sut->getEmailAddress());
     }
 
-    public function provideStringValues(): array
+    public function testHasEmailAddress()
     {
-        return [['devboard-test', 'nobody@example.com']];
+        self::assertTrue($this->sut->hasEmailAddress());
+    }
+
+    public function testSerialize()
+    {
+        $expected = ['login' => 'Octo Cat', 'emailAddress' => 'octocat@example.com'];
+
+        self::assertSame($expected, $this->sut->serialize());
+    }
+
+    public function testDeserialize()
+    {
+        $serialized = json_encode($this->sut->serialize());
+        self::assertEquals($this->sut, Pusher::deserialize(json_decode($serialized, true)));
     }
 }
