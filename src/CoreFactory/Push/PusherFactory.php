@@ -12,6 +12,12 @@ class PusherFactory
 {
     public function create(array $data): Pusher
     {
-        return new Pusher(new UserLogin($data['name']), new EmailAddress($data['email']));
+        if (null !== $data['email']) {
+            $emailAddress = new EmailAddress($data['email']);
+        } else {
+            $emailAddress = null;
+        }
+
+        return new Pusher(new UserLogin($data['name']), $emailAddress);
     }
 }

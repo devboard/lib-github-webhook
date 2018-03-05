@@ -11,6 +11,7 @@ definition:
     login:
       instanceOf: DevboardLib\GitHub\User\UserLogin
       examples: ["Octo Cat"]
-    email:
+    emailAddress:
       instanceOf: DevboardLib\Generix\EmailAddress
+      nullable: true
       examples: ["octocat@example.com"]
