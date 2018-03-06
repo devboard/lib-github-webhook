@@ -51,6 +51,11 @@ class DeleteBranchPushEvent implements PushEvent
         return $this->ref;
     }
 
+    public function getReferenceName(): string
+    {
+        return $this->ref->getReferenceName();
+    }
+
     public function getBefore(): CommitSha
     {
         return $this->before;

@@ -94,6 +94,11 @@ class CreateTagPushEventTest extends TestCase
         self::assertSame($this->ref, $this->sut->getRef());
     }
 
+    public function testGetReferenceName()
+    {
+        self::assertSame('new-feature', $this->sut->getReferenceName());
+    }
+
     public function testGetAfter()
     {
         self::assertSame($this->after, $this->sut->getAfter());
