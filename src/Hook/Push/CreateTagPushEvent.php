@@ -81,6 +81,11 @@ class CreateTagPushEvent implements PushEvent
         return $this->ref;
     }
 
+    public function getReferenceName(): string
+    {
+        return $this->ref->getReferenceName();
+    }
+
     public function getAfter(): CommitSha
     {
         return $this->after;

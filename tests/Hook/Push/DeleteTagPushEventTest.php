@@ -65,6 +65,11 @@ class DeleteTagPushEventTest extends TestCase
         self::assertSame($this->ref, $this->sut->getRef());
     }
 
+    public function testGetReferenceName()
+    {
+        self::assertSame('new-feature-tag', $this->sut->getReferenceName());
+    }
+
     public function testGetBefore()
     {
         self::assertSame($this->before, $this->sut->getBefore());
