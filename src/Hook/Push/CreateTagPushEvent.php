@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\Hook\Push;
 
 use DevboardLib\Git\Commit\CommitSha;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\Push\Commit;
 use DevboardLib\GitHubWebhook\Core\Push\CommitCollection;
 use DevboardLib\GitHubWebhook\Core\Push\CompareChangesUrl;
@@ -107,6 +109,16 @@ class CreateTagPushEvent implements PushEvent
     public function getRepo(): Repo
     {
         return $this->repo;
+    }
+
+    public function getRepoId(): RepoId
+    {
+        return $this->repo->getId();
+    }
+
+    public function getRepoFullName(): RepoFullName
+    {
+        return $this->repo->getFullName();
     }
 
     public function isForced(): bool

@@ -10,6 +10,8 @@ use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\Installation\InstallationId;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
@@ -66,6 +68,16 @@ class UnlabeledPullRequestEventTest extends TestCase
     public function testGetRepo()
     {
         self::assertSame($this->repo, $this->sut->getRepo());
+    }
+
+    public function testGetRepoId()
+    {
+        self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
+    }
+
+    public function testGetRepoFullName()
+    {
+        self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
     public function testGetInstallationId()

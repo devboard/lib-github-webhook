@@ -18,6 +18,8 @@ use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\CircleCi;
 use DevboardLib\GitHub\GitHubStatus;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\Status\State\Pending;
 use DevboardLib\GitHub\Status\StatusContext;
 use DevboardLib\GitHub\Status\StatusCreator;
@@ -98,6 +100,16 @@ class StatusEventTest extends TestCase
     public function testGetRepo()
     {
         self::assertSame($this->repo, $this->sut->getRepo());
+    }
+
+    public function testGetRepoId()
+    {
+        self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
+    }
+
+    public function testGetRepoFullName()
+    {
+        self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
     public function testGetSender()

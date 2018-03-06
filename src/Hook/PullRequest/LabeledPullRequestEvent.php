@@ -6,6 +6,8 @@ namespace DevboardLib\GitHubWebhook\Hook\PullRequest;
 
 use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\Installation\InstallationId;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
@@ -54,6 +56,16 @@ class LabeledPullRequestEvent implements PullRequestEvent
     public function getRepo(): Repo
     {
         return $this->repo;
+    }
+
+    public function getRepoId(): RepoId
+    {
+        return $this->repo->getId();
+    }
+
+    public function getRepoFullName(): RepoFullName
+    {
+        return $this->repo->getFullName();
     }
 
     public function getInstallationId(): InstallationId
