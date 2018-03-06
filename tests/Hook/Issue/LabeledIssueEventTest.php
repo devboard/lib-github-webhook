@@ -24,6 +24,8 @@ use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
 use DevboardLib\GitHub\Issue\IssueTitle;
 use DevboardLib\GitHub\Issue\IssueUpdatedAt;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Issue\LabeledIssueEvent;
@@ -84,6 +86,16 @@ class LabeledIssueEventTest extends TestCase
     public function testGetRepo()
     {
         self::assertSame($this->repo, $this->sut->getRepo());
+    }
+
+    public function testGetRepoId()
+    {
+        self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
+    }
+
+    public function testGetRepoFullName()
+    {
+        self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
     public function testGetInstallationId()

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\Hook\Push;
 
 use DevboardLib\Git\Commit\CommitSha;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 use DevboardLib\GitHubWebhook\Core\Push\Ref;
 use DevboardLib\GitHubWebhook\Core\Repo;
@@ -57,6 +59,16 @@ class DeleteTagPushEvent implements PushEvent
     public function getRepo(): Repo
     {
         return $this->repo;
+    }
+
+    public function getRepoId(): RepoId
+    {
+        return $this->repo->getId();
+    }
+
+    public function getRepoFullName(): RepoFullName
+    {
+        return $this->repo->getFullName();
     }
 
     public function isForced(): bool

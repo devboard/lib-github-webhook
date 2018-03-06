@@ -10,6 +10,8 @@ use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\Generix\EmailAddress;
 use DevboardLib\Git\Commit\CommitSha;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\Push\Commit;
 use DevboardLib\GitHubWebhook\Core\Push\CommitCollection;
@@ -130,6 +132,16 @@ class UpdateTagPushEventTest extends TestCase
     public function testGetRepo()
     {
         self::assertSame($this->repo, $this->sut->getRepo());
+    }
+
+    public function testGetRepoId()
+    {
+        self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
+    }
+
+    public function testGetRepoFullName()
+    {
+        self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
     public function testGetPusher()

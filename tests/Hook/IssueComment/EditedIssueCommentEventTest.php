@@ -32,6 +32,8 @@ use DevboardLib\GitHub\IssueComment\IssueCommentCreatedAt;
 use DevboardLib\GitHub\IssueComment\IssueCommentHtmlUrl;
 use DevboardLib\GitHub\IssueComment\IssueCommentId;
 use DevboardLib\GitHub\IssueComment\IssueCommentUpdatedAt;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\EditedIssueCommentEvent;
@@ -113,6 +115,16 @@ class EditedIssueCommentEventTest extends TestCase
     public function testGetRepo()
     {
         self::assertSame($this->repo, $this->sut->getRepo());
+    }
+
+    public function testGetRepoId()
+    {
+        self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
+    }
+
+    public function testGetRepoFullName()
+    {
+        self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
     public function testGetInstallationId()

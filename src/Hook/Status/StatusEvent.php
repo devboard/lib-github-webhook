@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\Hook\Status;
 
 use DevboardLib\GitHub\GitHubStatus;
+use DevboardLib\GitHub\Repo\RepoFullName;
+use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection;
@@ -55,6 +57,16 @@ class StatusEvent implements RepositoryRelatedEvent
     public function getRepo(): Repo
     {
         return $this->repo;
+    }
+
+    public function getRepoId(): RepoId
+    {
+        return $this->repo->getId();
+    }
+
+    public function getRepoFullName(): RepoFullName
+    {
+        return $this->repo->getFullName();
     }
 
     public function getBranches(): BranchNameCollection
