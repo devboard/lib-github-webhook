@@ -73,7 +73,7 @@ class PullRequestReviewTest extends TestCase
             true
         );
         $this->authorAssociation = 'authorAssociation';
-        $this->state             = new PullRequestReviewState('open');
+        $this->state             = new PullRequestReviewState('approved');
         $this->commitSha         = new CommitSha('sha');
         $this->urls              = new PullRequestReviewUrls(
             new PullRequestReviewHtmlUrl('htmlUrl'), new PullRequestApiUrl('apiUrl')
@@ -152,7 +152,7 @@ class PullRequestReviewTest extends TestCase
                 'siteAdmin'  => true,
             ],
             'authorAssociation' => 'authorAssociation',
-            'state'             => 'open',
+            'state'             => 'approved',
             'commitSha'         => 'sha',
             'urls'              => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
             'submittedAt'       => '2018-01-01T00:01:00+00:00',
