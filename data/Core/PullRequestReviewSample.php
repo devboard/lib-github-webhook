@@ -17,7 +17,7 @@ class PullRequestReviewSample
                 'body'              => 'value',
                 'author'            => PullRequestAuthorSample::serialized('octocat'),
                 'authorAssociation' => 'authorAssociation',
-                'state'             => 'open',
+                'state'             => 'approved',
                 'commitSha'         => 'sha',
                 'urls'              => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
                 'submittedAt'       => '2018-01-01T00:01:00+00:00',

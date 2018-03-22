@@ -93,7 +93,7 @@ class PullRequestReviewSpec extends ObjectBehavior
         $id->serialize()->shouldBeCalled()->willReturn(1);
         $body->serialize()->shouldBeCalled()->willReturn('value');
         $author->serialize()->shouldBeCalled()->willReturn(PullRequestAuthorSample::serialized('octocat'));
-        $state->serialize()->shouldBeCalled()->willReturn('open');
+        $state->serialize()->shouldBeCalled()->willReturn('approved');
         $commitSha->serialize()->shouldBeCalled()->willReturn('sha');
         $urls->serialize()->shouldBeCalled()->willReturn(['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl']);
         $submittedAt->serialize()->shouldBeCalled()->willReturn('2018-01-01T00:01:00+00:00');
@@ -103,7 +103,7 @@ class PullRequestReviewSpec extends ObjectBehavior
                 'body'              => 'value',
                 'author'            => PullRequestAuthorSample::serialized('octocat'),
                 'authorAssociation' => 'authorAssociation',
-                'state'             => 'open',
+                'state'             => 'approved',
                 'commitSha'         => 'sha',
                 'urls'              => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
                 'submittedAt'       => '2018-01-01T00:01:00+00:00',
@@ -118,7 +118,7 @@ class PullRequestReviewSpec extends ObjectBehavior
             'body'              => 'value',
             'author'            => PullRequestAuthorSample::serialized('octocat'),
             'authorAssociation' => 'authorAssociation',
-            'state'             => 'open',
+            'state'             => 'approved',
             'commitSha'         => 'sha',
             'urls'              => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
             'submittedAt'       => '2018-01-01T00:01:00+00:00',
