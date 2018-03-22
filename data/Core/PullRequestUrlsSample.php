@@ -20,7 +20,6 @@ class PullRequestUrlsSample
                 'issueUrl'          => 'issueUrl',
                 'patchUrl'          => 'patchUrl',
                 'reviewCommentUrl'  => 'reviewCommentUrl',
-                'reviewComments'    => 1,
                 'reviewCommentsUrl' => 'reviewCommentsUrl',
                 'statusesUrl'       => 'statusesUrl',
             ],
