@@ -21,8 +21,6 @@ definition:
       instanceOf: string
     reviewCommentUrl:
       instanceOf: string
-    reviewComments:
-      instanceOf: int
     reviewCommentsUrl:
       instanceOf: string
     statusesUrl:

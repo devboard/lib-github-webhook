@@ -22,7 +22,6 @@ class PullRequestUrlsSpec extends ObjectBehavior
             $issueUrl = 'issueUrl',
             $patchUrl = 'patchUrl',
             $reviewCommentUrl = 'reviewCommentUrl',
-            $reviewComments = 1,
             $reviewCommentsUrl = 'reviewCommentsUrl',
             $statusesUrl = 'statusesUrl'
         );
@@ -73,11 +72,6 @@ class PullRequestUrlsSpec extends ObjectBehavior
         $this->getReviewCommentUrl()->shouldReturn('reviewCommentUrl');
     }
 
-    public function it_exposes_review_comments()
-    {
-        $this->getReviewComments()->shouldReturn(1);
-    }
-
     public function it_exposes_review_comments_url()
     {
         $this->getReviewCommentsUrl()->shouldReturn('reviewCommentsUrl');
@@ -102,7 +96,6 @@ class PullRequestUrlsSpec extends ObjectBehavior
                 'issueUrl'          => 'issueUrl',
                 'patchUrl'          => 'patchUrl',
                 'reviewCommentUrl'  => 'reviewCommentUrl',
-                'reviewComments'    => 1,
                 'reviewCommentsUrl' => 'reviewCommentsUrl',
                 'statusesUrl'       => 'statusesUrl',
             ]
@@ -120,7 +113,6 @@ class PullRequestUrlsSpec extends ObjectBehavior
             'issueUrl'          => 'issueUrl',
             'patchUrl'          => 'patchUrl',
             'reviewCommentUrl'  => 'reviewCommentUrl',
-            'reviewComments'    => 1,
             'reviewCommentsUrl' => 'reviewCommentsUrl',
             'statusesUrl'       => 'statusesUrl',
         ];

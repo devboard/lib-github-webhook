@@ -37,9 +37,6 @@ class PullRequestUrls
     /** @var string */
     private $reviewCommentUrl;
 
-    /** @var int */
-    private $reviewComments;
-
     /** @var string */
     private $reviewCommentsUrl;
 
@@ -56,7 +53,6 @@ class PullRequestUrls
         string $issueUrl,
         string $patchUrl,
         string $reviewCommentUrl,
-        int $reviewComments,
         string $reviewCommentsUrl,
         string $statusesUrl
     ) {
@@ -68,7 +64,6 @@ class PullRequestUrls
         $this->issueUrl          = $issueUrl;
         $this->patchUrl          = $patchUrl;
         $this->reviewCommentUrl  = $reviewCommentUrl;
-        $this->reviewComments    = $reviewComments;
         $this->reviewCommentsUrl = $reviewCommentsUrl;
         $this->statusesUrl       = $statusesUrl;
     }
@@ -113,11 +108,6 @@ class PullRequestUrls
         return $this->reviewCommentUrl;
     }
 
-    public function getReviewComments(): int
-    {
-        return $this->reviewComments;
-    }
-
     public function getReviewCommentsUrl(): string
     {
         return $this->reviewCommentsUrl;
@@ -139,7 +129,6 @@ class PullRequestUrls
             'issueUrl'          => $this->issueUrl,
             'patchUrl'          => $this->patchUrl,
             'reviewCommentUrl'  => $this->reviewCommentUrl,
-            'reviewComments'    => $this->reviewComments,
             'reviewCommentsUrl' => $this->reviewCommentsUrl,
             'statusesUrl'       => $this->statusesUrl,
         ];
@@ -156,7 +145,6 @@ class PullRequestUrls
             $data['issueUrl'],
             $data['patchUrl'],
             $data['reviewCommentUrl'],
-            $data['reviewComments'],
             $data['reviewCommentsUrl'],
             $data['statusesUrl']
         );

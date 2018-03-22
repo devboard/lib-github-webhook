@@ -39,9 +39,6 @@ class PullRequestUrlsTest extends TestCase
     /** @var string */
     private $reviewCommentUrl;
 
-    /** @var int */
-    private $reviewComments;
-
     /** @var string */
     private $reviewCommentsUrl;
 
@@ -61,7 +58,6 @@ class PullRequestUrlsTest extends TestCase
         $this->issueUrl          = 'issueUrl';
         $this->patchUrl          = 'patchUrl';
         $this->reviewCommentUrl  = 'reviewCommentUrl';
-        $this->reviewComments    = 1;
         $this->reviewCommentsUrl = 'reviewCommentsUrl';
         $this->statusesUrl       = 'statusesUrl';
         $this->sut               = new PullRequestUrls(
@@ -73,7 +69,6 @@ class PullRequestUrlsTest extends TestCase
             $this->issueUrl,
             $this->patchUrl,
             $this->reviewCommentUrl,
-            $this->reviewComments,
             $this->reviewCommentsUrl,
             $this->statusesUrl
         );
@@ -119,11 +114,6 @@ class PullRequestUrlsTest extends TestCase
         self::assertSame($this->reviewCommentUrl, $this->sut->getReviewCommentUrl());
     }
 
-    public function testGetReviewComments()
-    {
-        self::assertSame($this->reviewComments, $this->sut->getReviewComments());
-    }
-
     public function testGetReviewCommentsUrl()
     {
         self::assertSame($this->reviewCommentsUrl, $this->sut->getReviewCommentsUrl());
@@ -145,7 +135,6 @@ class PullRequestUrlsTest extends TestCase
             'issueUrl'          => 'issueUrl',
             'patchUrl'          => 'patchUrl',
             'reviewCommentUrl'  => 'reviewCommentUrl',
-            'reviewComments'    => 1,
             'reviewCommentsUrl' => 'reviewCommentsUrl',
             'statusesUrl'       => 'statusesUrl',
         ];

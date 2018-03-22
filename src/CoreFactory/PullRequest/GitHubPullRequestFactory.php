@@ -124,7 +124,6 @@ class GitHubPullRequestFactory
             $data['issue_url'],
             $data['patch_url'],
             $data['review_comment_url'],
-            $data['review_comments'],
             $data['review_comments_url'],
             $data['statuses_url']
         );
