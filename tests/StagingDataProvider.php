@@ -80,6 +80,15 @@ class StagingDataProvider
         }
     }
 
+    public function getGitHubPullRequestReviewData(): Generator
+    {
+        if (true === is_dir($this->basePath)) {
+            foreach ($this->loadAllFilesMatchingEventType('pull_request_review') as $file) {
+                yield $this->getDecodedJsonFromFile($file->getRealPath());
+            }
+        }
+    }
+
     public function getGitHubPushEventData(): Generator
     {
         if (true === is_dir($this->basePath)) {

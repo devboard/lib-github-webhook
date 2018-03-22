@@ -1,0 +1,27 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReview
+  parent: null
+  interfaces: []
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: DevboardLib\GitHub\PullRequestReview\PullRequestReviewId
+    body:
+      instanceOf: DevboardLib\GitHub\PullRequestReview\PullRequestReviewBody
+    author:
+      instanceOf: DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthor
+    authorAssociation:
+      instanceOf: string
+      nullable: true
+    state:
+      instanceOf: DevboardLib\GitHub\PullRequestReview\PullRequestReviewState
+    commitSha:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+    urls:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReviewUrls
+    submittedAt:
+      instanceOf: DevboardLib\GitHub\PullRequestReview\PullRequestReviewSubmittedAt
+      nullable: true
+
+

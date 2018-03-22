@@ -1,0 +1,21 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Hook\PullRequestReview\SubmittedPullRequestReview
+  parent: null
+  interfaces:
+    - DevboardLib\GitHubWebhook\Hook\PullRequestReview\PullRequestReviewEvent
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    review:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReview
+    pullRequest:
+      instanceOf: DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest
+    repo:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Repo
+    installationId:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationId
+    sender:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Sender
