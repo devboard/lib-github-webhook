@@ -133,16 +133,16 @@
         },
         {
             "name": "devboard/lib-github",
-            "version": "0.1.6",
+            "version": "0.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devboard/lib-github.git",
-                "reference": "950606e2a0d86cb2286dfb8ba9d22400be6dbf3f"
+                "reference": "2420cf5c6a2916c4b232324994286fb42ab5874b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devboard/lib-github/zipball/950606e2a0d86cb2286dfb8ba9d22400be6dbf3f",
-                "reference": "950606e2a0d86cb2286dfb8ba9d22400be6dbf3f",
+                "url": "https://api.github.com/repos/devboard/lib-github/zipball/2420cf5c6a2916c4b232324994286fb42ab5874b",
+                "reference": "2420cf5c6a2916c4b232324994286fb42ab5874b",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
                 "proprietary"
             ],
             "description": "Devboard lib for GitHub",
-            "time": "2018-03-19T11:27:26+00:00"
+            "time": "2018-03-22T07:12:15+00:00"
         },
         {
             "name": "myclabs/php-enum",
@@ -1657,7 +1657,7 @@
                     "homepage": "http://blog.astrumfutura.com"
                 },
                 {
-                    "name": "Théo Fidry",
+                    "name": "Théo FIDRY",
                     "email": "theo.fidry@gmail.com"
                 }
             ],
@@ -1711,7 +1711,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 }
