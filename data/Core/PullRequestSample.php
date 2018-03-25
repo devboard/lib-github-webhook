@@ -22,7 +22,6 @@ class PullRequestSample
                 'body'                => 'value',
                 'state'               => 'open',
                 'author'              => PullRequestAuthorSample::serialized('octocat'),
-                'authorAssociation'   => 'authorAssociation',
                 'assignees'           => [PullRequestAssigneeSample::serialized('octocat')],
                 'requestedReviewers'  => [PullRequestRequestedReviewerSample::serialized('octocat')],
                 'requestedTeams'      => ['todo'],

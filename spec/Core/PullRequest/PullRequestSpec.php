@@ -64,7 +64,6 @@ class PullRequestSpec extends ObjectBehavior
             $body,
             $state,
             $author,
-            $authorAssociation = 'authorAssociation',
             $assignees,
             $requestedReviewers,
             $requestedTeams,
@@ -129,11 +128,6 @@ class PullRequestSpec extends ObjectBehavior
     public function it_exposes_author(PullRequestAuthor $author)
     {
         $this->getAuthor()->shouldReturn($author);
-    }
-
-    public function it_exposes_author_association()
-    {
-        $this->getAuthorAssociation()->shouldReturn('authorAssociation');
     }
 
     public function it_exposes_assignees(PullRequestAssigneeCollection $assignees)
@@ -224,11 +218,6 @@ class PullRequestSpec extends ObjectBehavior
     public function it_exposes_updated_at(PullRequestUpdatedAt $updatedAt)
     {
         $this->getUpdatedAt()->shouldReturn($updatedAt);
-    }
-
-    public function it_has_author_association()
-    {
-        $this->hasAuthorAssociation()->shouldReturn(true);
     }
 
     public function it_has_rebaseable()
@@ -857,8 +846,7 @@ class PullRequestSpec extends ObjectBehavior
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
-                'authorAssociation' => 'authorAssociation',
-                'assignees'         => [
+                'assignees' => [
                     [
                         'userId'     => 1,
                         'login'      => 'value',
@@ -1184,17 +1172,17 @@ class PullRequestSpec extends ObjectBehavior
             'body'   => 'value',
             'state'  => 'open',
             'author' => [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
+                'userId'      => 1,
+                'login'       => 'value',
+                'type'        => 'User',
+                'association' => 'COLLABORATOR',
+                'avatarUrl'   => 'avatarUrl',
+                'gravatarId'  => 'id',
+                'htmlUrl'     => 'htmlUrl',
+                'apiUrl'      => 'apiUrl',
+                'siteAdmin'   => true,
             ],
-            'authorAssociation' => 'authorAssociation',
-            'assignees'         => [
+            'assignees' => [
                 [
                     'userId'     => 1,
                     'login'      => 'value',

@@ -14,6 +14,7 @@ use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthor;
+use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthorAssociation;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewBody;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewHtmlUrl;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewId;
@@ -40,9 +41,6 @@ class PullRequestReviewTest extends TestCase
     /** @var PullRequestReviewAuthor */
     private $author;
 
-    /** @var string|null */
-    private $authorAssociation;
-
     /** @var PullRequestReviewState */
     private $state;
 
@@ -66,28 +64,21 @@ class PullRequestReviewTest extends TestCase
             new AccountId(1),
             new AccountLogin('value'),
             AccountType::USER(),
+            PullRequestReviewAuthorAssociation::COLLABORATOR(),
             new AccountAvatarUrl('avatarUrl'),
             new GravatarId('id'),
             new AccountHtmlUrl('htmlUrl'),
             new AccountApiUrl('apiUrl'),
             true
         );
-        $this->authorAssociation = 'authorAssociation';
-        $this->state             = new PullRequestReviewState('open');
-        $this->commitSha         = new CommitSha('sha');
-        $this->urls              = new PullRequestReviewUrls(
+        $this->state     = new PullRequestReviewState('approved');
+        $this->commitSha = new CommitSha('sha');
+        $this->urls      = new PullRequestReviewUrls(
             new PullRequestReviewHtmlUrl('htmlUrl'), new PullRequestApiUrl('apiUrl')
         );
         $this->submittedAt = new PullRequestReviewSubmittedAt('2018-01-01T00:01:00+00:00');
         $this->sut         = new PullRequestReview(
-            $this->id,
-            $this->body,
-            $this->author,
-            $this->authorAssociation,
-            $this->state,
-            $this->commitSha,
-            $this->urls,
-            $this->submittedAt
+            $this->id, $this->body, $this->author, $this->state, $this->commitSha, $this->urls, $this->submittedAt
         );
     }
 
@@ -104,11 +95,6 @@ class PullRequestReviewTest extends TestCase
     public function testGetAuthor()
     {
         self::assertSame($this->author, $this->sut->getAuthor());
-    }
-
-    public function testGetAuthorAssociation()
-    {
-        self::assertSame($this->authorAssociation, $this->sut->getAuthorAssociation());
     }
 
     public function testGetState()
@@ -131,31 +117,26 @@ class PullRequestReviewTest extends TestCase
         self::assertSame($this->submittedAt, $this->sut->getSubmittedAt());
     }
 
-    public function testHasAuthorAssociation()
-    {
-        self::assertTrue($this->sut->hasAuthorAssociation());
-    }
-
     public function testSerialize()
     {
         $expected = [
             'id'     => 1,
             'body'   => 'value',
             'author' => [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
+                'userId'      => 1,
+                'login'       => 'value',
+                'type'        => 'User',
+                'association' => 'COLLABORATOR',
+                'avatarUrl'   => 'avatarUrl',
+                'gravatarId'  => 'id',
+                'htmlUrl'     => 'htmlUrl',
+                'apiUrl'      => 'apiUrl',
+                'siteAdmin'   => true,
             ],
-            'authorAssociation' => 'authorAssociation',
-            'state'             => 'open',
-            'commitSha'         => 'sha',
-            'urls'              => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
-            'submittedAt'       => '2018-01-01T00:01:00+00:00',
+            'state'       => 'approved',
+            'commitSha'   => 'sha',
+            'urls'        => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
+            'submittedAt' => '2018-01-01T00:01:00+00:00',
         ];
 
         self::assertSame($expected, $this->sut->serialize());

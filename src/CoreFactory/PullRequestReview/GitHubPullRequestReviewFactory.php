@@ -45,8 +45,7 @@ class GitHubPullRequestReviewFactory
         return new PullRequestReview(
             new PullRequestReviewId($data['id']),
             new PullRequestReviewBody((string) $data['body']),
-            $this->authorFactory->create($data['user']),
-            $authorAssociation,
+            $this->authorFactory->create($data['user'], $authorAssociation),
             new PullRequestReviewState($data['state']),
             new CommitSha($data['commit_id']),
             new PullRequestReviewUrls(

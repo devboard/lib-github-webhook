@@ -12,6 +12,7 @@ use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthor;
+use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthorAssociation;
 
 /**
  * @see GitHubPullRequestReviewAuthorFactorySpec
@@ -19,12 +20,19 @@ use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthor;
  */
 class GitHubPullRequestReviewAuthorFactory
 {
-    public function create(array $data): PullRequestReviewAuthor
+    public function create(array $data, ?string $association = null): PullRequestReviewAuthor
     {
+        if (null === $association) {
+            $authorAssociation = null;
+        } else {
+            $authorAssociation = new PullRequestReviewAuthorAssociation($association);
+        }
+
         return new PullRequestReviewAuthor(
             new AccountId($data['id']),
             new AccountLogin($data['login']),
             new AccountType($data['type']),
+            $authorAssociation,
             new AccountAvatarUrl($data['avatar_url']),
             new GravatarId($data['gravatar_id']),
             new AccountHtmlUrl($data['html_url']),

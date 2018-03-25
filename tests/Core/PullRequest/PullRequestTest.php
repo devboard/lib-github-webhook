@@ -69,9 +69,6 @@ class PullRequestTest extends TestCase
     /** @var PullRequestAuthor */
     private $author;
 
-    /** @var string|null */
-    private $authorAssociation;
-
     /** @var PullRequestAssigneeCollection */
     private $assignees;
 
@@ -139,7 +136,6 @@ class PullRequestTest extends TestCase
         $this->body               = new PullRequestBody('value');
         $this->state              = PullRequestState::OPEN();
         $this->author             = PullRequestAuthorSample::octocat();
-        $this->authorAssociation  = 'authorAssociation';
         $this->assignees          = new PullRequestAssigneeCollection([PullRequestAssigneeSample::octocat()]);
         $this->requestedReviewers = new PullRequestRequestedReviewerCollection(
             [PullRequestRequestedReviewerSample::octocat()]
@@ -169,7 +165,6 @@ class PullRequestTest extends TestCase
             $this->body,
             $this->state,
             $this->author,
-            $this->authorAssociation,
             $this->assignees,
             $this->requestedReviewers,
             $this->requestedTeams,
@@ -229,11 +224,6 @@ class PullRequestTest extends TestCase
     public function testGetAuthor()
     {
         self::assertSame($this->author, $this->sut->getAuthor());
-    }
-
-    public function testGetAuthorAssociation()
-    {
-        self::assertSame($this->authorAssociation, $this->sut->getAuthorAssociation());
     }
 
     public function testGetAssignees()
@@ -326,11 +316,6 @@ class PullRequestTest extends TestCase
         self::assertSame($this->updatedAt, $this->sut->getUpdatedAt());
     }
 
-    public function testHasAuthorAssociation()
-    {
-        self::assertTrue($this->sut->hasAuthorAssociation());
-    }
-
     public function testHasRebaseable()
     {
         self::assertTrue($this->sut->hasRebaseable());
@@ -377,7 +362,6 @@ class PullRequestTest extends TestCase
             'body'                => 'value',
             'state'               => 'open',
             'author'              => PullRequestAuthorSample::serialized('octocat'),
-            'authorAssociation'   => 'authorAssociation',
             'assignees'           => [PullRequestAssigneeSample::serialized('octocat')],
             'requestedReviewers'  => [PullRequestRequestedReviewerSample::serialized('octocat')],
             'requestedTeams'      => ['todo'],
