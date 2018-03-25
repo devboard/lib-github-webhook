@@ -26,9 +26,6 @@ class PullRequestReview
     /** @var PullRequestReviewAuthor */
     private $author;
 
-    /** @var string|null */
-    private $authorAssociation;
-
     /** @var PullRequestReviewState */
     private $state;
 
@@ -45,20 +42,18 @@ class PullRequestReview
         PullRequestReviewId $id,
         PullRequestReviewBody $body,
         PullRequestReviewAuthor $author,
-        ?string $authorAssociation,
         PullRequestReviewState $state,
         CommitSha $commitSha,
         PullRequestReviewUrls $urls,
         ?PullRequestReviewSubmittedAt $submittedAt
     ) {
-        $this->id                = $id;
-        $this->body              = $body;
-        $this->author            = $author;
-        $this->authorAssociation = $authorAssociation;
-        $this->state             = $state;
-        $this->commitSha         = $commitSha;
-        $this->urls              = $urls;
-        $this->submittedAt       = $submittedAt;
+        $this->id          = $id;
+        $this->body        = $body;
+        $this->author      = $author;
+        $this->state       = $state;
+        $this->commitSha   = $commitSha;
+        $this->urls        = $urls;
+        $this->submittedAt = $submittedAt;
     }
 
     public function getId(): PullRequestReviewId
@@ -74,11 +69,6 @@ class PullRequestReview
     public function getAuthor(): PullRequestReviewAuthor
     {
         return $this->author;
-    }
-
-    public function getAuthorAssociation(): ?string
-    {
-        return $this->authorAssociation;
     }
 
     public function getState(): PullRequestReviewState
@@ -101,15 +91,6 @@ class PullRequestReview
         return $this->submittedAt;
     }
 
-    public function hasAuthorAssociation(): bool
-    {
-        if (null === $this->authorAssociation) {
-            return false;
-        }
-
-        return true;
-    }
-
     public function serialize(): array
     {
         if (null === $this->submittedAt) {
@@ -119,14 +100,13 @@ class PullRequestReview
         }
 
         return [
-            'id'                => $this->id->serialize(),
-            'body'              => $this->body->serialize(),
-            'author'            => $this->author->serialize(),
-            'authorAssociation' => $this->authorAssociation,
-            'state'             => $this->state->serialize(),
-            'commitSha'         => $this->commitSha->serialize(),
-            'urls'              => $this->urls->serialize(),
-            'submittedAt'       => $submittedAt,
+            'id'          => $this->id->serialize(),
+            'body'        => $this->body->serialize(),
+            'author'      => $this->author->serialize(),
+            'state'       => $this->state->serialize(),
+            'commitSha'   => $this->commitSha->serialize(),
+            'urls'        => $this->urls->serialize(),
+            'submittedAt' => $submittedAt,
         ];
     }
 
@@ -142,7 +122,6 @@ class PullRequestReview
             PullRequestReviewId::deserialize($data['id']),
             PullRequestReviewBody::deserialize($data['body']),
             PullRequestReviewAuthor::deserialize($data['author']),
-            $data['authorAssociation'],
             PullRequestReviewState::deserialize($data['state']),
             CommitSha::deserialize($data['commitSha']),
             PullRequestReviewUrls::deserialize($data['urls']),

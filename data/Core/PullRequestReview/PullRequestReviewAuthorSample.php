@@ -10,14 +10,15 @@ class PullRequestReviewAuthorSample
 {
     private static $data = [
         'octocat' => [
-            'userId'     => 1,
-            'login'      => 'octocat',
-            'type'       => 'User',
-            'avatarUrl'  => 'avatarUrl',
-            'gravatarId' => 'id',
-            'htmlUrl'    => 'htmlUrl',
-            'apiUrl'     => 'apiUrl',
-            'siteAdmin'  => true,
+            'userId'      => 1,
+            'login'       => 'octocat',
+            'type'        => 'User',
+            'association' => 'COLLABORATOR',
+            'avatarUrl'   => 'avatarUrl',
+            'gravatarId'  => 'id',
+            'htmlUrl'     => 'htmlUrl',
+            'apiUrl'      => 'apiUrl',
+            'siteAdmin'   => true,
         ],
     ];
 

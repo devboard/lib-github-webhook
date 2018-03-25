@@ -5,6 +5,7 @@ parameters:
 	    - '#Call to an undefined static method DevboardLib\\GitHub\\Account\\AccountType\:\:ORGANIZATION\(\).#'
 	    - '#Call to an undefined static method DevboardLib\\GitHub\\Issue\\IssueState\:\:OPEN\(\).#'
 	    - '#Call to an undefined static method DevboardLib\\GitHub\\PullRequest\\PullRequestState\:\:OPEN\(\).#'
+	    - '#Call to an undefined static method DevboardLib\\GitHub\\PullRequestReview\\PullRequestReviewAuthorAssociation::.#'
 	    - '#Property DevboardLib\\GitHubWebhook\\HookFactory\\Push\\PushEventFactory\:\:\$factories#'
 	includes:
 	    - vendor/phpstan/phpstan-phpunit/extension.neon

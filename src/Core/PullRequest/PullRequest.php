@@ -51,9 +51,6 @@ class PullRequest
     /** @var PullRequestAuthor */
     private $author;
 
-    /** @var string|null */
-    private $authorAssociation;
-
     /** @var PullRequestAssigneeCollection */
     private $assignees;
 
@@ -118,7 +115,6 @@ class PullRequest
         PullRequestBody $body,
         PullRequestState $state,
         PullRequestAuthor $author,
-        ?string $authorAssociation,
         PullRequestAssigneeCollection $assignees,
         PullRequestRequestedReviewerCollection $requestedReviewers,
         PullRequestRequestedTeamCollection $requestedTeams,
@@ -146,7 +142,6 @@ class PullRequest
         $this->body                = $body;
         $this->state               = $state;
         $this->author              = $author;
-        $this->authorAssociation   = $authorAssociation;
         $this->assignees           = $assignees;
         $this->requestedReviewers  = $requestedReviewers;
         $this->requestedTeams      = $requestedTeams;
@@ -205,11 +200,6 @@ class PullRequest
     public function getAuthor(): PullRequestAuthor
     {
         return $this->author;
-    }
-
-    public function getAuthorAssociation(): ?string
-    {
-        return $this->authorAssociation;
     }
 
     public function getAssignees(): PullRequestAssigneeCollection
@@ -300,15 +290,6 @@ class PullRequest
     public function getUpdatedAt(): PullRequestUpdatedAt
     {
         return $this->updatedAt;
-    }
-
-    public function hasAuthorAssociation(): bool
-    {
-        if (null === $this->authorAssociation) {
-            return false;
-        }
-
-        return true;
     }
 
     public function hasRebaseable(): bool
@@ -415,7 +396,6 @@ class PullRequest
             'body'                => $this->body->serialize(),
             'state'               => $this->state->serialize(),
             'author'              => $this->author->serialize(),
-            'authorAssociation'   => $this->authorAssociation,
             'assignees'           => $this->assignees->serialize(),
             'requestedReviewers'  => $this->requestedReviewers->serialize(),
             'requestedTeams'      => $this->requestedTeams->serialize(),
@@ -478,7 +458,6 @@ class PullRequest
             PullRequestBody::deserialize($data['body']),
             PullRequestState::deserialize($data['state']),
             PullRequestAuthor::deserialize($data['author']),
-            $data['authorAssociation'],
             PullRequestAssigneeCollection::deserialize($data['assignees']),
             PullRequestRequestedReviewerCollection::deserialize($data['requestedReviewers']),
             PullRequestRequestedTeamCollection::deserialize($data['requestedTeams']),
