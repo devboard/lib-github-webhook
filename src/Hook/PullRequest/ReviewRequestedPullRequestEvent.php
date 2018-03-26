@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\PullRequest;
 
+use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\PullRequest\PullRequestReviewer;
 use DevboardLib\GitHub\Repo\RepoFullName;
@@ -55,6 +56,11 @@ class ReviewRequestedPullRequestEvent implements PullRequestEvent
     public function getReviewer(): PullRequestReviewer
     {
         return $this->reviewer;
+    }
+
+    public function getReviewerId(): AccountId
+    {
+        return $this->reviewer->getUserId();
     }
 
     public function getRepo(): Repo
