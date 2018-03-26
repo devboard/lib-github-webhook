@@ -6,6 +6,7 @@ namespace DevboardLib\GitHubWebhook\Hook\PullRequest;
 
 use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\Installation\InstallationId;
+use DevboardLib\GitHub\Label\LabelId;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
@@ -51,6 +52,11 @@ class UnlabeledPullRequestEvent implements PullRequestEvent
     public function getLabel(): GitHubLabel
     {
         return $this->label;
+    }
+
+    public function getLabelId(): LabelId
+    {
+        return $this->label->getId();
     }
 
     public function getRepo(): Repo
