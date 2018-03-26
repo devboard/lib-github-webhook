@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\PullRequest;
 
+use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\PullRequest\PullRequestAssignee;
 use DevboardLib\GitHub\Repo\RepoFullName;
@@ -55,6 +56,11 @@ class UnassignedPullRequestEvent implements PullRequestEvent
     public function getAssignee(): PullRequestAssignee
     {
         return $this->assignee;
+    }
+
+    public function getAssigneeId(): AccountId
+    {
+        return $this->assignee->getUserId();
     }
 
     public function getRepo(): Repo
