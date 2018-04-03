@@ -5,18 +5,21 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\CoreFactory\Status;
 
 use DevboardLib\GitHub\External\ExternalService;
+use DevboardLib\GitHub\External\Service\CodeCoverage\CodeCovIo;
 use DevboardLib\GitHub\External\Service\CodeCoverage\CoverallsIo;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\AppVeyor;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\CircleCi;
+use DevboardLib\GitHub\External\Service\ContinuousIntegration\CodeClimate;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\FabbotIo;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\Shippable;
+use DevboardLib\GitHub\External\Service\ContinuousIntegration\StyleCi;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\TravisCi;
 use DevboardLib\GitHub\External\Service\UnknownService;
 use DevboardLib\GitHub\Status\StatusContext;
 
 class ExternalServiceFactory
 {
-    private static $regex = ['|^ci/circleci|' => CircleCi::class];
+    private static $regex = ['|^ci/circleci|' => CircleCi::class, '|^codecov|' => CodeCovIo::class];
 
     private static $text = [
         'coverage/coveralls'                     => CoverallsIo::class,
@@ -26,6 +29,8 @@ class ExternalServiceFactory
         'continuous-integration/appveyor/branch' => AppVeyor::class,
         'continuous-integration/appveyor/pr'     => AppVeyor::class,
         'fabbot.io'                              => FabbotIo::class,
+        'continuous-integration/styleci/push'    => StyleCi::class,
+        'codeclimate'                            => CodeClimate::class,
         // @TODO: is this really OK?
         'default'   => FabbotIo::class,
         'Shippable' => Shippable::class,
