@@ -12,7 +12,8 @@
     ],
     "require": {
         "php": "^7.1",
-        "devboard/lib-git": "^0.1.0",
+        "devboard/lib-generix": "0.4.*@dev",
+        "devboard/lib-git": "0.4.*@dev",
         "devboard/lib-github": "0.4.*@dev",
         "myclabs/php-enum": "^1.5",
         "webmozart/assert": "^1.2"
