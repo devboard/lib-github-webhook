@@ -86,7 +86,7 @@ class RepoOwnerTest extends TestCase
         $this->login             = new AccountLogin('octocat');
         $this->type              = new AccountType('User');
         $this->avatarUrl         = new AccountAvatarUrl('https://avatars3.githubusercontent.com/u/583231?v=4');
-        $this->gravatarId        = new GravatarId('');
+        $this->gravatarId        = new GravatarId('543fd23');
         $this->htmlUrl           = new AccountHtmlUrl('https://github.com/octocat');
         $this->apiUrl            = new AccountApiUrl('https://api.github.com/users/octocat');
         $this->siteAdmin         = false;
@@ -226,7 +226,7 @@ class RepoOwnerTest extends TestCase
             'login'             => 'octocat',
             'type'              => 'User',
             'avatarUrl'         => 'https://avatars3.githubusercontent.com/u/583231?v=4',
-            'gravatarId'        => '',
+            'gravatarId'        => '543fd23',
             'htmlUrl'           => 'https://github.com/octocat',
             'apiUrl'            => 'https://api.github.com/users/octocat',
             'siteAdmin'         => false,

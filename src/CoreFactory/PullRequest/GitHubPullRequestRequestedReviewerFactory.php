@@ -21,12 +21,18 @@ class GitHubPullRequestRequestedReviewerFactory
 {
     public function create(array $data): PullRequestRequestedReviewer
     {
+        if ('' === $data['gravatar_id']) {
+            $gravatarId = null;
+        } else {
+            $gravatarId = new GravatarId($data['gravatar_id']);
+        }
+
         return new PullRequestRequestedReviewer(
             new UserId($data['id']),
             new UserLogin($data['login']),
             new AccountType($data['type']),
             new UserAvatarUrl($data['avatar_url']),
-            new GravatarId($data['gravatar_id']),
+            $gravatarId,
             new UserHtmlUrl($data['html_url']),
             new UserApiUrl($data['url']),
             $data['site_admin'],

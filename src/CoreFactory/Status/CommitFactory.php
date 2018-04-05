@@ -72,12 +72,18 @@ class CommitFactory
     private function createAuthor(array $data, ?array $details): CommitAuthor
     {
         if (null !== $details) {
+            if ('' === $details['gravatar_id']) {
+                $gravatarId = null;
+            } else {
+                $gravatarId = new GravatarId($details['gravatar_id']);
+            }
+
             $authorDetails = new CommitAuthorDetails(
                 new AccountId($details['id']),
                 new AccountLogin($details['login']),
                 new AccountType($details['type']),
                 new AccountAvatarUrl($details['avatar_url']),
-                new GravatarId($details['gravatar_id']),
+                $gravatarId,
                 new AccountHtmlUrl($details['html_url']),
                 new AccountApiUrl($details['url']),
                 $details['site_admin'],
@@ -110,12 +116,18 @@ class CommitFactory
     private function createCommitter(array $data, ?array $details): CommitCommitter
     {
         if (null !== $details) {
+            if ('' === $details['gravatar_id']) {
+                $gravatarId = null;
+            } else {
+                $gravatarId = new GravatarId($details['gravatar_id']);
+            }
+
             $committerDetails = new CommitCommitterDetails(
                 new AccountId($details['id']),
                 new AccountLogin($details['login']),
                 new AccountType($details['type']),
                 new AccountAvatarUrl($details['avatar_url']),
-                new GravatarId($details['gravatar_id']),
+                $gravatarId,
                 new AccountHtmlUrl($details['html_url']),
                 new AccountApiUrl($details['url']),
                 $details['site_admin'],
