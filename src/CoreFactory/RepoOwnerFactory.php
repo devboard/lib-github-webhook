@@ -27,6 +27,11 @@ class RepoOwnerFactory
         } else {
             $email = null;
         }
+        if ('' === $data['gravatar_id']) {
+            $gravatarId = null;
+        } else {
+            $gravatarId = new GravatarId($data['gravatar_id']);
+        }
 
         /* @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new RepoOwner(
@@ -34,7 +39,7 @@ class RepoOwnerFactory
             new AccountLogin($data['login']),
             new AccountType($data['type']),
             new AccountAvatarUrl($data['avatar_url']),
-            new GravatarId($data['gravatar_id']),
+            $gravatarId,
             new AccountHtmlUrl($data['html_url']),
             new AccountApiUrl($data['url']),
             $data['site_admin'],

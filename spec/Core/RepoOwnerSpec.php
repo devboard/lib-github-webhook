@@ -161,7 +161,7 @@ class RepoOwnerSpec extends ObjectBehavior
         $login->serialize()->shouldBeCalled()->willReturn('octocat');
         $type->serialize()->shouldBeCalled()->willReturn('User');
         $avatarUrl->serialize()->shouldBeCalled()->willReturn('https://avatars3.githubusercontent.com/u/583231?v=4');
-        $gravatarId->serialize()->shouldBeCalled()->willReturn('');
+        $gravatarId->serialize()->shouldBeCalled()->willReturn('543fd23');
         $htmlUrl->serialize()->shouldBeCalled()->willReturn('https://github.com/octocat');
         $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/users/octocat');
         $this->serialize()->shouldReturn(
@@ -170,7 +170,7 @@ class RepoOwnerSpec extends ObjectBehavior
                 'login'             => 'octocat',
                 'type'              => 'User',
                 'avatarUrl'         => 'https://avatars3.githubusercontent.com/u/583231?v=4',
-                'gravatarId'        => '',
+                'gravatarId'        => '543fd23',
                 'htmlUrl'           => 'https://github.com/octocat',
                 'apiUrl'            => 'https://api.github.com/users/octocat',
                 'siteAdmin'         => false,
@@ -196,7 +196,7 @@ class RepoOwnerSpec extends ObjectBehavior
             'login'             => 'octocat',
             'type'              => 'User',
             'avatarUrl'         => 'https://avatars3.githubusercontent.com/u/583231?v=4',
-            'gravatarId'        => '',
+            'gravatarId'        => '543fd23',
             'htmlUrl'           => 'https://github.com/octocat',
             'apiUrl'            => 'https://api.github.com/users/octocat',
             'siteAdmin'         => false,

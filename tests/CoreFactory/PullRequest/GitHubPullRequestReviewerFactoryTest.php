@@ -37,7 +37,7 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
 
         $this->assertSame($userId, $sut->getUserId());
         $this->assertSame($login, $sut->getLogin());
-        $this->assertSame($gitHubAccountType, $sut->getAccountType());
+        $this->assertSame($gitHubAccountType, $sut->getType());
         $this->assertSame($avatarUrl, $sut->getAvatarUrl());
         $this->assertSame($gravatarId, $sut->getGravatarId());
         $this->assertSame($htmlUrl, $sut->getHtmlUrl());
@@ -73,7 +73,7 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
                 new AccountLogin('devboard-test'),
                 AccountType::USER(),
                 new AccountAvatarUrl('https://avatars.Usercontent.com/u/13507412?v=3'),
-                new GravatarId(''),
+                new GravatarId('543fd23'),
                 new AccountHtmlUrl('https://github.com/devboard-test'),
                 new AccountApiUrl('https://api.github.com/users/devboard-test'),
                 false,
@@ -83,7 +83,7 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
                 new AccountLogin('devboard'),
                 AccountType::ORGANIZATION(),
                 new AccountAvatarUrl('https://avatars.Usercontent.com/u/13396338?v=3'),
-                new GravatarId(''),
+                new GravatarId('543fd23'),
                 new AccountHtmlUrl('https://github.com/devboard'),
                 new AccountApiUrl('https://api.github.com/users/devboard'),
                 false,
@@ -93,7 +93,7 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
                 new AccountLogin('octocat'),
                 AccountType::USER(),
                 new AccountAvatarUrl('https://avatars.Usercontent.com/u/1?v=3'),
-                new GravatarId(''),
+                new GravatarId('543fd23'),
                 new AccountHtmlUrl('https://github.com/octocat'),
                 new AccountApiUrl('https://api.github.com/users/octocat'),
                 true,

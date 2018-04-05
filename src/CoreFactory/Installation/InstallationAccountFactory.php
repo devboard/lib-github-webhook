@@ -21,12 +21,18 @@ class InstallationAccountFactory
 {
     public function create(array $data): InstallationAccount
     {
+        if ('' === $data['gravatar_id']) {
+            $gravatarId = null;
+        } else {
+            $gravatarId = new GravatarId($data['gravatar_id']);
+        }
+
         return new InstallationAccount(
             new AccountId($data['id']),
             new AccountLogin($data['login']),
             new AccountType($data['type']),
             new AccountAvatarUrl($data['avatar_url']),
-            new GravatarId($data['gravatar_id']),
+            $gravatarId,
             new AccountHtmlUrl($data['html_url']),
             new AccountApiUrl($data['url']),
             $data['site_admin']
