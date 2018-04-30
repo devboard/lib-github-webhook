@@ -16,7 +16,6 @@ class CommitSample
             'author'        => ['name' => 'Octo Cat', 'email' => 'octocat@example.com', 'username' => 'octocat'],
             'committer'     => ['name' => 'Octo Cat', 'email' => 'octocat@example.com', 'username' => 'octocat'],
             'tree'          => 'sha',
-            'htmlUrl'       => 'htmlUrl',
             'distinct'      => true,
             'addedFiles'    => ['data'],
             'modifiedFiles' => ['data'],

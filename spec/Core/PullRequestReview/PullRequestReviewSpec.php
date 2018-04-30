@@ -12,7 +12,6 @@ use DevboardLib\GitHub\PullRequestReview\PullRequestReviewId;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewState;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewSubmittedAt;
 use DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReview;
-use DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReviewUrls;
 use PhpSpec\ObjectBehavior;
 
 class PullRequestReviewSpec extends ObjectBehavior
@@ -23,10 +22,9 @@ class PullRequestReviewSpec extends ObjectBehavior
         PullRequestReviewAuthor $author,
         PullRequestReviewState $state,
         CommitSha $commitSha,
-        PullRequestReviewUrls $urls,
         PullRequestReviewSubmittedAt $submittedAt
     ) {
-        $this->beConstructedWith($id, $body, $author, $state, $commitSha, $urls, $submittedAt);
+        $this->beConstructedWith($id, $body, $author, $state, $commitSha, $submittedAt);
     }
 
     public function it_is_initializable()
@@ -59,11 +57,6 @@ class PullRequestReviewSpec extends ObjectBehavior
         $this->getCommitSha()->shouldReturn($commitSha);
     }
 
-    public function it_exposes_urls(PullRequestReviewUrls $urls)
-    {
-        $this->getUrls()->shouldReturn($urls);
-    }
-
     public function it_exposes_submitted_at(PullRequestReviewSubmittedAt $submittedAt)
     {
         $this->getSubmittedAt()->shouldReturn($submittedAt);
@@ -75,7 +68,6 @@ class PullRequestReviewSpec extends ObjectBehavior
         PullRequestReviewAuthor $author,
         PullRequestReviewState $state,
         CommitSha $commitSha,
-        PullRequestReviewUrls $urls,
         PullRequestReviewSubmittedAt $submittedAt
     ) {
         $id->serialize()->shouldBeCalled()->willReturn(1);
@@ -83,16 +75,15 @@ class PullRequestReviewSpec extends ObjectBehavior
         $author->serialize()->shouldBeCalled()->willReturn(PullRequestAuthorSample::serialized('octocat'));
         $state->serialize()->shouldBeCalled()->willReturn('approved');
         $commitSha->serialize()->shouldBeCalled()->willReturn('sha');
-        $urls->serialize()->shouldBeCalled()->willReturn(['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl']);
         $submittedAt->serialize()->shouldBeCalled()->willReturn('2018-01-01T00:01:00+00:00');
         $this->serialize()->shouldReturn(
             [
-                'id'          => 1,
-                'body'        => 'value',
-                'author'      => PullRequestAuthorSample::serialized('octocat'),
-                'state'       => 'approved',
-                'commitSha'   => 'sha',
-                'urls'        => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
+                'id'        => 1,
+                'body'      => 'value',
+                'author'    => PullRequestAuthorSample::serialized('octocat'),
+                'state'     => 'approved',
+                'commitSha' => 'sha',
+
                 'submittedAt' => '2018-01-01T00:01:00+00:00',
             ]
         );
@@ -106,7 +97,6 @@ class PullRequestReviewSpec extends ObjectBehavior
             'author'      => PullRequestAuthorSample::serialized('octocat'),
             'state'       => 'approved',
             'commitSha'   => 'sha',
-            'urls'        => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
             'submittedAt' => '2018-01-01T00:01:00+00:00',
         ];
 

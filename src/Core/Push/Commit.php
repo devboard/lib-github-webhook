@@ -8,7 +8,6 @@ use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\Git\Commit\CommitTree;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use Git\Commit as GitCommit;
 
 /**
@@ -35,9 +34,6 @@ class Commit implements GitCommit
     /** @var CommitTree */
     private $tree;
 
-    /** @var CommitHtmlUrl */
-    private $htmlUrl;
-
     /** @var bool */
     private $distinct;
 
@@ -58,7 +54,6 @@ class Commit implements GitCommit
         CommitAuthor $author,
         CommitCommitter $committer,
         CommitTree $tree,
-        CommitHtmlUrl $htmlUrl,
         bool $distinct,
         array $addedFiles,
         array $modifiedFiles,
@@ -70,7 +65,6 @@ class Commit implements GitCommit
         $this->author        = $author;
         $this->committer     = $committer;
         $this->tree          = $tree;
-        $this->htmlUrl       = $htmlUrl;
         $this->distinct      = $distinct;
         $this->addedFiles    = $addedFiles;
         $this->modifiedFiles = $modifiedFiles;
@@ -107,11 +101,6 @@ class Commit implements GitCommit
         return $this->tree;
     }
 
-    public function getHtmlUrl(): CommitHtmlUrl
-    {
-        return $this->htmlUrl;
-    }
-
     public function isDisctinct(): bool
     {
         return $this->distinct;
@@ -146,7 +135,6 @@ class Commit implements GitCommit
             'author'        => $this->author->serialize(),
             'committer'     => $this->committer->serialize(),
             'tree'          => $this->tree->serialize(),
-            'htmlUrl'       => $this->htmlUrl->serialize(),
             'distinct'      => $this->distinct,
             'addedFiles'    => $this->addedFiles,
             'modifiedFiles' => $this->modifiedFiles,
@@ -163,7 +151,6 @@ class Commit implements GitCommit
             CommitAuthor::deserialize($data['author']),
             CommitCommitter::deserialize($data['committer']),
             CommitTree::deserialize($data['tree']),
-            CommitHtmlUrl::deserialize($data['htmlUrl']),
             $data['distinct'],
             $data['addedFiles'],
             $data['modifiedFiles'],

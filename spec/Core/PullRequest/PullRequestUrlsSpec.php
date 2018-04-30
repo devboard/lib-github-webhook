@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Core\PullRequest;
 
-use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
-use DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestUrls;
 use PhpSpec\ObjectBehavior;
 
 class PullRequestUrlsSpec extends ObjectBehavior
 {
-    public function let(PullRequestApiUrl $apiUrl, PullRequestHtmlUrl $htmlUrl)
+    public function let()
     {
         $this->beConstructedWith(
-            $apiUrl,
-            $htmlUrl,
             $commentsUrl = 'commentsUrl',
             $commitsUrl = 'commitsUrl',
             $diffUrl = 'diffUrl',
@@ -30,16 +26,6 @@ class PullRequestUrlsSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(PullRequestUrls::class);
-    }
-
-    public function it_exposes_api_url(PullRequestApiUrl $apiUrl)
-    {
-        $this->getApiUrl()->shouldReturn($apiUrl);
-    }
-
-    public function it_exposes_html_url(PullRequestHtmlUrl $htmlUrl)
-    {
-        $this->getHtmlUrl()->shouldReturn($htmlUrl);
     }
 
     public function it_exposes_comments_url()
@@ -82,14 +68,10 @@ class PullRequestUrlsSpec extends ObjectBehavior
         $this->getStatusesUrl()->shouldReturn('statusesUrl');
     }
 
-    public function it_can_be_serialized(PullRequestApiUrl $apiUrl, PullRequestHtmlUrl $htmlUrl)
+    public function it_can_be_serialized()
     {
-        $apiUrl->serialize()->shouldBeCalled()->willReturn('apiUrl');
-        $htmlUrl->serialize()->shouldBeCalled()->willReturn('htmlUrl');
         $this->serialize()->shouldReturn(
             [
-                'apiUrl'            => 'apiUrl',
-                'htmlUrl'           => 'htmlUrl',
                 'commentsUrl'       => 'commentsUrl',
                 'commitsUrl'        => 'commitsUrl',
                 'diffUrl'           => 'diffUrl',
@@ -105,8 +87,6 @@ class PullRequestUrlsSpec extends ObjectBehavior
     public function it_can_be_deserialized()
     {
         $input = [
-            'apiUrl'            => 'apiUrl',
-            'htmlUrl'           => 'htmlUrl',
             'commentsUrl'       => 'commentsUrl',
             'commitsUrl'        => 'commitsUrl',
             'diffUrl'           => 'diffUrl',

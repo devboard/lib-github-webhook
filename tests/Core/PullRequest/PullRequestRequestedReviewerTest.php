@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Core\PullRequest;
 
-use DevboardLib\Generix\GravatarId;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHub\User\UserApiUrl;
 use DevboardLib\GitHub\User\UserAvatarUrl;
-use DevboardLib\GitHub\User\UserHtmlUrl;
 use DevboardLib\GitHub\User\UserId;
 use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestRequestedReviewer;
@@ -31,15 +28,6 @@ class PullRequestRequestedReviewerTest extends TestCase
 
     /** @var UserAvatarUrl */
     private $avatarUrl;
-
-    /** @var GravatarId|null */
-    private $gravatarId;
-
-    /** @var UserHtmlUrl */
-    private $htmlUrl;
-
-    /** @var UserApiUrl */
-    private $apiUrl;
 
     /** @var bool */
     private $siteAdmin;
@@ -80,9 +68,6 @@ class PullRequestRequestedReviewerTest extends TestCase
         $this->login             = new UserLogin('baxterthehacker');
         $this->type              = new AccountType('User');
         $this->avatarUrl         = new UserAvatarUrl('https://avatars.githubusercontent.com/u/6752317?v=3');
-        $this->gravatarId        = new GravatarId('id');
-        $this->htmlUrl           = new UserHtmlUrl('https://github.com/baxterthehacker');
-        $this->apiUrl            = new UserApiUrl('https://api.github.com/users/baxterthehacker');
         $this->siteAdmin         = false;
         $this->eventsUrl         = 'https://api.github.com/users/baxterthehacker/events{/privacy}';
         $this->followersUrl      = 'https://api.github.com/users/baxterthehacker/followers';
@@ -98,9 +83,6 @@ class PullRequestRequestedReviewerTest extends TestCase
             $this->login,
             $this->type,
             $this->avatarUrl,
-            $this->gravatarId,
-            $this->htmlUrl,
-            $this->apiUrl,
             $this->siteAdmin,
             $this->eventsUrl,
             $this->followersUrl,
@@ -132,21 +114,6 @@ class PullRequestRequestedReviewerTest extends TestCase
     public function testGetAvatarUrl()
     {
         self::assertSame($this->avatarUrl, $this->sut->getAvatarUrl());
-    }
-
-    public function testGetGravatarId()
-    {
-        self::assertSame($this->gravatarId, $this->sut->getGravatarId());
-    }
-
-    public function testGetHtmlUrl()
-    {
-        self::assertSame($this->htmlUrl, $this->sut->getHtmlUrl());
-    }
-
-    public function testGetApiUrl()
-    {
-        self::assertSame($this->apiUrl, $this->sut->getApiUrl());
     }
 
     public function testIsSiteAdmin()
@@ -199,11 +166,6 @@ class PullRequestRequestedReviewerTest extends TestCase
         self::assertSame($this->subscriptionsUrl, $this->sut->getSubscriptionsUrl());
     }
 
-    public function testHasGravatarId()
-    {
-        self::assertTrue($this->sut->hasGravatarId());
-    }
-
     public function testSerialize()
     {
         $expected = [
@@ -211,9 +173,6 @@ class PullRequestRequestedReviewerTest extends TestCase
             'login'             => 'baxterthehacker',
             'type'              => 'User',
             'avatarUrl'         => 'https://avatars.githubusercontent.com/u/6752317?v=3',
-            'gravatarId'        => 'id',
-            'htmlUrl'           => 'https://github.com/baxterthehacker',
-            'apiUrl'            => 'https://api.github.com/users/baxterthehacker',
             'siteAdmin'         => false,
             'eventsUrl'         => 'https://api.github.com/users/baxterthehacker/events{/privacy}',
             'followersUrl'      => 'https://api.github.com/users/baxterthehacker/followers',

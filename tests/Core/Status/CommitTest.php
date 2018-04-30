@@ -9,8 +9,6 @@ use Data\DevboardLib\GitHubWebhook\Core\Status\CommitCommitterSample;
 use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\Commit\CommitApiUrl;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHub\Commit\CommitParent;
 use DevboardLib\GitHub\Commit\CommitParent\ParentApiUrl;
 use DevboardLib\GitHub\Commit\CommitParent\ParentHtmlUrl;
@@ -58,12 +56,6 @@ class CommitTest extends TestCase
     /** @var CommitVerification */
     private $verification;
 
-    /** @var CommitApiUrl */
-    private $apiUrl;
-
-    /** @var CommitHtmlUrl */
-    private $htmlUrl;
-
     /** @var string */
     private $commentsUrl;
 
@@ -87,8 +79,7 @@ class CommitTest extends TestCase
             new VerificationSignature('signature'),
             new VerificationPayload('payload')
         );
-        $this->apiUrl      = new CommitApiUrl('apiUrl');
-        $this->htmlUrl     = new CommitHtmlUrl('htmlUrl');
+
         $this->commentsUrl = 'commentsUrl';
         $this->sut         = new Commit(
             $this->sha,
@@ -99,8 +90,6 @@ class CommitTest extends TestCase
             $this->tree,
             $this->parents,
             $this->verification,
-            $this->apiUrl,
-            $this->htmlUrl,
             $this->commentsUrl
         );
     }
@@ -145,16 +134,6 @@ class CommitTest extends TestCase
         self::assertSame($this->verification, $this->sut->getVerification());
     }
 
-    public function testGetApiUrl()
-    {
-        self::assertSame($this->apiUrl, $this->sut->getApiUrl());
-    }
-
-    public function testGetHtmlUrl()
-    {
-        self::assertSame($this->htmlUrl, $this->sut->getHtmlUrl());
-    }
-
     public function testGetCommentsUrl()
     {
         self::assertSame($this->commentsUrl, $this->sut->getCommentsUrl());
@@ -176,8 +155,6 @@ class CommitTest extends TestCase
                 'signature' => 'signature',
                 'payload'   => 'payload',
             ],
-            'apiUrl'      => 'apiUrl',
-            'htmlUrl'     => 'htmlUrl',
             'commentsUrl' => 'commentsUrl',
         ];
 

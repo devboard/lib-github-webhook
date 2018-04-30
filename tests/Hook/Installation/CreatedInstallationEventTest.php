@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Tests\DevboardLib\GitHubWebhook\Hook\Installation;
 
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\Generix\GravatarId;
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
@@ -53,9 +50,6 @@ class CreatedInstallationEventTest extends TestCase
                 new AccountLogin('value'),
                 AccountType::USER(),
                 new AccountAvatarUrl('avatarUrl'),
-                new GravatarId('id'),
-                new AccountHtmlUrl('htmlUrl'),
-                new AccountApiUrl('apiUrl'),
                 true
             ),
             new ApplicationId(1),
@@ -88,14 +82,11 @@ class CreatedInstallationEventTest extends TestCase
             'installation' => [
                 'installationId'      => 1,
                 'installationAccount' => [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
+                    'userId'    => 1,
+                    'login'     => 'value',
+                    'type'      => 'User',
+                    'avatarUrl' => 'avatarUrl',
+                    'siteAdmin' => true,
                 ],
                 'applicationId'       => 1,
                 'repositorySelection' => 'all',

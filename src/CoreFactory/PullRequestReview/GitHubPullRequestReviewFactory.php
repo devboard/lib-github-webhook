@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\CoreFactory\PullRequestReview;
 
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewBody;
-use DevboardLib\GitHub\PullRequestReview\PullRequestReviewHtmlUrl;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewId;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewState;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewSubmittedAt;
 use DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReview;
-use DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReviewUrls;
 
 /**
  * @see GitHubPullRequestReviewFactorySpec
@@ -48,9 +45,6 @@ class GitHubPullRequestReviewFactory
             $this->authorFactory->create($data['user'], $authorAssociation),
             new PullRequestReviewState($data['state']),
             new CommitSha($data['commit_id']),
-            new PullRequestReviewUrls(
-                new PullRequestReviewHtmlUrl($data['html_url']), new PullRequestApiUrl($data['pull_request_url'])
-            ),
             $submittedAt
         );
     }

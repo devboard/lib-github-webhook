@@ -21,16 +21,6 @@ definition:
     avatarUrl:
       instanceOf: DevboardLib\GitHub\Account\AccountAvatarUrl
       examples: [https://avatars3.githubusercontent.com/u/583231?v=4]
-    gravatarId:
-      instanceOf: DevboardLib\Generix\GravatarId
-      nullable: true
-      examples: ["324123"]
-    htmlUrl:
-      instanceOf: DevboardLib\GitHub\Account\AccountHtmlUrl
-      examples: [https://github.com/octocat]
-    apiUrl:
-      instanceOf: DevboardLib\GitHub\Account\AccountApiUrl
-      examples: [https://api.github.com/users/octocat]
     siteAdmin:
       instanceOf: bool
       examples: [false]

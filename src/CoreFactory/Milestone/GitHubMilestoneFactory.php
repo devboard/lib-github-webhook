@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\CoreFactory\Milestone;
 
 use DevboardLib\GitHub\GitHubMilestone;
-use DevboardLib\GitHub\Milestone\MilestoneApiUrl;
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
 use DevboardLib\GitHub\Milestone\MilestoneDescription;
 use DevboardLib\GitHub\Milestone\MilestoneDueOn;
-use DevboardLib\GitHub\Milestone\MilestoneHtmlUrl;
 use DevboardLib\GitHub\Milestone\MilestoneId;
 use DevboardLib\GitHub\Milestone\MilestoneNumber;
 use DevboardLib\GitHub\Milestone\MilestoneState;
@@ -53,8 +51,6 @@ class GitHubMilestoneFactory
             new MilestoneState($data['state']),
             new MilestoneNumber($data['number']),
             $this->creatorFactory->create($data['creator']),
-            new MilestoneHtmlUrl($data['html_url']),
-            new MilestoneApiUrl($data['url']),
             $closedAt,
             new MilestoneCreatedAt($data['created_at']),
             new MilestoneUpdatedAt($data['updated_at'])

@@ -6,20 +6,15 @@ namespace DevboardLib\GitHubWebhook\CoreFactory\Status;
 
 use DateTime;
 use DevboardLib\Generix\EmailAddress;
-use DevboardLib\Generix\GravatarId;
 use DevboardLib\Git\Commit\Author\AuthorName;
 use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\Git\Commit\Committer\CommitterName;
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHub\Commit\CommitApiUrl;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHub\Commit\CommitParent;
 use DevboardLib\GitHub\Commit\CommitParentCollection;
 use DevboardLib\GitHub\Commit\CommitTree;
@@ -59,8 +54,6 @@ class CommitFactory
             ),
             $this->createParentCollection($data['parents']),
             $verification,
-            new CommitApiUrl($data['url']),
-            new CommitHtmlUrl($data['html_url']),
             $data['comments_url']
         );
     }
@@ -72,20 +65,11 @@ class CommitFactory
     private function createAuthor(array $data, ?array $details): CommitAuthor
     {
         if (null !== $details) {
-            if ('' === $details['gravatar_id']) {
-                $gravatarId = null;
-            } else {
-                $gravatarId = new GravatarId($details['gravatar_id']);
-            }
-
             $authorDetails = new CommitAuthorDetails(
                 new AccountId($details['id']),
                 new AccountLogin($details['login']),
                 new AccountType($details['type']),
                 new AccountAvatarUrl($details['avatar_url']),
-                $gravatarId,
-                new AccountHtmlUrl($details['html_url']),
-                new AccountApiUrl($details['url']),
                 $details['site_admin'],
                 $details['events_url'],
                 $details['followers_url'],
@@ -116,20 +100,11 @@ class CommitFactory
     private function createCommitter(array $data, ?array $details): CommitCommitter
     {
         if (null !== $details) {
-            if ('' === $details['gravatar_id']) {
-                $gravatarId = null;
-            } else {
-                $gravatarId = new GravatarId($details['gravatar_id']);
-            }
-
             $committerDetails = new CommitCommitterDetails(
                 new AccountId($details['id']),
                 new AccountLogin($details['login']),
                 new AccountType($details['type']),
                 new AccountAvatarUrl($details['avatar_url']),
-                $gravatarId,
-                new AccountHtmlUrl($details['html_url']),
-                new AccountApiUrl($details['url']),
                 $details['site_admin'],
                 $details['events_url'],
                 $details['followers_url'],

@@ -72,16 +72,7 @@ class ReviewRequestedPullRequestEventSpec extends ObjectBehavior
     ) {
         $pullRequest->serialize()->shouldBeCalled()->willReturn(PullRequestSample::serialized('pr1'));
         $reviewer->serialize()->shouldBeCalled()->willReturn(
-            [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
-            ]
+            ['userId' => 1, 'login' => 'value', 'type' => 'User', 'avatarUrl' => 'avatarUrl', 'siteAdmin' => true]
         );
         $repo->serialize()->shouldBeCalled()->willReturn(RepoSample::serialized('octocatLinguist'));
         $installationId->serialize()->shouldBeCalled()->willReturn(1);
@@ -90,14 +81,11 @@ class ReviewRequestedPullRequestEventSpec extends ObjectBehavior
             [
                 'pullRequest' => PullRequestSample::serialized('pr1'),
                 'reviewer'    => [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
+                    'userId'    => 1,
+                    'login'     => 'value',
+                    'type'      => 'User',
+                    'avatarUrl' => 'avatarUrl',
+                    'siteAdmin' => true,
                 ],
                 'repo'           => RepoSample::serialized('octocatLinguist'),
                 'installationId' => 1,
@@ -111,14 +99,11 @@ class ReviewRequestedPullRequestEventSpec extends ObjectBehavior
         $input = [
             'pullRequest' => PullRequestSample::serialized('pr1'),
             'reviewer'    => [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
+                'userId'    => 1,
+                'login'     => 'value',
+                'type'      => 'User',
+                'avatarUrl' => 'avatarUrl',
+                'siteAdmin' => true,
             ],
             'repo'           => RepoSample::serialized('octocatLinguist'),
             'installationId' => 1,

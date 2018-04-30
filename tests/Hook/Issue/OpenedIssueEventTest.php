@@ -13,12 +13,10 @@ use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\Installation\InstallationId;
-use DevboardLib\GitHub\Issue\IssueApiUrl;
 use DevboardLib\GitHub\Issue\IssueAssigneeCollection;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
-use DevboardLib\GitHub\Issue\IssueHtmlUrl;
 use DevboardLib\GitHub\Issue\IssueId;
 use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
@@ -62,8 +60,6 @@ class OpenedIssueEventTest extends TestCase
             new IssueBody('value'),
             IssueState::OPEN(),
             IssueAuthorSample::octocat(),
-            new IssueApiUrl('apiUrl'),
-            new IssueHtmlUrl('htmlUrl'),
             IssueAssigneeSample::octocat(),
             new IssueAssigneeCollection([IssueAssigneeSample::octocat()]),
             new GitHubLabelCollection([LabelSample::red()]),
@@ -118,8 +114,6 @@ class OpenedIssueEventTest extends TestCase
                 'body'      => 'value',
                 'state'     => 'open',
                 'author'    => IssueAuthorSample::serialized('octocat'),
-                'apiUrl'    => 'apiUrl',
-                'htmlUrl'   => 'htmlUrl',
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],

@@ -4,21 +4,12 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Core\PullRequest;
 
-use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
-use DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl;
-
 /**
  * @see \spec\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestUrlsSpec
  * @see \Tests\DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestUrlsTest
  */
 class PullRequestUrls
 {
-    /** @var PullRequestApiUrl */
-    private $apiUrl;
-
-    /** @var PullRequestHtmlUrl */
-    private $htmlUrl;
-
     /** @var string */
     private $commentsUrl;
 
@@ -45,8 +36,6 @@ class PullRequestUrls
 
     /** @SuppressWarnings(PHPMD.ExcessiveParameterList) */
     public function __construct(
-        PullRequestApiUrl $apiUrl,
-        PullRequestHtmlUrl $htmlUrl,
         string $commentsUrl,
         string $commitsUrl,
         string $diffUrl,
@@ -56,8 +45,6 @@ class PullRequestUrls
         string $reviewCommentsUrl,
         string $statusesUrl
     ) {
-        $this->apiUrl            = $apiUrl;
-        $this->htmlUrl           = $htmlUrl;
         $this->commentsUrl       = $commentsUrl;
         $this->commitsUrl        = $commitsUrl;
         $this->diffUrl           = $diffUrl;
@@ -66,16 +53,6 @@ class PullRequestUrls
         $this->reviewCommentUrl  = $reviewCommentUrl;
         $this->reviewCommentsUrl = $reviewCommentsUrl;
         $this->statusesUrl       = $statusesUrl;
-    }
-
-    public function getApiUrl(): PullRequestApiUrl
-    {
-        return $this->apiUrl;
-    }
-
-    public function getHtmlUrl(): PullRequestHtmlUrl
-    {
-        return $this->htmlUrl;
     }
 
     public function getCommentsUrl(): string
@@ -121,8 +98,6 @@ class PullRequestUrls
     public function serialize(): array
     {
         return [
-            'apiUrl'            => $this->apiUrl->serialize(),
-            'htmlUrl'           => $this->htmlUrl->serialize(),
             'commentsUrl'       => $this->commentsUrl,
             'commitsUrl'        => $this->commitsUrl,
             'diffUrl'           => $this->diffUrl,
@@ -137,8 +112,6 @@ class PullRequestUrls
     public static function deserialize(array $data): self
     {
         return new self(
-            PullRequestApiUrl::deserialize($data['apiUrl']),
-            PullRequestHtmlUrl::deserialize($data['htmlUrl']),
             $data['commentsUrl'],
             $data['commitsUrl'],
             $data['diffUrl'],

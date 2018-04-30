@@ -7,10 +7,7 @@ namespace Tests\DevboardLib\GitHubWebhook\Hook\PullRequest;
 use Data\DevboardLib\GitHubWebhook\Core\PullRequestSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\Generix\GravatarId;
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
@@ -57,9 +54,6 @@ class ReviewRequestedPullRequestEventTest extends TestCase
             new AccountLogin('value'),
             AccountType::USER(),
             new AccountAvatarUrl('avatarUrl'),
-            new GravatarId('id'),
-            new AccountHtmlUrl('htmlUrl'),
-            new AccountApiUrl('apiUrl'),
             true
         );
         $this->repo           = RepoSample::octocatLinguist();
@@ -110,14 +104,11 @@ class ReviewRequestedPullRequestEventTest extends TestCase
         $expected = [
             'pullRequest' => PullRequestSample::serialized('pr1'),
             'reviewer'    => [
-                'userId'     => 1,
-                'login'      => 'value',
-                'type'       => 'User',
-                'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
-                'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'apiUrl',
-                'siteAdmin'  => true,
+                'userId'    => 1,
+                'login'     => 'value',
+                'type'      => 'User',
+                'avatarUrl' => 'avatarUrl',
+                'siteAdmin' => true,
             ],
             'repo'           => RepoSample::serialized('octocatLinguist'),
             'installationId' => 1,

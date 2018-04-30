@@ -6,11 +6,8 @@ namespace Tests\DevboardLib\GitHubWebhook\Core\Status;
 
 use DateTime;
 use DevboardLib\Generix\EmailAddress;
-use DevboardLib\Generix\GravatarId;
 use DevboardLib\Git\Commit\Author\AuthorName;
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
@@ -49,9 +46,6 @@ class CommitAuthorTest extends TestCase
             new AccountLogin('value'),
             AccountType::USER(),
             new AccountAvatarUrl('avatarUrl'),
-            new GravatarId('id'),
-            new AccountHtmlUrl('htmlUrl'),
-            new AccountApiUrl('apiUrl'),
             true,
             'eventsUrl',
             'followersUrl',
@@ -102,9 +96,6 @@ class CommitAuthorTest extends TestCase
                 'login'             => 'value',
                 'type'              => 'User',
                 'avatarUrl'         => 'avatarUrl',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'htmlUrl',
-                'apiUrl'            => 'apiUrl',
                 'siteAdmin'         => true,
                 'eventsUrl'         => 'eventsUrl',
                 'followersUrl'      => 'followersUrl',

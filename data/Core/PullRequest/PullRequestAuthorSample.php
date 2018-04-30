@@ -15,9 +15,6 @@ class PullRequestAuthorSample
             'type'        => 'User',
             'association' => 'COLLABORATOR',
             'avatarUrl'   => 'avatarUrl',
-            'gravatarId'  => 'id',
-            'htmlUrl'     => 'htmlUrl',
-            'apiUrl'      => 'apiUrl',
             'siteAdmin'   => true,
         ],
     ];

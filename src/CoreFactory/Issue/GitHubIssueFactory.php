@@ -6,12 +6,10 @@ namespace DevboardLib\GitHubWebhook\CoreFactory\Issue;
 
 use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\Issue\IssueApiUrl;
 use DevboardLib\GitHub\Issue\IssueAssigneeCollection;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
-use DevboardLib\GitHub\Issue\IssueHtmlUrl;
 use DevboardLib\GitHub\Issue\IssueId;
 use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
@@ -91,8 +89,6 @@ class GitHubIssueFactory
             new IssueBody((string) $data['body']),
             new IssueState($data['state']),
             $this->authorFactory->create($data['user']),
-            new IssueApiUrl($data['url']),
-            new IssueHtmlUrl($data['html_url']),
             $assignee,
             $assignees,
             $labels,

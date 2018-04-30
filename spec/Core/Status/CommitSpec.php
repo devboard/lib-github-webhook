@@ -7,8 +7,6 @@ namespace spec\DevboardLib\GitHubWebhook\Core\Status;
 use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\Commit\CommitApiUrl;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHub\Commit\CommitParentCollection;
 use DevboardLib\GitHub\Commit\CommitTree;
 use DevboardLib\GitHub\Commit\CommitVerification;
@@ -31,9 +29,7 @@ class CommitSpec extends ObjectBehavior
         CommitCommitter $committer,
         CommitTree $tree,
         CommitParentCollection $parents,
-        CommitVerification $verification,
-        CommitApiUrl $apiUrl,
-        CommitHtmlUrl $htmlUrl
+        CommitVerification $verification
     ) {
         $this->beConstructedWith(
             $sha,
@@ -44,8 +40,6 @@ class CommitSpec extends ObjectBehavior
             $tree,
             $parents,
             $verification,
-            $apiUrl,
-            $htmlUrl,
             $commentsUrl = 'commentsUrl'
         );
     }
@@ -96,16 +90,6 @@ class CommitSpec extends ObjectBehavior
         $this->getVerification()->shouldReturn($verification);
     }
 
-    public function it_exposes_api_url(CommitApiUrl $apiUrl)
-    {
-        $this->getApiUrl()->shouldReturn($apiUrl);
-    }
-
-    public function it_exposes_html_url(CommitHtmlUrl $htmlUrl)
-    {
-        $this->getHtmlUrl()->shouldReturn($htmlUrl);
-    }
-
     public function it_exposes_comments_url()
     {
         $this->getCommentsUrl()->shouldReturn('commentsUrl');
@@ -119,9 +103,7 @@ class CommitSpec extends ObjectBehavior
         CommitCommitter $committer,
         CommitTree $tree,
         CommitParentCollection $parents,
-        CommitVerification $verification,
-        CommitApiUrl $apiUrl,
-        CommitHtmlUrl $htmlUrl
+        CommitVerification $verification
     ) {
         $sha->serialize()->shouldBeCalled()->willReturn('sha');
         $message->serialize()->shouldBeCalled()->willReturn('message');
@@ -136,9 +118,6 @@ class CommitSpec extends ObjectBehavior
                     'login'             => 'value',
                     'type'              => 'User',
                     'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
                     'siteAdmin'         => true,
                     'eventsUrl'         => 'eventsUrl',
                     'followersUrl'      => 'followersUrl',
@@ -162,9 +141,6 @@ class CommitSpec extends ObjectBehavior
                     'login'             => 'value',
                     'type'              => 'User',
                     'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
                     'siteAdmin'         => true,
                     'eventsUrl'         => 'eventsUrl',
                     'followersUrl'      => 'followersUrl',
@@ -185,8 +161,6 @@ class CommitSpec extends ObjectBehavior
         $verification->serialize()->shouldBeCalled()->willReturn(
             ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload']
         );
-        $apiUrl->serialize()->shouldBeCalled()->willReturn('apiUrl');
-        $htmlUrl->serialize()->shouldBeCalled()->willReturn('htmlUrl');
         $this->serialize()->shouldReturn(
             [
                 'sha'        => 'sha',
@@ -201,9 +175,6 @@ class CommitSpec extends ObjectBehavior
                         'login'             => 'value',
                         'type'              => 'User',
                         'avatarUrl'         => 'avatarUrl',
-                        'gravatarId'        => 'id',
-                        'htmlUrl'           => 'htmlUrl',
-                        'apiUrl'            => 'apiUrl',
                         'siteAdmin'         => true,
                         'eventsUrl'         => 'eventsUrl',
                         'followersUrl'      => 'followersUrl',
@@ -225,9 +196,6 @@ class CommitSpec extends ObjectBehavior
                         'login'             => 'value',
                         'type'              => 'User',
                         'avatarUrl'         => 'avatarUrl',
-                        'gravatarId'        => 'id',
-                        'htmlUrl'           => 'htmlUrl',
-                        'apiUrl'            => 'apiUrl',
                         'siteAdmin'         => true,
                         'eventsUrl'         => 'eventsUrl',
                         'followersUrl'      => 'followersUrl',
@@ -248,8 +216,6 @@ class CommitSpec extends ObjectBehavior
                     'signature' => 'signature',
                     'payload'   => 'payload',
                 ],
-                'apiUrl'      => 'apiUrl',
-                'htmlUrl'     => 'htmlUrl',
                 'commentsUrl' => 'commentsUrl',
             ]
         );
@@ -270,9 +236,6 @@ class CommitSpec extends ObjectBehavior
                     'login'             => 'value',
                     'type'              => 'User',
                     'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
                     'siteAdmin'         => true,
                     'eventsUrl'         => 'eventsUrl',
                     'followersUrl'      => 'followersUrl',
@@ -294,9 +257,6 @@ class CommitSpec extends ObjectBehavior
                     'login'             => 'value',
                     'type'              => 'User',
                     'avatarUrl'         => 'avatarUrl',
-                    'gravatarId'        => 'id',
-                    'htmlUrl'           => 'htmlUrl',
-                    'apiUrl'            => 'apiUrl',
                     'siteAdmin'         => true,
                     'eventsUrl'         => 'eventsUrl',
                     'followersUrl'      => 'followersUrl',
@@ -317,8 +277,6 @@ class CommitSpec extends ObjectBehavior
                 'signature' => 'signature',
                 'payload'   => 'payload',
             ],
-            'apiUrl'      => 'apiUrl',
-            'htmlUrl'     => 'htmlUrl',
             'commentsUrl' => 'commentsUrl',
         ];
 

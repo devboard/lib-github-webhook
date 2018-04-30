@@ -8,11 +8,8 @@ use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use Data\DevboardLib\GitHubWebhook\Core\Status\CommitSample;
 use DateTime;
-use DevboardLib\Generix\GravatarId;
 use DevboardLib\Git\Branch\BranchName;
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
@@ -72,9 +69,6 @@ class StatusEventTest extends TestCase
                 new AccountLogin('value'),
                 AccountType::USER(),
                 new AccountAvatarUrl('avatarUrl'),
-                new GravatarId('id'),
-                new AccountHtmlUrl('htmlUrl'),
-                new AccountApiUrl('apiUrl'),
                 true
             ),
             new DateTime('2018-01-01T00:01:00+00:00'),
@@ -131,14 +125,11 @@ class StatusEventTest extends TestCase
                     'className' => 'DevboardLib\GitHub\External\Service\ContinuousIntegration\CircleCi',
                 ],
                 'creator' => [
-                    'userId'     => 1,
-                    'login'      => 'value',
-                    'type'       => 'User',
-                    'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
-                    'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'apiUrl',
-                    'siteAdmin'  => true,
+                    'userId'    => 1,
+                    'login'     => 'value',
+                    'type'      => 'User',
+                    'avatarUrl' => 'avatarUrl',
+                    'siteAdmin' => true,
                 ],
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',

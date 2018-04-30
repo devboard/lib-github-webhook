@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Core\Push;
 
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
@@ -14,14 +13,13 @@ use PhpSpec\ObjectBehavior;
 
 class OrganizationSpec extends ObjectBehavior
 {
-    public function let(AccountId $id, AccountLogin $login, AccountAvatarUrl $avatarUrl, AccountApiUrl $apiUrl)
+    public function let(AccountId $id, AccountLogin $login, AccountAvatarUrl $avatarUrl)
     {
         $this->beConstructedWith(
             $id,
             $login,
             $avatarUrl,
             $description = 'Zagreb PHP Meetup',
-            $apiUrl,
             $reposUrl = 'https://api.github.com/orgs/zgphp/repos',
             $issuesUrl = 'https://api.github.com/orgs/zgphp/issues',
             $eventsUrl = 'https://api.github.com/orgs/zgphp/events',
@@ -57,11 +55,6 @@ class OrganizationSpec extends ObjectBehavior
         $this->getDescription()->shouldReturn('Zagreb PHP Meetup');
     }
 
-    public function it_exposes_api_url(AccountApiUrl $apiUrl)
-    {
-        $this->getApiUrl()->shouldReturn($apiUrl);
-    }
-
     public function it_exposes_repos_url()
     {
         $this->getReposUrl()->shouldReturn('https://api.github.com/orgs/zgphp/repos');
@@ -92,20 +85,17 @@ class OrganizationSpec extends ObjectBehavior
         $this->getPublicMembersUrl()->shouldReturn('https://api.github.com/orgs/zgphp/public_members{/member}');
     }
 
-    public function it_can_be_serialized(
-        AccountId $id, AccountLogin $login, AccountAvatarUrl $avatarUrl, AccountApiUrl $apiUrl
-    ) {
+    public function it_can_be_serialized(AccountId $id, AccountLogin $login, AccountAvatarUrl $avatarUrl)
+    {
         $id->serialize()->shouldBeCalled()->willReturn(3259285);
         $login->serialize()->shouldBeCalled()->willReturn('zgphp');
         $avatarUrl->serialize()->shouldBeCalled()->willReturn('https://avatars3.githubusercontent.com/u/3259285?v=4');
-        $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/orgs/zgphp');
         $this->serialize()->shouldReturn(
             [
                 'id'               => 3259285,
                 'login'            => 'zgphp',
                 'avatarUrl'        => 'https://avatars3.githubusercontent.com/u/3259285?v=4',
                 'description'      => 'Zagreb PHP Meetup',
-                'apiUrl'           => 'https://api.github.com/orgs/zgphp',
                 'reposUrl'         => 'https://api.github.com/orgs/zgphp/repos',
                 'issuesUrl'        => 'https://api.github.com/orgs/zgphp/issues',
                 'eventsUrl'        => 'https://api.github.com/orgs/zgphp/events',
@@ -123,7 +113,6 @@ class OrganizationSpec extends ObjectBehavior
             'login'            => 'zgphp',
             'avatarUrl'        => 'https://avatars3.githubusercontent.com/u/3259285?v=4',
             'description'      => 'Zagreb PHP Meetup',
-            'apiUrl'           => 'https://api.github.com/orgs/zgphp',
             'reposUrl'         => 'https://api.github.com/orgs/zgphp/repos',
             'issuesUrl'        => 'https://api.github.com/orgs/zgphp/issues',
             'eventsUrl'        => 'https://api.github.com/orgs/zgphp/events',

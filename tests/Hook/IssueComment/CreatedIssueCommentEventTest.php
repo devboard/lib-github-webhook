@@ -15,21 +15,17 @@ use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubIssueComment;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\Installation\InstallationId;
-use DevboardLib\GitHub\Issue\IssueApiUrl;
 use DevboardLib\GitHub\Issue\IssueAssigneeCollection;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
-use DevboardLib\GitHub\Issue\IssueHtmlUrl;
 use DevboardLib\GitHub\Issue\IssueId;
 use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
 use DevboardLib\GitHub\Issue\IssueTitle;
 use DevboardLib\GitHub\Issue\IssueUpdatedAt;
-use DevboardLib\GitHub\IssueComment\IssueCommentApiUrl;
 use DevboardLib\GitHub\IssueComment\IssueCommentBody;
 use DevboardLib\GitHub\IssueComment\IssueCommentCreatedAt;
-use DevboardLib\GitHub\IssueComment\IssueCommentHtmlUrl;
 use DevboardLib\GitHub\IssueComment\IssueCommentId;
 use DevboardLib\GitHub\IssueComment\IssueCommentUpdatedAt;
 use DevboardLib\GitHub\Repo\RepoFullName;
@@ -71,9 +67,6 @@ class CreatedIssueCommentEventTest extends TestCase
             new IssueId(1),
             new IssueCommentBody('value'),
             IssueCommentAuthorSample::octocat(),
-            new IssueCommentHtmlUrl('htmlUrl'),
-            new IssueCommentApiUrl('apiUrl'),
-            new IssueApiUrl('apiUrl'),
             new IssueCommentCreatedAt('2018-01-01T00:01:00+00:00'),
             new IssueCommentUpdatedAt('2018-01-01T00:01:00+00:00')
         );
@@ -84,8 +77,6 @@ class CreatedIssueCommentEventTest extends TestCase
             new IssueBody('value'),
             IssueState::OPEN(),
             IssueAuthorSample::octocat(),
-            new IssueApiUrl('apiUrl'),
-            new IssueHtmlUrl('htmlUrl'),
             IssueAssigneeSample::octocat(),
             new IssueAssigneeCollection([IssueAssigneeSample::octocat()]),
             new GitHubLabelCollection([LabelSample::red()]),
@@ -141,15 +132,12 @@ class CreatedIssueCommentEventTest extends TestCase
     {
         $expected = [
             'comment' => [
-                'id'          => 1,
-                'issueId'     => 1,
-                'body'        => 'value',
-                'author'      => IssueCommentAuthorSample::serialized('octocat'),
-                'htmlUrl'     => 'htmlUrl',
-                'apiUrl'      => 'apiUrl',
-                'issueApiUrl' => 'apiUrl',
-                'createdAt'   => '2018-01-01T00:01:00+00:00',
-                'updatedAt'   => '2018-01-01T00:01:00+00:00',
+                'id'        => 1,
+                'issueId'   => 1,
+                'body'      => 'value',
+                'author'    => IssueCommentAuthorSample::serialized('octocat'),
+                'createdAt' => '2018-01-01T00:01:00+00:00',
+                'updatedAt' => '2018-01-01T00:01:00+00:00',
             ],
             'issue' => [
                 'id'        => 1,
@@ -158,8 +146,6 @@ class CreatedIssueCommentEventTest extends TestCase
                 'body'      => 'value',
                 'state'     => 'open',
                 'author'    => IssueAuthorSample::serialized('octocat'),
-                'apiUrl'    => 'apiUrl',
-                'htmlUrl'   => 'htmlUrl',
                 'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],
