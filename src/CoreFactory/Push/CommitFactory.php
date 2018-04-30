@@ -11,7 +11,6 @@ use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\Git\Commit\Committer\CommitterName;
 use DevboardLib\Git\Commit\CommitTree;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\Push\Commit;
 use DevboardLib\GitHubWebhook\Core\Push\CommitAuthor;
@@ -28,7 +27,6 @@ class CommitFactory
             $this->createAuthor($data['author']),
             $this->createCommitter($data['committer']),
             new CommitTree(new CommitSha($data['tree_id'])),
-            new CommitHtmlUrl($data['url']),
             $data['distinct'],
             $data['added'],
             $data['modified'],

@@ -10,7 +10,6 @@ use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\Git\Commit\CommitTree;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHubWebhook\Core\Push\Commit;
 use DevboardLib\GitHubWebhook\Core\Push\CommitAuthor;
 use DevboardLib\GitHubWebhook\Core\Push\CommitCommitter;
@@ -24,8 +23,7 @@ class CommitSpec extends ObjectBehavior
         CommitDate $commitDate,
         CommitAuthor $author,
         CommitCommitter $committer,
-        CommitTree $tree,
-        CommitHtmlUrl $htmlUrl
+        CommitTree $tree
     ) {
         $this->beConstructedWith(
             $sha,
@@ -34,7 +32,6 @@ class CommitSpec extends ObjectBehavior
             $author,
             $committer,
             $tree,
-            $htmlUrl,
             $distinct = true,
             $addedFiles = ['data'],
             $modifiedFiles = ['data'],
@@ -78,11 +75,6 @@ class CommitSpec extends ObjectBehavior
         $this->getTree()->shouldReturn($tree);
     }
 
-    public function it_exposes_html_url(CommitHtmlUrl $htmlUrl)
-    {
-        $this->getHtmlUrl()->shouldReturn($htmlUrl);
-    }
-
     public function it_exposes_is_distinct()
     {
         $this->isDisctinct()->shouldReturn(true);
@@ -109,8 +101,7 @@ class CommitSpec extends ObjectBehavior
         CommitDate $commitDate,
         CommitAuthor $author,
         CommitCommitter $committer,
-        CommitTree $tree,
-        CommitHtmlUrl $htmlUrl
+        CommitTree $tree
     ) {
         $sha->serialize()->shouldBeCalled()->willReturn('sha');
         $message->serialize()->shouldBeCalled()->willReturn('message');
@@ -118,7 +109,6 @@ class CommitSpec extends ObjectBehavior
         $author->serialize()->shouldBeCalled()->willReturn(CommitAuthorSample::serialized('octocat'));
         $committer->serialize()->shouldBeCalled()->willReturn(CommitCommitterSample::serialized('octocat'));
         $tree->serialize()->shouldBeCalled()->willReturn('sha');
-        $htmlUrl->serialize()->shouldBeCalled()->willReturn('htmlUrl');
         $this->serialize()->shouldReturn(
             [
                 'sha'           => 'sha',
@@ -127,7 +117,6 @@ class CommitSpec extends ObjectBehavior
                 'author'        => CommitAuthorSample::serialized('octocat'),
                 'committer'     => CommitCommitterSample::serialized('octocat'),
                 'tree'          => 'sha',
-                'htmlUrl'       => 'htmlUrl',
                 'distinct'      => true,
                 'addedFiles'    => ['data'],
                 'modifiedFiles' => ['data'],
@@ -145,7 +134,6 @@ class CommitSpec extends ObjectBehavior
             'author'        => CommitAuthorSample::serialized('octocat'),
             'committer'     => CommitCommitterSample::serialized('octocat'),
             'tree'          => 'sha',
-            'htmlUrl'       => 'htmlUrl',
             'distinct'      => true,
             'addedFiles'    => ['data'],
             'modifiedFiles' => ['data'],

@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Core\Status;
 
-use DevboardLib\Generix\GravatarId;
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
@@ -21,23 +18,13 @@ use PhpSpec\ObjectBehavior;
  */
 class CommitAuthorDetailsSpec extends ObjectBehavior
 {
-    public function let(
-        AccountId $userId,
-        AccountLogin $login,
-        AccountType $type,
-        AccountAvatarUrl $avatarUrl,
-        GravatarId $gravatarId,
-        AccountHtmlUrl $htmlUrl,
-        AccountApiUrl $apiUrl
-    ) {
+    public function let(AccountId $userId, AccountLogin $login, AccountType $type, AccountAvatarUrl $avatarUrl)
+    {
         $this->beConstructedWith(
             $userId,
             $login,
             $type,
             $avatarUrl,
-            $gravatarId,
-            $htmlUrl,
-            $apiUrl,
             $siteAdmin = false,
             $eventsUrl = 'https://api.github.com/users/octocat/events{/privacy}',
             $followersUrl = 'https://api.github.com/users/octocat/followers',
@@ -75,21 +62,6 @@ class CommitAuthorDetailsSpec extends ObjectBehavior
     public function it_exposes_avatar_url(AccountAvatarUrl $avatarUrl)
     {
         $this->getAvatarUrl()->shouldReturn($avatarUrl);
-    }
-
-    public function it_exposes_gravatar_id(GravatarId $gravatarId)
-    {
-        $this->getGravatarId()->shouldReturn($gravatarId);
-    }
-
-    public function it_exposes_html_url(AccountHtmlUrl $htmlUrl)
-    {
-        $this->getHtmlUrl()->shouldReturn($htmlUrl);
-    }
-
-    public function it_exposes_api_url(AccountApiUrl $apiUrl)
-    {
-        $this->getApiUrl()->shouldReturn($apiUrl);
     }
 
     public function it_exposes_is_site_admin()
@@ -143,30 +115,18 @@ class CommitAuthorDetailsSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        AccountId $userId,
-        AccountLogin $login,
-        AccountType $type,
-        AccountAvatarUrl $avatarUrl,
-        GravatarId $gravatarId,
-        AccountHtmlUrl $htmlUrl,
-        AccountApiUrl $apiUrl
+        AccountId $userId, AccountLogin $login, AccountType $type, AccountAvatarUrl $avatarUrl
     ) {
         $userId->serialize()->shouldBeCalled()->willReturn(583231);
         $login->serialize()->shouldBeCalled()->willReturn('octocat');
         $type->serialize()->shouldBeCalled()->willReturn('User');
         $avatarUrl->serialize()->shouldBeCalled()->willReturn('https://avatars3.githubusercontent.com/u/583231?v=4');
-        $gravatarId->serialize()->shouldBeCalled()->willReturn('543fd23');
-        $htmlUrl->serialize()->shouldBeCalled()->willReturn('https://github.com/octocat');
-        $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/users/octocat');
         $this->serialize()->shouldReturn(
             [
                 'userId'            => 583231,
                 'login'             => 'octocat',
                 'type'              => 'User',
                 'avatarUrl'         => 'https://avatars3.githubusercontent.com/u/583231?v=4',
-                'gravatarId'        => '543fd23',
-                'htmlUrl'           => 'https://github.com/octocat',
-                'apiUrl'            => 'https://api.github.com/users/octocat',
                 'siteAdmin'         => false,
                 'eventsUrl'         => 'https://api.github.com/users/octocat/events{/privacy}',
                 'followersUrl'      => 'https://api.github.com/users/octocat/followers',
@@ -188,9 +148,6 @@ class CommitAuthorDetailsSpec extends ObjectBehavior
             'login'             => 'octocat',
             'type'              => 'User',
             'avatarUrl'         => 'https://avatars3.githubusercontent.com/u/583231?v=4',
-            'gravatarId'        => '543fd23',
-            'htmlUrl'           => 'https://github.com/octocat',
-            'apiUrl'            => 'https://api.github.com/users/octocat',
             'siteAdmin'         => false,
             'eventsUrl'         => 'https://api.github.com/users/octocat/events{/privacy}',
             'followersUrl'      => 'https://api.github.com/users/octocat/followers',

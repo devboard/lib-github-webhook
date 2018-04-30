@@ -6,12 +6,10 @@ namespace DevboardLib\GitHubWebhook\CoreFactory\PullRequestReview;
 
 use DateTime;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
 use DevboardLib\GitHub\PullRequest\PullRequestBody;
 use DevboardLib\GitHub\PullRequest\PullRequestClosedAt;
 use DevboardLib\GitHub\PullRequest\PullRequestCreatedAt;
-use DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl;
 use DevboardLib\GitHub\PullRequest\PullRequestId;
 use DevboardLib\GitHub\PullRequest\PullRequestNumber;
 use DevboardLib\GitHub\PullRequest\PullRequestState;
@@ -124,8 +122,6 @@ class GitHubPullRequestFactory
         }
 
         $pullRequestUrls = new PullRequestUrls(
-            new PullRequestApiUrl($data['url']),
-            new PullRequestHtmlUrl($data['html_url']),
             $data['comments_url'],
             $data['commits_url'],
             $data['diff_url'],

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Core\Push;
 
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
@@ -28,9 +27,6 @@ class OrganizationTest extends TestCase
 
     /** @var string */
     private $description;
-
-    /** @var AccountApiUrl */
-    private $apiUrl;
 
     /** @var string */
     private $reposUrl;
@@ -59,7 +55,6 @@ class OrganizationTest extends TestCase
         $this->login            = new AccountLogin('zgphp');
         $this->avatarUrl        = new AccountAvatarUrl('https://avatars3.githubusercontent.com/u/3259285?v=4');
         $this->description      = 'Zagreb PHP Meetup';
-        $this->apiUrl           = new AccountApiUrl('https://api.github.com/orgs/zgphp');
         $this->reposUrl         = 'https://api.github.com/orgs/zgphp/repos';
         $this->issuesUrl        = 'https://api.github.com/orgs/zgphp/issues';
         $this->eventsUrl        = 'https://api.github.com/orgs/zgphp/events';
@@ -71,7 +66,6 @@ class OrganizationTest extends TestCase
             $this->login,
             $this->avatarUrl,
             $this->description,
-            $this->apiUrl,
             $this->reposUrl,
             $this->issuesUrl,
             $this->eventsUrl,
@@ -99,11 +93,6 @@ class OrganizationTest extends TestCase
     public function testGetDescription()
     {
         self::assertSame($this->description, $this->sut->getDescription());
-    }
-
-    public function testGetApiUrl()
-    {
-        self::assertSame($this->apiUrl, $this->sut->getApiUrl());
     }
 
     public function testGetReposUrl()
@@ -143,7 +132,6 @@ class OrganizationTest extends TestCase
             'login'            => 'zgphp',
             'avatarUrl'        => 'https://avatars3.githubusercontent.com/u/3259285?v=4',
             'description'      => 'Zagreb PHP Meetup',
-            'apiUrl'           => 'https://api.github.com/orgs/zgphp',
             'reposUrl'         => 'https://api.github.com/orgs/zgphp/repos',
             'issuesUrl'        => 'https://api.github.com/orgs/zgphp/issues',
             'eventsUrl'        => 'https://api.github.com/orgs/zgphp/events',

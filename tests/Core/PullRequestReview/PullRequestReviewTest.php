@@ -4,24 +4,18 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Core\PullRequestReview;
 
-use DevboardLib\Generix\GravatarId;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
-use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthor;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthorAssociation;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewBody;
-use DevboardLib\GitHub\PullRequestReview\PullRequestReviewHtmlUrl;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewId;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewState;
 use DevboardLib\GitHub\PullRequestReview\PullRequestReviewSubmittedAt;
 use DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReview;
-use DevboardLib\GitHubWebhook\Core\PullRequestReview\PullRequestReviewUrls;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,9 +41,6 @@ class PullRequestReviewTest extends TestCase
     /** @var CommitSha */
     private $commitSha;
 
-    /** @var PullRequestReviewUrls */
-    private $urls;
-
     /** @var PullRequestReviewSubmittedAt */
     private $submittedAt;
 
@@ -66,19 +57,13 @@ class PullRequestReviewTest extends TestCase
             AccountType::USER(),
             PullRequestReviewAuthorAssociation::COLLABORATOR(),
             new AccountAvatarUrl('avatarUrl'),
-            new GravatarId('id'),
-            new AccountHtmlUrl('htmlUrl'),
-            new AccountApiUrl('apiUrl'),
             true
         );
-        $this->state     = new PullRequestReviewState('approved');
-        $this->commitSha = new CommitSha('sha');
-        $this->urls      = new PullRequestReviewUrls(
-            new PullRequestReviewHtmlUrl('htmlUrl'), new PullRequestApiUrl('apiUrl')
-        );
+        $this->state       = new PullRequestReviewState('approved');
+        $this->commitSha   = new CommitSha('sha');
         $this->submittedAt = new PullRequestReviewSubmittedAt('2018-01-01T00:01:00+00:00');
         $this->sut         = new PullRequestReview(
-            $this->id, $this->body, $this->author, $this->state, $this->commitSha, $this->urls, $this->submittedAt
+            $this->id, $this->body, $this->author, $this->state, $this->commitSha, $this->submittedAt
         );
     }
 
@@ -107,11 +92,6 @@ class PullRequestReviewTest extends TestCase
         self::assertSame($this->commitSha, $this->sut->getCommitSha());
     }
 
-    public function testGetUrls()
-    {
-        self::assertSame($this->urls, $this->sut->getUrls());
-    }
-
     public function testGetSubmittedAt()
     {
         self::assertSame($this->submittedAt, $this->sut->getSubmittedAt());
@@ -128,14 +108,10 @@ class PullRequestReviewTest extends TestCase
                 'type'        => 'User',
                 'association' => 'COLLABORATOR',
                 'avatarUrl'   => 'avatarUrl',
-                'gravatarId'  => 'id',
-                'htmlUrl'     => 'htmlUrl',
-                'apiUrl'      => 'apiUrl',
                 'siteAdmin'   => true,
             ],
             'state'       => 'approved',
             'commitSha'   => 'sha',
-            'urls'        => ['htmlUrl' => 'htmlUrl', 'pullRequestApiUrl' => 'apiUrl'],
             'submittedAt' => '2018-01-01T00:01:00+00:00',
         ];
 

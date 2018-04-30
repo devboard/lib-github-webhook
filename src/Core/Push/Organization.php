@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Core\Push;
 
-use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
@@ -27,9 +26,6 @@ class Organization implements GitHubAccount
 
     /** @var string */
     private $description;
-
-    /** @var AccountApiUrl */
-    private $apiUrl;
 
     /** @var string */
     private $reposUrl;
@@ -55,7 +51,6 @@ class Organization implements GitHubAccount
         AccountLogin $login,
         AccountAvatarUrl $avatarUrl,
         string $description,
-        AccountApiUrl $apiUrl,
         string $reposUrl,
         string $issuesUrl,
         string $eventsUrl,
@@ -67,7 +62,6 @@ class Organization implements GitHubAccount
         $this->login            = $login;
         $this->avatarUrl        = $avatarUrl;
         $this->description      = $description;
-        $this->apiUrl           = $apiUrl;
         $this->reposUrl         = $reposUrl;
         $this->issuesUrl        = $issuesUrl;
         $this->eventsUrl        = $eventsUrl;
@@ -94,11 +88,6 @@ class Organization implements GitHubAccount
     public function getDescription(): string
     {
         return $this->description;
-    }
-
-    public function getApiUrl(): AccountApiUrl
-    {
-        return $this->apiUrl;
     }
 
     public function getReposUrl(): string
@@ -138,7 +127,6 @@ class Organization implements GitHubAccount
             'login'            => $this->login->serialize(),
             'avatarUrl'        => $this->avatarUrl->serialize(),
             'description'      => $this->description,
-            'apiUrl'           => $this->apiUrl->serialize(),
             'reposUrl'         => $this->reposUrl,
             'issuesUrl'        => $this->issuesUrl,
             'eventsUrl'        => $this->eventsUrl,
@@ -155,7 +143,6 @@ class Organization implements GitHubAccount
             AccountLogin::deserialize($data['login']),
             AccountAvatarUrl::deserialize($data['avatarUrl']),
             $data['description'],
-            AccountApiUrl::deserialize($data['apiUrl']),
             $data['reposUrl'],
             $data['issuesUrl'],
             $data['eventsUrl'],

@@ -12,8 +12,6 @@ class PullRequestUrlsSample
     {
         $data = [
             'urls1' => [
-                'apiUrl'            => 'apiUrl',
-                'htmlUrl'           => 'htmlUrl',
                 'commentsUrl'       => 'commentsUrl',
                 'commitsUrl'        => 'commitsUrl',
                 'diffUrl'           => 'diffUrl',

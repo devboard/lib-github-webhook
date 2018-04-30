@@ -10,7 +10,6 @@ use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\Git\Commit\CommitTree;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHubWebhook\Core\Push\Commit;
 use DevboardLib\GitHubWebhook\Core\Push\CommitAuthor;
 use DevboardLib\GitHubWebhook\Core\Push\CommitCommitter;
@@ -40,9 +39,6 @@ class CommitTest extends TestCase
     /** @var CommitTree */
     private $tree;
 
-    /** @var CommitHtmlUrl */
-    private $htmlUrl;
-
     /** @var bool */
     private $distinct;
 
@@ -66,7 +62,6 @@ class CommitTest extends TestCase
         $this->author        = CommitAuthorSample::octocat();
         $this->committer     = CommitCommitterSample::octocat();
         $this->tree          = new CommitTree(new CommitSha('sha'));
-        $this->htmlUrl       = new CommitHtmlUrl('htmlUrl');
         $this->distinct      = true;
         $this->addedFiles    = ['data'];
         $this->modifiedFiles = ['data'];
@@ -78,7 +73,6 @@ class CommitTest extends TestCase
             $this->author,
             $this->committer,
             $this->tree,
-            $this->htmlUrl,
             $this->distinct,
             $this->addedFiles,
             $this->modifiedFiles,
@@ -116,11 +110,6 @@ class CommitTest extends TestCase
         self::assertSame($this->tree, $this->sut->getTree());
     }
 
-    public function testGetHtmlUrl()
-    {
-        self::assertSame($this->htmlUrl, $this->sut->getHtmlUrl());
-    }
-
     public function testIsDisctinct()
     {
         self::assertSame($this->distinct, $this->sut->isDisctinct());
@@ -150,7 +139,6 @@ class CommitTest extends TestCase
             'author'        => CommitAuthorSample::serialized('octocat'),
             'committer'     => CommitCommitterSample::serialized('octocat'),
             'tree'          => 'sha',
-            'htmlUrl'       => 'htmlUrl',
             'distinct'      => true,
             'addedFiles'    => ['data'],
             'modifiedFiles' => ['data'],

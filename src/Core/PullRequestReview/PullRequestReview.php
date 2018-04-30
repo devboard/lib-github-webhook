@@ -32,9 +32,6 @@ class PullRequestReview
     /** @var CommitSha */
     private $commitSha;
 
-    /** @var PullRequestReviewUrls */
-    private $urls;
-
     /** @var PullRequestReviewSubmittedAt|null */
     private $submittedAt;
 
@@ -44,7 +41,6 @@ class PullRequestReview
         PullRequestReviewAuthor $author,
         PullRequestReviewState $state,
         CommitSha $commitSha,
-        PullRequestReviewUrls $urls,
         ?PullRequestReviewSubmittedAt $submittedAt
     ) {
         $this->id          = $id;
@@ -52,7 +48,6 @@ class PullRequestReview
         $this->author      = $author;
         $this->state       = $state;
         $this->commitSha   = $commitSha;
-        $this->urls        = $urls;
         $this->submittedAt = $submittedAt;
     }
 
@@ -81,11 +76,6 @@ class PullRequestReview
         return $this->commitSha;
     }
 
-    public function getUrls(): PullRequestReviewUrls
-    {
-        return $this->urls;
-    }
-
     public function getSubmittedAt(): ?PullRequestReviewSubmittedAt
     {
         return $this->submittedAt;
@@ -105,7 +95,6 @@ class PullRequestReview
             'author'      => $this->author->serialize(),
             'state'       => $this->state->serialize(),
             'commitSha'   => $this->commitSha->serialize(),
-            'urls'        => $this->urls->serialize(),
             'submittedAt' => $submittedAt,
         ];
     }
@@ -124,7 +113,6 @@ class PullRequestReview
             PullRequestReviewAuthor::deserialize($data['author']),
             PullRequestReviewState::deserialize($data['state']),
             CommitSha::deserialize($data['commitSha']),
-            PullRequestReviewUrls::deserialize($data['urls']),
             $submittedAt
         );
     }

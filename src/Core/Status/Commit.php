@@ -7,8 +7,6 @@ namespace DevboardLib\GitHubWebhook\Core\Status;
 use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\Commit\CommitApiUrl;
-use DevboardLib\GitHub\Commit\CommitHtmlUrl;
 use DevboardLib\GitHub\Commit\CommitParentCollection;
 use DevboardLib\GitHub\Commit\CommitTree;
 use DevboardLib\GitHub\Commit\CommitVerification;
@@ -46,12 +44,6 @@ class Commit implements GitCommit
     /** @var CommitVerification|null */
     private $verification;
 
-    /** @var CommitApiUrl */
-    private $apiUrl;
-
-    /** @var CommitHtmlUrl */
-    private $htmlUrl;
-
     /** @var string */
     private $commentsUrl;
 
@@ -64,8 +56,6 @@ class Commit implements GitCommit
         CommitTree $tree,
         CommitParentCollection $parents,
         ?CommitVerification $verification,
-        CommitApiUrl $apiUrl,
-        CommitHtmlUrl $htmlUrl,
         string $commentsUrl
     ) {
         $this->sha          = $sha;
@@ -76,8 +66,6 @@ class Commit implements GitCommit
         $this->tree         = $tree;
         $this->parents      = $parents;
         $this->verification = $verification;
-        $this->apiUrl       = $apiUrl;
-        $this->htmlUrl      = $htmlUrl;
         $this->commentsUrl  = $commentsUrl;
     }
 
@@ -121,16 +109,6 @@ class Commit implements GitCommit
         return $this->verification;
     }
 
-    public function getApiUrl(): CommitApiUrl
-    {
-        return $this->apiUrl;
-    }
-
-    public function getHtmlUrl(): CommitHtmlUrl
-    {
-        return $this->htmlUrl;
-    }
-
     public function getCommentsUrl(): string
     {
         return $this->commentsUrl;
@@ -153,8 +131,6 @@ class Commit implements GitCommit
             'tree'         => $this->tree->serialize(),
             'parents'      => $this->parents->serialize(),
             'verification' => $verification,
-            'apiUrl'       => $this->apiUrl->serialize(),
-            'htmlUrl'      => $this->htmlUrl->serialize(),
             'commentsUrl'  => $this->commentsUrl,
         ];
     }
@@ -176,8 +152,6 @@ class Commit implements GitCommit
             CommitTree::deserialize($data['tree']),
             CommitParentCollection::deserialize($data['parents']),
             $verification,
-            CommitApiUrl::deserialize($data['apiUrl']),
-            CommitHtmlUrl::deserialize($data['htmlUrl']),
             $data['commentsUrl']
         );
     }

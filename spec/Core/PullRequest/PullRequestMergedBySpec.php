@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHubWebhook\Core\PullRequest;
 
-use DevboardLib\Generix\GravatarId;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHub\User\UserApiUrl;
 use DevboardLib\GitHub\User\UserAvatarUrl;
-use DevboardLib\GitHub\User\UserHtmlUrl;
 use DevboardLib\GitHub\User\UserId;
 use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestMergedBy;
@@ -16,23 +13,13 @@ use PhpSpec\ObjectBehavior;
 
 class PullRequestMergedBySpec extends ObjectBehavior
 {
-    public function let(
-        UserId $userId,
-        UserLogin $login,
-        AccountType $type,
-        UserAvatarUrl $avatarUrl,
-        GravatarId $gravatarId,
-        UserHtmlUrl $htmlUrl,
-        UserApiUrl $apiUrl
-    ) {
+    public function let(UserId $userId, UserLogin $login, AccountType $type, UserAvatarUrl $avatarUrl)
+    {
         $this->beConstructedWith(
             $userId,
             $login,
             $type,
             $avatarUrl,
-            $gravatarId,
-            $htmlUrl,
-            $apiUrl,
             $siteAdmin = false,
             $eventsUrl = 'https://api.github.com/users/baxterthehacker/events{/privacy}',
             $followersUrl = 'https://api.github.com/users/baxterthehacker/followers',
@@ -69,21 +56,6 @@ class PullRequestMergedBySpec extends ObjectBehavior
     public function it_exposes_avatar_url(UserAvatarUrl $avatarUrl)
     {
         $this->getAvatarUrl()->shouldReturn($avatarUrl);
-    }
-
-    public function it_exposes_gravatar_id(GravatarId $gravatarId)
-    {
-        $this->getGravatarId()->shouldReturn($gravatarId);
-    }
-
-    public function it_exposes_html_url(UserHtmlUrl $htmlUrl)
-    {
-        $this->getHtmlUrl()->shouldReturn($htmlUrl);
-    }
-
-    public function it_exposes_api_url(UserApiUrl $apiUrl)
-    {
-        $this->getApiUrl()->shouldReturn($apiUrl);
     }
 
     public function it_exposes_is_site_admin()
@@ -136,36 +108,19 @@ class PullRequestMergedBySpec extends ObjectBehavior
         $this->getSubscriptionsUrl()->shouldReturn('https://api.github.com/users/baxterthehacker/subscriptions');
     }
 
-    public function it_has_gravatar_id()
-    {
-        $this->hasGravatarId()->shouldReturn(true);
-    }
-
     public function it_can_be_serialized(
-        UserId $userId,
-        UserLogin $login,
-        AccountType $type,
-        UserAvatarUrl $avatarUrl,
-        GravatarId $gravatarId,
-        UserHtmlUrl $htmlUrl,
-        UserApiUrl $apiUrl
+        UserId $userId, UserLogin $login, AccountType $type, UserAvatarUrl $avatarUrl
     ) {
         $userId->serialize()->shouldBeCalled()->willReturn(6752317);
         $login->serialize()->shouldBeCalled()->willReturn('baxterthehacker');
         $type->serialize()->shouldBeCalled()->willReturn('User');
         $avatarUrl->serialize()->shouldBeCalled()->willReturn('https://avatars.githubusercontent.com/u/6752317?v=3');
-        $gravatarId->serialize()->shouldBeCalled()->willReturn('id');
-        $htmlUrl->serialize()->shouldBeCalled()->willReturn('https://github.com/baxterthehacker');
-        $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/users/baxterthehacker');
         $this->serialize()->shouldReturn(
             [
                 'userId'            => 6752317,
                 'login'             => 'baxterthehacker',
                 'type'              => 'User',
                 'avatarUrl'         => 'https://avatars.githubusercontent.com/u/6752317?v=3',
-                'gravatarId'        => 'id',
-                'htmlUrl'           => 'https://github.com/baxterthehacker',
-                'apiUrl'            => 'https://api.github.com/users/baxterthehacker',
                 'siteAdmin'         => false,
                 'eventsUrl'         => 'https://api.github.com/users/baxterthehacker/events{/privacy}',
                 'followersUrl'      => 'https://api.github.com/users/baxterthehacker/followers',
@@ -187,9 +142,6 @@ class PullRequestMergedBySpec extends ObjectBehavior
             'login'             => 'baxterthehacker',
             'type'              => 'User',
             'avatarUrl'         => 'https://avatars.githubusercontent.com/u/6752317?v=3',
-            'gravatarId'        => 'id',
-            'htmlUrl'           => 'https://github.com/baxterthehacker',
-            'apiUrl'            => 'https://api.github.com/users/baxterthehacker',
             'siteAdmin'         => false,
             'eventsUrl'         => 'https://api.github.com/users/baxterthehacker/events{/privacy}',
             'followersUrl'      => 'https://api.github.com/users/baxterthehacker/followers',

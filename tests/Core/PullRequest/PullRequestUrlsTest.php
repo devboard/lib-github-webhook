@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Core\PullRequest;
 
-use DevboardLib\GitHub\PullRequest\PullRequestApiUrl;
-use DevboardLib\GitHub\PullRequest\PullRequestHtmlUrl;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestUrls;
 use PHPUnit\Framework\TestCase;
 
@@ -15,12 +13,6 @@ use PHPUnit\Framework\TestCase;
  */
 class PullRequestUrlsTest extends TestCase
 {
-    /** @var PullRequestApiUrl */
-    private $apiUrl;
-
-    /** @var PullRequestHtmlUrl */
-    private $htmlUrl;
-
     /** @var string */
     private $commentsUrl;
 
@@ -50,8 +42,6 @@ class PullRequestUrlsTest extends TestCase
 
     public function setUp()
     {
-        $this->apiUrl            = new PullRequestApiUrl('apiUrl');
-        $this->htmlUrl           = new PullRequestHtmlUrl('htmlUrl');
         $this->commentsUrl       = 'commentsUrl';
         $this->commitsUrl        = 'commitsUrl';
         $this->diffUrl           = 'diffUrl';
@@ -61,8 +51,6 @@ class PullRequestUrlsTest extends TestCase
         $this->reviewCommentsUrl = 'reviewCommentsUrl';
         $this->statusesUrl       = 'statusesUrl';
         $this->sut               = new PullRequestUrls(
-            $this->apiUrl,
-            $this->htmlUrl,
             $this->commentsUrl,
             $this->commitsUrl,
             $this->diffUrl,
@@ -72,16 +60,6 @@ class PullRequestUrlsTest extends TestCase
             $this->reviewCommentsUrl,
             $this->statusesUrl
         );
-    }
-
-    public function testGetApiUrl()
-    {
-        self::assertSame($this->apiUrl, $this->sut->getApiUrl());
-    }
-
-    public function testGetHtmlUrl()
-    {
-        self::assertSame($this->htmlUrl, $this->sut->getHtmlUrl());
     }
 
     public function testGetCommentsUrl()
@@ -127,8 +105,6 @@ class PullRequestUrlsTest extends TestCase
     public function testSerialize()
     {
         $expected = [
-            'apiUrl'            => 'apiUrl',
-            'htmlUrl'           => 'htmlUrl',
             'commentsUrl'       => 'commentsUrl',
             'commitsUrl'        => 'commitsUrl',
             'diffUrl'           => 'diffUrl',
