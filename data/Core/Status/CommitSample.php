@@ -55,8 +55,8 @@ class CommitSample
                     'subscriptionsUrl'  => 'subscriptionsUrl',
                 ],
             ],
-            'tree'         => ['sha' => 'sha', 'apiUrl' => 'url'],
-            'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
+            'tree'         => ['sha' => 'sha'],
+            'parents'      => [['sha' => 'sha']],
             'verification' => [
                 'verified'  => true,
                 'reason'    => 'reason',

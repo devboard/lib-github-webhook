@@ -10,12 +10,9 @@ use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\CommitMessage;
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\GitHub\Commit\CommitParent;
-use DevboardLib\GitHub\Commit\CommitParent\ParentApiUrl;
-use DevboardLib\GitHub\Commit\CommitParent\ParentHtmlUrl;
 use DevboardLib\GitHub\Commit\CommitParentCollection;
 use DevboardLib\GitHub\Commit\CommitTree;
 use DevboardLib\GitHub\Commit\CommitVerification;
-use DevboardLib\GitHub\Commit\Tree\TreeApiUrl;
 use DevboardLib\GitHub\Commit\Verification\VerificationPayload;
 use DevboardLib\GitHub\Commit\Verification\VerificationReason;
 use DevboardLib\GitHub\Commit\Verification\VerificationSignature;
@@ -64,15 +61,13 @@ class CommitTest extends TestCase
 
     public function setUp()
     {
-        $this->sha        = new CommitSha('sha');
-        $this->message    = new CommitMessage('message');
-        $this->commitDate = new CommitDate('2018-01-01T00:01:00+00:00');
-        $this->author     = CommitAuthorSample::octocat();
-        $this->committer  = CommitCommitterSample::octocat();
-        $this->tree       = new CommitTree(new CommitSha('sha'), new TreeApiUrl('url'));
-        $this->parents    = new CommitParentCollection(
-            [new CommitParent(new CommitSha('sha'), new ParentApiUrl('apiUrl'), new ParentHtmlUrl('htmlUrl'))]
-        );
+        $this->sha          = new CommitSha('sha');
+        $this->message      = new CommitMessage('message');
+        $this->commitDate   = new CommitDate('2018-01-01T00:01:00+00:00');
+        $this->author       = CommitAuthorSample::octocat();
+        $this->committer    = CommitCommitterSample::octocat();
+        $this->tree         = new CommitTree(new CommitSha('sha'));
+        $this->parents      = new CommitParentCollection([new CommitParent(new CommitSha('sha'))]);
         $this->verification = new CommitVerification(
             new VerificationVerified(true),
             new VerificationReason('reason'),
@@ -147,8 +142,8 @@ class CommitTest extends TestCase
             'commitDate'   => '2018-01-01T00:01:00+00:00',
             'author'       => CommitAuthorSample::serialized('octocat'),
             'committer'    => CommitCommitterSample::serialized('octocat'),
-            'tree'         => ['sha' => 'sha', 'apiUrl' => 'url'],
-            'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
+            'tree'         => ['sha' => 'sha'],
+            'parents'      => [['sha' => 'sha']],
             'verification' => [
                 'verified'  => true,
                 'reason'    => 'reason',
