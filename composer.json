@@ -47,10 +47,5 @@
             "spec\\DevboardLib\\GitHubWebhook\\": "spec/",
             "Tests\\DevboardLib\\GitHubWebhook\\": "tests/"
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.6-dev"
-        }
     }
 }
