@@ -10,11 +10,15 @@ parameters:
 	    - '#Parameter \#1 \$json of function json_decode expects string, string|false given.#'
 	    - '#Call to static method .*::assertInstanceOf\(\) with .* and .* will always evaluate to true.#'
 	    - '#Property .*::\$sut has no typehint specified.#'
+	    - '#Method DevboardLib\\GitHubWebhook\\Core\\Push\\Commit::getParents\(\) has no return typehint specified.#'
+	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\BasePushFactory::create\(\) has no return typehint specified.#'
+	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\DeleteBranchPushEventFactory::create\(\) has no return typehint specified.#'
+	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\DeleteTagPushEventFactory::create\(\) has no return typehint specified.#'
+	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\UpdateBranchPushEventFactory::create\(\) has no return typehint specified.#'
+	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\UpdateTagPushEventFactory::create\(\) has no return typehint specified.#'
 includes:
 	- vendor/phpstan/phpstan-phpunit/extension.neon
 	- vendor/phpstan/phpstan-phpunit/rules.neon
 	- vendor/phpstan/phpstan-strict-rules/rules.neon
-
-
 
 
