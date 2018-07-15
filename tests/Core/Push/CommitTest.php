@@ -54,7 +54,7 @@ class CommitTest extends TestCase
     /** @var Commit */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sha           = new CommitSha('sha');
         $this->message       = new CommitMessage('message');
@@ -80,57 +80,57 @@ class CommitTest extends TestCase
         );
     }
 
-    public function testGetSha()
+    public function testGetSha(): void
     {
         self::assertSame($this->sha, $this->sut->getSha());
     }
 
-    public function testGetMessage()
+    public function testGetMessage(): void
     {
         self::assertSame($this->message, $this->sut->getMessage());
     }
 
-    public function testGetCommitDate()
+    public function testGetCommitDate(): void
     {
         self::assertSame($this->commitDate, $this->sut->getCommitDate());
     }
 
-    public function testGetAuthor()
+    public function testGetAuthor(): void
     {
         self::assertSame($this->author, $this->sut->getAuthor());
     }
 
-    public function testGetCommitter()
+    public function testGetCommitter(): void
     {
         self::assertSame($this->committer, $this->sut->getCommitter());
     }
 
-    public function testGetTree()
+    public function testGetTree(): void
     {
         self::assertSame($this->tree, $this->sut->getTree());
     }
 
-    public function testIsDisctinct()
+    public function testIsDisctinct(): void
     {
         self::assertSame($this->distinct, $this->sut->isDisctinct());
     }
 
-    public function testGetAddedFiles()
+    public function testGetAddedFiles(): void
     {
         self::assertSame($this->addedFiles, $this->sut->getAddedFiles());
     }
 
-    public function testGetModifiedFiles()
+    public function testGetModifiedFiles(): void
     {
         self::assertSame($this->modifiedFiles, $this->sut->getModifiedFiles());
     }
 
-    public function testGetRemovedFiles()
+    public function testGetRemovedFiles(): void
     {
         self::assertSame($this->removedFiles, $this->sut->getRemovedFiles());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'sha'           => 'sha',
@@ -148,7 +148,7 @@ class CommitTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, Commit::deserialize(json_decode($serialized, true)));

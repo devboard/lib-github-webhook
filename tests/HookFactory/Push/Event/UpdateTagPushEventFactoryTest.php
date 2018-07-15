@@ -21,13 +21,13 @@ class UpdateTagPushEventFactoryTest extends TestCase
     /** @var UpdateTagPushEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testUpdateTagPushEventFactory()
+    public function testUpdateTagPushEventFactory(): void
     {
         $provider = new StagingDataProvider();
 

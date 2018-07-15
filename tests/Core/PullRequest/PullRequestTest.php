@@ -126,7 +126,7 @@ class PullRequestTest extends TestCase
     /** @var PullRequest */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->id                 = new PullRequestId(1);
         $this->number             = new PullRequestNumber(1);
@@ -186,172 +186,172 @@ class PullRequestTest extends TestCase
         );
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         self::assertSame($this->id, $this->sut->getId());
     }
 
-    public function testGetNumber()
+    public function testGetNumber(): void
     {
         self::assertSame($this->number, $this->sut->getNumber());
     }
 
-    public function testGetBase()
+    public function testGetBase(): void
     {
         self::assertSame($this->base, $this->sut->getBase());
     }
 
-    public function testGetHead()
+    public function testGetHead(): void
     {
         self::assertSame($this->head, $this->sut->getHead());
     }
 
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         self::assertSame($this->title, $this->sut->getTitle());
     }
 
-    public function testGetBody()
+    public function testGetBody(): void
     {
         self::assertSame($this->body, $this->sut->getBody());
     }
 
-    public function testGetState()
+    public function testGetState(): void
     {
         self::assertSame($this->state, $this->sut->getState());
     }
 
-    public function testGetAuthor()
+    public function testGetAuthor(): void
     {
         self::assertSame($this->author, $this->sut->getAuthor());
     }
 
-    public function testGetAssignees()
+    public function testGetAssignees(): void
     {
         self::assertSame($this->assignees, $this->sut->getAssignees());
     }
 
-    public function testGetRequestedReviewers()
+    public function testGetRequestedReviewers(): void
     {
         self::assertSame($this->requestedReviewers, $this->sut->getRequestedReviewers());
     }
 
-    public function testGetRequestedTeams()
+    public function testGetRequestedTeams(): void
     {
         self::assertSame($this->requestedTeams, $this->sut->getRequestedTeams());
     }
 
-    public function testIsLocked()
+    public function testIsLocked(): void
     {
         self::assertSame($this->locked, $this->sut->isLocked());
     }
 
-    public function testIsRebaseable()
+    public function testIsRebaseable(): void
     {
         self::assertSame($this->rebaseable, $this->sut->isRebaseable());
     }
 
-    public function testIsMaintainerCanModify()
+    public function testIsMaintainerCanModify(): void
     {
         self::assertSame($this->maintainerCanModify, $this->sut->isMaintainerCanModify());
     }
 
-    public function testGetMergeCommitSha()
+    public function testGetMergeCommitSha(): void
     {
         self::assertSame($this->mergeCommitSha, $this->sut->getMergeCommitSha());
     }
 
-    public function testIsMergeable()
+    public function testIsMergeable(): void
     {
         self::assertSame($this->mergeable, $this->sut->isMergeable());
     }
 
-    public function testGetMergeableState()
+    public function testGetMergeableState(): void
     {
         self::assertSame($this->mergeableState, $this->sut->getMergeableState());
     }
 
-    public function testIsMerged()
+    public function testIsMerged(): void
     {
         self::assertSame($this->merged, $this->sut->isMerged());
     }
 
-    public function testGetMergedAt()
+    public function testGetMergedAt(): void
     {
         self::assertSame($this->mergedAt, $this->sut->getMergedAt());
     }
 
-    public function testGetMergedBy()
+    public function testGetMergedBy(): void
     {
         self::assertSame($this->mergedBy, $this->sut->getMergedBy());
     }
 
-    public function testGetMilestone()
+    public function testGetMilestone(): void
     {
         self::assertSame($this->milestone, $this->sut->getMilestone());
     }
 
-    public function testGetClosedAt()
+    public function testGetClosedAt(): void
     {
         self::assertSame($this->closedAt, $this->sut->getClosedAt());
     }
 
-    public function testGetStats()
+    public function testGetStats(): void
     {
         self::assertSame($this->stats, $this->sut->getStats());
     }
 
-    public function testGetUrls()
+    public function testGetUrls(): void
     {
         self::assertSame($this->urls, $this->sut->getUrls());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         self::assertSame($this->createdAt, $this->sut->getCreatedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         self::assertSame($this->updatedAt, $this->sut->getUpdatedAt());
     }
 
-    public function testHasRebaseable()
+    public function testHasRebaseable(): void
     {
         self::assertTrue($this->sut->hasRebaseable());
     }
 
-    public function testHasMergeCommitSha()
+    public function testHasMergeCommitSha(): void
     {
         self::assertTrue($this->sut->hasMergeCommitSha());
     }
 
-    public function testHasMergeable()
+    public function testHasMergeable(): void
     {
         self::assertTrue($this->sut->hasMergeable());
     }
 
-    public function testHasMergedAt()
+    public function testHasMergedAt(): void
     {
         self::assertTrue($this->sut->hasMergedAt());
     }
 
-    public function testHasMergedBy()
+    public function testHasMergedBy(): void
     {
         self::assertTrue($this->sut->hasMergedBy());
     }
 
-    public function testHasMilestone()
+    public function testHasMilestone(): void
     {
         self::assertTrue($this->sut->hasMilestone());
     }
 
-    public function testHasClosedAt()
+    public function testHasClosedAt(): void
     {
         self::assertTrue($this->sut->hasClosedAt());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'id'                  => 1,
@@ -385,7 +385,7 @@ class PullRequestTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, PullRequest::deserialize(json_decode($serialized, true)));

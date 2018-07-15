@@ -16,7 +16,7 @@ class SenderFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new SenderFactory();
     }
@@ -24,7 +24,7 @@ class SenderFactoryTest extends TestCase
     /**
      * @group stagingData
      */
-    public function testSenderFactory()
+    public function testSenderFactory(): void
     {
         $provider = new StagingDataProvider();
 

@@ -27,12 +27,12 @@ class GitHubPullRequestFactoryTest extends TestCase
     /** @var GitHubPullRequestFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         foreach ($this->provideData() as $data) {
             self::assertInstanceOf(PullRequest::class, $this->sut->create($data));

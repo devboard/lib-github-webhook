@@ -49,7 +49,7 @@ class OrganizationTest extends TestCase
     /** @var Organization */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->id               = new AccountId(3259285);
         $this->login            = new AccountLogin('zgphp');
@@ -75,57 +75,57 @@ class OrganizationTest extends TestCase
         );
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         self::assertSame($this->id, $this->sut->getId());
     }
 
-    public function testGetLogin()
+    public function testGetLogin(): void
     {
         self::assertSame($this->login, $this->sut->getLogin());
     }
 
-    public function testGetAvatarUrl()
+    public function testGetAvatarUrl(): void
     {
         self::assertSame($this->avatarUrl, $this->sut->getAvatarUrl());
     }
 
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         self::assertSame($this->description, $this->sut->getDescription());
     }
 
-    public function testGetReposUrl()
+    public function testGetReposUrl(): void
     {
         self::assertSame($this->reposUrl, $this->sut->getReposUrl());
     }
 
-    public function testGetIssuesUrl()
+    public function testGetIssuesUrl(): void
     {
         self::assertSame($this->issuesUrl, $this->sut->getIssuesUrl());
     }
 
-    public function testGetEventsUrl()
+    public function testGetEventsUrl(): void
     {
         self::assertSame($this->eventsUrl, $this->sut->getEventsUrl());
     }
 
-    public function testGetHooksUrl()
+    public function testGetHooksUrl(): void
     {
         self::assertSame($this->hooksUrl, $this->sut->getHooksUrl());
     }
 
-    public function testGetMembersUrl()
+    public function testGetMembersUrl(): void
     {
         self::assertSame($this->membersUrl, $this->sut->getMembersUrl());
     }
 
-    public function testGetPublicMembersUrl()
+    public function testGetPublicMembersUrl(): void
     {
         self::assertSame($this->publicMembersUrl, $this->sut->getPublicMembersUrl());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'id'               => 3259285,
@@ -143,7 +143,7 @@ class OrganizationTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, Organization::deserialize(json_decode($serialized, true)));

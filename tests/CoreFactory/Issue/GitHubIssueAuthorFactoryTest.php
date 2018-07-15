@@ -22,12 +22,12 @@ class GitHubIssueAuthorFactoryTest extends TestCase
     /** @var GitHubIssueAuthorFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new GitHubIssueAuthorFactory();
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         foreach ($this->provideData() as $data) {
             self::assertInstanceOf(IssueAuthor::class, $this->sut->create($data));

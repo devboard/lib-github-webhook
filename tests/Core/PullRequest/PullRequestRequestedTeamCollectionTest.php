@@ -20,18 +20,18 @@ class PullRequestRequestedTeamCollectionTest extends TestCase
     /** @var PullRequestRequestedTeamCollection */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->elements = [new PullRequestRequestedTeam('todo')];
         $this->sut      = new PullRequestRequestedTeamCollection($this->elements);
     }
 
-    public function testGetElements()
+    public function testGetElements(): void
     {
         self::assertSame($this->elements, $this->sut->toArray());
     }
 
-    public function testSerializeAndDeserialize()
+    public function testSerializeAndDeserialize(): void
     {
         $serialized     = $this->sut->serialize();
         $serializedJson = json_encode($serialized);

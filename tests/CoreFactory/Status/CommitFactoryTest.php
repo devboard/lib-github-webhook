@@ -16,13 +16,13 @@ class CommitFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testCommitFactory()
+    public function testCommitFactory(): void
     {
         $provider = new StagingDataProvider();
 

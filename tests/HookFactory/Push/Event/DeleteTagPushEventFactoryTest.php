@@ -20,13 +20,13 @@ class DeleteTagPushEventFactoryTest extends TestCase
     /** @var DeleteTagPushEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testDeleteTagPushEventFactory()
+    public function testDeleteTagPushEventFactory(): void
     {
         $provider = new StagingDataProvider();
 

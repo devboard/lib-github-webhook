@@ -24,7 +24,7 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
         AccountType $gitHubAccountType,
         AccountAvatarUrl $avatarUrl,
         bool $siteAdmin
-    ) {
+    ): void {
         $sut = new PullRequestReviewer($userId, $login, $gitHubAccountType, $avatarUrl, $siteAdmin);
 
         $this->assertSame($userId, $sut->getUserId());
@@ -41,7 +41,7 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
         AccountType $gitHubAccountType,
         AccountAvatarUrl $avatarUrl,
         bool $siteAdmin
-    ) {
+    ): void {
         $sut = new PullRequestReviewer($userId, $login, $gitHubAccountType, $avatarUrl, $siteAdmin);
 
         $serialized = $sut->serialize();

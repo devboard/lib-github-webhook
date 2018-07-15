@@ -16,13 +16,13 @@ class CommitFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new CommitFactory();
     }
 
     /** @group stagingData */
-    public function testCommitFactoryFromHeadCommitData()
+    public function testCommitFactoryFromHeadCommitData(): void
     {
         $provider = new StagingDataProvider();
 
@@ -41,7 +41,7 @@ class CommitFactoryTest extends TestCase
     }
 
     /** @group stagingData */
-    public function testCommitFactoryFromCommits()
+    public function testCommitFactoryFromCommits(): void
     {
         $provider = new StagingDataProvider();
 

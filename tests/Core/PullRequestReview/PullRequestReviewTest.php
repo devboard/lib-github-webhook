@@ -47,7 +47,7 @@ class PullRequestReviewTest extends TestCase
     /** @var PullRequestReview */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->id     = new PullRequestReviewId(1);
         $this->body   = new PullRequestReviewBody('value');
@@ -67,37 +67,37 @@ class PullRequestReviewTest extends TestCase
         );
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         self::assertSame($this->id, $this->sut->getId());
     }
 
-    public function testGetBody()
+    public function testGetBody(): void
     {
         self::assertSame($this->body, $this->sut->getBody());
     }
 
-    public function testGetAuthor()
+    public function testGetAuthor(): void
     {
         self::assertSame($this->author, $this->sut->getAuthor());
     }
 
-    public function testGetState()
+    public function testGetState(): void
     {
         self::assertSame($this->state, $this->sut->getState());
     }
 
-    public function testGetCommitSha()
+    public function testGetCommitSha(): void
     {
         self::assertSame($this->commitSha, $this->sut->getCommitSha());
     }
 
-    public function testGetSubmittedAt()
+    public function testGetSubmittedAt(): void
     {
         self::assertSame($this->submittedAt, $this->sut->getSubmittedAt());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'id'     => 1,
@@ -118,7 +118,7 @@ class PullRequestReviewTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, PullRequestReview::deserialize(json_decode($serialized, true)));

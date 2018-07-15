@@ -19,33 +19,33 @@ class CompareChangesUrlTest extends TestCase
     /** @var CompareChangesUrl */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->url = 'url';
         $this->sut = new CompareChangesUrl($this->url);
     }
 
-    public function testGetUrl()
+    public function testGetUrl(): void
     {
         self::assertSame($this->url, $this->sut->getUrl());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         self::assertSame($this->url, $this->sut->getId());
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         self::assertSame($this->url, $this->sut->__toString());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         self::assertEquals($this->url, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         self::assertEquals($this->sut, $this->sut->deserialize($this->url));
     }

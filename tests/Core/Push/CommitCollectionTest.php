@@ -20,18 +20,18 @@ class CommitCollectionTest extends TestCase
     /** @var CommitCollection */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->elements = [CommitSample::abc123()];
         $this->sut      = new CommitCollection($this->elements);
     }
 
-    public function testGetElements()
+    public function testGetElements(): void
     {
         self::assertSame($this->elements, $this->sut->toArray());
     }
 
-    public function testSerializeAndDeserialize()
+    public function testSerializeAndDeserialize(): void
     {
         $serialized     = $this->sut->serialize();
         $serializedJson = json_encode($serialized);

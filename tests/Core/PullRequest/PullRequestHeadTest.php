@@ -29,7 +29,7 @@ class PullRequestHeadTest extends TestCase
     /** @var PullRequestHead */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sourceBranchName = new BranchName('name');
         $this->repo             = RepoSample::octocatLinguist();
@@ -37,22 +37,22 @@ class PullRequestHeadTest extends TestCase
         $this->sut              = new PullRequestHead($this->sourceBranchName, $this->repo, $this->sha);
     }
 
-    public function testGetSourceBranchName()
+    public function testGetSourceBranchName(): void
     {
         self::assertSame($this->sourceBranchName, $this->sut->getSourceBranchName());
     }
 
-    public function testGetRepo()
+    public function testGetRepo(): void
     {
         self::assertSame($this->repo, $this->sut->getRepo());
     }
 
-    public function testGetSha()
+    public function testGetSha(): void
     {
         self::assertSame($this->sha, $this->sut->getSha());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'sourceBranchName' => 'name',
@@ -63,7 +63,7 @@ class PullRequestHeadTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, PullRequestHead::deserialize(json_decode($serialized, true)));

@@ -20,13 +20,13 @@ class InstallationEventFactoryTest extends TestCase
     /** @var InstallationEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testInstallationEventFactory()
+    public function testInstallationEventFactory(): void
     {
         $provider = new StagingDataProvider();
 

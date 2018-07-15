@@ -37,7 +37,7 @@ class RepoAdditionalDetailsTest extends TestCase
     /** @var RepoAdditionalDetails */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->license      = 'master';
         $this->forksCount   = 0;
@@ -57,47 +57,47 @@ class RepoAdditionalDetailsTest extends TestCase
         );
     }
 
-    public function testGetLicense()
+    public function testGetLicense(): void
     {
         self::assertSame($this->license, $this->sut->getLicense());
     }
 
-    public function testGetForksCount()
+    public function testGetForksCount(): void
     {
         self::assertSame($this->forksCount, $this->sut->getForksCount());
     }
 
-    public function testIsHasDownloads()
+    public function testIsHasDownloads(): void
     {
         self::assertSame($this->hasDownloads, $this->sut->isHasDownloads());
     }
 
-    public function testIsHasIssues()
+    public function testIsHasIssues(): void
     {
         self::assertSame($this->hasIssues, $this->sut->isHasIssues());
     }
 
-    public function testIsHasPages()
+    public function testIsHasPages(): void
     {
         self::assertSame($this->hasPages, $this->sut->isHasPages());
     }
 
-    public function testIsHasProjects()
+    public function testIsHasProjects(): void
     {
         self::assertSame($this->hasProjects, $this->sut->isHasProjects());
     }
 
-    public function testIsHasWiki()
+    public function testIsHasWiki(): void
     {
         self::assertSame($this->hasWiki, $this->sut->isHasWiki());
     }
 
-    public function testHasLicense()
+    public function testHasLicense(): void
     {
         self::assertTrue($this->sut->hasLicense());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'license'      => 'master',
@@ -112,7 +112,7 @@ class RepoAdditionalDetailsTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, RepoAdditionalDetails::deserialize(json_decode($serialized, true)));

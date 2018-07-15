@@ -19,12 +19,12 @@ class GitHubMilestoneCreatorFactoryTest extends TestCase
     /** @var GitHubMilestoneCreatorFactory */
     private $gitHubMilestoneCreatorFactory;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->gitHubMilestoneCreatorFactory = new GitHubMilestoneCreatorFactory();
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->markTestSkipped('Skipping');
     }

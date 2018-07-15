@@ -16,13 +16,13 @@ class RepoStatsFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new RepoStatsFactory();
     }
 
     /** @group stagingData */
-    public function testRepoFactory()
+    public function testRepoFactory(): void
     {
         $provider = new StagingDataProvider();
 

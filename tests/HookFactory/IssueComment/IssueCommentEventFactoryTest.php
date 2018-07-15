@@ -26,17 +26,17 @@ class IssueCommentEventFactoryTest extends TestCase
     /** @var IssueCommentEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
-    public function testGetSupportedEventType()
+    public function testGetSupportedEventType(): void
     {
         self::assertEquals('issue_comment', $this->sut->getSupportedEventType());
     }
 
-    public function testSerializeAndDeserialize()
+    public function testSerializeAndDeserialize(): void
     {
         foreach ($this->provideData() as $data) {
             self::assertInstanceOf(IssueCommentEvent::class, $this->sut->create($data));
