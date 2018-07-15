@@ -24,7 +24,7 @@ class PullRequestRequestedTeamCollection
         $this->elements = $elements;
     }
 
-    public function add(PullRequestRequestedTeam $element)
+    public function add(PullRequestRequestedTeam $element): void
     {
         $this->elements[] = $element;
     }
@@ -40,7 +40,7 @@ class PullRequestRequestedTeamCollection
         return false;
     }
 
-    public function get(string $id)
+    public function get(string $id): ?PullRequestRequestedTeam
     {
         foreach ($this->elements as $element) {
             if ($element->getTodo() == $id) {

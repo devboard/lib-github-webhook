@@ -25,7 +25,7 @@ class PullRequestRequestedReviewerCollection
         $this->elements = $elements;
     }
 
-    public function add(PullRequestRequestedReviewer $element)
+    public function add(PullRequestRequestedReviewer $element): void
     {
         $this->elements[] = $element;
     }
@@ -41,7 +41,7 @@ class PullRequestRequestedReviewerCollection
         return false;
     }
 
-    public function get(UserId $id)
+    public function get(UserId $id): ?PullRequestRequestedReviewer
     {
         foreach ($this->elements as $element) {
             if ($element->getUserId() == $id) {
