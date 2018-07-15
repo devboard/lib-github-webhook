@@ -8,6 +8,7 @@ use DevboardLib\GitHubWebhook\Core\Repo;
 
 class RepoSample
 {
+    /** @var array */
     private static $data = [
         'octocatLinguist' => [
             'id'       => 64778136,

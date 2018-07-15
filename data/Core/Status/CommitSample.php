@@ -8,6 +8,7 @@ use DevboardLib\GitHubWebhook\Core\Status\Commit;
 
 class CommitSample
 {
+    /** @var array */
     private static $data = [
         'abc234' => [
             'sha'        => 'sha',

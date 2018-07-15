@@ -8,6 +8,7 @@ use DevboardLib\GitHub\GitHubMilestone;
 
 class MilestoneSample
 {
+    /** @var array */
     private static $data = [
         'sprint1' => [
             'id'          => 1,

@@ -8,6 +8,7 @@ use DevboardLib\GitHubWebhook\Core\Push\CommitAuthor;
 
 class CommitAuthorSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => ['name' => 'Octo Cat', 'email' => 'octocat@example.com', 'username' => 'octocat'],
     ];

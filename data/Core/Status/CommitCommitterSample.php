@@ -8,6 +8,7 @@ use DevboardLib\GitHubWebhook\Core\Status\CommitCommitter;
 
 class CommitCommitterSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'name'        => 'name',

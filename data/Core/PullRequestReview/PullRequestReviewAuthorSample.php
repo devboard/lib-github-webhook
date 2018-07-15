@@ -8,6 +8,7 @@ use DevboardLib\GitHub\PullRequestReview\PullRequestReviewAuthor;
 
 class PullRequestReviewAuthorSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'userId'      => 1,

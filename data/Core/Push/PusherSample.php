@@ -8,6 +8,7 @@ use DevboardLib\GitHubWebhook\Core\Push\Pusher;
 
 class PusherSample
 {
+    /** @var array */
     private static $data = ['octocat' => ['login' => 'octocat', 'emailAddress' => 'octocat@example.com']];
 
     public static function serialized(string $item): array
