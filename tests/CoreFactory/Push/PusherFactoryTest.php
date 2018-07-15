@@ -16,13 +16,13 @@ class PusherFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new PusherFactory();
     }
 
     /** @group stagingData */
-    public function testPusherFactory()
+    public function testPusherFactory(): void
     {
         $provider = new StagingDataProvider();
 

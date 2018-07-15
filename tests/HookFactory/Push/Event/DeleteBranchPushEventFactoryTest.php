@@ -20,13 +20,13 @@ class DeleteBranchPushEventFactoryTest extends TestCase
     /** @var DeleteBranchPushEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testDeleteBranchPushEventFactory()
+    public function testDeleteBranchPushEventFactory(): void
     {
         $provider = new StagingDataProvider();
 

@@ -17,7 +17,7 @@ class RefTest extends TestCase
      * @dataProvider provideBranchReferences
      * @dataProvider provideTagReferences
      */
-    public function testItExposesValue(string $reference)
+    public function testItExposesValue(string $reference): void
     {
         $sut = new Ref($reference);
         $this->assertEquals($reference, $sut->getValue());
@@ -27,7 +27,7 @@ class RefTest extends TestCase
      * @dataProvider provideBranchReferences
      * @dataProvider provideTagReferences
      */
-    public function testItCanBeAutoConvertedToString(string $reference)
+    public function testItCanBeAutoConvertedToString(string $reference): void
     {
         $sut = new Ref($reference);
         $this->assertEquals($reference, (string) $sut);
@@ -37,7 +37,7 @@ class RefTest extends TestCase
      * @dataProvider provideBranchReferences
      * @dataProvider provideTagReferences
      */
-    public function testItExposesReferenceName(string $reference, string $referenceName)
+    public function testItExposesReferenceName(string $reference, string $referenceName): void
     {
         $sut = new Ref($reference);
         $this->assertEquals($referenceName, $sut->getReferenceName());
@@ -46,7 +46,7 @@ class RefTest extends TestCase
     /**
      * @dataProvider provideBranchReferences
      */
-    public function testItKnowsItIsBranchReference(string $reference)
+    public function testItKnowsItIsBranchReference(string $reference): void
     {
         $sut = new Ref($reference);
         $this->assertTrue($sut->isBranchReference());
@@ -55,7 +55,7 @@ class RefTest extends TestCase
     /**
      * @dataProvider provideBranchReferences
      */
-    public function testItKnowsItIsNotTagReference(string $reference)
+    public function testItKnowsItIsNotTagReference(string $reference): void
     {
         $sut = new Ref($reference);
         $this->assertFalse($sut->isTagReference());
@@ -64,7 +64,7 @@ class RefTest extends TestCase
     /**
      * @dataProvider provideTagReferences
      */
-    public function testItKnowsItIsTagReference(string $reference)
+    public function testItKnowsItIsTagReference(string $reference): void
     {
         $sut = new Ref($reference);
         $this->assertTrue($sut->isTagReference());
@@ -73,7 +73,7 @@ class RefTest extends TestCase
     /**
      * @dataProvider provideTagReferences
      */
-    public function testItKnowsItIsNotBranchReference(string $reference)
+    public function testItKnowsItIsNotBranchReference(string $reference): void
     {
         $sut = new Ref($reference);
         $this->assertFalse($sut->isBranchReference());
@@ -83,7 +83,7 @@ class RefTest extends TestCase
      * @dataProvider provideBadReferences
      * @expectedException \Exception
      */
-    public function testItThrowsExceptionForBadReferences(string $reference)
+    public function testItThrowsExceptionForBadReferences(string $reference): void
     {
         new Ref($reference);
     }

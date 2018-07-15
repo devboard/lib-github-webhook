@@ -22,12 +22,12 @@ class GitHubPullRequestAssigneeFactoryTest extends TestCase
     /** @var GitHubPullRequestAssigneeFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new GitHubPullRequestAssigneeFactory();
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         foreach ($this->provideData() as $data) {
             self::assertInstanceOf(PullRequestAssignee::class, $this->sut->create($data));

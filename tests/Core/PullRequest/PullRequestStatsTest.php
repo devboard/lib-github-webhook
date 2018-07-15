@@ -31,7 +31,7 @@ class PullRequestStatsTest extends TestCase
     /** @var PullRequestStats */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->additions    = 1;
         $this->changedFiles = 1;
@@ -43,39 +43,39 @@ class PullRequestStatsTest extends TestCase
         );
     }
 
-    public function testGetAdditions()
+    public function testGetAdditions(): void
     {
         self::assertSame($this->additions, $this->sut->getAdditions());
     }
 
-    public function testGetChangedFiles()
+    public function testGetChangedFiles(): void
     {
         self::assertSame($this->changedFiles, $this->sut->getChangedFiles());
     }
 
-    public function testGetComments()
+    public function testGetComments(): void
     {
         self::assertSame($this->comments, $this->sut->getComments());
     }
 
-    public function testGetCommits()
+    public function testGetCommits(): void
     {
         self::assertSame($this->commits, $this->sut->getCommits());
     }
 
-    public function testGetDeletions()
+    public function testGetDeletions(): void
     {
         self::assertSame($this->deletions, $this->sut->getDeletions());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = ['additions' => 1, 'changedFiles' => 1, 'comments' => 1, 'commits' => 1, 'deletions' => 1];
 
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, PullRequestStats::deserialize(json_decode($serialized, true)));

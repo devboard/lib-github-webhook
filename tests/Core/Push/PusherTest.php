@@ -24,36 +24,36 @@ class PusherTest extends TestCase
     /** @var Pusher */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->login        = new UserLogin('Octo Cat');
         $this->emailAddress = new EmailAddress('octocat@example.com');
         $this->sut          = new Pusher($this->login, $this->emailAddress);
     }
 
-    public function testGetLogin()
+    public function testGetLogin(): void
     {
         self::assertSame($this->login, $this->sut->getLogin());
     }
 
-    public function testGetEmailAddress()
+    public function testGetEmailAddress(): void
     {
         self::assertSame($this->emailAddress, $this->sut->getEmailAddress());
     }
 
-    public function testHasEmailAddress()
+    public function testHasEmailAddress(): void
     {
         self::assertTrue($this->sut->hasEmailAddress());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = ['login' => 'Octo Cat', 'emailAddress' => 'octocat@example.com'];
 
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, Pusher::deserialize(json_decode($serialized, true)));

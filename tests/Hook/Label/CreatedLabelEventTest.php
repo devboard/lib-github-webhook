@@ -38,7 +38,7 @@ class CreatedLabelEventTest extends TestCase
     /** @var CreatedLabelEvent */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->label          = LabelSample::red();
         $this->repo           = RepoSample::octocatLinguist();
@@ -47,37 +47,37 @@ class CreatedLabelEventTest extends TestCase
         $this->sut            = new CreatedLabelEvent($this->label, $this->repo, $this->installationId, $this->sender);
     }
 
-    public function testGetLabel()
+    public function testGetLabel(): void
     {
         self::assertSame($this->label, $this->sut->getLabel());
     }
 
-    public function testGetRepo()
+    public function testGetRepo(): void
     {
         self::assertSame($this->repo, $this->sut->getRepo());
     }
 
-    public function testGetRepoId()
+    public function testGetRepoId(): void
     {
         self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
     }
 
-    public function testGetRepoFullName()
+    public function testGetRepoFullName(): void
     {
         self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
-    public function testGetInstallationId()
+    public function testGetInstallationId(): void
     {
         self::assertSame($this->installationId, $this->sut->getInstallationId());
     }
 
-    public function testGetSender()
+    public function testGetSender(): void
     {
         self::assertSame($this->sender, $this->sut->getSender());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'label'          => LabelSample::serialized('red'),
@@ -89,7 +89,7 @@ class CreatedLabelEventTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, CreatedLabelEvent::deserialize(json_decode($serialized, true)));

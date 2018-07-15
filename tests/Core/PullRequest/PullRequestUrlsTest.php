@@ -40,7 +40,7 @@ class PullRequestUrlsTest extends TestCase
     /** @var PullRequestUrls */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->commentsUrl       = 'commentsUrl';
         $this->commitsUrl        = 'commitsUrl';
@@ -62,47 +62,47 @@ class PullRequestUrlsTest extends TestCase
         );
     }
 
-    public function testGetCommentsUrl()
+    public function testGetCommentsUrl(): void
     {
         self::assertSame($this->commentsUrl, $this->sut->getCommentsUrl());
     }
 
-    public function testGetCommitsUrl()
+    public function testGetCommitsUrl(): void
     {
         self::assertSame($this->commitsUrl, $this->sut->getCommitsUrl());
     }
 
-    public function testGetDiffUrl()
+    public function testGetDiffUrl(): void
     {
         self::assertSame($this->diffUrl, $this->sut->getDiffUrl());
     }
 
-    public function testGetIssueUrl()
+    public function testGetIssueUrl(): void
     {
         self::assertSame($this->issueUrl, $this->sut->getIssueUrl());
     }
 
-    public function testGetPatchUrl()
+    public function testGetPatchUrl(): void
     {
         self::assertSame($this->patchUrl, $this->sut->getPatchUrl());
     }
 
-    public function testGetReviewCommentUrl()
+    public function testGetReviewCommentUrl(): void
     {
         self::assertSame($this->reviewCommentUrl, $this->sut->getReviewCommentUrl());
     }
 
-    public function testGetReviewCommentsUrl()
+    public function testGetReviewCommentsUrl(): void
     {
         self::assertSame($this->reviewCommentsUrl, $this->sut->getReviewCommentsUrl());
     }
 
-    public function testGetStatusesUrl()
+    public function testGetStatusesUrl(): void
     {
         self::assertSame($this->statusesUrl, $this->sut->getStatusesUrl());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'commentsUrl'       => 'commentsUrl',
@@ -118,7 +118,7 @@ class PullRequestUrlsTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, PullRequestUrls::deserialize(json_decode($serialized, true)));

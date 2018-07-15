@@ -16,13 +16,13 @@ class InstallationAccountFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new InstallationAccountFactory();
     }
 
     /** @group stagingData */
-    public function testInstallationAccountFactory()
+    public function testInstallationAccountFactory(): void
     {
         $provider = new StagingDataProvider();
 

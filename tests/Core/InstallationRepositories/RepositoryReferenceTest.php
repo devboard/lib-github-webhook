@@ -26,31 +26,31 @@ class RepositoryReferenceTest extends TestCase
     /** @var RepositoryReference */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->id       = new RepoId(64778136);
         $this->fullName = new RepoFullName(new AccountLogin('value'), new RepoName('name'));
         $this->sut      = new RepositoryReference($this->id, $this->fullName);
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         self::assertSame($this->id, $this->sut->getId());
     }
 
-    public function testGetFullName()
+    public function testGetFullName(): void
     {
         self::assertSame($this->fullName, $this->sut->getFullName());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = ['id' => 64778136, 'fullName' => ['owner' => 'value', 'repoName' => 'name']];
 
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, RepositoryReference::deserialize(json_decode($serialized, true)));

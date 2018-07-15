@@ -23,13 +23,13 @@ class PushEventFactoryTest extends TestCase
     /** @var PushEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testPushEventFactory()
+    public function testPushEventFactory(): void
     {
         $provider = new StagingDataProvider();
 

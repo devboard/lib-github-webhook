@@ -49,7 +49,7 @@ class RemovedInstallationRepositoriesEventTest extends TestCase
     /** @var RemovedInstallationRepositoriesEvent */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->installation = new GitHubInstallation(
             new InstallationId(1),
@@ -77,22 +77,22 @@ class RemovedInstallationRepositoriesEventTest extends TestCase
         $this->sut    = new RemovedInstallationRepositoriesEvent($this->installation, $this->reposRemoved, $this->sender);
     }
 
-    public function testGetInstallation()
+    public function testGetInstallation(): void
     {
         self::assertSame($this->installation, $this->sut->getInstallation());
     }
 
-    public function testGetReposRemoved()
+    public function testGetReposRemoved(): void
     {
         self::assertSame($this->reposRemoved, $this->sut->getReposRemoved());
     }
 
-    public function testGetSender()
+    public function testGetSender(): void
     {
         self::assertSame($this->sender, $this->sut->getSender());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'installation' => [
@@ -121,7 +121,7 @@ class RemovedInstallationRepositoriesEventTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals(

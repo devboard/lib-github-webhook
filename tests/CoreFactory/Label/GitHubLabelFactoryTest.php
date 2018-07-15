@@ -19,12 +19,12 @@ class GitHubLabelFactoryTest extends TestCase
     /** @var GitHubLabelFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new GitHubLabelFactory();
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         foreach ($this->provideData() as $data) {
             self::assertInstanceOf(GitHubLabel::class, $this->sut->create($data));

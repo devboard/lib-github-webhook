@@ -16,13 +16,13 @@ class RepoOwnerFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = new RepoOwnerFactory();
     }
 
     /** @group stagingData */
-    public function testRepoFactoryFromPushData()
+    public function testRepoFactoryFromPushData(): void
     {
         $provider = new StagingDataProvider();
 
@@ -34,7 +34,7 @@ class RepoOwnerFactoryTest extends TestCase
     }
 
     /** @group stagingData */
-    public function testRepoFactoryFromStatusData()
+    public function testRepoFactoryFromStatusData(): void
     {
         $provider = new StagingDataProvider();
 

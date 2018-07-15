@@ -24,7 +24,7 @@ class RepositoryReferenceCollectionTest extends TestCase
     /** @var RepositoryReferenceCollection */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->elements = [
             new RepositoryReference(new RepoId(1), new RepoFullName(new AccountLogin('value'), new RepoName('name'))),
@@ -32,12 +32,12 @@ class RepositoryReferenceCollectionTest extends TestCase
         $this->sut = new RepositoryReferenceCollection($this->elements);
     }
 
-    public function testGetElements()
+    public function testGetElements(): void
     {
         self::assertSame($this->elements, $this->sut->toArray());
     }
 
-    public function testSerializeAndDeserialize()
+    public function testSerializeAndDeserialize(): void
     {
         $serialized     = $this->sut->serialize();
         $serializedJson = json_encode($serialized);

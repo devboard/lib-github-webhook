@@ -49,7 +49,7 @@ class AddedInstallationRepositoriesEventTest extends TestCase
     /** @var AddedInstallationRepositoriesEvent */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->installation = new GitHubInstallation(
             new InstallationId(1),
@@ -77,22 +77,22 @@ class AddedInstallationRepositoriesEventTest extends TestCase
         $this->sut    = new AddedInstallationRepositoriesEvent($this->installation, $this->reposAdded, $this->sender);
     }
 
-    public function testGetInstallation()
+    public function testGetInstallation(): void
     {
         self::assertSame($this->installation, $this->sut->getInstallation());
     }
 
-    public function testGetReposAdded()
+    public function testGetReposAdded(): void
     {
         self::assertSame($this->reposAdded, $this->sut->getReposAdded());
     }
 
-    public function testGetSender()
+    public function testGetSender(): void
     {
         self::assertSame($this->sender, $this->sut->getSender());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'installation' => [
@@ -121,7 +121,7 @@ class AddedInstallationRepositoriesEventTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, AddedInstallationRepositoriesEvent::deserialize(json_decode($serialized, true)));

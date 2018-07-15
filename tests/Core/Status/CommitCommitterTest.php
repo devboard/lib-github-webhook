@@ -36,7 +36,7 @@ class CommitCommitterTest extends TestCase
     /** @var CommitCommitter */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->name        = new CommitterName('Octo Cat');
         $this->email       = new EmailAddress('octocat@example.com');
@@ -60,32 +60,32 @@ class CommitCommitterTest extends TestCase
         $this->sut = new CommitCommitter($this->name, $this->email, $this->committedAt, $this->details);
     }
 
-    public function testGetName()
+    public function testGetName(): void
     {
         self::assertSame($this->name, $this->sut->getName());
     }
 
-    public function testGetEmail()
+    public function testGetEmail(): void
     {
         self::assertSame($this->email, $this->sut->getEmail());
     }
 
-    public function testGetCommittedAt()
+    public function testGetCommittedAt(): void
     {
         self::assertSame($this->committedAt, $this->sut->getCommittedAt());
     }
 
-    public function testGetDetails()
+    public function testGetDetails(): void
     {
         self::assertSame($this->details, $this->sut->getDetails());
     }
 
-    public function testHasDetails()
+    public function testHasDetails(): void
     {
         self::assertTrue($this->sut->hasDetails());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'name'        => 'Octo Cat',
@@ -112,7 +112,7 @@ class CommitCommitterTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, CommitCommitter::deserialize(json_decode($serialized, true)));

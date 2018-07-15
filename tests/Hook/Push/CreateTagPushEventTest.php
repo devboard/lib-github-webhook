@@ -63,7 +63,7 @@ class CreateTagPushEventTest extends TestCase
     /** @var CreateTagPushEvent */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->ref        = new Ref('refs/heads/new-feature');
         $this->after      = new CommitSha('sha');
@@ -89,72 +89,72 @@ class CreateTagPushEventTest extends TestCase
         );
     }
 
-    public function testGetRef()
+    public function testGetRef(): void
     {
         self::assertSame($this->ref, $this->sut->getRef());
     }
 
-    public function testGetReferenceName()
+    public function testGetReferenceName(): void
     {
         self::assertSame('new-feature', $this->sut->getReferenceName());
     }
 
-    public function testGetAfter()
+    public function testGetAfter(): void
     {
         self::assertSame($this->after, $this->sut->getAfter());
     }
 
-    public function testGetBaseRef()
+    public function testGetBaseRef(): void
     {
         self::assertSame($this->baseRef, $this->sut->getBaseRef());
     }
 
-    public function testGetChangesUrl()
+    public function testGetChangesUrl(): void
     {
         self::assertSame($this->changesUrl, $this->sut->getChangesUrl());
     }
 
-    public function testGetCommits()
+    public function testGetCommits(): void
     {
         self::assertSame($this->commits, $this->sut->getCommits());
     }
 
-    public function testGetHeadCommit()
+    public function testGetHeadCommit(): void
     {
         self::assertSame($this->headCommit, $this->sut->getHeadCommit());
     }
 
-    public function testGetRepo()
+    public function testGetRepo(): void
     {
         self::assertSame($this->repo, $this->sut->getRepo());
     }
 
-    public function testGetRepoId()
+    public function testGetRepoId(): void
     {
         self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
     }
 
-    public function testGetRepoFullName()
+    public function testGetRepoFullName(): void
     {
         self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
-    public function testGetPusher()
+    public function testGetPusher(): void
     {
         self::assertSame($this->pusher, $this->sut->getPusher());
     }
 
-    public function testGetSender()
+    public function testGetSender(): void
     {
         self::assertSame($this->sender, $this->sut->getSender());
     }
 
-    public function testHasBaseRef()
+    public function testHasBaseRef(): void
     {
         self::assertTrue($this->sut->hasBaseRef());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'ref'        => 'refs/heads/new-feature',
@@ -172,7 +172,7 @@ class CreateTagPushEventTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, CreateTagPushEvent::deserialize(json_decode($serialized, true)));

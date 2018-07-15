@@ -38,7 +38,7 @@ class ClosedPullRequestEventTest extends TestCase
     /** @var ClosedPullRequestEvent */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->pullRequest    = PullRequestSample::pr1();
         $this->repo           = RepoSample::octocatLinguist();
@@ -47,37 +47,37 @@ class ClosedPullRequestEventTest extends TestCase
         $this->sut            = new ClosedPullRequestEvent($this->pullRequest, $this->repo, $this->installationId, $this->sender);
     }
 
-    public function testGetPullRequest()
+    public function testGetPullRequest(): void
     {
         self::assertSame($this->pullRequest, $this->sut->getPullRequest());
     }
 
-    public function testGetRepo()
+    public function testGetRepo(): void
     {
         self::assertSame($this->repo, $this->sut->getRepo());
     }
 
-    public function testGetRepoId()
+    public function testGetRepoId(): void
     {
         self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
     }
 
-    public function testGetRepoFullName()
+    public function testGetRepoFullName(): void
     {
         self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
-    public function testGetInstallationId()
+    public function testGetInstallationId(): void
     {
         self::assertSame($this->installationId, $this->sut->getInstallationId());
     }
 
-    public function testGetSender()
+    public function testGetSender(): void
     {
         self::assertSame($this->sender, $this->sut->getSender());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'pullRequest'    => PullRequestSample::serialized('pr1'),
@@ -89,7 +89,7 @@ class ClosedPullRequestEventTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, ClosedPullRequestEvent::deserialize(json_decode($serialized, true)));

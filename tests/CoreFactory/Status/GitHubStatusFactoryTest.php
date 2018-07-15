@@ -18,13 +18,13 @@ class GitHubStatusFactoryTest extends TestCase
 {
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testGitHubStatusFactory()
+    public function testGitHubStatusFactory(): void
     {
         $provider = new StagingDataProvider();
 

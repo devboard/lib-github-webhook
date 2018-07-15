@@ -21,13 +21,13 @@ class UpdateBranchPushEventFactoryTest extends TestCase
     /** @var UpdateBranchPushEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
     /** @group stagingData */
-    public function testUpdateBranchPushEventFactory()
+    public function testUpdateBranchPushEventFactory(): void
     {
         $provider = new StagingDataProvider();
 

@@ -55,7 +55,7 @@ class StatusEventTest extends TestCase
     /** @var StatusEvent */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->status = new GitHubStatus(
             new StatusId(1),
@@ -81,37 +81,37 @@ class StatusEventTest extends TestCase
         $this->sut      = new StatusEvent($this->status, $this->commit, $this->repo, $this->branches, $this->sender);
     }
 
-    public function testGetStatus()
+    public function testGetStatus(): void
     {
         self::assertSame($this->status, $this->sut->getStatus());
     }
 
-    public function testGetCommit()
+    public function testGetCommit(): void
     {
         self::assertSame($this->commit, $this->sut->getCommit());
     }
 
-    public function testGetRepo()
+    public function testGetRepo(): void
     {
         self::assertSame($this->repo, $this->sut->getRepo());
     }
 
-    public function testGetRepoId()
+    public function testGetRepoId(): void
     {
         self::assertEquals(new RepoId(64778136), $this->sut->getRepoId());
     }
 
-    public function testGetRepoFullName()
+    public function testGetRepoFullName(): void
     {
         self::assertEquals(RepoFullName::createFromString('octocat/linguist'), $this->sut->getRepoFullName());
     }
 
-    public function testGetSender()
+    public function testGetSender(): void
     {
         self::assertSame($this->sender, $this->sut->getSender());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'status' => [
@@ -143,7 +143,7 @@ class StatusEventTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, StatusEvent::deserialize(json_decode($serialized, true)));

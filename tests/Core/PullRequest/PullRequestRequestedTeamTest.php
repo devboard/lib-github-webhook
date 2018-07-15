@@ -19,23 +19,23 @@ class PullRequestRequestedTeamTest extends TestCase
     /** @var PullRequestRequestedTeam */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->todo = 'todo';
         $this->sut  = new PullRequestRequestedTeam($this->todo);
     }
 
-    public function testGetTodo()
+    public function testGetTodo(): void
     {
         self::assertSame($this->todo, $this->sut->getTodo());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         self::assertEquals($this->todo, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         self::assertEquals($this->sut, $this->sut->deserialize($this->todo));
     }

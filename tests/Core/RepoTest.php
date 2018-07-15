@@ -94,7 +94,7 @@ class RepoTest extends TestCase
     /** @var Repo */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->id            = new RepoId(64778136);
         $this->fullName      = new RepoFullName(new AccountLogin('value'), new RepoName('name'));
@@ -148,122 +148,122 @@ class RepoTest extends TestCase
         );
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         self::assertSame($this->id, $this->sut->getId());
     }
 
-    public function testGetFullName()
+    public function testGetFullName(): void
     {
         self::assertSame($this->fullName, $this->sut->getFullName());
     }
 
-    public function testGetOwner()
+    public function testGetOwner(): void
     {
         self::assertSame($this->owner, $this->sut->getOwner());
     }
 
-    public function testIsPrivate()
+    public function testIsPrivate(): void
     {
         self::assertSame($this->private, $this->sut->isPrivate());
     }
 
-    public function testGetDefaultBranch()
+    public function testGetDefaultBranch(): void
     {
         self::assertSame($this->defaultBranch, $this->sut->getDefaultBranch());
     }
 
-    public function testIsFork()
+    public function testIsFork(): void
     {
         self::assertSame($this->fork, $this->sut->isFork());
     }
 
-    public function testGetParent()
+    public function testGetParent(): void
     {
         self::assertSame($this->parent, $this->sut->getParent());
     }
 
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         self::assertSame($this->description, $this->sut->getDescription());
     }
 
-    public function testGetHomepage()
+    public function testGetHomepage(): void
     {
         self::assertSame($this->homepage, $this->sut->getHomepage());
     }
 
-    public function testGetLanguage()
+    public function testGetLanguage(): void
     {
         self::assertSame($this->language, $this->sut->getLanguage());
     }
 
-    public function testGetMirrorUrl()
+    public function testGetMirrorUrl(): void
     {
         self::assertSame($this->mirrorUrl, $this->sut->getMirrorUrl());
     }
 
-    public function testIsArchived()
+    public function testIsArchived(): void
     {
         self::assertSame($this->archived, $this->sut->isArchived());
     }
 
-    public function testGetEndpoints()
+    public function testGetEndpoints(): void
     {
         self::assertSame($this->endpoints, $this->sut->getEndpoints());
     }
 
-    public function testGetStats()
+    public function testGetStats(): void
     {
         self::assertSame($this->stats, $this->sut->getStats());
     }
 
-    public function testGetTimestamps()
+    public function testGetTimestamps(): void
     {
         self::assertSame($this->timestamps, $this->sut->getTimestamps());
     }
 
-    public function testGetAdditionalDetails()
+    public function testGetAdditionalDetails(): void
     {
         self::assertSame($this->additionalDetails, $this->sut->getAdditionalDetails());
     }
 
-    public function testGetRepoAdditionalUrls()
+    public function testGetRepoAdditionalUrls(): void
     {
         self::assertSame($this->repoAdditionalUrls, $this->sut->getRepoAdditionalUrls());
     }
 
-    public function testHasParent()
+    public function testHasParent(): void
     {
         self::assertTrue($this->sut->hasParent());
     }
 
-    public function testHasDescription()
+    public function testHasDescription(): void
     {
         self::assertTrue($this->sut->hasDescription());
     }
 
-    public function testHasHomepage()
+    public function testHasHomepage(): void
     {
         self::assertTrue($this->sut->hasHomepage());
     }
 
-    public function testHasLanguage()
+    public function testHasLanguage(): void
     {
         self::assertTrue($this->sut->hasLanguage());
     }
 
-    public function testHasMirrorUrl()
+    public function testHasMirrorUrl(): void
     {
         self::assertTrue($this->sut->hasMirrorUrl());
     }
 
-    public function testHasArchived()
+    public function testHasArchived(): void
     {
         self::assertTrue($this->sut->hasArchived());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'id'            => 64778136,
@@ -307,7 +307,7 @@ class RepoTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, Repo::deserialize(json_decode($serialized, true)));

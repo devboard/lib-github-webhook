@@ -132,7 +132,7 @@ class RepoAdditionalUrlsTest extends TestCase
     /** @var RepoAdditionalUrls */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->archiveUrl       = 'https://api.github.com/repos/octocat/linguist/{archive_format}{/ref}';
         $this->assigneesUrl     = 'https://api.github.com/repos/octocat/linguist/assignees{/user}';
@@ -214,204 +214,204 @@ class RepoAdditionalUrlsTest extends TestCase
         );
     }
 
-    public function testGetArchiveUrl()
+    public function testGetArchiveUrl(): void
     {
         self::assertSame($this->archiveUrl, $this->sut->getArchiveUrl());
     }
 
-    public function testGetAssigneesUrl()
+    public function testGetAssigneesUrl(): void
     {
         self::assertSame($this->assigneesUrl, $this->sut->getAssigneesUrl());
     }
 
-    public function testGetBlobsUrl()
+    public function testGetBlobsUrl(): void
     {
         self::assertSame($this->blobsUrl, $this->sut->getBlobsUrl());
     }
 
-    public function testGetBranchesUrl()
+    public function testGetBranchesUrl(): void
     {
         self::assertSame($this->branchesUrl, $this->sut->getBranchesUrl());
     }
 
-    public function testGetCloneUrl()
+    public function testGetCloneUrl(): void
     {
         self::assertSame($this->cloneUrl, $this->sut->getCloneUrl());
     }
 
-    public function testGetCollaboratorsUrl()
+    public function testGetCollaboratorsUrl(): void
     {
         self::assertSame($this->collaboratorsUrl, $this->sut->getCollaboratorsUrl());
     }
 
-    public function testGetCommentsUrl()
+    public function testGetCommentsUrl(): void
     {
         self::assertSame($this->commentsUrl, $this->sut->getCommentsUrl());
     }
 
-    public function testGetCommitsUrl()
+    public function testGetCommitsUrl(): void
     {
         self::assertSame($this->commitsUrl, $this->sut->getCommitsUrl());
     }
 
-    public function testGetCompareUrl()
+    public function testGetCompareUrl(): void
     {
         self::assertSame($this->compareUrl, $this->sut->getCompareUrl());
     }
 
-    public function testGetContentsUrl()
+    public function testGetContentsUrl(): void
     {
         self::assertSame($this->contentsUrl, $this->sut->getContentsUrl());
     }
 
-    public function testGetContributorsUrl()
+    public function testGetContributorsUrl(): void
     {
         self::assertSame($this->contributorsUrl, $this->sut->getContributorsUrl());
     }
 
-    public function testGetDeploymentsUrl()
+    public function testGetDeploymentsUrl(): void
     {
         self::assertSame($this->deploymentsUrl, $this->sut->getDeploymentsUrl());
     }
 
-    public function testGetDownloadsUrl()
+    public function testGetDownloadsUrl(): void
     {
         self::assertSame($this->downloadsUrl, $this->sut->getDownloadsUrl());
     }
 
-    public function testGetEventsUrl()
+    public function testGetEventsUrl(): void
     {
         self::assertSame($this->eventsUrl, $this->sut->getEventsUrl());
     }
 
-    public function testGetForksUrl()
+    public function testGetForksUrl(): void
     {
         self::assertSame($this->forksUrl, $this->sut->getForksUrl());
     }
 
-    public function testGetGitCommitsUrl()
+    public function testGetGitCommitsUrl(): void
     {
         self::assertSame($this->gitCommitsUrl, $this->sut->getGitCommitsUrl());
     }
 
-    public function testGetGitRefsUrl()
+    public function testGetGitRefsUrl(): void
     {
         self::assertSame($this->gitRefsUrl, $this->sut->getGitRefsUrl());
     }
 
-    public function testGetGitTagsUrl()
+    public function testGetGitTagsUrl(): void
     {
         self::assertSame($this->gitTagsUrl, $this->sut->getGitTagsUrl());
     }
 
-    public function testGetHooksUrl()
+    public function testGetHooksUrl(): void
     {
         self::assertSame($this->hooksUrl, $this->sut->getHooksUrl());
     }
 
-    public function testGetIssueCommentUrl()
+    public function testGetIssueCommentUrl(): void
     {
         self::assertSame($this->issueCommentUrl, $this->sut->getIssueCommentUrl());
     }
 
-    public function testGetIssueEventsUrl()
+    public function testGetIssueEventsUrl(): void
     {
         self::assertSame($this->issueEventsUrl, $this->sut->getIssueEventsUrl());
     }
 
-    public function testGetIssuesUrl()
+    public function testGetIssuesUrl(): void
     {
         self::assertSame($this->issuesUrl, $this->sut->getIssuesUrl());
     }
 
-    public function testGetKeysUrl()
+    public function testGetKeysUrl(): void
     {
         self::assertSame($this->keysUrl, $this->sut->getKeysUrl());
     }
 
-    public function testGetLabelsUrl()
+    public function testGetLabelsUrl(): void
     {
         self::assertSame($this->labelsUrl, $this->sut->getLabelsUrl());
     }
 
-    public function testGetLanguagesUrl()
+    public function testGetLanguagesUrl(): void
     {
         self::assertSame($this->languagesUrl, $this->sut->getLanguagesUrl());
     }
 
-    public function testGetMergesUrl()
+    public function testGetMergesUrl(): void
     {
         self::assertSame($this->mergesUrl, $this->sut->getMergesUrl());
     }
 
-    public function testGetMilestonesUrl()
+    public function testGetMilestonesUrl(): void
     {
         self::assertSame($this->milestonesUrl, $this->sut->getMilestonesUrl());
     }
 
-    public function testGetNotificationsUrl()
+    public function testGetNotificationsUrl(): void
     {
         self::assertSame($this->notificationsUrl, $this->sut->getNotificationsUrl());
     }
 
-    public function testGetPullsUrl()
+    public function testGetPullsUrl(): void
     {
         self::assertSame($this->pullsUrl, $this->sut->getPullsUrl());
     }
 
-    public function testGetReleasesUrl()
+    public function testGetReleasesUrl(): void
     {
         self::assertSame($this->releasesUrl, $this->sut->getReleasesUrl());
     }
 
-    public function testGetStargazersUrl()
+    public function testGetStargazersUrl(): void
     {
         self::assertSame($this->stargazersUrl, $this->sut->getStargazersUrl());
     }
 
-    public function testGetStatusesUrl()
+    public function testGetStatusesUrl(): void
     {
         self::assertSame($this->statusesUrl, $this->sut->getStatusesUrl());
     }
 
-    public function testGetSubscribersUrl()
+    public function testGetSubscribersUrl(): void
     {
         self::assertSame($this->subscribersUrl, $this->sut->getSubscribersUrl());
     }
 
-    public function testGetSubscriptionUrl()
+    public function testGetSubscriptionUrl(): void
     {
         self::assertSame($this->subscriptionUrl, $this->sut->getSubscriptionUrl());
     }
 
-    public function testGetTagsUrl()
+    public function testGetTagsUrl(): void
     {
         self::assertSame($this->tagsUrl, $this->sut->getTagsUrl());
     }
 
-    public function testGetTeamsUrl()
+    public function testGetTeamsUrl(): void
     {
         self::assertSame($this->teamsUrl, $this->sut->getTeamsUrl());
     }
 
-    public function testGetTreesUrl()
+    public function testGetTreesUrl(): void
     {
         self::assertSame($this->treesUrl, $this->sut->getTreesUrl());
     }
 
-    public function testGetSvnUrl()
+    public function testGetSvnUrl(): void
     {
         self::assertSame($this->svnUrl, $this->sut->getSvnUrl());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = self::provideSerializedExample();
 
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, RepoAdditionalUrls::deserialize(json_decode($serialized, true)));

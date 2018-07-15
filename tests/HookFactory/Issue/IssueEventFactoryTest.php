@@ -22,12 +22,12 @@ class IssueEventFactoryTest extends TestCase
     /** @var IssueEventFactory */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sut = self::instance();
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         foreach ($this->provideData() as $data) {
             self::assertInstanceOf(IssueEvent::class, $this->sut->create($data));
