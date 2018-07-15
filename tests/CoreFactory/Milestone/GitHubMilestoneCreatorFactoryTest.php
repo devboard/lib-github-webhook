@@ -26,6 +26,6 @@ class GitHubMilestoneCreatorFactoryTest extends TestCase
 
     public function testCreate(): void
     {
-        $this->markTestSkipped('Skipping');
+        self::markTestSkipped('Skipping');
     }
 }

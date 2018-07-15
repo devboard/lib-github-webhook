@@ -47,6 +47,6 @@ class CompareChangesUrlTest extends TestCase
 
     public function testDeserialize(): void
     {
-        self::assertEquals($this->sut, $this->sut->deserialize($this->url));
+        self::assertEquals($this->sut, $this->sut::deserialize($this->url));
     }
 }

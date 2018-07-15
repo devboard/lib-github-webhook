@@ -27,11 +27,11 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
     ): void {
         $sut = new PullRequestReviewer($userId, $login, $gitHubAccountType, $avatarUrl, $siteAdmin);
 
-        $this->assertSame($userId, $sut->getUserId());
-        $this->assertSame($login, $sut->getLogin());
-        $this->assertSame($gitHubAccountType, $sut->getType());
-        $this->assertSame($avatarUrl, $sut->getAvatarUrl());
-        $this->assertSame($siteAdmin, $sut->isSiteAdmin());
+        self::assertSame($userId, $sut->getUserId());
+        self::assertSame($login, $sut->getLogin());
+        self::assertSame($gitHubAccountType, $sut->getType());
+        self::assertSame($avatarUrl, $sut->getAvatarUrl());
+        self::assertSame($siteAdmin, $sut->isSiteAdmin());
     }
 
     /** @dataProvider provideArguments */
@@ -46,7 +46,7 @@ class GitHubPullRequestReviewerFactoryTest extends TestCase
 
         $serialized = $sut->serialize();
 
-        $this->assertEquals($sut, PullRequestReviewer::deserialize($serialized));
+        self::assertEquals($sut, PullRequestReviewer::deserialize($serialized));
     }
 
     public function provideArguments(): array
