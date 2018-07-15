@@ -20,7 +20,7 @@ class RefTest extends TestCase
     public function testItExposesValue(string $reference): void
     {
         $sut = new Ref($reference);
-        $this->assertEquals($reference, $sut->getValue());
+        self::assertEquals($reference, $sut->getValue());
     }
 
     /**
@@ -30,7 +30,7 @@ class RefTest extends TestCase
     public function testItCanBeAutoConvertedToString(string $reference): void
     {
         $sut = new Ref($reference);
-        $this->assertEquals($reference, (string) $sut);
+        self::assertEquals($reference, (string) $sut);
     }
 
     /**
@@ -40,7 +40,7 @@ class RefTest extends TestCase
     public function testItExposesReferenceName(string $reference, string $referenceName): void
     {
         $sut = new Ref($reference);
-        $this->assertEquals($referenceName, $sut->getReferenceName());
+        self::assertEquals($referenceName, $sut->getReferenceName());
     }
 
     /**
@@ -49,7 +49,7 @@ class RefTest extends TestCase
     public function testItKnowsItIsBranchReference(string $reference): void
     {
         $sut = new Ref($reference);
-        $this->assertTrue($sut->isBranchReference());
+        self::assertTrue($sut->isBranchReference());
     }
 
     /**
@@ -58,7 +58,7 @@ class RefTest extends TestCase
     public function testItKnowsItIsNotTagReference(string $reference): void
     {
         $sut = new Ref($reference);
-        $this->assertFalse($sut->isTagReference());
+        self::assertFalse($sut->isTagReference());
     }
 
     /**
@@ -67,7 +67,7 @@ class RefTest extends TestCase
     public function testItKnowsItIsTagReference(string $reference): void
     {
         $sut = new Ref($reference);
-        $this->assertTrue($sut->isTagReference());
+        self::assertTrue($sut->isTagReference());
     }
 
     /**
@@ -76,7 +76,7 @@ class RefTest extends TestCase
     public function testItKnowsItIsNotBranchReference(string $reference): void
     {
         $sut = new Ref($reference);
-        $this->assertFalse($sut->isBranchReference());
+        self::assertFalse($sut->isBranchReference());
     }
 
     /**

@@ -37,6 +37,6 @@ class PullRequestRequestedTeamTest extends TestCase
 
     public function testDeserialize(): void
     {
-        self::assertEquals($this->sut, $this->sut->deserialize($this->todo));
+        self::assertEquals($this->sut, $this->sut::deserialize($this->todo));
     }
 }
