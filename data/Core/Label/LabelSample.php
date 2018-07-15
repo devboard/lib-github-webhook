@@ -8,6 +8,7 @@ use DevboardLib\GitHub\GitHubLabel;
 
 class LabelSample
 {
+    /** @var array */
     private static $data = ['red' => ['id' => 1, 'name' => 'red', 'color' => '#ff0000', 'default' => true]];
 
     public static function serialized(string $item): array

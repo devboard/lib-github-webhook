@@ -8,6 +8,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestAssignee;
 
 class PullRequestAssigneeSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'userId'    => 1,

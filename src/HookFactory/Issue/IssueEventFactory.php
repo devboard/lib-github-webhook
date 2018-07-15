@@ -37,6 +37,7 @@ class IssueEventFactory implements GitHubHookEventFactory
     /** @var SenderFactory */
     private $senderFactory;
 
+    /** @var array */
     private $list = [
         'assigned'     => AssignedIssueEvent::class,
         'unassigned'   => UnassignedIssueEvent::class,

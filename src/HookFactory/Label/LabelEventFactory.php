@@ -30,6 +30,7 @@ class LabelEventFactory implements GitHubHookEventFactory
     /** @var SenderFactory */
     private $senderFactory;
 
+    /** @var array */
     private $list = [
         'created' => CreatedLabelEvent::class,
         'edited'  => EditedLabelEvent::class,

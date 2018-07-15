@@ -8,6 +8,7 @@ use DevboardLib\GitHub\Milestone\MilestoneCreator;
 
 class MilestoneCreatorSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'userId'    => 1,

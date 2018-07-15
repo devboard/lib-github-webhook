@@ -8,6 +8,7 @@ use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestRequestedReviewer;
 
 class PullRequestRequestedReviewerSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'userId'            => 1,

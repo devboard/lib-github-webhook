@@ -8,6 +8,7 @@ use DevboardLib\GitHub\Issue\IssueAuthor;
 
 class IssueAuthorSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'userId'    => 1,

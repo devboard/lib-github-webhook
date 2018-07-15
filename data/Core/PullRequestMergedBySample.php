@@ -8,6 +8,7 @@ use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestMergedBy;
 
 class PullRequestMergedBySample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'userId'            => 1,

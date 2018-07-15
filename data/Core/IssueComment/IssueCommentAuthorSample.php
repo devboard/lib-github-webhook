@@ -8,6 +8,7 @@ use DevboardLib\GitHub\IssueComment\IssueCommentAuthor;
 
 class IssueCommentAuthorSample
 {
+    /** @var array */
     private static $data = [
         'octocat' => [
             'userId'    => 1,
