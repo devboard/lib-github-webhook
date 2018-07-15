@@ -8,6 +8,7 @@ parameters:
 	    - '#Call to an undefined static method DevboardLib\\GitHub\\PullRequestReview\\PullRequestReviewAuthorAssociation::.#'
 	    - '#Property DevboardLib\\GitHubWebhook\\HookFactory\\Push\\PushEventFactory\:\:\$factories#'
 	    - '#Parameter \#1 \$json of function json_decode expects string, string|false given.#'
+	    - '#Call to static method .*::assertInstanceOf\(\) with .* and .* will always evaluate to true.#'
 includes:
 	- vendor/phpstan/phpstan-phpunit/extension.neon
 	- vendor/phpstan/phpstan-phpunit/rules.neon
