@@ -25,7 +25,7 @@ class RepositoryReferenceCollection
         $this->elements = $elements;
     }
 
-    public function add(RepositoryReference $element)
+    public function add(RepositoryReference $element): void
     {
         $this->elements[] = $element;
     }
@@ -41,7 +41,7 @@ class RepositoryReferenceCollection
         return false;
     }
 
-    public function get(RepoId $id)
+    public function get(RepoId $id): ?RepositoryReference
     {
         foreach ($this->elements as $element) {
             if ($element->getId() == $id) {

@@ -25,7 +25,7 @@ class CommitCollection
         $this->elements = $elements;
     }
 
-    public function add(Commit $element)
+    public function add(Commit $element): void
     {
         $this->elements[] = $element;
     }
@@ -41,7 +41,7 @@ class CommitCollection
         return false;
     }
 
-    public function get(CommitSha $id)
+    public function get(CommitSha $id): ?Commit
     {
         foreach ($this->elements as $element) {
             if ($element->getSha() == $id) {

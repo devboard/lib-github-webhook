@@ -25,7 +25,7 @@ class BranchNameCollection
         $this->elements = $elements;
     }
 
-    public function add(BranchName $element)
+    public function add(BranchName $element): void
     {
         $this->elements[] = $element;
     }
@@ -41,7 +41,7 @@ class BranchNameCollection
         return false;
     }
 
-    public function get(string $id)
+    public function get(string $id): ?BranchName
     {
         foreach ($this->elements as $element) {
             if ($element->getValue() == $id) {
