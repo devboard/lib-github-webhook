@@ -21,6 +21,7 @@ use Tests\DevboardLib\GitHubWebhook\StagingDataProvider;
 /**
  * @covers \DevboardLib\GitHubWebhook\CoreFactory\PullRequestReview\GitHubPullRequestFactory
  * @group  unit
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class GitHubPullRequestFactoryTest extends TestCase
 {

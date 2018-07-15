@@ -21,6 +21,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \DevboardLib\GitHubWebhook\Hook\PullRequest\AssignedPullRequestEvent
  * @group  unit
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class AssignedPullRequestEventTest extends TestCase
 {
