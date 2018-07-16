@@ -16,9 +16,12 @@ parameters:
 	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\DeleteTagPushEventFactory::create\(\) has no return typehint specified.#'
 	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\UpdateBranchPushEventFactory::create\(\) has no return typehint specified.#'
 	    - '#Method DevboardLib\\GitHubWebhook\\HookFactory\\Push\\Event\\UpdateTagPushEventFactory::create\(\) has no return typehint specified.#'
+	    - '#Parameter \#1 \$userId of class .* constructor expects DevboardLib\\GitHub\\User\\UserId, DevboardLib\\GitHub\\Account\\AccountId given.#'
+	    - '#Parameter .* \$login of class .* constructor expects DevboardLib\\GitHub\\User\\UserLogin, DevboardLib\\GitHub\\Account\\AccountLogin given.#'
+	    - '#Parameter \#4 \$avatarUrl of class .* constructor expects DevboardLib\\GitHub\\User\\UserAvatarUrl, DevboardLib\\GitHub\\Account\\AccountAvatarUrl given.#'
+	    - '#Parameter \#3 \$username of class DevboardLib\\GitHubWebhook\\Core\\Push\\.* constructor expects DevboardLib\\GitHub\\User\\UserLogin|null, DevboardLib\\GitHub\\Account\\AccountLogin|null given.#'
 includes:
 	- vendor/phpstan/phpstan-phpunit/extension.neon
 	- vendor/phpstan/phpstan-phpunit/rules.neon
 	- vendor/phpstan/phpstan-strict-rules/rules.neon
-
 
