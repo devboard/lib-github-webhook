@@ -17,6 +17,10 @@ use DevboardLib\GitHub\External\Service\ContinuousIntegration\TravisCi;
 use DevboardLib\GitHub\External\Service\UnknownService;
 use DevboardLib\GitHub\Status\StatusContext;
 
+/**
+ * @deprecated Please use DevboardLib\GitHub\External\ExternalServiceFactory!
+ * @deprecated REMOVE IN VERSION 2.0
+ */
 class ExternalServiceFactory
 {
     /** @var array */
