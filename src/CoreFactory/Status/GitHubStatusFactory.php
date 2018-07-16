@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\CoreFactory\Status;
 
 use DateTime;
+use DevboardLib\GitHub\External\ExternalServiceFactory;
 use DevboardLib\GitHub\GitHubStatus;
 use DevboardLib\GitHub\Status\StatusContext;
 use DevboardLib\GitHub\Status\StatusDescription;
