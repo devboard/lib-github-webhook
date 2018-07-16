@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "devboard/lib-github": "^1.1",
+        "devboard/lib-github": "^1.2",
         "myclabs/php-enum": "^1.5",
         "webmozart/assert": "^1.2"
     },
