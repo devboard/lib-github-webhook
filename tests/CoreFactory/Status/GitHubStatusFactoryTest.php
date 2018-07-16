@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\Status;
 
+use DevboardLib\GitHub\External\ExternalServiceFactory;
 use DevboardLib\GitHub\GitHubStatus;
-use DevboardLib\GitHubWebhook\CoreFactory\Status\ExternalServiceFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Status\GitHubStatusCreatorFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Status\GitHubStatusFactory;
 use PHPUnit\Framework\TestCase;
