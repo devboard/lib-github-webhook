@@ -1,7 +1,11 @@
 CHANGELOG
 
-Version 2.x []:
+Version 2.0.0 [2018-07-20]:
 
+ - Add `asString()` and deprecate `__toString()`
+ - Drop internal ExternalServiceFactory
+ - Use GitHubStatusCheck instead of GitHubStatus
+ - Add GitHubStatusCheck
 
 
 Version 1.2.0 [2018-07-16]:
