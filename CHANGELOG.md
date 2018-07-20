@@ -1,5 +1,9 @@
 CHANGELOG
 
+Version 2.x []:
+
+
+
 Version 1.2.0 [2018-07-16]:
 
  - Upgrade phpspec to 5.x 
