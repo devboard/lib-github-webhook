@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\Status;
 
 use DevboardLib\GitHub\External\ExternalServiceFactory;
-use DevboardLib\GitHub\GitHubStatus;
+use DevboardLib\GitHubWebhook\Core\GitHubStatusCheck;
 use DevboardLib\GitHubWebhook\CoreFactory\Status\GitHubStatusCreatorFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Status\GitHubStatusFactory;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +31,7 @@ class GitHubStatusFactoryTest extends TestCase
         foreach ($provider->getGitHubStatusData() as $item) {
             $sender = $this->sut->create($item);
 
-            self::assertInstanceOf(GitHubStatus::class, $sender);
+            self::assertInstanceOf(GitHubStatusCheck::class, $sender);
         }
     }
 
