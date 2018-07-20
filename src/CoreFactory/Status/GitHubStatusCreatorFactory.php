@@ -8,13 +8,13 @@ use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHub\Status\StatusCreator;
+use DevboardLib\GitHub\StatusCheck\StatusCheckCreator;
 
 class GitHubStatusCreatorFactory
 {
-    public function create(array $data): StatusCreator
+    public function create(array $data): StatusCheckCreator
     {
-        return new StatusCreator(
+        return new StatusCheckCreator(
             new AccountId($data['id']),
             new AccountLogin($data['login']),
             new AccountType($data['type']),
