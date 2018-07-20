@@ -6,11 +6,11 @@ namespace DevboardLib\GitHubWebhook\CoreFactory\Status;
 
 use DateTime;
 use DevboardLib\GitHub\External\ExternalServiceFactory;
-use DevboardLib\GitHub\Status\StatusContext;
-use DevboardLib\GitHub\Status\StatusDescription;
-use DevboardLib\GitHub\Status\StatusId;
-use DevboardLib\GitHub\Status\StatusState;
-use DevboardLib\GitHub\Status\StatusTargetUrl;
+use DevboardLib\GitHub\StatusCheck\StatusCheckContext;
+use DevboardLib\GitHub\StatusCheck\StatusCheckDescription;
+use DevboardLib\GitHub\StatusCheck\StatusCheckId;
+use DevboardLib\GitHub\StatusCheck\StatusCheckState;
+use DevboardLib\GitHub\StatusCheck\StatusCheckTargetUrl;
 use DevboardLib\GitHubWebhook\Core\GitHubStatusCheck;
 
 /**
@@ -34,13 +34,13 @@ class GitHubStatusFactory
 
     public function create(array $data): GitHubStatusCheck
     {
-        $context = new StatusContext($data['context']);
+        $context = new StatusCheckContext($data['context']);
 
         return new GitHubStatusCheck(
-            new StatusId($data['id']),
-            StatusState::create($data['state']),
-            new StatusDescription($data['description']),
-            new StatusTargetUrl($data['target_url']),
+            new StatusCheckId($data['id']),
+            StatusCheckState::create($data['state']),
+            new StatusCheckDescription($data['description']),
+            new StatusCheckTargetUrl($data['target_url']),
             $context,
             $this->externalServiceFactory->create($context),
             $this->statusCreatorFactory->create($data['sender']),

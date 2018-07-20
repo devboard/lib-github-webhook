@@ -16,12 +16,12 @@ use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\CircleCi;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
-use DevboardLib\GitHub\Status\State\Pending;
-use DevboardLib\GitHub\Status\StatusContext;
-use DevboardLib\GitHub\Status\StatusCreator;
-use DevboardLib\GitHub\Status\StatusDescription;
-use DevboardLib\GitHub\Status\StatusId;
-use DevboardLib\GitHub\Status\StatusTargetUrl;
+use DevboardLib\GitHub\StatusCheck\State\Pending;
+use DevboardLib\GitHub\StatusCheck\StatusCheckContext;
+use DevboardLib\GitHub\StatusCheck\StatusCheckCreator;
+use DevboardLib\GitHub\StatusCheck\StatusCheckDescription;
+use DevboardLib\GitHub\StatusCheck\StatusCheckId;
+use DevboardLib\GitHub\StatusCheck\StatusCheckTargetUrl;
 use DevboardLib\GitHubWebhook\Core\GitHubStatusCheck;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
@@ -58,13 +58,13 @@ class StatusEventTest extends TestCase
     public function setUp(): void
     {
         $this->status = new GitHubStatusCheck(
-            new StatusId(1),
+            new StatusCheckId(1),
             new Pending(),
-            new StatusDescription('value'),
-            new StatusTargetUrl('targetUrl'),
-            new StatusContext('description'),
-            new CircleCi(new StatusContext('ci/circleci')),
-            new StatusCreator(
+            new StatusCheckDescription('value'),
+            new StatusCheckTargetUrl('targetUrl'),
+            new StatusCheckContext('description'),
+            new CircleCi(new StatusCheckContext('ci/circleci')),
+            new StatusCheckCreator(
                 new AccountId(1),
                 new AccountLogin('value'),
                 AccountType::USER(),
