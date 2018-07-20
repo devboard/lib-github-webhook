@@ -10,7 +10,7 @@ definition:
   methods: {  }
   constructor:
     status:
-      instanceOf: DevboardLib\GitHub\GitHubStatus
+      instanceOf: DevboardLib\GitHubWebhook\Core\GitHubStatus
     commit:
       instanceOf: DevboardLib\GitHubWebhook\Core\Status\Commit
     repo:

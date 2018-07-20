@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace spec\DevboardLib\GitHubWebhook\Hook\Status;
 
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubStatus;
+use DevboardLib\GitHubWebhook\Core\GitHubStatusCheck;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection;
@@ -18,7 +18,7 @@ use PhpSpec\ObjectBehavior;
 class StatusEventSpec extends ObjectBehavior
 {
     public function let(
-        GitHubStatus $status, Commit $commit, Repo $repo, BranchNameCollection $branches, Sender $sender
+        GitHubStatusCheck $status, Commit $commit, Repo $repo, BranchNameCollection $branches, Sender $sender
     ) {
         $this->beConstructedWith($status, $commit, $repo, $branches, $sender);
     }
@@ -30,7 +30,7 @@ class StatusEventSpec extends ObjectBehavior
         $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
-    public function it_exposes_status(GitHubStatus $status)
+    public function it_exposes_status(GitHubStatusCheck $status)
     {
         $this->getStatus()->shouldReturn($status);
     }
@@ -56,7 +56,7 @@ class StatusEventSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        GitHubStatus $status, Commit $commit, Repo $repo, BranchNameCollection $branches, Sender $sender
+        GitHubStatusCheck $status, Commit $commit, Repo $repo, BranchNameCollection $branches, Sender $sender
     ) {
         $status->serialize()->shouldBeCalled()->willReturn(
             [

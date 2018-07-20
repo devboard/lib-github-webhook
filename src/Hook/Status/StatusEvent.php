@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\Status;
 
-use DevboardLib\GitHub\GitHubStatus;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
+use DevboardLib\GitHubWebhook\Core\GitHubStatusCheck;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection;
@@ -19,7 +19,7 @@ use DevboardLib\GitHubWebhook\Hook\RepositoryRelatedEvent;
  */
 class StatusEvent implements RepositoryRelatedEvent
 {
-    /** @var GitHubStatus */
+    /** @var GitHubStatusCheck */
     private $status;
 
     /** @var Commit */
@@ -35,7 +35,7 @@ class StatusEvent implements RepositoryRelatedEvent
     private $sender;
 
     public function __construct(
-        GitHubStatus $status, Commit $commit, Repo $repo, BranchNameCollection $branches, Sender $sender
+        GitHubStatusCheck $status, Commit $commit, Repo $repo, BranchNameCollection $branches, Sender $sender
     ) {
         $this->status   = $status;
         $this->commit   = $commit;
@@ -44,7 +44,7 @@ class StatusEvent implements RepositoryRelatedEvent
         $this->sender   = $sender;
     }
 
-    public function getStatus(): GitHubStatus
+    public function getStatus(): GitHubStatusCheck
     {
         return $this->status;
     }
@@ -93,7 +93,7 @@ class StatusEvent implements RepositoryRelatedEvent
     public static function deserialize(array $data): self
     {
         return new self(
-            GitHubStatus::deserialize($data['status']),
+            GitHubStatusCheck::deserialize($data['status']),
             Commit::deserialize($data['commit']),
             Repo::deserialize($data['repo']),
             BranchNameCollection::deserialize($data['branches']),
