@@ -28,6 +28,14 @@ class CompareChangesUrl
         return $this->url;
     }
 
+    public function asString(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @deprecated Please use `asString()`
+     */
     public function __toString(): string
     {
         return $this->url;

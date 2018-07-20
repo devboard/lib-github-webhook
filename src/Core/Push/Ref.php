@@ -27,6 +27,14 @@ class Ref
         return $this->value;
     }
 
+    public function asString(): string
+    {
+        return $this->value;
+    }
+
+    /**
+     * @deprecated Please use `asString()`
+     */
     public function __toString(): string
     {
         return $this->value;
