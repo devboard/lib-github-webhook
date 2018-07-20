@@ -33,7 +33,7 @@ class RefSpec extends ObjectBehavior
 
     public function it_should_be_castable_to_string()
     {
-        $this->__toString()->shouldReturn('refs/heads/master');
+        $this->asString()->shouldReturn('refs/heads/master');
     }
 
     public function it_knows_it_is_branch()
@@ -59,7 +59,7 @@ class RefSpec extends ObjectBehavior
         $this->beConstructedWith('refs/tags/0.1.0');
 
         $this->getValue()->shouldReturn('refs/tags/0.1.0');
-        $this->__toString()->shouldReturn('refs/tags/0.1.0');
+        $this->asString()->shouldReturn('refs/tags/0.1.0');
     }
 
     public function it_can_return_tag_name_as_a_reference_name()

@@ -37,7 +37,7 @@ class CompareChangesUrlTest extends TestCase
 
     public function testToString(): void
     {
-        self::assertSame($this->url, $this->sut->__toString());
+        self::assertSame($this->url, $this->sut->asString());
     }
 
     public function testSerialize(): void
