@@ -14,7 +14,6 @@ use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\External\Service\ContinuousIntegration\CircleCi;
-use DevboardLib\GitHub\GitHubStatus;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\Status\State\Pending;
@@ -23,6 +22,7 @@ use DevboardLib\GitHub\Status\StatusCreator;
 use DevboardLib\GitHub\Status\StatusDescription;
 use DevboardLib\GitHub\Status\StatusId;
 use DevboardLib\GitHub\Status\StatusTargetUrl;
+use DevboardLib\GitHubWebhook\Core\GitHubStatusCheck;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Core\Status\BranchNameCollection;
@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  */
 class StatusEventTest extends TestCase
 {
-    /** @var GitHubStatus */
+    /** @var GitHubStatusCheck */
     private $status;
 
     /** @var Commit */
@@ -57,7 +57,7 @@ class StatusEventTest extends TestCase
 
     public function setUp(): void
     {
-        $this->status = new GitHubStatus(
+        $this->status = new GitHubStatusCheck(
             new StatusId(1),
             new Pending(),
             new StatusDescription('value'),

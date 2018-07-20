@@ -6,12 +6,12 @@ namespace DevboardLib\GitHubWebhook\CoreFactory\Status;
 
 use DateTime;
 use DevboardLib\GitHub\External\ExternalServiceFactory;
-use DevboardLib\GitHub\GitHubStatus;
 use DevboardLib\GitHub\Status\StatusContext;
 use DevboardLib\GitHub\Status\StatusDescription;
 use DevboardLib\GitHub\Status\StatusId;
 use DevboardLib\GitHub\Status\StatusState;
 use DevboardLib\GitHub\Status\StatusTargetUrl;
+use DevboardLib\GitHubWebhook\Core\GitHubStatusCheck;
 
 /**
  * @see GitHubStatusFactorySpec
@@ -32,11 +32,11 @@ class GitHubStatusFactory
         $this->externalServiceFactory = $externalServiceFactory;
     }
 
-    public function create(array $data): GitHubStatus
+    public function create(array $data): GitHubStatusCheck
     {
         $context = new StatusContext($data['context']);
 
-        return new GitHubStatus(
+        return new GitHubStatusCheck(
             new StatusId($data['id']),
             StatusState::create($data['state']),
             new StatusDescription($data['description']),
