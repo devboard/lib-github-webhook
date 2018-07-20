@@ -12,7 +12,10 @@
     ],
     "require": {
         "php": "^7.1",
-        "devboard/lib-github": "^1.2",
+        "devboard/git-interfaces": "^2.0@dev",
+        "devboard/lib-generix": "^2.0@dev",
+        "devboard/lib-git": "^2.0@dev",
+        "devboard/lib-github": "^2.0@dev",
         "myclabs/php-enum": "^1.5",
         "webmozart/assert": "^1.2"
     },
