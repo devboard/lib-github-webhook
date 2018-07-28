@@ -1,5 +1,11 @@
 CHANGELOG
 
+Version 2.0.1 [2018-07-28]:
+
+ - Stop PHP linting on CI
+ - Remove coverage-php as that option doesnt exist
+ - GitHubHookEvent should define serialize/deserialize methods
+
 Version 2.0.0 [2018-07-20]:
 
  - Add `asString()` and deprecate `__toString()`
