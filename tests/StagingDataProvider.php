@@ -20,7 +20,8 @@ class StagingDataProvider
         if (null === $basePath) {
             //$basePath = '/work/projects/devboard/docker/github-data-dump/';
             //$basePath = '/work/projects/devboard/lib/lib-github-webhook/tmp/';
-            $basePath = '/work/projects/devboard/examples/version1/';
+            //$basePath = '/work/projects/devboard/examples/version1/';
+            $basePath = '/work/projects/devboard/docker/github-data-dump/';
         }
 
         $this->basePath = $basePath;
@@ -29,9 +30,12 @@ class StagingDataProvider
     public function getGitHubInstalationEventData(): Generator
     {
         if (true === is_dir($this->basePath)) {
-            foreach ($this->loadAllFilesMatchingEventType('installation') as $file) {
-                yield $this->getDecodedJsonFromFile($file->getRealPath());
-            }
+	        foreach ($this->loadAllFilesMatchingEventType('installation') as $file) {
+		        yield $this->getDecodedJsonFromFile($file->getRealPath());
+	        }
+	        foreach ($this->loadAllFilesMatchingEventType('integration_installation') as $file) {
+		        yield $this->getDecodedJsonFromFile($file->getRealPath());
+	        }
         }
     }
 
@@ -41,6 +45,9 @@ class StagingDataProvider
             foreach ($this->loadAllFilesMatchingEventType('installation_repositories') as $file) {
                 yield $this->getDecodedJsonFromFile($file->getRealPath());
             }
+	        foreach ($this->loadAllFilesMatchingEventType('integration_installation_repositories') as $file) {
+		        yield $this->getDecodedJsonFromFile($file->getRealPath());
+	        }
         }
     }
 
