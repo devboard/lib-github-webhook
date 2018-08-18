@@ -28,6 +28,7 @@ class DeleteTagPushEventFactoryTest extends TestCase
     /** @group stagingData */
     public function testDeleteTagPushEventFactory(): void
     {
+        self::markTestSkipped('There is no data to test this one :(');
         $provider = new StagingDataProvider();
 
         foreach ($provider->getGitHubPushEventData() as $item) {
