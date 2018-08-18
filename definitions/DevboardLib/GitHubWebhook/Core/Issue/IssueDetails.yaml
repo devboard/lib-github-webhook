@@ -1,0 +1,79 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Issue\IssueDetails
+  parent: null
+  interfaces: []
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: DevboardLib\GitHub\Issue\IssueId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    number:
+      instanceOf: DevboardLib\GitHub\Issue\IssueNumber
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    title:
+      instanceOf: DevboardLib\GitHub\Issue\IssueTitle
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    body:
+      instanceOf: DevboardLib\GitHub\Issue\IssueBody
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    state:
+      instanceOf: DevboardLib\GitHub\Issue\IssueState
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    author:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Issue\IssueAuthor
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    assignees:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeCollection
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    labels:
+      instanceOf: DevboardLib\GitHub\GitHubLabelCollection
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    milestone:
+      instanceOf: DevboardLib\GitHub\GitHubMilestone
+      nullable: true
+      hasDefault: false
+      default: null
+      examples: []
+    closedAt:
+      instanceOf: DevboardLib\GitHub\Issue\IssueClosedAt
+      nullable: true
+      hasDefault: false
+      default: null
+      examples: []
+    createdAt:
+      instanceOf: DevboardLib\GitHub\Issue\IssueCreatedAt
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    updatedAt:
+      instanceOf: DevboardLib\GitHub\Issue\IssueUpdatedAt
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []

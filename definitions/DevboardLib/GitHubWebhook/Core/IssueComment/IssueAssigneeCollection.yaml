@@ -1,0 +1,16 @@
+definition:
+  type: SimpleCollection
+  instanceOf: DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssigneeCollection
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    elements:
+      instanceOf: array
+      nullable: false
+      hasDefault: true
+      default: []
+  collectionOf:
+    instanceOf: DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssignee
+    accessor: getUserId
+    has: DevboardLib\GitHub\Account\AccountId
