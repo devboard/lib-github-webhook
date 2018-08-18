@@ -3,6 +3,9 @@ CHANGELOG
 Version 3.x [xxxx-xx-xx]:
 
  - Add and use InstallationDetails representation instead of GitHubInstallation #102
+ - Add and use IssueCommentDetails representation instead of GitHubIssue #105
+ - Add paraunit in order to run phpunit tests in parallel
+ - Mark Tag factories as skipped as we have no data to test them out now
 
 Version 2.0.1 [2018-07-28]:
 
