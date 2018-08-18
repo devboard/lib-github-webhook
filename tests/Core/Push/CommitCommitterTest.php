@@ -46,7 +46,7 @@ class CommitCommitterTest extends TestCase
         $this->details  = new CommitCommitterDetails(
             new AccountId(1),
             new AccountLogin('value'),
-	        AccountType::USER(),
+            AccountType::USER(),
             new AccountAvatarUrl('avatarUrl'),
             true,
             'eventsUrl',

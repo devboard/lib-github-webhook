@@ -11,11 +11,21 @@ class CommitSample
     /** @var array */
     private static $data = [
         'abc123' => [
-            'sha'           => 'abc123',
-            'message'       => 'Commit message',
-            'commitDate'    => '2018-01-01T00:01:00+00:00',
-            'author'        => ['name' => 'Octo Cat', 'email' => 'octocat@example.com', 'username' => 'octocat','details'=> null],
-            'committer'     => ['name' => 'Octo Cat', 'email' => 'octocat@example.com', 'username' => 'octocat','details'=> null],
+            'sha'        => 'abc123',
+            'message'    => 'Commit message',
+            'commitDate' => '2018-01-01T00:01:00+00:00',
+            'author'     => [
+                'name'     => 'Octo Cat',
+                'email'    => 'octocat@example.com',
+                'username' => 'octocat',
+                'details'  => null,
+            ],
+            'committer' => [
+                'name'     => 'Octo Cat',
+                'email'    => 'octocat@example.com',
+                'username' => 'octocat',
+                'details'  => null,
+            ],
             'tree'          => 'sha',
             'distinct'      => true,
             'addedFiles'    => ['data'],
