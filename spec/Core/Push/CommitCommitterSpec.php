@@ -64,7 +64,7 @@ class CommitCommitterSpec extends ObjectBehavior
             [
                 'userId'            => 1,
                 'login'             => 'value',
-                'type'              => \Mockery::mock('DevboardLib\GitHub\Account\AccountType'),
+                'type'              => 'User',
                 'avatarUrl'         => 'avatarUrl',
                 'siteAdmin'         => true,
                 'eventsUrl'         => 'eventsUrl',
@@ -86,7 +86,7 @@ class CommitCommitterSpec extends ObjectBehavior
                 'details'  => [
                     'userId'            => 1,
                     'login'             => 'value',
-                    'type'              => \Mockery::mock('DevboardLib\GitHub\Account\AccountType'),
+                    'type'              => 'User',
                     'avatarUrl'         => 'avatarUrl',
                     'siteAdmin'         => true,
                     'eventsUrl'         => 'eventsUrl',
@@ -112,7 +112,7 @@ class CommitCommitterSpec extends ObjectBehavior
             'details'  => [
                 'userId'            => 1,
                 'login'             => 'value',
-                'type'              => \Mockery::mock('DevboardLib\GitHub\Account\AccountType'),
+                'type'              => 'User',
                 'avatarUrl'         => 'avatarUrl',
                 'siteAdmin'         => true,
                 'eventsUrl'         => 'eventsUrl',
