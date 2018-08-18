@@ -8,7 +8,7 @@ use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHub\Milestone\MilestoneCreator;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreator;
 
 /**
  * @see GitHubMilestoneCreatorFactorySpec

@@ -14,7 +14,6 @@ use Data\DevboardLib\GitHubWebhook\Core\PullRequestRequestedReviewerSample;
 use Data\DevboardLib\GitHubWebhook\Core\PullRequestUrlsSample;
 use DateTime;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
 use DevboardLib\GitHub\PullRequest\PullRequestAuthor;
 use DevboardLib\GitHub\PullRequest\PullRequestBody;
@@ -25,6 +24,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestNumber;
 use DevboardLib\GitHub\PullRequest\PullRequestState;
 use DevboardLib\GitHub\PullRequest\PullRequestTitle;
 use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestBase;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestHead;
@@ -105,7 +105,7 @@ class PullRequestTest extends TestCase
     /** @var PullRequestMergedBy|null */
     private $mergedBy;
 
-    /** @var GitHubMilestone|null */
+    /** @var MilestoneDetails|null */
     private $milestone;
 
     /** @var PullRequestClosedAt|null */

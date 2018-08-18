@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace spec\DevboardLib\GitHubWebhook\Core\Issue;
 
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
@@ -18,6 +17,7 @@ use DevboardLib\GitHub\Milestone\MilestoneState;
 use DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeCollection;
 use DevboardLib\GitHubWebhook\Core\Issue\IssueAuthor;
 use DevboardLib\GitHubWebhook\Core\Issue\IssueDetails;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -35,7 +35,7 @@ class IssueDetailsSpec extends ObjectBehavior
         IssueAuthor $author,
         IssueAssigneeCollection $assignees,
         GitHubLabelCollection $labels,
-        GitHubMilestone $milestone,
+        MilestoneDetails $milestone,
         IssueClosedAt $closedAt,
         IssueCreatedAt $createdAt,
         IssueUpdatedAt $updatedAt
@@ -101,7 +101,7 @@ class IssueDetailsSpec extends ObjectBehavior
         $this->getLabels()->shouldReturn($labels);
     }
 
-    public function it_exposes_milestone(GitHubMilestone $milestone)
+    public function it_exposes_milestone(MilestoneDetails $milestone)
     {
         $this->getMilestone()->shouldReturn($milestone);
     }
@@ -140,7 +140,7 @@ class IssueDetailsSpec extends ObjectBehavior
         IssueAuthor $author,
         IssueAssigneeCollection $assignees,
         GitHubLabelCollection $labels,
-        GitHubMilestone $milestone,
+        MilestoneDetails $milestone,
         IssueClosedAt $closedAt,
         IssueCreatedAt $createdAt,
         IssueUpdatedAt $updatedAt

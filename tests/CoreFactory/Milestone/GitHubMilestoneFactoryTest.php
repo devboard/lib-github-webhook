@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\Milestone;
 
-use DevboardLib\GitHub\GitHubMilestone;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneCreatorFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneFactory;
 use Generator;
@@ -28,7 +28,7 @@ class GitHubMilestoneFactoryTest extends TestCase
     public function testCreate(): void
     {
         foreach ($this->provideData() as $data) {
-            self::assertInstanceOf(GitHubMilestone::class, $this->sut->create($data));
+            self::assertInstanceOf(MilestoneDetails::class, $this->sut->create($data));
         }
     }
 

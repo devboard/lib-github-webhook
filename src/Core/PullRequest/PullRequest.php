@@ -6,7 +6,6 @@ namespace DevboardLib\GitHubWebhook\Core\PullRequest;
 
 use DateTime;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
 use DevboardLib\GitHub\PullRequest\PullRequestAuthor;
 use DevboardLib\GitHub\PullRequest\PullRequestBody;
@@ -17,6 +16,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestNumber;
 use DevboardLib\GitHub\PullRequest\PullRequestState;
 use DevboardLib\GitHub\PullRequest\PullRequestTitle;
 use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -87,7 +87,7 @@ class PullRequest
     /** @var PullRequestMergedBy|null */
     private $mergedBy;
 
-    /** @var GitHubMilestone|null */
+    /** @var MilestoneDetails|null */
     private $milestone;
 
     /** @var PullRequestClosedAt|null */
@@ -127,7 +127,7 @@ class PullRequest
         bool $merged,
         ?DateTime $mergedAt,
         ?PullRequestMergedBy $mergedBy,
-        ?GitHubMilestone $milestone,
+        ?MilestoneDetails $milestone,
         ?PullRequestClosedAt $closedAt,
         PullRequestStats $stats,
         PullRequestUrls $urls,
@@ -262,7 +262,7 @@ class PullRequest
         return $this->mergedBy;
     }
 
-    public function getMilestone(): ?GitHubMilestone
+    public function getMilestone(): ?MilestoneDetails
     {
         return $this->milestone;
     }
@@ -440,7 +440,7 @@ class PullRequest
         if (null === $data['milestone']) {
             $milestone = null;
         } else {
-            $milestone = GitHubMilestone::deserialize($data['milestone']);
+            $milestone = MilestoneDetails::deserialize($data['milestone']);
         }
 
         if (null === $data['closedAt']) {

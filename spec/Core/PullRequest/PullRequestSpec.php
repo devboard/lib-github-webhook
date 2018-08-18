@@ -6,7 +6,6 @@ namespace spec\DevboardLib\GitHubWebhook\Core\PullRequest;
 
 use DateTime;
 use DevboardLib\Git\Commit\CommitSha;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\PullRequest\PullRequestAssigneeCollection;
 use DevboardLib\GitHub\PullRequest\PullRequestAuthor;
 use DevboardLib\GitHub\PullRequest\PullRequestBody;
@@ -17,6 +16,7 @@ use DevboardLib\GitHub\PullRequest\PullRequestNumber;
 use DevboardLib\GitHub\PullRequest\PullRequestState;
 use DevboardLib\GitHub\PullRequest\PullRequestTitle;
 use DevboardLib\GitHub\PullRequest\PullRequestUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequest;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestBase;
 use DevboardLib\GitHubWebhook\Core\PullRequest\PullRequestHead;
@@ -48,7 +48,7 @@ class PullRequestSpec extends ObjectBehavior
         CommitSha $mergeCommitSha,
         DateTime $mergedAt,
         PullRequestMergedBy $mergedBy,
-        GitHubMilestone $milestone,
+        MilestoneDetails $milestone,
         PullRequestClosedAt $closedAt,
         PullRequestStats $stats,
         PullRequestUrls $urls,
@@ -190,7 +190,7 @@ class PullRequestSpec extends ObjectBehavior
         $this->getMergedBy()->shouldReturn($mergedBy);
     }
 
-    public function it_exposes_milestone(GitHubMilestone $milestone)
+    public function it_exposes_milestone(MilestoneDetails $milestone)
     {
         $this->getMilestone()->shouldReturn($milestone);
     }
@@ -270,7 +270,7 @@ class PullRequestSpec extends ObjectBehavior
         CommitSha $mergeCommitSha,
         DateTime $mergedAt,
         PullRequestMergedBy $mergedBy,
-        GitHubMilestone $milestone,
+        MilestoneDetails $milestone,
         PullRequestClosedAt $closedAt,
         PullRequestStats $stats,
         PullRequestUrls $urls,

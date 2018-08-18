@@ -54,7 +54,7 @@ definition:
       default: null
       examples: []
     milestone:
-      instanceOf: DevboardLib\GitHub\GitHubMilestone
+      instanceOf: DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails
       nullable: true
       hasDefault: false
       default: null
