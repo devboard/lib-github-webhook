@@ -10,7 +10,6 @@ use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\Application\ApplicationId;
-use DevboardLib\GitHub\GitHubInstallation;
 use DevboardLib\GitHub\Installation\InstallationAccessTokenUrl;
 use DevboardLib\GitHub\Installation\InstallationAccount;
 use DevboardLib\GitHub\Installation\InstallationCreatedAt;
@@ -24,6 +23,7 @@ use DevboardLib\GitHub\Installation\InstallationUpdatedAt;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\Repo\RepoName;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReference;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection;
 use DevboardLib\GitHubWebhook\Core\Sender;
@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AddedInstallationRepositoriesEventTest extends TestCase
 {
-    /** @var GitHubInstallation */
+    /** @var InstallationDetails */
     private $installation;
 
     /** @var RepositoryReferenceCollection */
@@ -51,7 +51,7 @@ class AddedInstallationRepositoriesEventTest extends TestCase
 
     public function setUp(): void
     {
-        $this->installation = new GitHubInstallation(
+        $this->installation = new InstallationDetails(
             new InstallationId(1),
             new InstallationAccount(
                 new AccountId(1),

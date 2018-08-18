@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\Installation;
 
-use DevboardLib\GitHub\GitHubInstallation;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use DevboardLib\GitHubWebhook\CoreFactory\Installation\InstallationAccountFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Installation\InstallationFactory;
 use PHPUnit\Framework\TestCase;
@@ -30,7 +30,7 @@ class InstallationFactoryTest extends TestCase
         foreach ($provider->getGitHubInstalationEventData() as $item) {
             $sender = $this->sut->create($item['installation']);
 
-            self::assertInstanceOf(GitHubInstallation::class, $sender);
+            self::assertInstanceOf(InstallationDetails::class, $sender);
         }
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\Installation;
 
-use DevboardLib\GitHub\GitHubInstallation;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use DevboardLib\GitHubWebhook\Core\Sender;
 
 /**
@@ -13,19 +13,19 @@ use DevboardLib\GitHubWebhook\Core\Sender;
  */
 class CreatedInstallationEvent implements InstallationEvent
 {
-    /** @var GitHubInstallation */
+    /** @var InstallationDetails */
     private $installation;
 
     /** @var Sender */
     private $sender;
 
-    public function __construct(GitHubInstallation $installation, Sender $sender)
+    public function __construct(InstallationDetails $installation, Sender $sender)
     {
         $this->installation = $installation;
         $this->sender       = $sender;
     }
 
-    public function getInstallation(): GitHubInstallation
+    public function getInstallation(): InstallationDetails
     {
         return $this->installation;
     }
@@ -42,6 +42,6 @@ class CreatedInstallationEvent implements InstallationEvent
 
     public static function deserialize(array $data): self
     {
-        return new self(GitHubInstallation::deserialize($data['installation']), Sender::deserialize($data['sender']));
+        return new self(InstallationDetails::deserialize($data['installation']), Sender::deserialize($data['sender']));
     }
 }

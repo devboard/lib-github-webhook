@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\CoreFactory\Installation;
 
 use DevboardLib\GitHub\Application\ApplicationId;
-use DevboardLib\GitHub\GitHubInstallation;
 use DevboardLib\GitHub\Installation\InstallationAccessTokenUrl;
 use DevboardLib\GitHub\Installation\InstallationCreatedAt;
 use DevboardLib\GitHub\Installation\InstallationEvents;
@@ -15,6 +14,7 @@ use DevboardLib\GitHub\Installation\InstallationPermissions;
 use DevboardLib\GitHub\Installation\InstallationRepositoriesUrl;
 use DevboardLib\GitHub\Installation\InstallationRepositorySelectionFactory;
 use DevboardLib\GitHub\Installation\InstallationUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use Throwable;
 
 /**
@@ -32,7 +32,7 @@ class InstallationFactory
         $this->installationAccountFactory = $installationAccountFactory;
     }
 
-    public function create(array $data): GitHubInstallation
+    public function create(array $data): InstallationDetails
     {
         $account = $this->installationAccountFactory->create($data['account']);
 
@@ -54,7 +54,7 @@ class InstallationFactory
             $updatedAt = new InstallationUpdatedAt($data['updated_at']);
         }
 
-        return new GitHubInstallation(
+        return new InstallationDetails(
             new InstallationId($data['id']),
             $account,
             new ApplicationId($data['app_id']),

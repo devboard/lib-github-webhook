@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace spec\DevboardLib\GitHubWebhook\Hook\Installation;
 
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubInstallation;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
 use DevboardLib\GitHubWebhook\Hook\Installation\DeletedInstallationEvent;
@@ -14,7 +14,7 @@ use PhpSpec\ObjectBehavior;
 
 class DeletedInstallationEventSpec extends ObjectBehavior
 {
-    public function let(GitHubInstallation $installation, Sender $sender)
+    public function let(InstallationDetails $installation, Sender $sender)
     {
         $this->beConstructedWith($installation, $sender);
     }
@@ -26,7 +26,7 @@ class DeletedInstallationEventSpec extends ObjectBehavior
         $this->shouldImplement(GitHubHookEvent::class);
     }
 
-    public function it_exposes_installation(GitHubInstallation $installation)
+    public function it_exposes_installation(InstallationDetails $installation)
     {
         $this->getInstallation()->shouldReturn($installation);
     }
@@ -36,7 +36,7 @@ class DeletedInstallationEventSpec extends ObjectBehavior
         $this->getSender()->shouldReturn($sender);
     }
 
-    public function it_can_be_serialized(GitHubInstallation $installation, Sender $sender)
+    public function it_can_be_serialized(InstallationDetails $installation, Sender $sender)
     {
         $installation->serialize()->shouldBeCalled()->willReturn(
             [

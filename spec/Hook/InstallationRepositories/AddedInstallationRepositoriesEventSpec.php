@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace spec\DevboardLib\GitHubWebhook\Hook\InstallationRepositories;
 
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubInstallation;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
@@ -15,7 +15,7 @@ use PhpSpec\ObjectBehavior;
 
 class AddedInstallationRepositoriesEventSpec extends ObjectBehavior
 {
-    public function let(GitHubInstallation $installation, RepositoryReferenceCollection $reposAdded, Sender $sender)
+    public function let(InstallationDetails $installation, RepositoryReferenceCollection $reposAdded, Sender $sender)
     {
         $this->beConstructedWith($installation, $reposAdded, $sender);
     }
@@ -27,7 +27,7 @@ class AddedInstallationRepositoriesEventSpec extends ObjectBehavior
         $this->shouldImplement(GitHubHookEvent::class);
     }
 
-    public function it_exposes_installation(GitHubInstallation $installation)
+    public function it_exposes_installation(InstallationDetails $installation)
     {
         $this->getInstallation()->shouldReturn($installation);
     }
@@ -43,7 +43,7 @@ class AddedInstallationRepositoriesEventSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        GitHubInstallation $installation, RepositoryReferenceCollection $reposAdded, Sender $sender
+        InstallationDetails $installation, RepositoryReferenceCollection $reposAdded, Sender $sender
     ) {
         $installation->serialize()->shouldBeCalled()->willReturn(
             [

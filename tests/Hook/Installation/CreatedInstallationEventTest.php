@@ -10,7 +10,6 @@ use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\Application\ApplicationId;
-use DevboardLib\GitHub\GitHubInstallation;
 use DevboardLib\GitHub\Installation\InstallationAccessTokenUrl;
 use DevboardLib\GitHub\Installation\InstallationAccount;
 use DevboardLib\GitHub\Installation\InstallationCreatedAt;
@@ -21,6 +20,7 @@ use DevboardLib\GitHub\Installation\InstallationPermissions;
 use DevboardLib\GitHub\Installation\InstallationRepositoriesUrl;
 use DevboardLib\GitHub\Installation\InstallationRepositorySelection\InstallationRepositoryAll;
 use DevboardLib\GitHub\Installation\InstallationUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Installation\CreatedInstallationEvent;
 use PHPUnit\Framework\TestCase;
@@ -32,7 +32,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CreatedInstallationEventTest extends TestCase
 {
-    /** @var GitHubInstallation */
+    /** @var InstallationDetails */
     private $installation;
 
     /** @var Sender */
@@ -43,7 +43,7 @@ class CreatedInstallationEventTest extends TestCase
 
     public function setUp(): void
     {
-        $this->installation = new GitHubInstallation(
+        $this->installation = new InstallationDetails(
             new InstallationId(1),
             new InstallationAccount(
                 new AccountId(1),
