@@ -1,5 +1,9 @@
 CHANGELOG
 
+Version 3.x [xxxx-xx-xx]:
+
+ - Add and use InstallationDetails representation instead of GitHubInstallation #102
+
 Version 2.0.1 [2018-07-28]:
 
  - Stop PHP linting on CI
