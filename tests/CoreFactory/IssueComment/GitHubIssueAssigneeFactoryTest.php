@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\Issue;
+namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\IssueComment;
 
-use DevboardLib\GitHubWebhook\Core\Issue\IssueAssignee;
-use DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueAssigneeFactory;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssignee;
+use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueAssigneeFactory;
 use Generator;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 use Tests\DevboardLib\GitHubWebhook\StagingDataProvider;
 
 /**
- * @covers \DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueAssigneeFactory
+ * @covers \DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueAssigneeFactory
  * @group  unit
  */
 class GitHubIssueAssigneeFactoryTest extends TestCase

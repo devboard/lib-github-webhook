@@ -10,8 +10,8 @@ use DevboardLib\GitHubWebhook\HookFactory\IssueComment\IssueCommentEventFactory;
 use Generator;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
-use Tests\DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueFactoryTest;
 use Tests\DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueCommentFactoryTest;
+use Tests\DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueFactoryTest;
 use Tests\DevboardLib\GitHubWebhook\CoreFactory\RepoFactoryTest;
 use Tests\DevboardLib\GitHubWebhook\StagingDataProvider;
 

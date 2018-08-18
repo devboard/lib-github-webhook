@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace DevboardLib\GitHubWebhook\CoreFactory\Issue;
+namespace DevboardLib\GitHubWebhook\CoreFactory\IssueComment;
 
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHubWebhook\Core\Issue\IssueAuthor;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssignee;
 
 /**
- * @see GitHubIssueAuthorFactorySpec
- * @see GitHubIssueAuthorFactoryTest
+ * @see GitHubIssueAssigneeFactorySpec
+ * @see GitHubIssueAssigneeFactoryTest
  */
-class GitHubIssueAuthorFactory
+class GitHubIssueAssigneeFactory
 {
-    public function create(array $data): IssueAuthor
+    public function create(array $data): IssueAssignee
     {
-        return new IssueAuthor(
+        return new IssueAssignee(
             new AccountId($data['id']),
             new AccountLogin($data['login']),
             new AccountType($data['type']),

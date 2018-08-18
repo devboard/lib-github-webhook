@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\IssueComment;
 
-use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 
@@ -21,7 +21,7 @@ class DeletedIssueCommentEvent implements IssueCommentEvent
     /** @var IssueCommentDetails */
     private $comment;
 
-    /** @var GitHubIssue */
+    /** @var IssueDetails */
     private $issue;
 
     /** @var Repo */
@@ -35,7 +35,7 @@ class DeletedIssueCommentEvent implements IssueCommentEvent
 
     public function __construct(
         IssueCommentDetails $comment,
-        GitHubIssue $issue,
+        IssueDetails $issue,
         Repo $repo,
         InstallationId $installationId,
         Sender $sender
@@ -52,7 +52,7 @@ class DeletedIssueCommentEvent implements IssueCommentEvent
         return $this->comment;
     }
 
-    public function getIssue(): GitHubIssue
+    public function getIssue(): IssueDetails
     {
         return $this->issue;
     }
@@ -97,7 +97,7 @@ class DeletedIssueCommentEvent implements IssueCommentEvent
     {
         return new self(
             IssueCommentDetails::deserialize($data['comment']),
-            GitHubIssue::deserialize($data['issue']),
+            IssueDetails::deserialize($data['issue']),
             Repo::deserialize($data['repo']),
             InstallationId::deserialize($data['installationId']),
             Sender::deserialize($data['sender'])

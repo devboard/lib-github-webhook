@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\Issue;
+namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\IssueComment;
 
-use DevboardLib\GitHubWebhook\Core\Issue\IssueDetails;
-use DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueAssigneeFactory;
-use DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueAuthorFactory;
-use DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueFactory;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueDetails;
+use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueAssigneeFactory;
+use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueAuthorFactory;
+use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Label\GitHubLabelFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneCreatorFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneFactory;
@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 use Tests\DevboardLib\GitHubWebhook\StagingDataProvider;
 
 /**
- * @covers \DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueFactory
+ * @covers \DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueFactory
  * @group  unit
  */
 class GitHubIssueFactoryTest extends TestCase

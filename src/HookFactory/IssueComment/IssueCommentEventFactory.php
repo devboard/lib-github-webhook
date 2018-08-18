@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\HookFactory\IssueComment;
 
 use DevboardLib\GitHub\Installation\InstallationId;
-use DevboardLib\GitHubWebhook\CoreFactory\Issue\GitHubIssueFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueCommentFactory;
+use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\RepoFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\SenderFactory;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\CreatedIssueCommentEvent;

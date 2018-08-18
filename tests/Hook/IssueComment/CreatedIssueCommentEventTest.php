@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\Hook\IssueComment;
 
-use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeSample;
-use Data\DevboardLib\GitHubWebhook\Core\Issue\IssueAuthorSample;
+use Data\DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssigneeSample;
+use Data\DevboardLib\GitHubWebhook\Core\IssueComment\IssueAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentAuthorSample;
 use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\Installation\InstallationId;
-use DevboardLib\GitHub\Issue\IssueAssigneeCollection;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
@@ -29,7 +27,9 @@ use DevboardLib\GitHub\IssueComment\IssueCommentId;
 use DevboardLib\GitHub\IssueComment\IssueCommentUpdatedAt;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssigneeCollection;
 use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\CreatedIssueCommentEvent;
@@ -45,7 +45,7 @@ class CreatedIssueCommentEventTest extends TestCase
     /** @var IssueCommentDetails */
     private $comment;
 
-    /** @var GitHubIssue */
+    /** @var IssueDetails */
     private $issue;
 
     /** @var Repo */
@@ -70,14 +70,13 @@ class CreatedIssueCommentEventTest extends TestCase
             new IssueCommentCreatedAt('2018-01-01T00:01:00+00:00'),
             new IssueCommentUpdatedAt('2018-01-01T00:01:00+00:00')
         );
-        $this->issue = new GitHubIssue(
+        $this->issue = new IssueDetails(
             new IssueId(1),
             new IssueNumber(1),
             new IssueTitle('value'),
             new IssueBody('value'),
             IssueState::OPEN(),
             IssueAuthorSample::octocat(),
-            IssueAssigneeSample::octocat(),
             new IssueAssigneeCollection([IssueAssigneeSample::octocat()]),
             new GitHubLabelCollection([LabelSample::red()]),
             MilestoneSample::sprint1(),
@@ -146,7 +145,6 @@ class CreatedIssueCommentEventTest extends TestCase
                 'body'      => 'value',
                 'state'     => 'open',
                 'author'    => IssueAuthorSample::serialized('octocat'),
-                'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],
                 'milestone' => MilestoneSample::serialized('sprint1'),

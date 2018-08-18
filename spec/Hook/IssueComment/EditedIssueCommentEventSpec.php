@@ -11,9 +11,9 @@ use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
@@ -26,7 +26,7 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
 {
     public function let(
         IssueCommentDetails $comment,
-        GitHubIssue $issue,
+        IssueDetails $issue,
         Repo $repo,
         InstallationId $installationId,
         Sender $sender
@@ -47,7 +47,7 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
         $this->getComment()->shouldReturn($comment);
     }
 
-    public function it_exposes_issue(GitHubIssue $issue)
+    public function it_exposes_issue(IssueDetails $issue)
     {
         $this->getIssue()->shouldReturn($issue);
     }
@@ -69,7 +69,7 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
 
     public function it_can_be_serialized(
         IssueCommentDetails $comment,
-        GitHubIssue $issue,
+        IssueDetails $issue,
         Repo $repo,
         InstallationId $installationId,
         Sender $sender

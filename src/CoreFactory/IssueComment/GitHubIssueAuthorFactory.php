@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace DevboardLib\GitHubWebhook\CoreFactory\Issue;
+namespace DevboardLib\GitHubWebhook\CoreFactory\IssueComment;
 
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHubWebhook\Core\Issue\IssueAuthor;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAuthor;
 
 /**
  * @see GitHubIssueAuthorFactorySpec
