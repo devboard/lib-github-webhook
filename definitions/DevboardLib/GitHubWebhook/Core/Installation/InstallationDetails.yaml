@@ -1,0 +1,74 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails
+  parent: null
+  interfaces: []
+  traits: {  }
+  constructor:
+    installationId:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    installationAccount:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationAccount
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    applicationId:
+      instanceOf: DevboardLib\GitHub\Application\ApplicationId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    repositorySelection:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationRepositorySelection
+      nullable: true
+      hasDefault: false
+      default: null
+      examples: []
+    permissions:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationPermissions
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    events:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationEvents
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    accessTokenUrl:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationAccessTokenUrl
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    repositoriesUrl:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationRepositoriesUrl
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    htmlUrl:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationHtmlUrl
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    createdAt:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationCreatedAt
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    updatedAt:
+      instanceOf: DevboardLib\GitHub\Installation\InstallationUpdatedAt
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+
