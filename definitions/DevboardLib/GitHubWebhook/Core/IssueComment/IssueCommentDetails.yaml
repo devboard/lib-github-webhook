@@ -1,0 +1,43 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails
+  parent: null
+  interfaces: []
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: DevboardLib\GitHub\IssueComment\IssueCommentId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    issueId:
+      instanceOf: DevboardLib\GitHub\Issue\IssueId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    body:
+      instanceOf: DevboardLib\GitHub\IssueComment\IssueCommentBody
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    author:
+      instanceOf: DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentAuthor
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    createdAt:
+      instanceOf: DevboardLib\GitHub\IssueComment\IssueCommentCreatedAt
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    updatedAt:
+      instanceOf: DevboardLib\GitHub\IssueComment\IssueCommentUpdatedAt
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
