@@ -10,7 +10,7 @@ definition:
   methods: {  }
   constructor:
     comment:
-      instanceOf: DevboardLib\GitHub\GitHubIssueComment
+      instanceOf: DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails
     issue:
       instanceOf: DevboardLib\GitHub\GitHubIssue
     repo:

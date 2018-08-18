@@ -12,7 +12,6 @@ use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubIssue;
-use DevboardLib\GitHub\GitHubIssueComment;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\Issue\IssueAssigneeCollection;
@@ -30,6 +29,7 @@ use DevboardLib\GitHub\IssueComment\IssueCommentId;
 use DevboardLib\GitHub\IssueComment\IssueCommentUpdatedAt;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\IssueComment\EditedIssueCommentEvent;
@@ -42,7 +42,7 @@ use PHPUnit\Framework\TestCase;
  */
 class EditedIssueCommentEventTest extends TestCase
 {
-    /** @var GitHubIssueComment */
+    /** @var IssueCommentDetails */
     private $comment;
 
     /** @var GitHubIssue */
@@ -62,7 +62,7 @@ class EditedIssueCommentEventTest extends TestCase
 
     public function setUp(): void
     {
-        $this->comment = new GitHubIssueComment(
+        $this->comment = new IssueCommentDetails(
             new IssueCommentId(1),
             new IssueId(1),
             new IssueCommentBody('value'),

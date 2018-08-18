@@ -46,7 +46,7 @@ class IssueCommentDetailsTest extends TestCase
     /** @var IssueCommentDetails */
     private $sut;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->id      = new IssueCommentId(1);
         $this->issueId = new IssueId(1);
@@ -65,37 +65,37 @@ class IssueCommentDetailsTest extends TestCase
         );
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         self::assertSame($this->id, $this->sut->getId());
     }
 
-    public function testGetIssueId()
+    public function testGetIssueId(): void
     {
         self::assertSame($this->issueId, $this->sut->getIssueId());
     }
 
-    public function testGetBody()
+    public function testGetBody(): void
     {
         self::assertSame($this->body, $this->sut->getBody());
     }
 
-    public function testGetAuthor()
+    public function testGetAuthor(): void
     {
         self::assertSame($this->author, $this->sut->getAuthor());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         self::assertSame($this->createdAt, $this->sut->getCreatedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         self::assertSame($this->updatedAt, $this->sut->getUpdatedAt());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $expected = [
             'id'      => 1,
@@ -115,7 +115,7 @@ class IssueCommentDetailsTest extends TestCase
         self::assertSame($expected, $this->sut->serialize());
     }
 
-    public function testDeserialize()
+    public function testDeserialize(): void
     {
         $serialized = json_encode($this->sut->serialize());
         self::assertEquals($this->sut, IssueCommentDetails::deserialize(json_decode($serialized, true)));
