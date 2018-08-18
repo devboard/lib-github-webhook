@@ -6,7 +6,6 @@ namespace DevboardLib\GitHubWebhook\Core\Milestone;
 
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
-use DevboardLib\GitHub\Milestone\MilestoneCreator;
 use DevboardLib\GitHub\Milestone\MilestoneDescription;
 use DevboardLib\GitHub\Milestone\MilestoneDueOn;
 use DevboardLib\GitHub\Milestone\MilestoneId;

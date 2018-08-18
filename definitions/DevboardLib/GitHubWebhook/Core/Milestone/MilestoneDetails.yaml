@@ -24,7 +24,7 @@ definition:
       instanceOf: DevboardLib\GitHub\Milestone\MilestoneNumber
       nullable: false
     creator:
-      instanceOf: DevboardLib\GitHub\Milestone\MilestoneCreator
+      instanceOf: DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreator
       nullable: false
     closedAt:
       instanceOf: DevboardLib\GitHub\Milestone\MilestoneClosedAt

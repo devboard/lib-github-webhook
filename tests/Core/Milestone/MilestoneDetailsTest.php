@@ -10,7 +10,6 @@ use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
-use DevboardLib\GitHub\Milestone\MilestoneCreator;
 use DevboardLib\GitHub\Milestone\MilestoneDescription;
 use DevboardLib\GitHub\Milestone\MilestoneDueOn;
 use DevboardLib\GitHub\Milestone\MilestoneId;
@@ -18,6 +17,7 @@ use DevboardLib\GitHub\Milestone\MilestoneNumber;
 use DevboardLib\GitHub\Milestone\MilestoneState;
 use DevboardLib\GitHub\Milestone\MilestoneTitle;
 use DevboardLib\GitHub\Milestone\MilestoneUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreator;
 use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 use PHPUnit\Framework\TestCase;
 

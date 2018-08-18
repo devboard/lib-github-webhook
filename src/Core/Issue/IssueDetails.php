@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\Core\Issue;
 
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
@@ -14,6 +13,7 @@ use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
 use DevboardLib\GitHub\Issue\IssueTitle;
 use DevboardLib\GitHub\Issue\IssueUpdatedAt;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -48,7 +48,7 @@ class IssueDetails
     /** @var GitHubLabelCollection */
     private $labels;
 
-    /** @var GitHubMilestone|null */
+    /** @var MilestoneDetails|null */
     private $milestone;
 
     /** @var IssueClosedAt|null */
@@ -69,7 +69,7 @@ class IssueDetails
         IssueAuthor $author,
         IssueAssigneeCollection $assignees,
         GitHubLabelCollection $labels,
-        ?GitHubMilestone $milestone,
+        ?MilestoneDetails $milestone,
         ?IssueClosedAt $closedAt,
         IssueCreatedAt $createdAt,
         IssueUpdatedAt $updatedAt
@@ -128,7 +128,7 @@ class IssueDetails
         return $this->labels;
     }
 
-    public function getMilestone(): ?GitHubMilestone
+    public function getMilestone(): ?MilestoneDetails
     {
         return $this->milestone;
     }
@@ -201,7 +201,7 @@ class IssueDetails
         if (null === $data['milestone']) {
             $milestone = null;
         } else {
-            $milestone = GitHubMilestone::deserialize($data['milestone']);
+            $milestone = MilestoneDetails::deserialize($data['milestone']);
         }
 
         if (null === $data['closedAt']) {

@@ -10,7 +10,6 @@ use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\GitHubLabel;
 use DevboardLib\GitHub\GitHubLabelCollection;
-use DevboardLib\GitHub\GitHubMilestone;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
@@ -24,7 +23,6 @@ use DevboardLib\GitHub\Label\LabelId;
 use DevboardLib\GitHub\Label\LabelName;
 use DevboardLib\GitHub\Milestone\MilestoneClosedAt;
 use DevboardLib\GitHub\Milestone\MilestoneCreatedAt;
-use DevboardLib\GitHub\Milestone\MilestoneCreator;
 use DevboardLib\GitHub\Milestone\MilestoneDescription;
 use DevboardLib\GitHub\Milestone\MilestoneDueOn;
 use DevboardLib\GitHub\Milestone\MilestoneId;
@@ -36,6 +34,8 @@ use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssignee;
 use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssigneeCollection;
 use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAuthor;
 use DevboardLib\GitHubWebhook\Core\IssueComment\IssueDetails;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreator;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -70,7 +70,7 @@ class IssueDetailsTest extends TestCase
     /** @var GitHubLabelCollection */
     private $labels;
 
-    /** @var GitHubMilestone|null */
+    /** @var MilestoneDetails|null */
     private $milestone;
 
     /** @var IssueClosedAt|null */
@@ -113,7 +113,7 @@ class IssueDetailsTest extends TestCase
         $this->labels = new GitHubLabelCollection(
             [new GitHubLabel(new LabelId(1), new LabelName('value'), new LabelColor('color'), true)]
         );
-        $this->milestone = new GitHubMilestone(
+        $this->milestone = new MilestoneDetails(
             new MilestoneId(1),
             new MilestoneTitle('value'),
             new MilestoneDescription('value'),

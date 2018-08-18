@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Data\DevboardLib\GitHubWebhook\Core;
 
-use DevboardLib\GitHub\GitHubMilestone;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails;
 
 class MilestoneSample
 {
@@ -35,8 +35,8 @@ class MilestoneSample
         return self::$data[$item];
     }
 
-    public static function sprint1(): GitHubMilestone
+    public static function sprint1(): MilestoneDetails
     {
-        return GitHubMilestone::deserialize(self::$data['sprint1']);
+        return MilestoneDetails::deserialize(self::$data['sprint1']);
     }
 }

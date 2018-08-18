@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Data\DevboardLib\GitHubWebhook\Core\Milestone;
 
-use DevboardLib\GitHub\Milestone\MilestoneCreator;
+use DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreator;
 
 class MilestoneCreatorSample
 {

@@ -56,7 +56,7 @@ definition:
       nullable: true
 
     milestone:
-      instanceOf: DevboardLib\GitHub\GitHubMilestone
+      instanceOf: DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails
       nullable: true
     closedAt:
       instanceOf: DevboardLib\GitHub\PullRequest\PullRequestClosedAt
