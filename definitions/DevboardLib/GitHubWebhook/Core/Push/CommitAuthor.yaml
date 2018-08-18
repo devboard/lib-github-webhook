@@ -1,16 +1,16 @@
 definition:
   type: SimpleEntity
-  instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitCommitter
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitAuthor
   parent: null
   interfaces:
-    - Git\Commit\CommitCommitter
+    - Git\Commit\CommitAuthor
   traits: {  }
   constants: {  }
   properties: {  }
   methods: {  }
   constructor:
     name:
-      instanceOf: DevboardLib\Git\Commit\Committer\CommitterName
+      instanceOf: DevboardLib\Git\Commit\Author\AuthorName
       examples: ["Octo Cat"]
     email:
       instanceOf: DevboardLib\Generix\EmailAddress
@@ -19,3 +19,6 @@ definition:
       instanceOf: DevboardLib\GitHub\User\UserLogin
       nullable: true
       examples: ["octocat"]
+    details:
+      instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitAuthorDetails
+      nullable: true

@@ -1,0 +1,54 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitCommitterDetails
+  parent: null
+  interfaces:
+    - Git\Commit\CommitAuthor
+  traits: {  }
+  constants: {  }
+  properties: {  }
+  methods: {  }
+  constructor:
+    userId:
+      instanceOf: DevboardLib\GitHub\Account\AccountId
+      examples: [583231]
+    login:
+      instanceOf: DevboardLib\GitHub\Account\AccountLogin
+      examples: [octocat]
+    type:
+      instanceOf: DevboardLib\GitHub\Account\AccountType
+      examples: ['User']
+    avatarUrl:
+      instanceOf: DevboardLib\GitHub\Account\AccountAvatarUrl
+      examples: [https://avatars3.githubusercontent.com/u/583231?v=4]
+    siteAdmin:
+      instanceOf: bool
+      examples: [false]
+    eventsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/events{/privacy}"]
+    followersUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/followers"]
+    followingUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/following{/other_user}"]
+    gistsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/gists{/gist_id}"]
+    organizationsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/orgs"]
+    receivedEventsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/received_events"]
+    reposUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/repos"]
+    starredUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/starred{/owner}{/repo}"]
+    subscriptionsUrl:
+      instanceOf: string
+      examples: ["https://api.github.com/users/octocat/subscriptions"]
+
