@@ -108,9 +108,7 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deprecations_check:
-         requires:
-           - build
+      - deprecations_check
       - infection:
          requires:
            - build
