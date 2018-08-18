@@ -8,7 +8,7 @@ use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
 use DevboardLib\GitHub\Account\AccountType;
-use DevboardLib\GitHub\IssueComment\IssueCommentAuthor;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentAuthor;
 
 /**
  * @see GitHubIssueCommentAuthorFactorySpec

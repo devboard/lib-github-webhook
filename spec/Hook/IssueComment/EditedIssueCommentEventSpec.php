@@ -12,8 +12,8 @@ use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
 use DevboardLib\GitHub\GitHubIssue;
-use DevboardLib\GitHub\GitHubIssueComment;
 use DevboardLib\GitHub\Installation\InstallationId;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
@@ -25,7 +25,11 @@ use PhpSpec\ObjectBehavior;
 class EditedIssueCommentEventSpec extends ObjectBehavior
 {
     public function let(
-        GitHubIssueComment $comment, GitHubIssue $issue, Repo $repo, InstallationId $installationId, Sender $sender
+        IssueCommentDetails $comment,
+        GitHubIssue $issue,
+        Repo $repo,
+        InstallationId $installationId,
+        Sender $sender
     ) {
         $this->beConstructedWith($comment, $issue, $repo, $installationId, $sender);
     }
@@ -38,7 +42,7 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
         $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
-    public function it_exposes_comment(GitHubIssueComment $comment)
+    public function it_exposes_comment(IssueCommentDetails $comment)
     {
         $this->getComment()->shouldReturn($comment);
     }
@@ -64,7 +68,11 @@ class EditedIssueCommentEventSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        GitHubIssueComment $comment, GitHubIssue $issue, Repo $repo, InstallationId $installationId, Sender $sender
+        IssueCommentDetails $comment,
+        GitHubIssue $issue,
+        Repo $repo,
+        InstallationId $installationId,
+        Sender $sender
     ) {
         $comment->serialize()->shouldBeCalled()->willReturn(
             [

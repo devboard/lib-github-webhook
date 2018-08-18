@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\IssueComment;
 
-use DevboardLib\GitHub\GitHubIssueComment;
 use DevboardLib\GitHub\Issue\IssueId;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails;
 use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueCommentAuthorFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueCommentFactory;
 use Generator;
@@ -33,7 +33,7 @@ class GitHubIssueCommentFactoryTest extends TestCase
     {
         foreach ($this->provideData() as $data) {
             self::assertInstanceOf(
-                GitHubIssueComment::class, $this->sut->create($data['comment'], new IssueId($data['issue']['id']))
+                IssueCommentDetails::class, $this->sut->create($data['comment'], new IssueId($data['issue']['id']))
             );
         }
     }

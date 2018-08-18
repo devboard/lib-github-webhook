@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace DevboardLib\GitHubWebhook\Hook\IssueComment;
 
 use DevboardLib\GitHub\GitHubIssue;
-use DevboardLib\GitHub\GitHubIssueComment;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 
@@ -18,7 +18,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
  */
 class EditedIssueCommentEvent implements IssueCommentEvent
 {
-    /** @var GitHubIssueComment */
+    /** @var IssueCommentDetails */
     private $comment;
 
     /** @var GitHubIssue */
@@ -34,7 +34,11 @@ class EditedIssueCommentEvent implements IssueCommentEvent
     private $sender;
 
     public function __construct(
-        GitHubIssueComment $comment, GitHubIssue $issue, Repo $repo, InstallationId $installationId, Sender $sender
+        IssueCommentDetails $comment,
+        GitHubIssue $issue,
+        Repo $repo,
+        InstallationId $installationId,
+        Sender $sender
     ) {
         $this->comment        = $comment;
         $this->issue          = $issue;
@@ -43,7 +47,7 @@ class EditedIssueCommentEvent implements IssueCommentEvent
         $this->sender         = $sender;
     }
 
-    public function getComment(): GitHubIssueComment
+    public function getComment(): IssueCommentDetails
     {
         return $this->comment;
     }
@@ -92,7 +96,7 @@ class EditedIssueCommentEvent implements IssueCommentEvent
     public static function deserialize(array $data): self
     {
         return new self(
-            GitHubIssueComment::deserialize($data['comment']),
+            IssueCommentDetails::deserialize($data['comment']),
             GitHubIssue::deserialize($data['issue']),
             Repo::deserialize($data['repo']),
             InstallationId::deserialize($data['installationId']),

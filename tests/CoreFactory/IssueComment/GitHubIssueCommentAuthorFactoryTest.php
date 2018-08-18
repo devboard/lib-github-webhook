@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\DevboardLib\GitHubWebhook\CoreFactory\IssueComment;
 
-use DevboardLib\GitHub\IssueComment\IssueCommentAuthor;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueCommentAuthor;
 use DevboardLib\GitHubWebhook\CoreFactory\IssueComment\GitHubIssueCommentAuthorFactory;
 use Generator;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
