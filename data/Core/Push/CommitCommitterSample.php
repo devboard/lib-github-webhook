@@ -10,7 +10,7 @@ class CommitCommitterSample
 {
     /** @var array */
     private static $data = [
-        'octocat' => ['name' => 'Octo Cat', 'email' => 'octocat@example.com', 'username' => 'octocat'],
+        'octocat' => ['name' => 'Octo Cat', 'email' => 'octocat@example.com', 'username' => 'octocat','details'=> null],
     ];
 
     public static function serialized(string $item): array
