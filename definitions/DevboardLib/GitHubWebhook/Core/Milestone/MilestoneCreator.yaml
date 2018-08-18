@@ -1,0 +1,38 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Milestone\MilestoneCreator
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    userId:
+      instanceOf: DevboardLib\GitHub\Account\AccountId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: [583231]
+    login:
+      instanceOf: DevboardLib\GitHub\Account\AccountLogin
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: [octocat]
+    type:
+      instanceOf: DevboardLib\GitHub\Account\AccountType
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['User']
+    avatarUrl:
+      instanceOf: DevboardLib\GitHub\Account\AccountAvatarUrl
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: [https://avatars3.githubusercontent.com/u/583231?v=4]
+
+    siteAdmin:
+      instanceOf: bool
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: [false]
