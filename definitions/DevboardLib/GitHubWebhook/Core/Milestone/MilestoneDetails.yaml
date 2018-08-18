@@ -1,0 +1,38 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\GitHubWebhook\Core\Milestone\MilestoneDetails
+  parent: null
+  interfaces: []
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneId
+      nullable: false
+    title:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneTitle
+      nullable: false
+    description:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneDescription
+      nullable: false
+    dueOn:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneDueOn
+      nullable: true
+    state:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneState
+      nullable: false
+    number:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneNumber
+      nullable: false
+    creator:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneCreator
+      nullable: false
+    closedAt:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneClosedAt
+      nullable: true
+    createdAt:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneCreatedAt
+      nullable: false
+    updatedAt:
+      instanceOf: DevboardLib\GitHub\Milestone\MilestoneUpdatedAt
+      nullable: false
+
