@@ -2,8 +2,7 @@ definition:
   type: SimpleEntity
   instanceOf: DevboardLib\GitHubWebhook\Core\Push\CommitCommitterDetails
   parent: null
-  interfaces:
-    - Git\Commit\CommitAuthor
+  interfaces: {  }
   traits: {  }
   constants: {  }
   properties: {  }
