@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\InstallationRepositories;
 
-use DevboardLib\GitHub\GitHubInstallation;
+use DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails;
 use DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection;
 use DevboardLib\GitHubWebhook\Core\Sender;
 
@@ -14,7 +14,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
  */
 class AddedInstallationRepositoriesEvent implements InstallationRepositoriesEvent
 {
-    /** @var GitHubInstallation */
+    /** @var InstallationDetails */
     private $installation;
 
     /** @var RepositoryReferenceCollection */
@@ -24,14 +24,14 @@ class AddedInstallationRepositoriesEvent implements InstallationRepositoriesEven
     private $sender;
 
     public function __construct(
-        GitHubInstallation $installation, RepositoryReferenceCollection $reposAdded, Sender $sender
+        InstallationDetails $installation, RepositoryReferenceCollection $reposAdded, Sender $sender
     ) {
         $this->installation = $installation;
         $this->reposAdded   = $reposAdded;
         $this->sender       = $sender;
     }
 
-    public function getInstallation(): GitHubInstallation
+    public function getInstallation(): InstallationDetails
     {
         return $this->installation;
     }
@@ -58,7 +58,7 @@ class AddedInstallationRepositoriesEvent implements InstallationRepositoriesEven
     public static function deserialize(array $data): self
     {
         return new self(
-            GitHubInstallation::deserialize($data['installation']),
+            InstallationDetails::deserialize($data['installation']),
             RepositoryReferenceCollection::deserialize($data['reposAdded']),
             Sender::deserialize($data['sender'])
         );

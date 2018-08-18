@@ -10,7 +10,7 @@ definition:
   methods: {  }
   constructor:
     installation:
-      instanceOf: DevboardLib\GitHub\GitHubInstallation
+      instanceOf: DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails
     reposAdded:
       instanceOf: DevboardLib\GitHubWebhook\Core\InstallationRepositories\RepositoryReferenceCollection
     sender:

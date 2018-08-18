@@ -10,6 +10,6 @@ definition:
   methods: {  }
   constructor:
     installation:
-      instanceOf: DevboardLib\GitHub\GitHubInstallation
+      instanceOf: DevboardLib\GitHubWebhook\Core\Installation\InstallationDetails
     sender:
       instanceOf: DevboardLib\GitHubWebhook\Core\Sender
