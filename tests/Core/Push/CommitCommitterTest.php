@@ -9,6 +9,7 @@ use DevboardLib\Git\Commit\Committer\CommitterName;
 use DevboardLib\GitHub\Account\AccountAvatarUrl;
 use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\Account\AccountLogin;
+use DevboardLib\GitHub\Account\AccountType;
 use DevboardLib\GitHub\User\UserLogin;
 use DevboardLib\GitHubWebhook\Core\Push\CommitCommitter;
 use DevboardLib\GitHubWebhook\Core\Push\CommitCommitterDetails;
@@ -45,7 +46,7 @@ class CommitCommitterTest extends TestCase
         $this->details  = new CommitCommitterDetails(
             new AccountId(1),
             new AccountLogin('value'),
-            \Mockery::mock('DevboardLib\GitHub\Account\AccountType'),
+	        AccountType::USER(),
             new AccountAvatarUrl('avatarUrl'),
             true,
             'eventsUrl',
@@ -100,7 +101,7 @@ class CommitCommitterTest extends TestCase
             'details'  => [
                 'userId'            => 1,
                 'login'             => 'value',
-                'type'              => \Mockery::mock('DevboardLib\GitHub\Account\AccountType'),
+                'type'              => 'User',
                 'avatarUrl'         => 'avatarUrl',
                 'siteAdmin'         => true,
                 'eventsUrl'         => 'eventsUrl',
