@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Data\DevboardLib\GitHubWebhook\Core\Issue;
+namespace Data\DevboardLib\GitHubWebhook\Core\IssueComment;
 
-use DevboardLib\GitHubWebhook\Core\Issue\IssueAssignee;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssignee;
 
 class IssueAssigneeSample
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Data\DevboardLib\GitHubWebhook\Core\Issue;
+namespace Data\DevboardLib\GitHubWebhook\Core\IssueComment;
 
-use DevboardLib\GitHubWebhook\Core\Issue\IssueAssignee;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAuthor;
 
-class IssueAssigneeSample
+class IssueAuthorSample
 {
     /** @var array */
     private static $data = [
@@ -24,8 +24,8 @@ class IssueAssigneeSample
         return self::$data[$item];
     }
 
-    public static function octocat(): IssueAssignee
+    public static function octocat(): IssueAuthor
     {
-        return IssueAssignee::deserialize(self::$data['octocat']);
+        return IssueAuthor::deserialize(self::$data['octocat']);
     }
 }

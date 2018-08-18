@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Data\DevboardLib\GitHubWebhook\Core\Issue;
 
-use DevboardLib\GitHub\Issue\IssueAuthor;
+use DevboardLib\GitHubWebhook\Core\Issue\IssueAuthor;
 
 class IssueAuthorSample
 {

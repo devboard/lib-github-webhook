@@ -25,7 +25,7 @@ class IssueAssigneeCollection
         $this->elements = $elements;
     }
 
-    public function add(IssueAssignee $element):void
+    public function add(IssueAssignee $element): void
     {
         $this->elements[] = $element;
     }
@@ -41,7 +41,7 @@ class IssueAssigneeCollection
         return false;
     }
 
-    public function get(AccountId $id):?IssueAssignee
+    public function get(AccountId $id): ?IssueAssignee
     {
         foreach ($this->elements as $element) {
             if ($element->getUserId() == $id) {

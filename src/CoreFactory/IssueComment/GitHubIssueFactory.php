@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DevboardLib\GitHubWebhook\CoreFactory\Issue;
+namespace DevboardLib\GitHubWebhook\CoreFactory\IssueComment;
 
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\Issue\IssueBody;
@@ -13,8 +13,8 @@ use DevboardLib\GitHub\Issue\IssueNumber;
 use DevboardLib\GitHub\Issue\IssueState;
 use DevboardLib\GitHub\Issue\IssueTitle;
 use DevboardLib\GitHub\Issue\IssueUpdatedAt;
-use DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeCollection;
-use DevboardLib\GitHubWebhook\Core\Issue\IssueDetails;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueAssigneeCollection;
+use DevboardLib\GitHubWebhook\Core\IssueComment\IssueDetails;
 use DevboardLib\GitHubWebhook\CoreFactory\Label\GitHubLabelFactory;
 use DevboardLib\GitHubWebhook\CoreFactory\Milestone\GitHubMilestoneFactory;
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHubWebhook\Hook\Issue;
 
-use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\Installation\InstallationId;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
+use DevboardLib\GitHubWebhook\Core\Issue\IssueDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 
@@ -17,7 +17,7 @@ use DevboardLib\GitHubWebhook\Core\Sender;
  */
 class DemilestonedIssueEvent implements IssueEvent
 {
-    /** @var GitHubIssue */
+    /** @var IssueDetails */
     private $issue;
 
     /** @var Repo */
@@ -29,7 +29,7 @@ class DemilestonedIssueEvent implements IssueEvent
     /** @var Sender */
     private $sender;
 
-    public function __construct(GitHubIssue $issue, Repo $repo, InstallationId $installationId, Sender $sender)
+    public function __construct(IssueDetails $issue, Repo $repo, InstallationId $installationId, Sender $sender)
     {
         $this->issue          = $issue;
         $this->repo           = $repo;
@@ -37,7 +37,7 @@ class DemilestonedIssueEvent implements IssueEvent
         $this->sender         = $sender;
     }
 
-    public function getIssue(): GitHubIssue
+    public function getIssue(): IssueDetails
     {
         return $this->issue;
     }
@@ -80,7 +80,7 @@ class DemilestonedIssueEvent implements IssueEvent
     public static function deserialize(array $data): self
     {
         return new self(
-            GitHubIssue::deserialize($data['issue']),
+            IssueDetails::deserialize($data['issue']),
             Repo::deserialize($data['repo']),
             InstallationId::deserialize($data['installationId']),
             Sender::deserialize($data['sender'])

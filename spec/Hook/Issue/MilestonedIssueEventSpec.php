@@ -10,8 +10,8 @@ use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\Installation\InstallationId;
+use DevboardLib\GitHubWebhook\Core\Issue\IssueDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\GitHubHookEvent;
@@ -22,7 +22,7 @@ use PhpSpec\ObjectBehavior;
 
 class MilestonedIssueEventSpec extends ObjectBehavior
 {
-    public function let(GitHubIssue $issue, Repo $repo, InstallationId $installationId, Sender $sender)
+    public function let(IssueDetails $issue, Repo $repo, InstallationId $installationId, Sender $sender)
     {
         $this->beConstructedWith($issue, $repo, $installationId, $sender);
     }
@@ -35,7 +35,7 @@ class MilestonedIssueEventSpec extends ObjectBehavior
         $this->shouldImplement(RepositoryRelatedEvent::class);
     }
 
-    public function it_exposes_issue(GitHubIssue $issue)
+    public function it_exposes_issue(IssueDetails $issue)
     {
         $this->getIssue()->shouldReturn($issue);
     }
@@ -56,7 +56,7 @@ class MilestonedIssueEventSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        GitHubIssue $issue, Repo $repo, InstallationId $installationId, Sender $sender
+        IssueDetails $issue, Repo $repo, InstallationId $installationId, Sender $sender
     ) {
         $issue->serialize()->shouldBeCalled()->willReturn(
             [

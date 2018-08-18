@@ -10,10 +10,8 @@ use Data\DevboardLib\GitHubWebhook\Core\Label\LabelSample;
 use Data\DevboardLib\GitHubWebhook\Core\MilestoneSample;
 use Data\DevboardLib\GitHubWebhook\Core\RepoSample;
 use Data\DevboardLib\GitHubWebhook\Core\SenderSample;
-use DevboardLib\GitHub\GitHubIssue;
 use DevboardLib\GitHub\GitHubLabelCollection;
 use DevboardLib\GitHub\Installation\InstallationId;
-use DevboardLib\GitHub\Issue\IssueAssigneeCollection;
 use DevboardLib\GitHub\Issue\IssueBody;
 use DevboardLib\GitHub\Issue\IssueClosedAt;
 use DevboardLib\GitHub\Issue\IssueCreatedAt;
@@ -24,6 +22,8 @@ use DevboardLib\GitHub\Issue\IssueTitle;
 use DevboardLib\GitHub\Issue\IssueUpdatedAt;
 use DevboardLib\GitHub\Repo\RepoFullName;
 use DevboardLib\GitHub\Repo\RepoId;
+use DevboardLib\GitHubWebhook\Core\Issue\IssueAssigneeCollection;
+use DevboardLib\GitHubWebhook\Core\Issue\IssueDetails;
 use DevboardLib\GitHubWebhook\Core\Repo;
 use DevboardLib\GitHubWebhook\Core\Sender;
 use DevboardLib\GitHubWebhook\Hook\Issue\AssignedIssueEvent;
@@ -36,7 +36,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AssignedIssueEventTest extends TestCase
 {
-    /** @var GitHubIssue */
+    /** @var IssueDetails */
     private $issue;
 
     /** @var Repo */
@@ -53,14 +53,13 @@ class AssignedIssueEventTest extends TestCase
 
     public function setUp(): void
     {
-        $this->issue = new GitHubIssue(
+        $this->issue = new IssueDetails(
             new IssueId(1),
             new IssueNumber(1),
             new IssueTitle('value'),
             new IssueBody('value'),
             IssueState::OPEN(),
             IssueAuthorSample::octocat(),
-            IssueAssigneeSample::octocat(),
             new IssueAssigneeCollection([IssueAssigneeSample::octocat()]),
             new GitHubLabelCollection([LabelSample::red()]),
             MilestoneSample::sprint1(),
@@ -114,7 +113,6 @@ class AssignedIssueEventTest extends TestCase
                 'body'      => 'value',
                 'state'     => 'open',
                 'author'    => IssueAuthorSample::serialized('octocat'),
-                'assignee'  => IssueAssigneeSample::serialized('octocat'),
                 'assignees' => [IssueAssigneeSample::serialized('octocat')],
                 'labels'    => [LabelSample::serialized('red')],
                 'milestone' => MilestoneSample::serialized('sprint1'),
