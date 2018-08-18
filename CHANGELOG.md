@@ -6,7 +6,8 @@ Version 3.x [xxxx-xx-xx]:
  - Add and use IssueCommentDetails representation instead of GitHubIssueComment #105
  - Add paraunit in order to run phpunit tests in parallel
  - Mark Tag factories as skipped as we have no data to test them out now
- - Add and use IssueDetails representation instead of GitHubIssue #105
+ - Add and use IssueDetails representation instead of GitHubIssue #104
+ - Add and use MilestoneDetails representation instead of GitHubMilestone #103
 
 Version 2.0.1 [2018-07-28]:
 
