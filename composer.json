@@ -21,7 +21,7 @@
     },
     "require-dev": {
         "ciaranmcnulty/phpspec-typehintedmethods": "^4.0",
-        "facile-it/paraunit": "^0.12.3",
+        "facile-it/paraunit": "^1.0.0",
         "friendsofphp/php-cs-fixer": "dev-long-line-fixers2",
         "infection/infection": "^0.10.0",
         "mockery/mockery": "^1.0",
